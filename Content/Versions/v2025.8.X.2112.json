@@ -1,0 +1,42 @@
+{
+  "build": "2025.8.100.2112",
+  "date": "2025-08-19",
+  "fromRevision": 2108,
+  "toRevision": 2112,
+  "commits": [
+    {
+      "rev": 2109,
+      "date": "2025-08-19",
+      "author": "Rian Drake",
+      "lines": [
+        "Update TOML to 6.2.0 with invalid enum dictionary fixes"
+      ]
+    },
+    {
+      "rev": 2110,
+      "date": "2025-08-18",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Moved the target reference back to the vehicle because we'll need to pass derived data to the flight computer instead.",
+        "Pass target data to the flight computer via the nav struct.",
+        "Added calculations for the TGT (target) frame of reference."
+      ]
+    },
+    {
+      "rev": 2111,
+      "date": "2025-08-19",
+      "author": "Dean Hall",
+      "lines": [
+        "Fixed critical issue, when a new update is available and the welcome window is open - the second popup will disable input. This is because both popups are modal - and the first closes the second but leaves modal operation in place. Not popups enforce only one modal one at any time."
+      ]
+    },
+    {
+      "rev": 2112,
+      "date": "2025-08-19",
+      "author": "Dean Hall",
+      "lines": [
+        "Refactored Cloud and Exhaust Quality settings, so that by default debugging quality settings for upscaling are not included. This is because users may be confused about which settings provide better quality volumetrics. These have been changed to say quality with descriptive words."
+      ]
+    }
+  ]
+}

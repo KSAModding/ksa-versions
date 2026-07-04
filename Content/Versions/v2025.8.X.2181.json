@@ -1,0 +1,61 @@
+{
+  "build": "2025.8.288.2181",
+  "date": "2025-08-25",
+  "fromRevision": 2171,
+  "toRevision": 2181,
+  "commits": [
+    {
+      "rev": 2173,
+      "date": "2025-08-25",
+      "author": "matthew.caradus",
+      "lines": [
+        "Tweaked Atmospheric wind sound values.",
+        "Added Separate modifier for Sim-speed-pitch to ChannelWrapper class.",
+        "Fixed bug where pitch was incorrectly getting modified by a volume multiplier.",
+        "Tweaked HighpassFilter distance fallOff on Spatialized sounds and added low-pass-filter as well.",
+        "Added a sound reference can now be assigned a Sim-Speed rule in the xml data to describe how it will be effected by sim-speed: \"Ingore, All, OnlyLower, OnlyHigher\""
+      ]
+    },
+    {
+      "rev": 2174,
+      "date": "2025-08-25",
+      "author": "Morrow",
+      "lines": [
+        "Added preprocessor instructions so vulkan validation layers aren't enabled in non-dev builds."
+      ]
+    },
+    {
+      "rev": 2175,
+      "date": "2025-08-25",
+      "author": "Morrow",
+      "lines": [
+        "Added a comment to a rendering fix."
+      ]
+    },
+    {
+      "rev": 2176,
+      "date": "2025-08-25",
+      "author": "Rocket",
+      "lines": [
+        "Added Apoapsis and Periapsis gauges to show the current in meters as an initial implementation, first pass, for extra orbital data in the gauge system directly."
+      ]
+    },
+    {
+      "rev": 2177,
+      "date": "2025-08-25",
+      "author": "Morrow",
+      "lines": [
+        "Gemini7 is now loaded in and rendered as parts and subparts. Still quite a bit of work to do to get the current systems nicely hooked in to parts."
+      ]
+    },
+    {
+      "rev": 2178,
+      "date": "2025-08-25",
+      "author": "Rocket",
+      "lines": [
+        "Tweaked the sun bloom effects to be more subtle. Further changes and balancing to come.",
+        "Migrated the warp to next Imgui to be a button on the periapsis and apoapsis gauge objects. When clicked, they will toggle the warp on and off for that event. Needs some optimization, as hopefully we can cache the orbit values for these on the workers as it won't change during the frame."
+      ]
+    }
+  ]
+}

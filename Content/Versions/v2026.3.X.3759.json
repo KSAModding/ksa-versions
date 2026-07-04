@@ -1,0 +1,202 @@
+{
+  "build": "2026.3.3.3759",
+  "date": "2026-03-05",
+  "fromRevision": 3736,
+  "toRevision": 3759,
+  "commits": [
+    {
+      "rev": 3737,
+      "date": "2026-03-03",
+      "author": "lghassen",
+      "lines": [
+        "Make a better rings texture for Saturn, with less color fringing near edges, cleaner gaps and more natural colors. Use NASA photojournal files PIA08389, PIA11142 and PIA17172",
+        "Add a ring control texture allowing control over where meshes appear and local volumetric thickness and raymarching settings",
+        "Use different phase functions based on the local density of the rings",
+        "Add the faint E and G rings to Saturn rings, using all the above features. They are larger in height than the rest of the rings, but are less dense and can only be seen when looking towards the sunlight",
+        "Use the same density value for the volumetric rings self-shadowing as used for transmittance, now that the texture's transparency is more accurate",
+        "Factor out thickness in analytic 2d ring scattering which only needs the total density/transparency along a vertical ray",
+        "Fix wrong normalization in ring meshes color which can result in very bright rocks on zero-alpha regions of the ring texture",
+        "Sample more accurate ring shadow on the planet, using analytic shadow transmittance which gets darker at grazing angles"
+      ]
+    },
+    {
+      "rev": 3738,
+      "date": "2026-03-04",
+      "author": "Morrow",
+      "lines": [
+        "Fixed connector->surface connections not properly connecting via the surface connector."
+      ]
+    },
+    {
+      "rev": 3739,
+      "date": "2026-03-04",
+      "author": "Morrow",
+      "lines": [
+        "Removed unneeded buffer synchronization as submitting command buffers creates an implicit synchronization between host operations and command buffer execution."
+      ]
+    },
+    {
+      "rev": 3740,
+      "date": "2026-03-04",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed log messages for loading a save game vs loading a saved vehicle for clarification as they were the same message previously."
+      ]
+    },
+    {
+      "rev": 3741,
+      "date": "2026-03-04",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added context menu information for docking ports to show alignment to each other.",
+        "Store Docking port modules into the PartTree for easy reference."
+      ]
+    },
+    {
+      "rev": 3742,
+      "date": "2026-03-03",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Largely cosmetic variable scope change."
+      ]
+    },
+    {
+      "rev": 3743,
+      "date": "2026-03-04",
+      "author": "Linx-RW",
+      "lines": [
+        "Reduced ground clutter VRAM usage by around 50%. VRAM usage for both the Moon and Mars reduced from 36mb to 20mb, with further room for improvement in the future. This will become more relevant when adding grass and trees which have high generation density and range, requiring more VRAM than the rocks."
+      ]
+    },
+    {
+      "rev": 3744,
+      "date": "2026-03-04",
+      "author": "JoshRW",
+      "lines": [
+        "Fix sunbloom spokes appearing on sun surface",
+        "Comment out sun surface animation as the code wasn't working"
+      ]
+    },
+    {
+      "rev": 3745,
+      "date": "2026-03-04",
+      "author": "Dan Southon",
+      "lines": [
+        "Changed ImageBarrierInfo.Presets to be more descriptive",
+        "Added StorageRayTracingRead/Write Presets to ImageBarrierInfo.",
+        "Promoted repeated code for resolving multi sample image to it's own function.",
+        "Removed unneeded barrier pooling"
+      ]
+    },
+    {
+      "rev": 3746,
+      "date": "2026-03-04",
+      "author": "Dan Southon",
+      "lines": [
+        "Removed old vessel shadows that were being used for volumetrics. This will help improve performance as we are rendering vessels to one less depth pass.",
+        "Added CSM shadows to volumetric exhausts, allowing multiple vehicles to affect a single exhaust volume."
+      ]
+    },
+    {
+      "rev": 3747,
+      "date": "2026-03-03",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed defunct turbine exhaust nozzle from the A1_Dev engine."
+      ]
+    },
+    {
+      "rev": 3748,
+      "date": "2026-03-02",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added a PlumeData structure to RocketNozzleState which contains several physically-computed parameters for the new rocket plume model.",
+        "Updated RocketNozzle methods to expose new data required for plume calcs.",
+        "Added several Prandtl-Meyer expansion calculation functions to GasProperties."
+      ]
+    },
+    {
+      "rev": 3749,
+      "date": "2026-03-03",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed defunct turbine exhaust frame from the A1_Dev engine."
+      ]
+    },
+    {
+      "rev": 3750,
+      "date": "2026-03-03",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Separate the minimum impulse bit from the rate deadband inside the flight computer. We now add the attitude frame rates to the rate deadband which significantly decreases spurious thruster firings during attitude holds (with a corresponding increase in propellant economy)."
+      ]
+    },
+    {
+      "rev": 3751,
+      "date": "2026-03-04",
+      "author": "lghassen",
+      "lines": [
+        "Flatten shadow cascade sampling and selection code in the volumetric exhaust shader, use the shadowUBO directly instead of passing it as argument to the function, both of these were causing a strange performance hit on 20-series cards",
+        "Use correct per-step depth for cascade selection instead of per-fragment depth of bounding box to select shadow cascade in the volumetric exhausts"
+      ]
+    },
+    {
+      "rev": 3752,
+      "date": "2026-03-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added PosAsmbToBody() and PosBodyToAsmb() functions on Vehicle to prevent everyone having to remember how these transforms work. Converted many existing use cases to use these functions."
+      ]
+    },
+    {
+      "rev": 3753,
+      "date": "2026-03-04",
+      "author": "Linx-RW",
+      "lines": [
+        "Moved ground clutter output colour storage from within the instance matrix to a separate buffer so we don't need to clear the matrix value in the vertex shader. This should improve cache efficiency when rendering ground clutter."
+      ]
+    },
+    {
+      "rev": 3754,
+      "date": "2026-03-05",
+      "author": "JoshRW",
+      "lines": [
+        "Fix black ring around sun surface on multisampling disabled. Sunbloom doesn't read the alpha of the main image anymore if the sun surface is showing."
+      ]
+    },
+    {
+      "rev": 3755,
+      "date": "2026-03-05",
+      "author": "Linx-RW",
+      "lines": [
+        "Optimized ground clutter prefix sum. Before, LOD buffer offsets were calculated on one thread for simplicity - now uses a simplified single pass approach using the whole workgroup. This makes it run very fast, but limits the product of LOD count and ecotype object types to 256 (51 object types per ecotype with 5 LODs). That's more than I would expect any ecotype to use, so a proper multiple-pass prefix sum implementation seems overkill.",
+        "Marked ground clutter system storage buffers as readonly/writeonly which may allow the driver to optimize further when compiling the shaders.",
+        "Added a GPU debug marker for ground clutter rendering to differentiate it from planet rendering."
+      ]
+    },
+    {
+      "rev": 3756,
+      "date": "2026-03-05",
+      "author": "JoshRW",
+      "lines": [
+        "Fix orange ring appearing inside sun surface when zooming in. The issue was that the sunbloom rendering at the same time as the sun surface was not large enough to cover the full circle, leaving the orange ring behind. This has been fixed by scaling up the sunbloom circle at certain distances."
+      ]
+    },
+    {
+      "rev": 3757,
+      "date": "2026-03-05",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed up uniform value copies in shader for CSM in favor of direct usage."
+      ]
+    },
+    {
+      "rev": 3758,
+      "date": "2026-03-05",
+      "author": "lghassen",
+      "lines": [
+        "Fix issue when duplicating the same ring configs to use on different bodies caused by not dereferencing the MeshFileReference"
+      ]
+    }
+  ]
+}

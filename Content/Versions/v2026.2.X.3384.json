@@ -1,0 +1,262 @@
+{
+  "build": "2026.2.2.3384",
+  "date": "2026-02-03",
+  "fromRevision": 3353,
+  "toRevision": 3384,
+  "commits": [
+    {
+      "rev": 3354,
+      "date": "2026-01-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Created an IFollowable interface for Camera to use instead of Astronomical. This prepares the way for following objects that are not direct participants in the celestial sim (e.g. landmarks or other \"static\" objects).",
+        "Created an IRadius interface and consolidate MeanRadius/ObjectRadius/etc. to use this.",
+        "Moved MeanRadius off of AstronomicalTemplate and down one level, where appropriate (e.g. not on Vehicle)."
+      ]
+    },
+    {
+      "rev": 3355,
+      "date": "2026-01-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed the Vehicle backreference from Part. Instead, we pass in the Asmb2Ego frame relationship based on the surrounding context. This removes a layer of state management, eliminiates the possiblity of an inconsistent Vehicle<->Part relationship, and is a significant step towards making PartTree usable outside of Vehicle, e.g. in the editor."
+      ]
+    },
+    {
+      "rev": 3356,
+      "date": "2026-01-31",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Improved thruster axis assignment logic. This restores kitten EVA thruster control in all axes, but doesn't eliminate the use of suboptimal thrusters on the test vehicles. To do that, we will need a more globally-optimal jet selection logic algorithm."
+      ]
+    },
+    {
+      "rev": 3357,
+      "date": "2026-01-31",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Moved orbiter-specific position and velocity methods to IOrbiting."
+      ]
+    },
+    {
+      "rev": 3358,
+      "date": "2026-01-31",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Created VehicleEditingSpace as a container for part trees in the vehicle editor which do not yet have a full-fledged Vehicle. This avoids having to make up data for in-progress vehicles and carefully manage construction/destruction thereof.",
+        "Fixed error where a newly-created part in an empty vehicle editor would be invisible, making building rockets from a blank sheet impossible.",
+        "Changed VehicleSave to return PartTrees instead of Vehicles.",
+        "Moved RefillConsumables(), ComputeBoundingSphereRadius(), and DrawStageWindow() to PartTree.",
+        "Removed the CreateBareBones() constructors."
+      ]
+    },
+    {
+      "rev": 3359,
+      "date": "2026-02-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the vehicle save/load UI in the vehicle editor subsequent to camera following changes."
+      ]
+    },
+    {
+      "rev": 3360,
+      "date": "2026-02-02",
+      "author": "Morrow",
+      "lines": [
+        "Gauge components no longer react to the mouse when the mouse should be disabled."
+      ]
+    },
+    {
+      "rev": 3361,
+      "date": "2026-02-02",
+      "author": "Morrow",
+      "lines": [
+        "Part highlighting no longer reacts to the mouse when the mouse should be disabled."
+      ]
+    },
+    {
+      "rev": 3362,
+      "date": "2026-02-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed part and subpart UI drawing in vehicle editor to responect the viewport offset.",
+        "Added toggle to root part UI in vehicle editor to show resource info for each part tree.",
+        "Fixed multiple vehicle save file loading into vehicle editor.",
+        "Added ability to change the root part between loaded vehicles onto the root part UI."
+      ]
+    },
+    {
+      "rev": 3363,
+      "date": "2026-02-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added group numbering to the UI when you show the resource graph.",
+        "Fixed a bug in the CreateOrders method that was not dealing with groups correctly when creating the tank lists to draw fuel from."
+      ]
+    },
+    {
+      "rev": 3364,
+      "date": "2026-02-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed fallback object from vehicle editor. When you enter following something other than a vehicle it would not go back to following this object when exiting the editor."
+      ]
+    },
+    {
+      "rev": 3365,
+      "date": "2026-02-03",
+      "author": "Morrow",
+      "lines": [
+        "Added first pass on generic part component templates."
+      ]
+    },
+    {
+      "rev": 3366,
+      "date": "2026-02-03",
+      "author": "Morrow",
+      "lines": [
+        "Updated Core Fairing A Assets."
+      ]
+    },
+    {
+      "rev": 3367,
+      "date": "2026-02-03",
+      "author": "Morrow",
+      "lines": [
+        "Updated Core Passage A and Core Command A Assets."
+      ]
+    },
+    {
+      "rev": 3368,
+      "date": "2026-02-03",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed when you delete a part in the DEBUG vehcile editor it only deletes that part and it's children. Not the whole part tree."
+      ]
+    },
+    {
+      "rev": 3369,
+      "date": "2026-02-03",
+      "author": "Morrow",
+      "lines": [
+        "Updated Core FuelTank A Assets."
+      ]
+    },
+    {
+      "rev": 3370,
+      "date": "2026-02-03",
+      "author": "Morrow",
+      "lines": [
+        "Updated Core Service Module A Assets."
+      ]
+    },
+    {
+      "rev": 3371,
+      "date": "2026-02-03",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed resource graph to use instance Ids of the components rather than Tank references. Also eliminates the need for a public Tank constructor."
+      ]
+    },
+    {
+      "rev": 3372,
+      "date": "2026-02-03",
+      "author": "Morrow",
+      "lines": [
+        "Updated Core Propulsion A Assets."
+      ]
+    },
+    {
+      "rev": 3373,
+      "date": "2026-02-03",
+      "author": "Morrow",
+      "lines": [
+        "Updated Core Propulsion B Assets."
+      ]
+    },
+    {
+      "rev": 3374,
+      "date": "2026-02-03",
+      "author": "Morrow",
+      "lines": [
+        "Completed identifier migration from collision mesh to view mesh to make it more distinct from future collision primitive based collision meshes."
+      ]
+    },
+    {
+      "rev": 3375,
+      "date": "2026-02-03",
+      "author": "Morrow",
+      "lines": [
+        "Swapped the TFI_Heat texture map channels to give the heat map a higher bit count."
+      ]
+    },
+    {
+      "rev": 3376,
+      "date": "2026-02-03",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Swapped TFI channel in Mesh.frag to be consistent with DynamicMesh.frag"
+      ]
+    },
+    {
+      "rev": 3377,
+      "date": "2026-02-02",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Modified the several places required to permit propellant tanks on both sub-parts and parts.",
+        "Moved Core_FuelTank_A_Prefab_LF3W3HA propellant tank from the sub-part level up to the part level.",
+        "Added a .FullPart accessor to Part that returns itself or its parent (if a sub part)."
+      ]
+    },
+    {
+      "rev": 3378,
+      "date": "2026-02-02",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Renamed SubPart items in Tank and ResourceManager since they can now be full parts.",
+        "Pass tank states into ResourceManager UI functions rather than keeping a PartTree copy which might become out of sync."
+      ]
+    },
+    {
+      "rev": 3379,
+      "date": "2026-02-03",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ability to launch existing vehicle saves from the File Menu."
+      ]
+    },
+    {
+      "rev": 3380,
+      "date": "2026-02-03",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed ability to close the Launch Vehicle Menu without actually launching. MAybe not a bug - Cause some might argue you can't cancel the countdown. ;)"
+      ]
+    },
+    {
+      "rev": 3381,
+      "date": "2026-02-03",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ability to refill tanks in each part in the debug vehicle editor with a selected combustion substance."
+      ]
+    },
+    {
+      "rev": 3382,
+      "date": "2026-02-03",
+      "author": "Morrow",
+      "lines": [
+        "Fixed emissives not being converted to linear for parts."
+      ]
+    },
+    {
+      "rev": 3383,
+      "date": "2026-02-03",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed all resource processing for engines and thrusters to now use their pre-defined substances rather than hard coded CatNip.",
+        "Amended all the prebuilt vehicles to include different substances to support RCS thrusters and Main Engines as defined."
+      ]
+    }
+  ]
+}

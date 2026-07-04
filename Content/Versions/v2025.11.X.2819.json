@@ -1,0 +1,236 @@
+{
+  "build": "2025.11.5.2819",
+  "date": "2025-11-17",
+  "fromRevision": 2791,
+  "toRevision": 2819,
+  "commits": [
+    {
+      "rev": 2792,
+      "date": "2025-11-14",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Disable all effects depending on atmosphere when atmosphere is disabled"
+      ]
+    },
+    {
+      "rev": 2793,
+      "date": "2025-11-15",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Hunter's MSAA updates when settings change"
+      ]
+    },
+    {
+      "rev": 2794,
+      "date": "2025-11-15",
+      "author": "Linx-RW",
+      "lines": [
+        "Added a lot more small-scale craters to the Moon.",
+        "Added new Ejecta crater type.",
+        "Replaced the temporary terrain noise used in the Moon's maria with craters.",
+        "Removed the procedural complex craters from the Moon."
+      ]
+    },
+    {
+      "rev": 2795,
+      "date": "2025-11-16",
+      "author": "joshohagan",
+      "lines": [
+        "Remove unused \"reflectCol\" shader variable"
+      ]
+    },
+    {
+      "rev": 2796,
+      "date": "2025-11-13",
+      "author": "Benoit Fouletier",
+      "lines": [
+        "ImGui obsoletes: remove useless overloads"
+      ]
+    },
+    {
+      "rev": 2797,
+      "date": "2025-11-13",
+      "author": "Benoit Fouletier",
+      "lines": [
+        "ImGui obsoletes: fix usages of InputDouble(flags:)"
+      ]
+    },
+    {
+      "rev": 2798,
+      "date": "2025-11-13",
+      "author": "Benoit Fouletier",
+      "lines": [
+        "ImGui obsoletes: fix usages of TextUnformatted()"
+      ]
+    },
+    {
+      "rev": 2799,
+      "date": "2025-11-13",
+      "author": "Benoit Fouletier",
+      "lines": [
+        "ImGui obsoletes: fix usages of BeginChild()"
+      ]
+    },
+    {
+      "rev": 2800,
+      "date": "2025-11-13",
+      "author": "Benoit Fouletier",
+      "lines": [
+        "ImGui obsoletes: fix usages of Columns(borders:)"
+      ]
+    },
+    {
+      "rev": 2801,
+      "date": "2025-11-13",
+      "author": "Benoit Fouletier",
+      "lines": [
+        "ImGui obsoletes: fix usages of AddEllipse()"
+      ]
+    },
+    {
+      "rev": 2802,
+      "date": "2025-11-13",
+      "author": "Benoit Fouletier",
+      "lines": [
+        "ImGui obsoletes: fix usages of .Internal methods"
+      ]
+    },
+    {
+      "rev": 2803,
+      "date": "2025-11-13",
+      "author": "Benoit Fouletier",
+      "lines": [
+        "ImGui obsoletes: fix usages of MenuItem()"
+      ]
+    },
+    {
+      "rev": 2804,
+      "date": "2025-11-13",
+      "author": "Benoit Fouletier",
+      "lines": [
+        "ImGui obsoletes: stop deriving from ImGuiCompatibilityEx"
+      ]
+    },
+    {
+      "rev": 2805,
+      "date": "2025-11-17",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Fix for Logs outputting to file after the LoggingSystem changeover",
+        "Log files are output to MyGames/KittenSpaceAgency/Logs and archived in",
+        "a subdirectory of that"
+      ]
+    },
+    {
+      "rev": 2806,
+      "date": "2025-11-17",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed error/potential crash? when creating or changing burns and there is a past burn still in the flightplan. This was causing the worker task to try and update the old burn and being unable to find a valid flightplan."
+      ]
+    },
+    {
+      "rev": 2807,
+      "date": "2025-11-17",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed crash in Transfer Planner when you set the minimum time to a ridiculously low number."
+      ]
+    },
+    {
+      "rev": 2808,
+      "date": "2025-11-17",
+      "author": "JoshRW",
+      "lines": [
+        "Fix star reflections not appearing on a lower part of a planet surface (e.g. a crater). Intersections with the Earth for reflections are now approximated using a smaller sphere which is 90% of the original planet radius so that we don't get intersections from every angle when at points which are lower than the planet surface. This inaccuracy will look fine and be unnoticable as it is on reflections."
+      ]
+    },
+    {
+      "rev": 2809,
+      "date": "2025-11-17",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed text in key bindings UI. \"/\" is actually set sim speed to default. Not set sim speed to zero."
+      ]
+    },
+    {
+      "rev": 2810,
+      "date": "2025-11-16",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Cut sample vehicle main engine thrust by a factor of 5 to make landings easier. Good luck with your Jupiter launches!",
+        "Fixed an error where XML enging thrust would not be obeyed unless it was specified in base Newtons.",
+        "Corrected the BACK attitude button tooltip's notion of up direction.",
+        "Made the TWR tooltip more precise - it is the thrust-to-weight at the surface of the currently-orbited body."
+      ]
+    },
+    {
+      "rev": 2811,
+      "date": "2025-11-17",
+      "author": "Morrow",
+      "lines": [
+        "Fixed some issues with the sun 'flickering' on and off. Known regression of sun's depth not being properly respected.",
+        "Turned off some of the sunbloom logic as it was causing the sun to disappear at some angles."
+      ]
+    },
+    {
+      "rev": 2812,
+      "date": "2025-11-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed mod.toml dependency for certain graphics settings. These settings are now setup to use Enums defined in GameSettings.cs. Previously we we're saving the direct values for settings in the settings.toml file, however as settings values are changing so frequently during this stage in development we are now only saving Low/Medium/High which will internally map to actual numbers. While this does mean that players will loose the ability to edit mod.toml and change what values Low/Medium/High is mapped to, it means that if we drastically change how a value is used internally then players will still experience a stable game instead of constantly needing to revert their settings to fix visual artifacts, performance or any potential bug that could be caused by internally changing how a variable is used.",
+        "Cat fur quality is now initalized to the intended default value, 32, instead of 256. This was caused by how settings we previously implemented which meant that quality settings and the default value had no dependency on one another resulting in fur quality settings getting adjusted but not the default value."
+      ]
+    },
+    {
+      "rev": 2813,
+      "date": "2025-11-17",
+      "author": "Morrow",
+      "lines": [
+        "Added a few more loading tags for clarity."
+      ]
+    },
+    {
+      "rev": 2814,
+      "date": "2025-11-17",
+      "author": "JoshRW",
+      "lines": [
+        "Fix shader hot reloader and file watcher turning on during startup even when the setting was off."
+      ]
+    },
+    {
+      "rev": 2815,
+      "date": "2025-11-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added game settings version number. Currently this doesn't do anything but in the future it will give us more options around updating settings and how we communicate changes to the player.",
+        "Kitten fur now renders from front to back instead of back to front."
+      ]
+    },
+    {
+      "rev": 2816,
+      "date": "2025-11-16",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a case where flight computer outputs might not be cleared, leading to potentially firing the wrong thrusters or waking up too frequently."
+      ]
+    },
+    {
+      "rev": 2817,
+      "date": "2025-11-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed broken shadow map settings introduced in the settings overhaul I did earlier."
+      ]
+    },
+    {
+      "rev": 2818,
+      "date": "2025-11-17",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added ability to define FxLocation and FxExhaustDirection separate from Force Location and Direction in thruster definitions.",
+        "Changes to the Kitten MMU force and thruster setup now that the forces can be separate to the FX."
+      ]
+    }
+  ]
+}

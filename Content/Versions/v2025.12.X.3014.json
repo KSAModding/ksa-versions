@@ -1,0 +1,16 @@
+{
+  "build": "2025.12.24.3014",
+  "date": "2025-12-06",
+  "fromRevision": 3011,
+  "toRevision": 3014,
+  "commits": [
+    {
+      "rev": 3012,
+      "date": "2025-12-06",
+      "author": "rocket2guns",
+      "lines": [
+        "Fixed installer would not clear old files. Now the installer will clear the install folder first. If you do a clean install - you do not need the dot net 10 runtime installed. This is because the game itself is published self contained. If you are being prompted for an install of dot net 10 - it is because of old files in the install and manual clearing would be required. As of this version, it will occur automatically. This will become obsolete when automatic delta patching is released."
+      ]
+    }
+  ]
+}

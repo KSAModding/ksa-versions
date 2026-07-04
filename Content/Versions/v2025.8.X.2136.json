@@ -1,0 +1,25 @@
+{
+  "build": "2025.8.20.2136",
+  "date": "2025-08-21",
+  "fromRevision": 2133,
+  "toRevision": 2136,
+  "commits": [
+    {
+      "rev": 2134,
+      "date": "2025-08-21",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added Target Frame button to Navball gauge."
+      ]
+    },
+    {
+      "rev": 2135,
+      "date": "2025-08-21",
+      "author": "josh",
+      "lines": [
+        "Revert commit \"add atmosphere reflections to vessels\"",
+        "A performance issue has been found with the atmosphere reflections. The commit has been reverted while I investigate this."
+      ]
+    }
+  ]
+}

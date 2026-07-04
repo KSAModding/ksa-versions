@@ -1,0 +1,124 @@
+{
+  "build": "2025.8.23.2197",
+  "date": "2025-08-26",
+  "fromRevision": 2181,
+  "toRevision": 2197,
+  "commits": [
+    {
+      "rev": 2182,
+      "date": "2025-08-25",
+      "author": "Rocket",
+      "lines": [
+        "Updated autowarp to use the preset warp values, and to show as it changes between, similar to how autowarp works in KSP.",
+        "Tweaked global bloom values to work better with the default tonemapper."
+      ]
+    },
+    {
+      "rev": 2183,
+      "date": "2025-08-25",
+      "author": "Rocket",
+      "lines": [
+        "Tweaked sun flare settings to work better for varying distances and be less blinding in the map view."
+      ]
+    },
+    {
+      "rev": 2184,
+      "date": "2025-08-25",
+      "author": "joshohagan",
+      "lines": [
+        "Add buffer offset alignment variables to Utils.cs. The \"MinUniformBufferOffsetAlignment\" and \"MinStorageBufferOffsetAlignment\" have long variable names to access, so it is convenient to store them in Rendering/Utils.cs."
+      ]
+    },
+    {
+      "rev": 2185,
+      "date": "2025-08-25",
+      "author": "joshohagan",
+      "lines": [
+        "Replace \"MinStorageBufferOffsetAlignment\" variable with Utils variable. The Utils.cs variable name is much shorter and cleaner."
+      ]
+    },
+    {
+      "rev": 2186,
+      "date": "2025-08-25",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Show an alert when manual vehicle controls do not respond due to high warp factor.",
+        "Permit throttle down and maine engine cutoff no matter the current warp factor."
+      ]
+    },
+    {
+      "rev": 2187,
+      "date": "2025-08-26",
+      "author": "Morrow",
+      "lines": [
+        "Added a null check to Popups so the debugger stops breakpointing on it even though it's caught in a try/catch."
+      ]
+    },
+    {
+      "rev": 2188,
+      "date": "2025-08-26",
+      "author": "Morrow",
+      "lines": [
+        "Fixed some problems with how we handle closing outside the main loop. The game should hopefully no longer get stuck open when crashing during loading."
+      ]
+    },
+    {
+      "rev": 2189,
+      "date": "2025-08-25",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Cache next periapsis/apoapsis time on Vehicle each frame.",
+        "Ironed out some weirdness with focus transitions in the map controller camera."
+      ]
+    },
+    {
+      "rev": 2190,
+      "date": "2025-08-26",
+      "author": "matthew.caradus",
+      "lines": [
+        "Added basic music player class and data class for music playlists."
+      ]
+    },
+    {
+      "rev": 2191,
+      "date": "2025-08-26",
+      "author": "matthew.caradus",
+      "lines": [
+        "Added Volume faders for sfx, UI and Music.",
+        "Added The output channel group can now be assigned in SoundReference xml definition. If now channelgroup is assigned it will default to Sfx."
+      ]
+    },
+    {
+      "rev": 2192,
+      "date": "2025-08-26",
+      "author": "Rocket",
+      "lines": [
+        "Migrated Burn Computer from IMGUI to Gauge system. Now shows a gauge based display for next burn information. Includes toggle buttons and roller indicators for values."
+      ]
+    },
+    {
+      "rev": 2193,
+      "date": "2025-08-26",
+      "author": "Rocket",
+      "lines": [
+        "Added burn delta-v number will be disabled with barber pole like other burn values."
+      ]
+    },
+    {
+      "rev": 2194,
+      "date": "2025-08-26",
+      "author": "Rocket",
+      "lines": [
+        "Added tooltips to Burn Computer buttons and rollers."
+      ]
+    },
+    {
+      "rev": 2195,
+      "date": "2025-08-26",
+      "author": "Dean Hall",
+      "lines": [
+        "Resized Autopilot Settings window for the flight computer now that burn computer buttons are located on another window."
+      ]
+    }
+  ]
+}

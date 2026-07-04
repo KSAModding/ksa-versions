@@ -1,0 +1,593 @@
+{
+  "build": "2026.6.9.4750",
+  "date": "2026-06-27",
+  "fromRevision": 4680,
+  "toRevision": 4750,
+  "commits": [
+    {
+      "rev": 4681,
+      "date": "2026-06-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed the conflation of power and energy in the electrical system.",
+        "Renamed JoulesReference to EnergyReference.",
+        "Added PowerReference and Watts, with Watts.Integrate() and Joules.Differentiate() to change between power and energy through time.",
+        "Made a separate EnergyReference.ToNearestElectrical() to use to power * time units (like kWh), used only where appropriate.",
+        "Expanded unitless conversions (e.g. MILLI_TO_UNITS) and added inverse conversions (e.g. UNITS_TO_MILLI).",
+        "Fixed the erroneous \"joulesecond\" term in universe conersions."
+      ]
+    },
+    {
+      "rev": 4682,
+      "date": "2026-06-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed docking ports interpenetrating after docking."
+      ]
+    },
+    {
+      "rev": 4683,
+      "date": "2026-06-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Changed docking port latching threshold to use kinetic energy rather than impulse.",
+        "Clarified that the docking port pushoff value is an impulse, not a force.",
+        "Gave DockingPorts physical units for latching kinetic energy and pushoff impulse.",
+        "Added ImpulseReference.",
+        "Chaned ForceReference to use the new non-allocating form of ToNearest()."
+      ]
+    },
+    {
+      "rev": 4684,
+      "date": "2026-06-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Avoid dispatching collision handlers that are not possible (e.g.  detect terrain collision between two vehicles).",
+        "Changed ground impact threshold from a speed to a kinetic energy."
+      ]
+    },
+    {
+      "rev": 4685,
+      "date": "2026-06-15",
+      "author": "Morrow-RW",
+      "lines": [
+        "Collision TerrainPatch now uses a full bounding box when in coarse mode.",
+        "Collision TerrainPatch in fine mode now has a fall back bounding box underneath the fine grid of quads.",
+        "Terrain collisions now have a tighter threshold for normals when generating contacts to avoid triangle edge collisions causing contacts perpendicular to the triangle face."
+      ]
+    },
+    {
+      "rev": 4686,
+      "date": "2026-06-22",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Minor cleanup to how ambient occlusions proxy texture is accessed when ambient occlusion is disabled."
+      ]
+    },
+    {
+      "rev": 4687,
+      "date": "2026-06-22",
+      "author": "Morrow-RW",
+      "lines": [
+        "Changed VehicleEditor snapping to utilize a Part's +z axis to find a consistent point for snapping a Part to another."
+      ]
+    },
+    {
+      "rev": 4688,
+      "date": "2026-06-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved particle effects to be parented to the celestial now."
+      ]
+    },
+    {
+      "rev": 4689,
+      "date": "2026-06-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fix merge conflicts"
+      ]
+    },
+    {
+      "rev": 4690,
+      "date": "2026-06-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed incorrect impact direction spawning ground impact particles. (was accidentally reversded by conflicts)."
+      ]
+    },
+    {
+      "rev": 4691,
+      "date": "2026-06-22",
+      "author": "Morrow-RW",
+      "lines": [
+        "Imported animations for ServiceModules B, C, and D."
+      ]
+    },
+    {
+      "rev": 4692,
+      "date": "2026-06-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed issue with origin bubble reset in freefall (same solution as when we are not in freefall).",
+        "Fixed issue with timing of hue shifter update and position updates in particle system sharing the same field on the CPU side causing incorrect position corrections."
+      ]
+    },
+    {
+      "rev": 4693,
+      "date": "2026-06-22",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Merged DynamicMeshIndirect into MeshIndirect."
+      ]
+    },
+    {
+      "rev": 4694,
+      "date": "2026-06-22",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed an issue where the dynamic thumbnail renderer's custom offscreen viewport was still being treated as a visible secondary game viewport. This should now be solved and will only render when hovering over a part button in the vehicle editor.",
+        "Fixed an issue where pressing the Add Camera button for the first time would not show a secondary viewport. This issue was due to adding offscreen viewports for dynamic thumbnails and the menu item not factoring in offscreen views."
+      ]
+    },
+    {
+      "rev": 4695,
+      "date": "2026-06-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Adjusted CACAO generation quality settings to be based on quality level 2. The initial implementation provides quality levels 0 to 3, however quality levels 0 and 1 were resulting in worse performance. This rework saves roughly ~0.3ms on lower quality settings.",
+        "Exposed CACAOs edge sensitive blur levels 5 to 8. Previously we only had 1 to 4 exposed. 4 is still the default level.",
+        "Added dynamic layer index macro to the blur shaders. This fixes a bug where the ambient occlusion would seemingly stop updating when the blur count was 2.",
+        "Removed Ultra ambient occlusion setting."
+      ]
+    },
+    {
+      "rev": 4696,
+      "date": "2026-06-23",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Mass, MaxCharge, Volume and Thrust info to part tooltips.",
+        "Added Static function to RocketControllerData to calculate thrust from a template.",
+        "Changed Default thumbnail size to 256.",
+        "Changed Max Thumbnail size to 512."
+      ]
+    },
+    {
+      "rev": 4697,
+      "date": "2026-06-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reduced ambient occlusion intensity when inside the IVA. Previously the IVA interiors were recieving AO that had been adjusted for the exteriors, resulting in the AO being far too intense."
+      ]
+    },
+    {
+      "rev": 4698,
+      "date": "2026-06-19",
+      "author": "JoshRW",
+      "lines": [
+        "Tidy glint code by removing redundant comments and tidying function names."
+      ]
+    },
+    {
+      "rev": 4699,
+      "date": "2026-06-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added IsControllable to Vehicle class. This is set based on whether our vehicle has a Control Module on one of it's parts. Vehicle control is then governed by this property. Now any vehicle that does not have a control module cannot be controlled by the player or the Flight Computer.",
+        "Added Control Module to capsule part.",
+        "Kittens obviously have a Control Module.",
+        "Add IsControllable override to the physics debug tool menu."
+      ]
+    },
+    {
+      "rev": 4700,
+      "date": "2026-06-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Add missing File. New Control Part Module."
+      ]
+    },
+    {
+      "rev": 4701,
+      "date": "2026-06-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed deprecated TODO from MeshIndirect.frag"
+      ]
+    },
+    {
+      "rev": 4702,
+      "date": "2026-06-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed ambient occlusion affecting clustered lights instead of just the ambient lighting contribution."
+      ]
+    },
+    {
+      "rev": 4703,
+      "date": "2026-06-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added explicit age particle updater. Previously particles ages were updated inside of the movement updaters. However now that the movement updaters need to be called before one time updaters, one time updaters that relied on the particles age would never trigger. This fixes ground impact particles not sampling the terrain correctly resulting in white particles."
+      ]
+    },
+    {
+      "rev": 4704,
+      "date": "2026-06-22",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Now that the Venusian atmosphere is no longer a lightspeed cannon, allow vehicles floating in the atmosphere to go into the landed state, thus becoming aerostats."
+      ]
+    },
+    {
+      "rev": 4705,
+      "date": "2026-06-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Ground impact particles now only scale the upper bound of the particle size based on the impact scale. This means that even when impact the planet at a high speed, small particles are still emitted, instead of linearly scaling the particle size based on the impact scale."
+      ]
+    },
+    {
+      "rev": 4706,
+      "date": "2026-06-23",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed Radial decouplers we set to allow face snapping be default."
+      ]
+    },
+    {
+      "rev": 4707,
+      "date": "2026-06-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Ground particles now have a spawn cooldown. This reduces the excessive ground particles spawning when the vehicle accelerates across the surface of a planet."
+      ]
+    },
+    {
+      "rev": 4708,
+      "date": "2026-06-22",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed mismatched time printout when setting a new orbit."
+      ]
+    },
+    {
+      "rev": 4709,
+      "date": "2026-06-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Readjusted ground particles impact scale calculation. Due to the recent ground particle rework the impact scale was consistently getting set to 3x regardless of how fast or slow the vehicle collides with the ground."
+      ]
+    },
+    {
+      "rev": 4710,
+      "date": "2026-06-23",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added approved list of valid targets for face snapping targets."
+      ]
+    },
+    {
+      "rev": 4711,
+      "date": "2026-06-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed vulkan validation errors in raytraced IVA caused by missing macros."
+      ]
+    },
+    {
+      "rev": 4712,
+      "date": "2026-06-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed raytracing dispatch group sizes not updating on a rebuild. This was resulting in the incorrect number of threads getting dispatched causing wide monitors or stretching the game across different monitors to not denoise the indirect lightign properly."
+      ]
+    },
+    {
+      "rev": 4713,
+      "date": "2026-06-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed sequence window next window pos and size to only be set on appearing. Fix issue with drag and drop."
+      ]
+    },
+    {
+      "rev": 4714,
+      "date": "2026-06-23",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed VehicleEditor, Rotating the camera while a part was grabbed would cause the part to drift away from the cursor and loose its grabbed status. Now when camera is rotated, the grabbed part will snap to the correct cursor position upon completion of the camera rotation."
+      ]
+    },
+    {
+      "rev": 4715,
+      "date": "2026-06-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed issue with decoupler releasing the wrong connector."
+      ]
+    },
+    {
+      "rev": 4716,
+      "date": "2026-06-24",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed VehicleEditor, When translating or zooming with mouse-wheel the grabbed part position would drift away from the cursor, it now snaps to the current cursor position when camera lerp has completed."
+      ]
+    },
+    {
+      "rev": 4717,
+      "date": "2026-06-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added depth validation check to CACAOs first pass. If there are no valid depths found we can skip the remaining passes, dynamically enabling and disabling ambient occlusion based on the validity of the depth input."
+      ]
+    },
+    {
+      "rev": 4718,
+      "date": "2026-06-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed up some vertex modules not getting disposed correctly on shutting causing vulkan validation errors."
+      ]
+    },
+    {
+      "rev": 4719,
+      "date": "2026-06-24",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed VehicleEditor, Some parts with ToSurface Connectors were not correctly getting snapped to the parent surface (they would be misaligned by 90degrees)."
+      ]
+    },
+    {
+      "rev": 4720,
+      "date": "2026-06-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added 'UpdaterExtra' parameter to particles. This is for data intended for use in the particle updaters, and helps prevent data conflicts between fragment shader inputs and updater inputs.",
+        "Fixed ground impact voluemtric particles being white. Their color is now based on the impact position similar to how the rock particles calculate their color.",
+        "Adjusted ground impact particles to reduce huge rocks spawning at slow speeds."
+      ]
+    },
+    {
+      "rev": 4721,
+      "date": "2026-06-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added part size filter to part toolbar in the vehicle editor.",
+        "Added filtering of parts per category by size filters where applied. User can now filter categories by diameter sizes.",
+        "Added part size data to XML files."
+      ]
+    },
+    {
+      "rev": 4722,
+      "date": "2026-06-23",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed an error where the game could access uninitialized memory when creating a vehicle with <= 2 physics colliders due to a sneaky Bepu memory optimization in that case.",
+        "Added ILeafBoundsWriter with two implementations to handle this. These are passed as type parameters so that we only have to branch once by checking the tree's child count rather than on every single bounds update for every child."
+      ]
+    },
+    {
+      "rev": 4723,
+      "date": "2026-06-24",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added First pass for replacing text with icons in sequence window. Symmetrical parts are now grouped together and can be collapsed. Note: this change only applies to the sequence editing window in the editor, the in-game window is currently unchanged as it has a different code path."
+      ]
+    },
+    {
+      "rev": 4724,
+      "date": "2026-06-24",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed a regression in commit 85c1a7d1 that broke placement for radial decouplers"
+      ]
+    },
+    {
+      "rev": 4725,
+      "date": "2026-06-24",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed VehicleEditor, Rotation Snapping and inherit symmetry on by default.",
+        "Fixed VehicleEditor, When rotationSnapping was enabled FaceSnapped parts rotations could get slightly mis-aligned due to the rotation not being snapped along with the position.",
+        "Changed VehicleEditor, clicking inherit symmetry no longer resets symmetry back to 1."
+      ]
+    },
+    {
+      "rev": 4726,
+      "date": "2026-06-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Added dynamic buffer resizing for ground clutter collision data generation."
+      ]
+    },
+    {
+      "rev": 4727,
+      "date": "2026-06-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed pushing duplicate IDs onto the stack in MultiCubeCellGrid.",
+        "Removed the need to regenerate cell data when reallocating ground clutter collision data.",
+        "Fixed unsafe descriptor write updates when reallocating ground clutter collision data.",
+        "Changed from host coherent to host cached for ground clutter collision data readback buffers which should improve readback speed.",
+        "Fixed unmapping memory that may still be in use from previous frames when reallocating ground clutter collision data."
+      ]
+    },
+    {
+      "rev": 4728,
+      "date": "2026-06-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed missing collisions-on guard around ground clutter physical data OnGui."
+      ]
+    },
+    {
+      "rev": 4729,
+      "date": "2026-06-25",
+      "author": "Chris",
+      "lines": [
+        "Update KSA to use the latest Brutal packages"
+      ]
+    },
+    {
+      "rev": 4730,
+      "date": "2026-06-25",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added depth validator to the pre-pass. This checks if anything was written to the opaque depth pre-pass texture. We can use this check to get cheap frustum and distance culling on effects that rely on the prepass. Ambient occlusion and clustered lighting now only execute if the depth pre-pass is valid."
+      ]
+    },
+    {
+      "rev": 4731,
+      "date": "2026-06-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added CoreEditorTagsGameData.xml. In this file we define the vehicle editor category/tags.",
+        "Added load and process of editor tags into game startup.",
+        "Moved hard coded category/tags into XML file.",
+        "Tags can now be separated from categories via a NotaCategory flag in the XML."
+      ]
+    },
+    {
+      "rev": 4732,
+      "date": "2026-06-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Renamed Stages to Resource Groups. As that is essentially what they are in KSA. This is to avoid confusion with other games that used Stages to describe Activation Sequences (as well as resource groups), which in KSA are called Sequences."
+      ]
+    },
+    {
+      "rev": 4733,
+      "date": "2026-06-25",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added option for particle renderers to sample from the depth buffer in their fragment shader.",
+        "Volumetric particles now fade out based on depth. This means there is no longer any noticable clipping when a volumetric particle passes through another mesh."
+      ]
+    },
+    {
+      "rev": 4734,
+      "date": "2026-06-25",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Volumetric ground impact particles no longer have a hue shift applied to them. This means that they will all be the same color helping them to blend in with each other as a cohesive effect."
+      ]
+    },
+    {
+      "rev": 4735,
+      "date": "2026-06-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed Radial deoupler icon not working in sequence UI."
+      ]
+    },
+    {
+      "rev": 4736,
+      "date": "2026-06-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed Engine plates were missing the NoFaceSnapping tag, making them hard to place as they would try to snap parrallel to the tank face."
+      ]
+    },
+    {
+      "rev": 4737,
+      "date": "2026-06-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed Tank mass was not being displayed in Part Window Tooltip."
+      ]
+    },
+    {
+      "rev": 4738,
+      "date": "2026-06-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed VehicleEditor, New Vehicle button is no disabled when editor is empty."
+      ]
+    },
+    {
+      "rev": 4739,
+      "date": "2026-06-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed SolarPanelB was not faceSnapping correctly.",
+        "Fixed ToSurface Connections were only working for some connection rotations."
+      ]
+    },
+    {
+      "rev": 4740,
+      "date": "2026-06-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed Hatch Parts were missing the NoFaceSnapping Tag."
+      ]
+    },
+    {
+      "rev": 4741,
+      "date": "2026-06-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Vehicle Editor, Removed Interstage as a category type. Interstage parts have been moved to Coupling (if the have a decoupler component) and to structural if they possess no coupling component."
+      ]
+    },
+    {
+      "rev": 4742,
+      "date": "2026-06-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed VehicleEditor, EditorCameraFocus key will reset camera offset when no part is highlighted."
+      ]
+    },
+    {
+      "rev": 4743,
+      "date": "2026-06-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Forward face of editor to be lit by a blue light (until we have a VAB model it is useful to have some concept of forward in the greybox)"
+      ]
+    },
+    {
+      "rev": 4744,
+      "date": "2026-06-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Removed Free-rotate tool in vehicleEditor (hold alt)."
+      ]
+    },
+    {
+      "rev": 4745,
+      "date": "2026-06-26",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Combined ModelGlass and ModelEye into one shader to prevent needing to maintain shaders that are 99% identical.",
+        "Cleaned up conflicting layout indicies in MeshIndirect"
+      ]
+    },
+    {
+      "rev": 4746,
+      "date": "2026-06-26",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Decoupling particle effects now don't spawn in atmosphere. This is a naive implementation and should be linked to a proper temperature system along with the ice particles.",
+        "Thruster sparks now spawn when turning a thruster off instead of on."
+      ]
+    },
+    {
+      "rev": 4747,
+      "date": "2026-06-26",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Cleaned up ModelTranslucent.frag."
+      ]
+    },
+    {
+      "rev": 4748,
+      "date": "2026-06-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Editor Duplicated Key command (currently bound to LControl + D). This will duplicate the currently highlighted part and its children."
+      ]
+    }
+  ]
+}

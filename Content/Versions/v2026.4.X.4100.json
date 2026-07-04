@@ -1,0 +1,147 @@
+{
+  "build": "2026.4.14.4100",
+  "date": "2026-04-15",
+  "fromRevision": 4082,
+  "toRevision": 4100,
+  "commits": [
+    {
+      "rev": 4083,
+      "date": "2026-04-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Removed duplicate loading of LunaRockAtlasDiffuse, saving 40mb of VRAM."
+      ]
+    },
+    {
+      "rev": 4084,
+      "date": "2026-04-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Moved shared ground clutter frame resources off each cell grid instance and into the ground clutter renderer. This avoids creating a new pipeline (and compiling the ground clutter shaders) for each ecotype, which should significantly improve the loading time for AMD. This addresses lengthy planet renderer compile times on AMD 5000/6000 series."
+      ]
+    },
+    {
+      "rev": 4085,
+      "date": "2026-04-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Removed clamps on octave count in Modifiers.glsl. This may further improve AMD 5000/6000 series' compile times during the planet renderer loading phase, as the driver can no longer try to unroll these loops and copy around the lengthy simplex noise look-up-tables."
+      ]
+    },
+    {
+      "rev": 4086,
+      "date": "2026-04-15",
+      "author": "Chris",
+      "lines": [
+        "Integrate Vulkan Memory Allocator into KSA",
+        "This replaces all of our existing allocations for Images, Buffers etc",
+        "with VMA instead of the Device"
+      ]
+    },
+    {
+      "rev": 4087,
+      "date": "2026-04-15",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed duplicate loading of snow terrain material textures."
+      ]
+    },
+    {
+      "rev": 4088,
+      "date": "2026-04-15",
+      "author": "Chris",
+      "lines": [
+        "Temporarily swap raytracing buffer allocation back since it has problems with VMA"
+      ]
+    },
+    {
+      "rev": 4089,
+      "date": "2026-04-15",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reenabled VMA for raytracing."
+      ]
+    },
+    {
+      "rev": 4090,
+      "date": "2026-04-15",
+      "author": "GitHub",
+      "lines": [
+        "Integrated changes for Brutal.Texture that was waiting for Vulkan update first."
+      ]
+    },
+    {
+      "rev": 4091,
+      "date": "2026-04-15",
+      "author": "Rocket",
+      "lines": [
+        "Refactor of Alert system to remove enum flags and replaced with inheritance based alerts, supporting easier extension of fixed alert types.",
+        "Added \"Not in control of followed vehicle\" fixed alert, that will let the player know when they are not currently controlling the followed vehicle, mostly occurring in map screen."
+      ]
+    },
+    {
+      "rev": 4092,
+      "date": "2026-04-15",
+      "author": "Chris",
+      "lines": [
+        "Fix for occasional random stuttering with VMA-allocated framebuffer when V-sync is enabled"
+      ]
+    },
+    {
+      "rev": 4093,
+      "date": "2026-04-15",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Game now initalizes and loads all part models when launching. This fixes a crash caused by raytracing when loading into the Sandbox gamemode."
+      ]
+    },
+    {
+      "rev": 4094,
+      "date": "2026-04-15",
+      "author": "Rocket",
+      "lines": [
+        "Fixed fade durations for timed alerts were scaled based on total visible time leading to inconsistent fading. Now fade is fixed at 2 seconds. This results in ordered and consistent fading of timed alerts."
+      ]
+    },
+    {
+      "rev": 4095,
+      "date": "2026-04-15",
+      "author": "Morrow",
+      "lines": [
+        "Attempted bandaid fix for crashes during loading due to a race condition."
+      ]
+    },
+    {
+      "rev": 4096,
+      "date": "2026-04-15",
+      "author": "Morrow",
+      "lines": [
+        "Slight optimization for thumbnail renderer."
+      ]
+    },
+    {
+      "rev": 4097,
+      "date": "2026-04-15",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added second matrix to particle emitters to allow for a local offset while attached to an astronomical."
+      ]
+    },
+    {
+      "rev": 4098,
+      "date": "2026-04-15",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reworked particle emitter managers GetParticleEmitterFromPool function to improve output when no available emitters exist."
+      ]
+    },
+    {
+      "rev": 4099,
+      "date": "2026-04-15",
+      "author": "Rocket",
+      "lines": [
+        "Fixed detached windows would not draw with transparent backgrounds. This was most noticable when detaching \"gauges\". How those windows will be transparent, such as the navball. Additionally implemented a change with how CompositeAlpha is selected, preferring explicit for Linux. It is possible this might help some multi-viewport issues on Linux. Or break everything."
+      ]
+    }
+  ]
+}

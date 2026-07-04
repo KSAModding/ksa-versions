@@ -1,0 +1,26 @@
+{
+  "build": "2025.11.8.2847",
+  "date": "2025-11-21",
+  "fromRevision": 2844,
+  "toRevision": 2847,
+  "commits": [
+    {
+      "rev": 2845,
+      "date": "2025-11-20",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix white planet caused by ocean on AMD cards: tanh is unstable near zero on AMD and causes NaNs in the ocean spectrum which propagate to the FFT. Reimplement tanh manually to fix this, and protect against NaNs in a few other places",
+        "Fix clouds being blurrier on AMD and forming grids when the camera is stationary: built-in glsl modulus function for uvec2 gives wrong results in some cases, reimplement it to fix this"
+      ]
+    },
+    {
+      "rev": 2846,
+      "date": "2025-11-20",
+      "author": "Linx-RW",
+      "lines": [
+        "Swizzled all Rough-Metal-Ao planet textures to Ao-Rough-Metal to match the new PBR convention.",
+        "Removed unused Moon surface textures."
+      ]
+    }
+  ]
+}

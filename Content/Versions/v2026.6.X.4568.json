@@ -1,0 +1,313 @@
+{
+  "build": "2026.6.3.4568",
+  "date": "2026-06-08",
+  "fromRevision": 4531,
+  "toRevision": 4568,
+  "commits": [
+    {
+      "rev": 4532,
+      "date": "2026-06-04",
+      "author": "Chris",
+      "lines": [
+        "Update to latest ImGui package with ConsoleWindow improvements and optimisations"
+      ]
+    },
+    {
+      "rev": 4533,
+      "date": "2026-06-04",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed when we create a new vehicle in the vehicle editor or detach pieces of a vehicle and create new ones from the vehicle editor that it zeroes the root part/vehicle rotation correctly so that it aligns with the navball and oirientations correctly once we launch/exit the vehicle editor."
+      ]
+    },
+    {
+      "rev": 4534,
+      "date": "2026-06-04",
+      "author": "Morrow-RW",
+      "lines": [
+        "Added first pass colliders to most Parts."
+      ]
+    },
+    {
+      "rev": 4535,
+      "date": "2026-06-04",
+      "author": "Morrow-RW",
+      "lines": [
+        "Fixed static celestial distance renderer not clearing its per frame data when the editor is active."
+      ]
+    },
+    {
+      "rev": 4536,
+      "date": "2026-06-04",
+      "author": "JoshRW",
+      "lines": [
+        "Remove glint start diam variable as glints should shine as soon as they appear",
+        "Remove redundant vehicle DistantGlintHash comments",
+        "Clean up CubicHermiteSplineEditor code to use \"not null\" syntax"
+      ]
+    },
+    {
+      "rev": 4537,
+      "date": "2026-06-04",
+      "author": "JoshRW",
+      "lines": [
+        "Tidy comments and MathF code style in CubicHermiteSplineEditor"
+      ]
+    },
+    {
+      "rev": 4538,
+      "date": "2026-06-05",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Bool to parent Particle Emitter back to Vehicle via XML.",
+        "Changed Particles to be directly in physics space.",
+        "Changed SimpleMovement compute shader to not include localoffset in positions as it's no longer required as our particles are now in physics space.",
+        "Moved Emitter.UpdateUniforms to be called from ParticleEmitter.Update method instead of from thje ParticleSystem so we get the timings right.",
+        "Changed UpdateEmitters to use last sime delta time to sync things up."
+      ]
+    },
+    {
+      "rev": 4539,
+      "date": "2026-06-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed local offset from the volumetric fade compute shader for particles. Currently the volumetric particles use their own compute shader to update their movement. This was missed from the previous commit changing particles to physics space."
+      ]
+    },
+    {
+      "rev": 4540,
+      "date": "2026-06-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Resetup decoupler particle effect so that the spawn size is relative to the size of the decoupler connector. This was broken during the transition for particles to be in physics space."
+      ]
+    },
+    {
+      "rev": 4541,
+      "date": "2026-06-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Adjusted particle system capacity to handle 1024 emitters with a maximum of 512 particles each instead of 2048 emitters with 50 particles each. This is likely to change again in the future however it is a better representation of how the particle system should be used going forward. Additionally the previous change to the maximum particle count unintentionally limited the number of particles that the decoupling particle effect could spawn resulting in the effect spawning a quarter of the number of particles as intended."
+      ]
+    },
+    {
+      "rev": 4542,
+      "date": "2026-06-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Updated particle movement compute shaders to update the particles render data before updating the particles position. This is because at high velocities or sim speeds the particles were spawning pre-updated, appearing as if they were spawning at the incorrect location.",
+        "Particles now use the current frames sim delta time instead of the previous frames due to the new ordering for updating particle positions."
+      ]
+    },
+    {
+      "rev": 4543,
+      "date": "2026-06-05",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed particle pos and vel updates when the physics bubble snaps."
+      ]
+    },
+    {
+      "rev": 4544,
+      "date": "2026-06-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Updated the particle planetColor updater and the screen space collider updater so that they also use the correct delta time when updating particles."
+      ]
+    },
+    {
+      "rev": 4545,
+      "date": "2026-06-05",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Rename local variables from lastSimDeltaTime to nextSimDeltaTime as that is now what we are using. Saves a lot of confusion down the track."
+      ]
+    },
+    {
+      "rev": 4546,
+      "date": "2026-06-05",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed timing of application of offset in particle compute shader.",
+        "Fixed adding of emitter to Vehicle for Decoupler particle emitters."
+      ]
+    },
+    {
+      "rev": 4547,
+      "date": "2026-06-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Initial refactor of ice and insulation particle debris, to spawn from a single emitter tied to a fuel tank, instead of many emitters spawned on the particles surface with few maximum particles. Currently the particle counts are still rather low, and will need to be tweaked, however it means that the particle data is handled inside the particle emitter instead of needing to externally store particle counts per tank to keep track of how and when to spawn particles.",
+        "Applied bubble snapping fix from SimpleMovement to Volumetric fade particle update compute shader."
+      ]
+    },
+    {
+      "rev": 4548,
+      "date": "2026-06-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed propellant mass flow rates from Disturbances and use the propellant rates we already have on active nozzles. This greatly reduces pressure on the memory pool.",
+        "Compute derivatives and consume propellant only once per large update step, even if we take many small physics steps to resolve collisions. This greatly reduces the amount of unnecessary work we were doing.",
+        "Removed propellant flow rate from kinematic measurements."
+      ]
+    },
+    {
+      "rev": 4549,
+      "date": "2026-06-05",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed issue causing un-shadowed areas on meshes at perpendicular angles to the sun",
+        "Improvements to the PCSS calcs and reduced complexity.",
+        "Removed some of the repeated light calculations and pushed them higher in the shader chain."
+      ]
+    },
+    {
+      "rev": 4550,
+      "date": "2026-06-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed outdated timestep comment."
+      ]
+    },
+    {
+      "rev": 4551,
+      "date": "2026-06-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed some unused code from EmitterUpdateState."
+      ]
+    },
+    {
+      "rev": 4552,
+      "date": "2026-06-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Use part-defined colliders in vehicle collisions. If none are defined, fall back to the visual bounding box."
+      ]
+    },
+    {
+      "rev": 4553,
+      "date": "2026-06-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ability to toggle sunrise/sunset and closest approach markers on and off in the Target Tracking Window."
+      ]
+    },
+    {
+      "rev": 4554,
+      "date": "2026-06-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added tooltips to all the markers in the Target Tracking Window."
+      ]
+    },
+    {
+      "rev": 4555,
+      "date": "2026-06-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed target tracking window closest approach data so it matches the other closest approach data in the map view and target data UI window."
+      ]
+    },
+    {
+      "rev": 4556,
+      "date": "2026-06-08",
+      "author": "Morrow-RW",
+      "lines": [
+        "Updated Core Service Module A Assets."
+      ]
+    },
+    {
+      "rev": 4557,
+      "date": "2026-06-08",
+      "author": "Morrow-RW",
+      "lines": [
+        "Updated Core Fairing A assets."
+      ]
+    },
+    {
+      "rev": 4558,
+      "date": "2026-06-08",
+      "author": "Morrow-RW",
+      "lines": [
+        "Updated Core Propulsion A assets.",
+        "Moved Core Propulsion A game data into its own file like other Part Sets."
+      ]
+    },
+    {
+      "rev": 4559,
+      "date": "2026-06-08",
+      "author": "Morrow-RW",
+      "lines": [
+        "Updated Core Structural A assets."
+      ]
+    },
+    {
+      "rev": 4560,
+      "date": "2026-06-08",
+      "author": "Morrow-RW",
+      "lines": [
+        "Turned off first-pass colliders for interstage Parts for now."
+      ]
+    },
+    {
+      "rev": 4561,
+      "date": "2026-06-08",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Particle emitters now have a unique ID each time that they are initialzed. This means that emitters that are tracked outside of the particle system can easily track and update particle emitters as needed. Without the unique ID, because particle emitters are pooled, it is impossible to know if the particle is still relavent, or if the emitter has died since it was last checked and since been reused for a different particle effect.",
+        "Adjusted vehicle ice debris spawn rate to taper off the longer the particle effect runs, so it naturally ends, rather than the effect suddenly stopping. This was previously implemented but needed to be reworked now that particles update in the correct space.",
+        "Added a particle burst when the vehicle first moves to better emulate ice dislodging off the exterior of a vessel.",
+        "Fixed large fuel tanks not spawning particles correctly, this was previously resulting in smaller fuel tanks consistently spawning particles but larger fuel tanks not spawning any."
+      ]
+    },
+    {
+      "rev": 4562,
+      "date": "2026-06-08",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Disabled experimental particles being on by default which was accidentally pushed in the last commit."
+      ]
+    },
+    {
+      "rev": 4563,
+      "date": "2026-06-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Vehicle Save/Load Menu option to the Editor menu bar in the vehicle editor."
+      ]
+    },
+    {
+      "rev": 4564,
+      "date": "2026-06-08",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Hotfix for Logging string alloctions for some Logs which were disabled"
+      ]
+    },
+    {
+      "rev": 4565,
+      "date": "2026-06-08",
+      "author": "Morrow-RW",
+      "lines": [
+        "Fixed some incorrect SubPart rotations on the CoreElectricalA_Prefab_InlineBatteryBankA Part."
+      ]
+    },
+    {
+      "rev": 4566,
+      "date": "2026-06-08",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Fix for my last commit"
+      ]
+    },
+    {
+      "rev": 4567,
+      "date": "2026-06-08",
+      "author": "Morrow-RW",
+      "lines": [
+        "Updated Core Command A Set's Diffuse and PBR textures."
+      ]
+    }
+  ]
+}

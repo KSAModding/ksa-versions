@@ -1,0 +1,51 @@
+{
+  "build": "2026.1.4.3299",
+  "date": "2026-01-25",
+  "fromRevision": 3293,
+  "toRevision": 3299,
+  "commits": [
+    {
+      "rev": 3294,
+      "date": "2026-01-23",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed vulkan validation errors from ground clutter device meshes not being disposed.",
+        "Fixed vulkan validation error from ground clutter LOD fade buffer not being disposed.",
+        "Added new XML attribute to MeshFileReference: \"HostOnly\", defaults false, which creates a mesh on the CPU only.",
+        "Forced HostOnly to true for ground clutter mesh loading since the individual LODs are not needed on-device - only the atlas."
+      ]
+    },
+    {
+      "rev": 3295,
+      "date": "2026-01-23",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Converted Gimbals to PartComponents."
+      ]
+    },
+    {
+      "rev": 3296,
+      "date": "2026-01-23",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Converted stackalloc thruster pulse times to SpanOwner."
+      ]
+    },
+    {
+      "rev": 3297,
+      "date": "2026-01-24",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Made exponential moving average into a library function."
+      ]
+    },
+    {
+      "rev": 3298,
+      "date": "2026-01-24",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added an all-states iterator for a user-specified selection of components."
+      ]
+    }
+  ]
+}

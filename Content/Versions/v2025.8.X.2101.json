@@ -1,0 +1,93 @@
+{
+  "build": "2025.8.59.2101",
+  "date": "2025-08-19",
+  "fromRevision": 2091,
+  "toRevision": 2101,
+  "commits": [
+    {
+      "rev": 2092,
+      "date": "2025-08-18",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix ocean-surface z-fighting issues resulting in circles and other patterns appearing on the surface near shores",
+        "Improve ocean performance especially with MSAA by not using late-z"
+      ]
+    },
+    {
+      "rev": 2093,
+      "date": "2025-08-18",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added missing tooltip text for the STAR frame NUL ROT button.",
+        "Changed BALANC to BALNCE on the attitude autopilot panel."
+      ]
+    },
+    {
+      "rev": 2094,
+      "date": "2025-08-18",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Limit thruster pulse rate in low thrust mode so it's more obvious what's going on and even finer control is possible.",
+        "Relabel HIGH and LOW to DIRECT and PULSE with updated tooltips.",
+        "Default RCS to DIRECT mode.",
+        "Reduced minimum pulse time on Gemini thrusters which was way too long (real thrusters have transients which we don't currently model, so the real pulse data produces way too much thrust in the game at the moment)."
+      ]
+    },
+    {
+      "rev": 2095,
+      "date": "2025-08-19",
+      "author": "brogan",
+      "lines": [
+        "Remove initializing NLog in logging system"
+      ]
+    },
+    {
+      "rev": 2096,
+      "date": "2025-08-19",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Refactor Target reference from Vehicle to FlightComputer. Rasoning to my madness - so we can more easily manage and implement the Target reference frame"
+      ]
+    },
+    {
+      "rev": 2097,
+      "date": "2025-08-19",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added Tgt Reference Frame to FlightComputer."
+      ]
+    },
+    {
+      "rev": 2098,
+      "date": "2025-08-19",
+      "author": "Morrow",
+      "lines": [
+        "Fixed inability to double click to swap to a vehicle due to creating burn nodes eating the click. This does break double clicking for multiwindows but there isn't a quick fix until we have the new ImGui backend."
+      ]
+    },
+    {
+      "rev": 2099,
+      "date": "2025-08-19",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed set target to NOT run a full burn plan and flight plan update."
+      ]
+    },
+    {
+      "rev": 2100,
+      "date": "2025-08-19",
+      "author": "Rocket",
+      "lines": [
+        "Added master version checking. This will (by default) automatically be checked on startup, but can also manually be trigged under the 'file' menu. If update is available, and user selects, the download site will be visited. Automatic updates will be handled later. For now only one master server is available, but alternates will be available and users will be able to modify the master server addresses, in the event of company death."
+      ]
+    },
+    {
+      "rev": 2101,
+      "date": "2025-08-19",
+      "author": "Rocket",
+      "lines": [
+        "Removed redundant JSON logging."
+      ]
+    }
+  ]
+}

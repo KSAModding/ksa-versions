@@ -1,0 +1,253 @@
+{
+  "build": "2026.4.16.4170",
+  "date": "2026-04-21",
+  "fromRevision": 4141,
+  "toRevision": 4170,
+  "commits": [
+    {
+      "rev": 4142,
+      "date": "2026-04-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Remove a Vehicle from its VehicleUpdateTask when it is destroyed."
+      ]
+    },
+    {
+      "rev": 4143,
+      "date": "2026-04-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed vehicle module update data becoming disconnected after a configuration update. This manifested as a lack of e.g. plumes and sound effects when launching a new vehicle."
+      ]
+    },
+    {
+      "rev": 4144,
+      "date": "2026-04-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Reinitialize thread worker state after a part tree update so that the flight computer is operating on the proper set of states."
+      ]
+    },
+    {
+      "rev": 4145,
+      "date": "2026-04-17",
+      "author": "Linx-RW",
+      "lines": [
+        "Improved Earth grass lighting, see below. These are not energy conserving, and a more general purpose foliage BSDF may be added later.",
+        "Added new ground clutter lighting option 'bias normals upward'. This allows for grass to be lit like the terrain while maintaining their geometry normals for other lighting effects up close.",
+        "Added new ground clutter lighting option 'apply extra spec'.",
+        "Added new ground clutter option 'distance fade dither'.",
+        "Added new ground clutter option 'transmissive' and support for a thickness texture.",
+        "Added additional specular to Earth's grass.",
+        "Added cheap transmittance to Earth's grass.",
+        "Improved the transition from grass to terrain using a dithering fade.",
+        "Improved readability of ground clutter spec constant flags.",
+        "Rolled up ground clutter instancing pipeline bindings into GroundClutterCommon.glsl.",
+        "Increased the contrast and resolution of Earth's grass diffuse texture.",
+        "Added logging info that states the time taken to compile the ground clutter shaders and build the render resources of the ecotypes."
+      ]
+    },
+    {
+      "rev": 4146,
+      "date": "2026-04-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved docking commands to the new input events processing."
+      ]
+    },
+    {
+      "rev": 4147,
+      "date": "2026-04-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed bug where vehicle configuration was not being correctly updated when docking."
+      ]
+    },
+    {
+      "rev": 4148,
+      "date": "2026-04-20",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed debug code for particles which would force them to always be relative to the vehicle the camera is currently focused on."
+      ]
+    },
+    {
+      "rev": 4149,
+      "date": "2026-04-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved TransferPlanner burn creation commands to new input events processing."
+      ]
+    },
+    {
+      "rev": 4150,
+      "date": "2026-04-20",
+      "author": "Morrow",
+      "lines": [
+        "Made ImGui descriptor pool thread safe since it's being used from multiple threads during loading."
+      ]
+    },
+    {
+      "rev": 4151,
+      "date": "2026-04-20",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added basic WIP decoupler particle effects."
+      ]
+    },
+    {
+      "rev": 4152,
+      "date": "2026-04-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved all remaining Burn related UI inputs to the new input events processing."
+      ]
+    },
+    {
+      "rev": 4153,
+      "date": "2026-04-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed InputEvents TypedBuffer<T> to have available Sort() on events prior to executing.",
+        "Changed Burn buffer to Sort events first in order of Delete, Add, Update before execution."
+      ]
+    },
+    {
+      "rev": 4154,
+      "date": "2026-04-20",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed kittens T-Posing when first looked at."
+      ]
+    },
+    {
+      "rev": 4155,
+      "date": "2026-04-20",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reverted previous commit, that change added some extra edge cases that I missed when testing."
+      ]
+    },
+    {
+      "rev": 4156,
+      "date": "2026-04-20",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added particle quality settings. This affects the maximum number of particles that emitters will spawn."
+      ]
+    },
+    {
+      "rev": 4157,
+      "date": "2026-04-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed IActivate implementations to process updates via tghe new InputEvents buffer.",
+        "Added ability to override buffer size on TypedBuffer<T>.",
+        "Added handling of buffer overflow in TypedBuffer<T>.Add method to double the buffer size if it overflows."
+      ]
+    },
+    {
+      "rev": 4158,
+      "date": "2026-04-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed Teleport functions to use the new InputEvents buffer."
+      ]
+    },
+    {
+      "rev": 4159,
+      "date": "2026-04-20",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Particle Emitters now support per particle rotations.",
+        "Particle angular velocity can now be set in XML.",
+        "Cleaned up particle emitter presets to use shared static functions. These are just helpers for the common usecases however there is no expection that every particle emitter will use them."
+      ]
+    },
+    {
+      "rev": 4160,
+      "date": "2026-04-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Removal of DMZ. We now have the FULL frame to execute vehicle and orbit workers."
+      ]
+    },
+    {
+      "rev": 4161,
+      "date": "2026-04-20",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Minor cleanup of particle emitter presets."
+      ]
+    },
+    {
+      "rev": 4162,
+      "date": "2026-04-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Small improvement to action sphere tests for vehicle clustering."
+      ]
+    },
+    {
+      "rev": 4163,
+      "date": "2026-04-21",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed kittens initally blending from an invalid animation when first updating."
+      ]
+    },
+    {
+      "rev": 4164,
+      "date": "2026-04-21",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Optimized kitten animation pipeline, this reduces the frametime by ~4ms.",
+        "Added basic animation culling system to only update animations at a certain distance.",
+        "Certain static animations (Facial expressions, blinking, ear masks) are now only updated once and cached instead of being updated every frame."
+      ]
+    },
+    {
+      "rev": 4165,
+      "date": "2026-04-21",
+      "author": "Dan Southon",
+      "lines": [
+        "Adjusted default cascade splits",
+        "Adjusted cascade shadow biasing"
+      ]
+    },
+    {
+      "rev": 4166,
+      "date": "2026-04-21",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Kitten fur now gets rendered into the depth pre pass. This means that fur fragments are only rendered when visible."
+      ]
+    },
+    {
+      "rev": 4167,
+      "date": "2026-04-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Merged the two interal Vehicle constructors down into One."
+      ]
+    },
+    {
+      "rev": 4168,
+      "date": "2026-04-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed Vehicle.Destroy() and merged it with vehicle.Dispose(), as they were nearly doing the same thing (but not consistently).",
+        "Removed Vehicle._beingDestroyed since it should not be necessary now that disposal is consistent.",
+        "Moved disposal of VehicleUpdateState from VehicleUpdateTask to Vehicle, where it belongs."
+      ]
+    },
+    {
+      "rev": 4169,
+      "date": "2026-04-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added GetAngularVelocity convenience methods for CCI and CCE to IParentBody, and used them in many places where these were redundantly constructed."
+      ]
+    }
+  ]
+}

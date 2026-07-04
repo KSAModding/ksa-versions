@@ -1,0 +1,223 @@
+{
+  "build": "2025.8.285.2163",
+  "date": "2025-08-22",
+  "fromRevision": 2136,
+  "toRevision": 2163,
+  "commits": [
+    {
+      "rev": 2137,
+      "date": "2025-08-21",
+      "author": "brogan",
+      "lines": [
+        "Add logging to file during program initialization only."
+      ]
+    },
+    {
+      "rev": 2138,
+      "date": "2025-08-21",
+      "author": "brogan",
+      "lines": [
+        "Add NLog SuspendLogging() to stop logging after program init"
+      ]
+    },
+    {
+      "rev": 2139,
+      "date": "2025-08-21",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added Throttle gauge to UI and hooked it up."
+      ]
+    },
+    {
+      "rev": 2140,
+      "date": "2025-08-21",
+      "author": "JoshRW",
+      "lines": [
+        "Add atmosphere reflections to vessels. Atmosphere reflections were added for reflection rays which do not intersect the planet (we don't have a good way to do planet reflections yet). This is only enabled when the vessel is inside the atmosphere as when it exits the atmosphere, the atmosphere lut produces incorrect rainbow colors (this is something I'm currently debugging). This means that the atmosphere color is attenuated to zero as we exit the atmosphere. The stars are also disabled when reflection rays intersect the planet inside the atmosphere, as they look weird if enabled here. The stars are enabled for all reflection angles when we exit the atmosphere.",
+        "Add commented out aerial lut code. An experiment was done with aerial lut sampling when intersecting the planet, but there are bugs with the way the aerial lut works, so the code was commented out until I hear back from Ghassen.",
+        "Rename \"getPBRLighitngLo\" to \"getPBRLightingDirect\"."
+      ]
+    },
+    {
+      "rev": 2141,
+      "date": "2025-08-21",
+      "author": "Dean Hall",
+      "lines": [
+        "Migrated master server URI to new system to handle launch differently from version checking."
+      ]
+    },
+    {
+      "rev": 2142,
+      "date": "2025-08-21",
+      "author": "matthew.caradus",
+      "lines": [
+        "Added Support for a sounds pitch or volume to be changed according to distance, velocity, or a custom parameter. This is authored by adding a Param Element to the soundRefernceData."
+      ]
+    },
+    {
+      "rev": 2143,
+      "date": "2025-08-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added toward, away, and align tracking targets for the TGT frame. After testing, I realize that target pointing and docking alignment are actually two different frames because of the vastly different frame rotation rates, so I will need to split these in a follow-on commit."
+      ]
+    },
+    {
+      "rev": 2144,
+      "date": "2025-08-21",
+      "author": "Dean Hall",
+      "lines": [
+        "Refactored version checking so that it is non-allocating."
+      ]
+    },
+    {
+      "rev": 2145,
+      "date": "2025-08-21",
+      "author": "joshohagan",
+      "lines": [
+        "Switch BRDF texture to RGBA8. This solves a crash occurring when it was in RG8 format.",
+        "Delete old stars texture"
+      ]
+    },
+    {
+      "rev": 2146,
+      "date": "2025-08-21",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Vehicle sound now always plays based on the base camera location. This means engine sounds will keep playing even in map view."
+      ]
+    },
+    {
+      "rev": 2147,
+      "date": "2025-08-21",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Clamp minimum input throttle to the minimum of all engine throttles."
+      ]
+    },
+    {
+      "rev": 2148,
+      "date": "2025-08-21",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Preserve engine input settings in save games."
+      ]
+    },
+    {
+      "rev": 2149,
+      "date": "2025-08-22",
+      "author": "JoshRW",
+      "lines": [
+        "Revert BRDF texture to RG format as the issue was git lfs"
+      ]
+    },
+    {
+      "rev": 2150,
+      "date": "2025-08-21",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Preserve navball frame in save games.",
+        "Actually serialize out engine inputs, don't just read them in."
+      ]
+    },
+    {
+      "rev": 2151,
+      "date": "2025-08-22",
+      "author": "JoshRW",
+      "lines": [
+        "Delete old commented out shader code from Atmosphere.comp"
+      ]
+    },
+    {
+      "rev": 2152,
+      "date": "2025-08-21",
+      "author": "josh",
+      "lines": [
+        "Tidy occlusionColor code in vessel shader. The code has been made more clear that the occlusionColor is the atmosphere transmission color from the sun."
+      ]
+    },
+    {
+      "rev": 2153,
+      "date": "2025-08-22",
+      "author": "matthew.caradus",
+      "lines": [
+        "Refactored SoundReference to abstract the Fmod sound file wrapper behaviour into the SoundFileReference class. This allows all sound behaviours to inherit from the same abstract class and moves the file handling portion into its own class. This will allow for different sound playback behaviours (i.e. layered, random or compound sounds) to be authored via xml and be triggered in the same generic way."
+      ]
+    },
+    {
+      "rev": 2154,
+      "date": "2025-08-22",
+      "author": "matthew.caradus",
+      "lines": [
+        "Added Support for Custom Parameters on SoundBehaviours.",
+        "Added Engine volume and pitch now changes based on Throttle parameter"
+      ]
+    },
+    {
+      "rev": 2155,
+      "date": "2025-08-22",
+      "author": "Morrow",
+      "lines": [
+        "Split rendering logic out of subpart.",
+        "Split editor/thrust editor logic out of orbit controller.",
+        "Started preliminary work to convert Gemini to parts."
+      ]
+    },
+    {
+      "rev": 2156,
+      "date": "2025-08-22",
+      "author": "Morrow",
+      "lines": [
+        "Changed some verbiage for follow vs view in the map mode menu."
+      ]
+    },
+    {
+      "rev": 2157,
+      "date": "2025-08-22",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed FlightPlan to require a vehicle Id. This can then be used to check against closest approach targets to ensure we do not calculate closest approach against ourselves.",
+        "Added Iequatable methods to Orbit class to more efficiently check for Equals on Orbit instances.",
+        "Changed Target to be an IOrbiting rather than a Celestial to allow us to set Vehicles as targets.",
+        "Changed Encounter to also be an IOrbiting rather than a celestial for the same reason.",
+        "Renamed PorkChopTask worker task to TransferTask to better reflect what this worker task actually does.",
+        "Changed the TranferPlanner UI to allow selection of Vehicles as the target."
+      ]
+    },
+    {
+      "rev": 2158,
+      "date": "2025-08-22",
+      "author": "Rocket",
+      "lines": [
+        "Changed initial assignment of ThrottleUp and ThrottleDown temporarily, as its assignment caused conflict with modifiers. This is a temporary change, which will be iterated on later design wise."
+      ]
+    },
+    {
+      "rev": 2159,
+      "date": "2025-08-22",
+      "author": "Rocket",
+      "lines": [
+        "Added first pass of moveable with mouse option for gauges, using the Gauge UI debug. Previously, gauges could be moved by clicking on a component and editing the values in the table. Now they can also be edited by enabling \"moveable\" and then moving with a mouse. This then needs to be copied into XML. This makes modding/making gauge items easier. Needs a lot of cleanup and quality of life."
+      ]
+    },
+    {
+      "rev": 2160,
+      "date": "2025-08-22",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed visibility of Burn UI to always display regardless of distance for the currently controlled vehicle."
+      ]
+    },
+    {
+      "rev": 2161,
+      "date": "2025-08-22",
+      "author": "Rocket",
+      "lines": [
+        "Added gauge rect editing. This allows drag and resize for rect instances of a gauge, meaning that instance placement can be done using the mouse.",
+        "Added copy to clipboard button to gauge editor, this copies the current component as XML to the clipboard.",
+        "Added clicking on a label of a gauge component int he gauge editor will copy the core data to XML, useful if doing gauge editing but you don't want to paste the full component.",
+        "Fixed gauge rect component Z and W editing would not be applied as the Width and Height from XML load were overwriting it."
+      ]
+    }
+  ]
+}

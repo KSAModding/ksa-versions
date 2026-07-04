@@ -1,0 +1,66 @@
+{
+  "build": "2026.2.10.3538",
+  "date": "2026-02-14",
+  "fromRevision": 3529,
+  "toRevision": 3538,
+  "commits": [
+    {
+      "rev": 3530,
+      "date": "2026-02-13",
+      "author": "lghassen",
+      "lines": [
+        "Reduce ring mesh instances VRAM usage by allocating a single transforms buffer for all LODs, then sorting only the indexes per-LOD. Reduces VRAM usage from ~65 to 26 MB at 1440p",
+        "Clean up some of the ring mesh rendering barriers and reduce usages of FillBuffer"
+      ]
+    },
+    {
+      "rev": 3531,
+      "date": "2026-02-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Transcoded all planet diffuse and normal textures to BC7 and BC5 respectively. This reduces size on-disk and fixes an issue where the planet textures were not being transcoded to the correct formats at runtime, saving on VRAM significantly (around 500MB, estimated).",
+        "Updated the Moon's diffuse texture to the December 2025 CGI kit texture which includes better polar detail."
+      ]
+    },
+    {
+      "rev": 3532,
+      "date": "2026-02-13",
+      "author": "lghassen",
+      "lines": [
+        "Fix artifacts visible on the edges of ring meshes and Pan, introduced by the volumetric ring effect using derivatives"
+      ]
+    },
+    {
+      "rev": 3533,
+      "date": "2026-02-13",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added a comment to clarify the limitations of GetUsing<T>()."
+      ]
+    },
+    {
+      "rev": 3534,
+      "date": "2026-02-13",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added missing flag reset, the lack of which was causing spurious flight computer wakeups at high time warp."
+      ]
+    },
+    {
+      "rev": 3535,
+      "date": "2026-02-13",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Split the pieces of the now-empty SubPart file into Gimbal and FxTemperature."
+      ]
+    },
+    {
+      "rev": 3536,
+      "date": "2026-02-13",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Serialize missing last thruster pulse time field from the flight computer."
+      ]
+    }
+  ]
+}

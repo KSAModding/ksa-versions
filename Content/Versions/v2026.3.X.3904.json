@@ -1,0 +1,183 @@
+{
+  "build": "2026.3.9.3904",
+  "date": "2026-03-27",
+  "fromRevision": 3883,
+  "toRevision": 3904,
+  "commits": [
+    {
+      "rev": 3884,
+      "date": "2026-03-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "A Little caching goes a long way. Caching matrix asmb frame values on Parts."
+      ]
+    },
+    {
+      "rev": 3885,
+      "date": "2026-03-25",
+      "author": "Morrow",
+      "lines": [
+        "Updated the IVA assets.",
+        "Added new part module for 'attached internals' which are parts that should be spawned alongside other parts.",
+        "Fixed some problems with the raytracing implementation after the inclusion of more instanced rendering in the IVA assets."
+      ]
+    },
+    {
+      "rev": 3886,
+      "date": "2026-03-25",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Improved Blending between Earth Ambient Sounds.",
+        "Added Ambient sound for high altitude, poles and a generic sound to help blend between biomes.",
+        "Added Hpf and Lpf filters can now be set by sound Parameters."
+      ]
+    },
+    {
+      "rev": 3887,
+      "date": "2026-03-25",
+      "author": "Morrow",
+      "lines": [
+        "Fixed a spot where shared memory may offset incorrectly.",
+        "Attempted fix for a barrier sync problem on AMD causing rapid flickering."
+      ]
+    },
+    {
+      "rev": 3888,
+      "date": "2026-03-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Missed on cached value from earlier today on Part asmb frame caching.",
+        "Skip the caching in the Debug Vehicle Editor for now as it breaks the raycasting."
+      ]
+    },
+    {
+      "rev": 3889,
+      "date": "2026-03-25",
+      "author": "Morrow",
+      "lines": [
+        "Temporarily disabled a translucency pass in the editor until barriers can be audited."
+      ]
+    },
+    {
+      "rev": 3890,
+      "date": "2026-03-25",
+      "author": "lghassen",
+      "lines": [
+        "Fix glitchy engine highlighting on AMD due to an unrelated uninitialized varying in the vertex shader"
+      ]
+    },
+    {
+      "rev": 3891,
+      "date": "2026-03-26",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reenabled translucency pass in the editor after auditing barriers."
+      ]
+    },
+    {
+      "rev": 3892,
+      "date": "2026-03-26",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed stage, sequence, and resource part highlighting."
+      ]
+    },
+    {
+      "rev": 3893,
+      "date": "2026-03-26",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Depth from the prepass is now copied into the framebuffers depth before rendering. This means that vessels now properly occlude fragments.",
+        "Prepass renderer now supports multisampling.",
+        "Raytracing renderer now supports multisampling for initalizing ray position and direction.",
+        "Temporarily disabled Kittens rendering into the prepass.",
+        "Character renderers now use DepthCompareOp GreaterOrEqual instead of Greater.",
+        "Added bug where when in raytraced IVA, planets are not visible through the window."
+      ]
+    },
+    {
+      "rev": 3894,
+      "date": "2026-03-26",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Moved raytracingRenderers translucent meshes out of the opaque prepass and into the translucent prepass. This fixes the artifacts from my previous commit, but removes reflections on glass in the IVA."
+      ]
+    },
+    {
+      "rev": 3895,
+      "date": "2026-03-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ability to right click EVA Kittens to open context window UI.",
+        "Added KittenEVA constructor to spawn Kittens with all required data and no VehicleTemplate required."
+      ]
+    },
+    {
+      "rev": 3896,
+      "date": "2026-03-27",
+      "author": "Morrow",
+      "lines": [
+        "Fixed a silent failure in device shared memory and added some more debug logging."
+      ]
+    },
+    {
+      "rev": 3897,
+      "date": "2026-03-27",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added MSAA texture support to raytracing denoiser to fix validation errors."
+      ]
+    },
+    {
+      "rev": 3898,
+      "date": "2026-03-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added EVADoor part Module. This module allows us to highlight and add part context option to the UI to EVA a kitten.",
+        "Added ability to EVA a kitten from an EVADoor module. First Pass. Will randomly spawn a new Kitten each time for now. But watch out for crew manifests in the future.",
+        "Added ability for an EVA kitten to enter an EVADoor. For now the kitten will be destroyed. But watch out for crew manifests in the future.",
+        "NOTE: This functionality will be enabled once parts are changed to have EVADoor modules incorporated into them. For now - no parts have this functionality."
+      ]
+    },
+    {
+      "rev": 3899,
+      "date": "2026-03-27",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added FreeDescriptorSetBit to global DescriptorPool to prevent allocation leak."
+      ]
+    },
+    {
+      "rev": 3900,
+      "date": "2026-03-27",
+      "author": "Morrow",
+      "lines": [
+        "Fixed the dynamic mesh indirect vert shader not setting the proper draw index causing incorrect textures."
+      ]
+    },
+    {
+      "rev": 3901,
+      "date": "2026-03-27",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fix image layout validation errors when present in vehicle editor."
+      ]
+    },
+    {
+      "rev": 3902,
+      "date": "2026-03-27",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed image layout validation error caused by changing MSAA settings in editor."
+      ]
+    },
+    {
+      "rev": 3903,
+      "date": "2026-03-27",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added WIP support for raytraced reflections using the prepasses translucent textures instead of opaque textures. This allows for multiple opaque materials to have accurate raytraced output when viewed through a translucent mesh. It also will let us bring back reflections on the IVAs windows. Currently there is no visible impact from this change."
+      ]
+    }
+  ]
+}

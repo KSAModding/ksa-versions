@@ -1,0 +1,125 @@
+{
+  "build": "2026.2.38.3713",
+  "date": "2026-02-27",
+  "fromRevision": 3699,
+  "toRevision": 3713,
+  "commits": [
+    {
+      "rev": 3700,
+      "date": "2026-02-25",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a longstanding error in computing moment arm masses for collision physics. An undetected order of operations swap was causing us to compute the wrong correction impulses, leading to jitter and vehicles not settling down.",
+        "Apply collision impulses sequentially instead of simultaneously, significantly improving stability.",
+        "Significantly tightened the bounds on velocity before declaring a vehicle as stationary.",
+        "Don't apply rolling resistance during bounces.",
+        "Increased rolling resistance strength by 50%.",
+        "Explicitly zero out rotation rates if rolling resistance is sufficient to bring an object to a stop.",
+        "Normalize navball quaternions to be extra sure that they are of the appropriate length.",
+        "Slightly widened the gimbal lock bounds when converting quaternions to Euler angles to cut out a region of high numerical instability. This was visible as navball shaking when landed on a planet and facing perfectly vertical."
+      ]
+    },
+    {
+      "rev": 3701,
+      "date": "2026-02-26",
+      "author": "joshohagan",
+      "lines": [
+        "Revert sun surface outline issue due to sunbloom possibly shining too brightly through clouds. I will investigate a better fix."
+      ]
+    },
+    {
+      "rev": 3702,
+      "date": "2026-02-26",
+      "author": "Linx-RW",
+      "lines": [
+        "Made planet renderer diffuse, normal, biome ID and biome control textures bindless.",
+        "Added preliminary ground clutter parameter 'UseTerrainMask', currently unused, but will allow ground clutter to sample the terrain material in the future.",
+        "Passed planet renderer's terrain material descriptor set to the ground clutter pipeline in preparation for ground clutter terrain material sampling and adjusted the descriptor set bindings."
+      ]
+    },
+    {
+      "rev": 3703,
+      "date": "2026-02-27",
+      "author": "Morrow",
+      "lines": [
+        "Modified debug editor's symmetry count button so right click will decrement the count."
+      ]
+    },
+    {
+      "rev": 3704,
+      "date": "2026-02-27",
+      "author": "Morrow",
+      "lines": [
+        "Modified the part menu in the debug editor so a connection's name is the button rather than having a button off to the side."
+      ]
+    },
+    {
+      "rev": 3705,
+      "date": "2026-02-27",
+      "author": "Morrow",
+      "lines": [
+        "Potential fix for a rare startup crash when ImGui has not yet given a window a size and the size is used as a divisor."
+      ]
+    },
+    {
+      "rev": 3706,
+      "date": "2026-02-27",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed crash when targeting the sun."
+      ]
+    },
+    {
+      "rev": 3707,
+      "date": "2026-02-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Dispose() method through PartTree class to Module class - Modules instances.",
+        "Added Dispose() to ResourceManagerBase to ensure we are managing the cleanup of unmanaged memory and not leaving it for the garbage collector. This will be called when the Module instance that owns the resource manager instance is Disposed.",
+        "Changed ResourceManagerBase to use a 2 dimensional array of MemoryOwner memory for the flow rules which it manages itself. This also fixes a bug where data was being incorrectly referenced and causing invalid data when reloading saves.",
+        "Fixed default flow mode for engines back to Nearest To Furtherest Same Stage. This inadvertently was changed when I created ResourceManagerBase class."
+      ]
+    },
+    {
+      "rev": 3708,
+      "date": "2026-02-27",
+      "author": "Dan Southon",
+      "lines": [
+        "Fix missing binding assignment on fur and eye renderer."
+      ]
+    },
+    {
+      "rev": 3709,
+      "date": "2026-02-27",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Depth and Normal pre pass now render kittens. While still a WIP, this will allow us to display raytraced reflections/lighting on the kittens themselves. Prepass remains disabled.",
+        "Fixed missing binding assignment on glass renderer."
+      ]
+    },
+    {
+      "rev": 3710,
+      "date": "2026-02-27",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Fixed some meshes not responding to window resizes"
+      ]
+    },
+    {
+      "rev": 3711,
+      "date": "2026-02-27",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Setup viewport and scissor correctly for pre pass."
+      ]
+    },
+    {
+      "rev": 3712,
+      "date": "2026-02-27",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reverted WIP pre-pass changes from earlier commit."
+      ]
+    }
+  ]
+}

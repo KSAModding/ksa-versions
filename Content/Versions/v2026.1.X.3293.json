@@ -1,0 +1,123 @@
+{
+  "build": "2026.1.9.3293",
+  "date": "2026-01-24",
+  "fromRevision": 3279,
+  "toRevision": 3293,
+  "commits": [
+    {
+      "rev": 3280,
+      "date": "2026-01-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed those dastardly planetary collisions with the Erosion modifier. See below note for AMD/Intel GPU users.",
+        "Adjusted BC4 (and BC5) CPU decoding to match the NVIDIA standard. AMD and Intel decode these slightly differently (of course they do) so planetary collisions MAY be slightly inaccurate for users running AMD/Intel GPUs. Looking for feedback on this.",
+        "Fixed missing biome control weight normalization in HeightFuncs.glsl which was present on the CPU version.",
+        "Bumped Earth erosion modifier octaves from 6 to 7 (ha ha) as it makes the nearby mountain terrain look more pleasing. With the fixed erosion modifier collisions, we can do this now.",
+        "Removed tiling heightmaps from the CPU height functions as it will be added back as a modifier in the future."
+      ]
+    },
+    {
+      "rev": 3281,
+      "date": "2026-01-23",
+      "author": "Morrow",
+      "lines": [
+        "Added hotkey for save/load menu. It currently uses current context to decide which save/load menu to open."
+      ]
+    },
+    {
+      "rev": 3282,
+      "date": "2026-01-23",
+      "author": "Morrow",
+      "lines": [
+        "Added ability to focus the camera on a part in the editor. Default keybind is 'f'."
+      ]
+    },
+    {
+      "rev": 3283,
+      "date": "2026-01-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a vulkan buffer disposal error in SubPartSelectedRenderer.",
+        "Added more mod preload checks into a number of data reference classes for safety sakes."
+      ]
+    },
+    {
+      "rev": 3284,
+      "date": "2026-01-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Cleaned up the Vehicle Editor UI a bit, split the parts window into a separate window.",
+        "Fixed Camera position after you launch a new vehicle."
+      ]
+    },
+    {
+      "rev": 3285,
+      "date": "2026-01-22",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Reorganized generic part component classes to make typed aggregates nested classes of the components themselves. This significantly reduces the number of places that generics have to be specified by the end user and makes it possible to more cleanly group the typed lists into top-level untyped collections.",
+        "Split PartComponentStateful off of PartComponent to avoid creating a bunch of useless junk for stateless components.",
+        "Created PartComponentStateList to store part component states of any type in a single collection.",
+        "Created PartComponentStateUpdaters to provide updates for any part component type in the thread worker.",
+        "Converted Rocket into a PartComponent."
+      ]
+    },
+    {
+      "rev": 3286,
+      "date": "2026-01-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Game Type to the game startup UI. Options for now are: Sandbox and Testing. Testing is what we are used to, with a bunch of prebuilt vehicles already spawned in the game. Sandbox will create a new game with no vehicles at all. You can then go and build a vehicle via the File Menu - Vehicle Editor and launch that vehicle."
+      ]
+    },
+    {
+      "rev": 3287,
+      "date": "2026-01-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Refill the tanks on a new vehicle when launching from the vehicle editor."
+      ]
+    },
+    {
+      "rev": 3288,
+      "date": "2026-01-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed issue in vehcile editor when constructing new vehicle was being done on the ground and the camera was colliding with the non-visible terrain."
+      ]
+    },
+    {
+      "rev": 3289,
+      "date": "2026-01-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Ensure each new vehicle you build has a unique name otherwise bad things happen."
+      ]
+    },
+    {
+      "rev": 3290,
+      "date": "2026-01-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed issue where vehicle editor UI windows were not spawning inside the main viewport on first appearing."
+      ]
+    },
+    {
+      "rev": 3291,
+      "date": "2026-01-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ability to Rename a Vehicle and handle System registration dictionary as well.",
+        "Added ability to name new vehicles you are building in the vehicle editor."
+      ]
+    },
+    {
+      "rev": 3292,
+      "date": "2026-01-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed stack issues on ResourceManager, change stackalloc to SpanOwner."
+      ]
+    }
+  ]
+}

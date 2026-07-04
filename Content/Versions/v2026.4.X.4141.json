@@ -1,0 +1,346 @@
+{
+  "build": "2026.4.15.4141",
+  "date": "2026-04-17",
+  "fromRevision": 4100,
+  "toRevision": 4141,
+  "commits": [
+    {
+      "rev": 4101,
+      "date": "2026-04-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Removed delegates for part Module creation and update functions. Moved them in-line. We explicitly don't want delegates used as they are harder to debug. This also makes it easier for modders to use Harmony to add their own modules in-line."
+      ]
+    },
+    {
+      "rev": 4102,
+      "date": "2026-04-16",
+      "author": "Rocket",
+      "lines": [
+        "Added == and != to burn to support equality checks.",
+        "Refactored Id generation for decoupled vehicles to use stackalloc buffer instead of string concat. Inconsequential now, but makes a consistent pattern and may help during debris generation with lots of vehicles."
+      ]
+    },
+    {
+      "rev": 4103,
+      "date": "2026-04-16",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Particle emitters can now be defined in XML.",
+        "Reworked how particle emitters are initalized now that they can read from XML.",
+        "Debug particle emitters are now defined in XML."
+      ]
+    },
+    {
+      "rev": 4104,
+      "date": "2026-04-16",
+      "author": "Morrow",
+      "lines": [
+        "Significantly improved speed of thumbnail renderer."
+      ]
+    },
+    {
+      "rev": 4105,
+      "date": "2026-04-16",
+      "author": "Morrow",
+      "lines": [
+        "Fixed IVA Controller rotating the camera incorrectly when the IVA Seat was rotated off center alignment."
+      ]
+    },
+    {
+      "rev": 4106,
+      "date": "2026-04-16",
+      "author": "Morrow",
+      "lines": [
+        "Turned off rendering internals when the camera is not in IVA mode.",
+        "Removed some unused XML for view meshes from IVA assets."
+      ]
+    },
+    {
+      "rev": 4107,
+      "date": "2026-04-16",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Particle Emitter Manager no longer stores renderers and compute pipelines in a list, and instead stores them explicitly."
+      ]
+    },
+    {
+      "rev": 4108,
+      "date": "2026-04-16",
+      "author": "Rocket",
+      "lines": [
+        "Refactor of Burn, FlightPlan, Tank, and Part text concat to use the new Span methods. This eliminates allocating interoplated strings and improves performance.",
+        "Added SpanBuilder for incremental, allocation-free writing over a caller provided Span<char>. Supports appending readonlyspans, char, and ISpanFormattable. Implicit conversions provided. This makes using spans for preparing strings much easier and more concise, providing allocation-free and fast use of strings in imgui per-frame use."
+      ]
+    },
+    {
+      "rev": 4109,
+      "date": "2026-04-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added into Nozzle state flag to indicate when Nozzel first ignites so we can fire off some particle FX."
+      ]
+    },
+    {
+      "rev": 4110,
+      "date": "2026-04-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Change loop to have module reference so we can get positions from the Module for FX location."
+      ]
+    },
+    {
+      "rev": 4111,
+      "date": "2026-04-16",
+      "author": "Chris",
+      "lines": [
+        "Minor VMA optimisations and migrating some remaining allocations to VMA"
+      ]
+    },
+    {
+      "rev": 4112,
+      "date": "2026-04-16",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed redundant pipeline barriers from Particle Emitter Manager."
+      ]
+    },
+    {
+      "rev": 4113,
+      "date": "2026-04-16",
+      "author": "Rocket",
+      "lines": [
+        "Moved CharBuffer and SpanBuilder to Core files, so they can be used for old code located in SandboxApp.",
+        "Refactored ImGuiHelper so that all items inside use the stackalloc buffer approach. This will remove all locations when using Helpers and will be faster. This makes the most difference for any windows with lots of elements, like the settings window."
+      ]
+    },
+    {
+      "rev": 4114,
+      "date": "2026-04-16",
+      "author": "Morrow",
+      "lines": [
+        "Switched the command module windows from using inflated emissives for a bloom effect to having two actual lights pointed out of the viewports."
+      ]
+    },
+    {
+      "rev": 4115,
+      "date": "2026-04-16",
+      "author": "Morrow",
+      "lines": [
+        "Some fixes for debug editor symmetry inheritance wonkiness when inheriting multiple symmetries deep. We'll see if this makes any more wonkiness."
+      ]
+    },
+    {
+      "rev": 4116,
+      "date": "2026-04-16",
+      "author": "Rocket",
+      "lines": [
+        "Replaced CharBuffer.Concat references with use of SpanBuilder."
+      ]
+    },
+    {
+      "rev": 4117,
+      "date": "2026-04-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added InputEvents for handling input events during the frame and storing them to avoid conflicts with workers. The Events will then get applied at the start of the next frame. This is all work to allow us to not have a DMZ and give the vehicle update worker threads the entire frame to do their work.",
+        "Moved Burn inputs into the new input events processing.",
+        "Moved change target inputs into the new input events processing.",
+        "Moved sim speed inpu changes into the new input events processing.",
+        "Moved new vehicle launch button processing into the new input events processing."
+      ]
+    },
+    {
+      "rev": 4118,
+      "date": "2026-04-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved engine throttle up into to new input events processing."
+      ]
+    },
+    {
+      "rev": 4119,
+      "date": "2026-04-16",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added initial WIP thruster sparks particle effect."
+      ]
+    },
+    {
+      "rev": 4120,
+      "date": "2026-04-16",
+      "author": "Rocket",
+      "lines": [
+        "Added new GlobalState cached values for IsAnyActive for engine, and  IsAnyPropellantAvailable.",
+        "Added new Alert for not having any fuel for an active and ignited main engine. This alert will show in red, if an active and ignited engine no longer has propellant. This confused a lot of users as the default vehicle first stage does not have much propellant."
+      ]
+    },
+    {
+      "rev": 4121,
+      "date": "2026-04-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Mesh Ids used by particle emitters can now be defined in XML.",
+        "Thruster sparks are now spherical.",
+        "Extracted thruster sparks spawn logic into its own function inside Vehicle.cs."
+      ]
+    },
+    {
+      "rev": 4122,
+      "date": "2026-04-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved all vehicle on key processing to new input events processing."
+      ]
+    },
+    {
+      "rev": 4123,
+      "date": "2026-04-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Exposed particle velocity and velocity shift values in XML. Previously these values were hardcoded into the ParticleSpawnPreset logic."
+      ]
+    },
+    {
+      "rev": 4124,
+      "date": "2026-04-17",
+      "author": "Morrow",
+      "lines": [
+        "Added game data to EngineA1 as it seemed to have been missed."
+      ]
+    },
+    {
+      "rev": 4125,
+      "date": "2026-04-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Particle Emitters now has data for a color shift. Currently this is getting used for a simple hue shift on engine thrusters to give variance in spark colors, however these value can be reused in other compute shaders. ColorShift is available to tweak in XML."
+      ]
+    },
+    {
+      "rev": 4126,
+      "date": "2026-04-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved flight computer gauge button processing to new input events processing."
+      ]
+    },
+    {
+      "rev": 4127,
+      "date": "2026-04-17",
+      "author": "Morrow",
+      "lines": [
+        "Removed EngineA1 and its game data as it was being phased out and is now phased out."
+      ]
+    },
+    {
+      "rev": 4128,
+      "date": "2026-04-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Tweaked thruster sparks particle emitters."
+      ]
+    },
+    {
+      "rev": 4129,
+      "date": "2026-04-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed Parent Body Angular Velocity reference on Celestial. There were two private variables. There shall be only one.",
+        "Fixed not drawing Celestial Info windows for Vehicles that were accidentally removed when some performance changes were made earlier in the week."
+      ]
+    },
+    {
+      "rev": 4130,
+      "date": "2026-04-17",
+      "author": "Rocket",
+      "lines": [
+        "Fixed regression I caused in drawing some vehicle related UI windows would be drawn even when UI was disabled.",
+        "Added FPS debug information is now drawn even when UI is disabled, but can still be toggled off."
+      ]
+    },
+    {
+      "rev": 4131,
+      "date": "2026-04-17",
+      "author": "Rocket",
+      "lines": [
+        "Hide vehicle related gauge canvases while in map mode and control disabled. By default, active control is disable in map view to support mapping movement. This change, along with the associated alert, helps make the user aware of this. It reduces the UI on screen, making the \"Control\" button more obvious."
+      ]
+    },
+    {
+      "rev": 4132,
+      "date": "2026-04-17",
+      "author": "Dan Southon",
+      "lines": [
+        "Small orientation fix in data for the spot light on the LightPart"
+      ]
+    },
+    {
+      "rev": 4133,
+      "date": "2026-04-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed artifacts when resizing the game with godrays enabled, which would result in a purple outline around vessels. This fix clears the RenderTargets to black after they get recreated on rebuild, as they currently have undefined data inside their textures."
+      ]
+    },
+    {
+      "rev": 4134,
+      "date": "2026-04-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved all terminal commands to the new input events processing."
+      ]
+    },
+    {
+      "rev": 4135,
+      "date": "2026-04-16",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Modified vehicle update tasks to be persistent clusters of local vehicles. This paves the way for instantiating permanent Bepu physics arenas that can be solved in parallel for each cluster.",
+        "Added a 'physics' terminal command to quickly bring up the physics debug window.",
+        "Removed several unnecessary hot path module state updaters."
+      ]
+    },
+    {
+      "rev": 4136,
+      "date": "2026-04-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed raytracing having an arbitrary limit on the number of instances that could be raytraced. This would result in a crash when going into IVA mode with raytracing enabled if multiple command modules were attached to the vessel."
+      ]
+    },
+    {
+      "rev": 4137,
+      "date": "2026-04-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed game crash when adding too many IVAs to a vessel and then entering IVA mode with raytracing enabled. Raytracing no longer has a set capacity for available TLASes."
+      ]
+    },
+    {
+      "rev": 4138,
+      "date": "2026-04-17",
+      "author": "Rocket",
+      "lines": [
+        "Added second pass of localization struction. Now there is a Languages page file, which is loaded from LanguageFileReferences. This is done in a preload, so localized strings will be available for the popup menus on launch. The localized strings are currently not used, this will be the next step.",
+        "Added 'generatelanguage' file that will generate a local RESX file using the hardcoded programmer-english. This can then be used for localization. Next step will to develop delta commands to generate delta files where translations will need to be redone."
+      ]
+    },
+    {
+      "rev": 4139,
+      "date": "2026-04-17",
+      "author": "Rocket",
+      "lines": [
+        "Added hiding of staging window when following and controlling a KittenEVA. Kittens have only one stage."
+      ]
+    },
+    {
+      "rev": 4140,
+      "date": "2026-04-17",
+      "author": "Rocket",
+      "lines": [
+        "Refactored string rendering in StagingWindow. Now uses a stackalloc char buffer, as used elsewhere. This reduces memory GC and is faster. Somewhat of a micro-optimization until large vehicles are used."
+      ]
+    }
+  ]
+}

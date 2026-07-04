@@ -1,0 +1,181 @@
+{
+  "build": "2025.8.292.2234",
+  "date": "2025-08-28",
+  "fromRevision": 2212,
+  "toRevision": 2234,
+  "commits": [
+    {
+      "rev": 2213,
+      "date": "2025-08-27",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Add ocean PBR functions in preparation for FFT",
+        "Start implementing FFT and add ocean Phillips spectrum for validation (not yet in use), will be replaced by a better spectrum once everything works",
+        "Increase ocean depth bias to eliminate remaining z-fighting artifacts at some distances",
+        "Move some repeated code to Utils"
+      ]
+    },
+    {
+      "rev": 2214,
+      "date": "2025-08-27",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed incorrect biome indexing in the terrain shader which would cause texture scrolling in biomes masked by biome control green that have different slope tiling factors to the biome masked by biome control blue."
+      ]
+    },
+    {
+      "rev": 2215,
+      "date": "2025-08-28",
+      "author": "JoshRW",
+      "lines": [
+        "Fix atmosphere reflections to use N and R vectors properly",
+        "Add decimals to shader numbers to prevent int issues"
+      ]
+    },
+    {
+      "rev": 2216,
+      "date": "2025-08-28",
+      "author": "Morrow",
+      "lines": [
+        "Modified PBR shader to turn off celestial shadows via an argument to the function. Editor shouldn't have celestial shadows."
+      ]
+    },
+    {
+      "rev": 2217,
+      "date": "2025-08-28",
+      "author": "Morrow",
+      "lines": [
+        "Fixed burn menu disappearing when zooming out."
+      ]
+    },
+    {
+      "rev": 2218,
+      "date": "2025-08-28",
+      "author": "Morrow",
+      "lines": [
+        "Fixed multiple burns being active simultaneously."
+      ]
+    },
+    {
+      "rev": 2219,
+      "date": "2025-08-28",
+      "author": "Rocket",
+      "lines": [
+        "Added 'mm' option for rollers, to allow display of finer values for close approaches and rendezvous.",
+        "Optimized GaugeDigit barber pole rendering as I was doing derivative lengths twice (aspect and AA) and using sin + smoothstep. Now significantly more streamlined."
+      ]
+    },
+    {
+      "rev": 2220,
+      "date": "2025-08-28",
+      "author": "Rocket",
+      "lines": [
+        "Optimized GaugeDigit to reduce cost of per-pixel digit rendering, and cleaned up code to make it clearer what each part does."
+      ]
+    },
+    {
+      "rev": 2221,
+      "date": "2025-08-28",
+      "author": "Rocket",
+      "lines": [
+        "Added tooltips to the Rendezvous Control Panel elements."
+      ]
+    },
+    {
+      "rev": 2222,
+      "date": "2025-08-28",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added ability to set orbit around StellarBody's in the Set Orbit Debu tool."
+      ]
+    },
+    {
+      "rev": 2223,
+      "date": "2025-08-28",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added a second porkchop option to the transfer planner to show a combined dV and Relative Velocity plot.",
+        "Fixed a bug where the transfer planner was excluding all impacts from the porkchop planner, when it should include impacts with the target as being valid."
+      ]
+    },
+    {
+      "rev": 2224,
+      "date": "2025-08-28",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added Relative Velocity to porkchop tooltip.",
+        "Added cursor box to porkchop tooltip."
+      ]
+    },
+    {
+      "rev": 2225,
+      "date": "2025-08-27",
+      "author": "fluxwerkz",
+      "lines": [
+        "Rename Color = Colour -u (sorry to my friends over the pond)",
+        "Minimum radius for our sun's display - never lose the sun again, even at pluto",
+        "A fall-off of sunpower (for sun flare/bloom only) based on distance (via screenspace sun radius) with min/max settings. There is a new debug parameter that controls the exponent of that power falloff. Two other important parameters for tweaking appear in sunbloom.frag \"radiusToStartScaling\" controls the timing of the start of fade and \"maxReduction\" controls the maximum power of the reduction"
+      ]
+    },
+    {
+      "rev": 2226,
+      "date": "2025-08-28",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed Transfer Planner not resetting when the set orbit debug is UI is used."
+      ]
+    },
+    {
+      "rev": 2227,
+      "date": "2025-08-28",
+      "author": "Morrow",
+      "lines": [
+        "Fixed screen resizes not being applied to all viewport cameras."
+      ]
+    },
+    {
+      "rev": 2228,
+      "date": "2025-08-28",
+      "author": "Dan Southon",
+      "lines": [
+        "Small fix for shadow map buffer alignment"
+      ]
+    },
+    {
+      "rev": 2229,
+      "date": "2025-08-28",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed set target not setting IsTarget on the targeted astronomical. Which was causing a number of issues, most visible one - the sphere of influence of the target was not being drawn."
+      ]
+    },
+    {
+      "rev": 2230,
+      "date": "2025-08-28",
+      "author": "Rocket",
+      "lines": [
+        "Changed Telemetry panel so that it shows 7 digits, one of which is a decimal place. This helps bridge the gap from KM to GM and beyond.",
+        "Fixed a variety of issues with gauge offsetting where incorrect parent values were being used to generate the UV positions.",
+        "Added ability to rescale UI elements in the editor, to make scaling changes much easier.",
+        "Added better support for exporting gauge UI changes into XML to ease the editing process."
+      ]
+    },
+    {
+      "rev": 2231,
+      "date": "2025-08-27",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Dramatically decrease the tolerance for Kepler solves. This drives physics handoff errors in high solar orbits down dramatically, but all Kepler solves in the default solar system still seem to be under 10 iterations which is totally acceptable.",
+        "Decrease max default Kepler iterations from 1000 to 50 to limit the damage from the worst-case scenario."
+      ]
+    },
+    {
+      "rev": 2232,
+      "date": "2025-08-27",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Decoupled Kepler tolerance from a global value which is most likely to be used for unit testing to prevent unexpected side effects."
+      ]
+    }
+  ]
+}

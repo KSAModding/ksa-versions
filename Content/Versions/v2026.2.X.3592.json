@@ -1,0 +1,244 @@
+{
+  "build": "2026.2.11.3592",
+  "date": "2026-02-18",
+  "fromRevision": 3563,
+  "toRevision": 3592,
+  "commits": [
+    {
+      "rev": 3564,
+      "date": "2026-02-17",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Renamed the enum flag function"
+      ]
+    },
+    {
+      "rev": 3565,
+      "date": "2026-02-17",
+      "author": "lghassen",
+      "lines": [
+        "Fix discontinuity artifacts in \"stitching\" between volumetric and 2d ring shaders",
+        "Fix a source of aliasing on the edge of the 2d ring shader from grazing angles",
+        "Fix artifacts/edges on boundaries of ring shadows on planet surface visible on AMD GPUs",
+        "Fix white band on the inner edge of Saturn ring texture",
+        "Unlink unrelated clouds setting and terrain shadows setting"
+      ]
+    },
+    {
+      "rev": 3566,
+      "date": "2026-02-18",
+      "author": "Rocket",
+      "lines": [
+        "Fixed hidden cursor will cause rollover behavior on windows inheriting from ImGuiWindow. Now will not activate this behavior, and the window will still activate autohide actions."
+      ]
+    },
+    {
+      "rev": 3567,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "Imported IVA Assets and added them to the default craft. Next up will be a camera mode for it but you can freecam into it for now."
+      ]
+    },
+    {
+      "rev": 3568,
+      "date": "2026-02-17",
+      "author": "lghassen",
+      "lines": [
+        "Fix shadow far plane being interpreted as a shadow in volumetric exhausts"
+      ]
+    },
+    {
+      "rev": 3569,
+      "date": "2026-02-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Eliminated time since periapsis conversions when getting state vectors which could introduce unnecessary time precision issues."
+      ]
+    },
+    {
+      "rev": 3570,
+      "date": "2026-02-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a case where time advancement in the physics loop could be very slightly off."
+      ]
+    },
+    {
+      "rev": 3571,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "Added size adapters to Core Fairing A Assets."
+      ]
+    },
+    {
+      "rev": 3572,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "Made the IVA 'Part' non-spawnable in the debug editor."
+      ]
+    },
+    {
+      "rev": 3573,
+      "date": "2026-02-18",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added RaytracingRenderer.cs. Currently this file is not used, and is just a placeholder."
+      ]
+    },
+    {
+      "rev": 3574,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "Added initial setup for differentiating if a part model is used for raytracing when it is enabled. Using the comment tag 'IVARAYTRACE' to coordinate todos about the work."
+      ]
+    },
+    {
+      "rev": 3575,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "Added support for handling multiple game data declarations for a part."
+      ]
+    },
+    {
+      "rev": 3576,
+      "date": "2026-02-18",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Generator part component.",
+        "Added Generator Update into the worker task updates."
+      ]
+    },
+    {
+      "rev": 3577,
+      "date": "2026-02-18",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed Battery component construction."
+      ]
+    },
+    {
+      "rev": 3578,
+      "date": "2026-02-18",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added display of battery information and generator information to part context windows.",
+        "Display electrical charge in Wh and KWh in the UI."
+      ]
+    },
+    {
+      "rev": 3579,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "Added very early IVA Controller work. Can be switched to via shift-c."
+      ]
+    },
+    {
+      "rev": 3580,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "Moved part raytracing check to a spot that should cause less complications down the line. No user facing changes."
+      ]
+    },
+    {
+      "rev": 3581,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "Added some quick mouse smoothing to the IVA camera/controller."
+      ]
+    },
+    {
+      "rev": 3582,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "The IVA camera/controller now accounts for the ship's rotations."
+      ]
+    },
+    {
+      "rev": 3583,
+      "date": "2026-02-18",
+      "author": "Rocket",
+      "lines": [
+        "Fixed hover actions for ImGuiWindow base was being validated for any open window element, causing confusing autohide behavior. Now targeted to only child elements, using ImGuiHoveredFlags."
+      ]
+    },
+    {
+      "rev": 3584,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "IVA Controller now respects mouse look setting."
+      ]
+    },
+    {
+      "rev": 3585,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "Turned off the emissive map for the command module."
+      ]
+    },
+    {
+      "rev": 3586,
+      "date": "2026-02-18",
+      "author": "Morrow",
+      "lines": [
+        "Scaled the light part down to 0.3x size."
+      ]
+    },
+    {
+      "rev": 3587,
+      "date": "2026-02-18",
+      "author": "Rocket",
+      "lines": [
+        "Fixed capsule emissive was using a gradient and was a 2k texture. Reduced the size to 256 and removed gradients.",
+        "Added multiply on standard mesh emissive. This allows the global bloom to pickup emissive values at max texture setting."
+      ]
+    },
+    {
+      "rev": 3588,
+      "date": "2026-02-18",
+      "author": "Rocket",
+      "lines": [
+        "Fixed spot light part emissive texture was 4k when should have been 256, and was not normalized to emissive values."
+      ]
+    },
+    {
+      "rev": 3589,
+      "date": "2026-02-18",
+      "author": "Rocket",
+      "lines": [
+        "Migrated Earth Ocean Color texture from DDS to KTX2 and BC1, to reduce texture size and VRAM usage."
+      ]
+    },
+    {
+      "rev": 3590,
+      "date": "2026-02-18",
+      "author": "Rocket",
+      "lines": [
+        "Fixed T_LightPack textures were all 4k textures. Reduced sizes for PBR related textures to required values, reducing VRAM and disk space use."
+      ]
+    },
+    {
+      "rev": 3591,
+      "date": "2026-02-18",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Allow multiple battery components on a Part.",
+        "Add display of Ws Wh and KWh for charge display in UI.",
+        "Allow multiple generator components on a part.",
+        "Add PowerConsumer part component functionality.",
+        "Add ability for a PowerConsumer to be a lightswitch.",
+        "Add processing of PowerConsumer components to worker tasks."
+      ]
+    }
+  ]
+}

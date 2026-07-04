@@ -1,0 +1,214 @@
+{
+  "build": "2025.11.9.2894",
+  "date": "2025-11-24",
+  "fromRevision": 2847,
+  "toRevision": 2894,
+  "commits": [
+    {
+      "rev": 2848,
+      "date": "2025-11-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed RCS thrusters from visually chattering on/off when sim speed is less than one."
+      ]
+    },
+    {
+      "rev": 2849,
+      "date": "2025-11-21",
+      "author": "JoshRW",
+      "lines": [
+        "Add pbr spheres toggle in the debug menu for testing material roughness and metalness in our shaders. This allows us to thoroughly test our lighting shaders to ensure there are no problems when importing art assets."
+      ]
+    },
+    {
+      "rev": 2850,
+      "date": "2025-11-21",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed issue where certain parabolic orbits were being classified as hyperbolic resulting in invalid Mean Anomaly Calculations. Because Mean Anomaly doesn't exist on a parabolic orbit.",
+        "In addition, cleaned up some GetOrbitType and Orbit classification methods and removed IsCircular (as this is not even relevant or used)."
+      ]
+    },
+    {
+      "rev": 2851,
+      "date": "2025-11-21",
+      "author": "Morrow",
+      "lines": [
+        "Modified our old Gltf Xml tag to be more explicitly named 'Mesh Atlas'"
+      ]
+    },
+    {
+      "rev": 2852,
+      "date": "2025-11-21",
+      "author": "Morrow",
+      "lines": [
+        "Updated engines to have Attach Nodes. Still need to make them fit snug and give connectors sizing."
+      ]
+    },
+    {
+      "rev": 2853,
+      "date": "2025-11-21",
+      "author": "Morrow",
+      "lines": [
+        "Fixed loaded vehicles not having their parts load connectors properly. Connectors are not actually connecting to eachother on preloaded vehicles (yet)."
+      ]
+    },
+    {
+      "rev": 2854,
+      "date": "2025-11-21",
+      "author": "Morrow",
+      "lines": [
+        "Fixed the color of the nose tank on the default geminis."
+      ]
+    },
+    {
+      "rev": 2855,
+      "date": "2025-11-21",
+      "author": "Morrow",
+      "lines": [
+        "Made 'Snapping' and 'Connecting' flags in the debug editor mutually exclusive as they don't work properly together (yet)."
+      ]
+    },
+    {
+      "rev": 2856,
+      "date": "2025-11-21",
+      "author": "Morrow",
+      "lines": [
+        "Fixed some snapping bugs in the debug editor that caused children in an unattached tree to be translated incorrectly."
+      ]
+    },
+    {
+      "rev": 2857,
+      "date": "2025-11-21",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Kitten idle action animations now delay after playing an MMU animation, this prevents the kittens from blending halfway into an idle animation.",
+        "Kitten idle delay now respects simulation time. Previously the kitten would only play an idle action animation after 45 seconds, regardless of how fast the simulation speed was.",
+        "Properly setup idle action animation timings. Previously the duration to play the idle action animation for was estimated, however it is now properly calculated based on the animation data. This means that custom idle animations will now play for the correct duration, aswell as idle action animations not entering a state where they can play multiple times within one 'allocated' time frame."
+      ]
+    },
+    {
+      "rev": 2858,
+      "date": "2025-11-22",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Separated references to SubParts from their definitions. This helps prevent duplicate definitions and allows us to give each SubPart instance its own ID separate from the template ID.",
+        "Moved all inline-defined SubParts out into their own definitions."
+      ]
+    },
+    {
+      "rev": 2859,
+      "date": "2025-11-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Kitten idle action animations now read from a list that gets initialized from the CharacterAssets.xml. Previously the two idle action animations were hardcoded, but now idle action animations can be easily added or removed using only the xml with no defined limit on how many can be added."
+      ]
+    },
+    {
+      "rev": 2860,
+      "date": "2025-11-23",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added current position point into the orbit lines for Celestials (just like it does for vehicles already). This fixes misaligned orbit lines from the celestial body - particularly the larger the orbit."
+      ]
+    },
+    {
+      "rev": 2861,
+      "date": "2025-11-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "The kitten no longer always looks at you. If you are far away the kitten will stop looking at you, aswell as alternating every few seconds between looking forwards and looking at you. This is a very basic implementation and I expect it to be changed or atleast adjusted later on.",
+        "General code cleanup for CharacterRenderer.cs."
+      ]
+    },
+    {
+      "rev": 2882,
+      "date": "2025-11-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed Compressed Clouds folder name for case sensitive systems."
+      ]
+    },
+    {
+      "rev": 2884,
+      "date": "2025-11-24",
+      "author": "Morrow",
+      "lines": [
+        "Modified fullscreen/borderless/windowed modes to work more as you would expect them to. Turned off ImGui popout windows when in fullscreen."
+      ]
+    },
+    {
+      "rev": 2885,
+      "date": "2025-11-24",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Refactor to animation loading scheme, in order to allow more explicit references to animation skeletons"
+      ]
+    },
+    {
+      "rev": 2886,
+      "date": "2025-11-24",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Skeletal animation reference cleanup"
+      ]
+    },
+    {
+      "rev": 2887,
+      "date": "2025-11-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reduced kitten fur length. This overall improves the quality of the fur by bringing the effect closer to the underlying head-mesh."
+      ]
+    },
+    {
+      "rev": 2888,
+      "date": "2025-11-24",
+      "author": "Dan Southon",
+      "lines": [
+        "Merged FramePackedVkBuffer into TransientVkBuffer",
+        "Converted all usages of FramePackedVkBuffer to TransientVkBuffer"
+      ]
+    },
+    {
+      "rev": 2889,
+      "date": "2025-11-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed fur rim light darkening fur on low quality. This was caused by the calculated ratio being negative for the very low quality option."
+      ]
+    },
+    {
+      "rev": 2890,
+      "date": "2025-11-24",
+      "author": "Morrow",
+      "lines": [
+        "Updated the Command and Passage parts with Attach Nodes."
+      ]
+    },
+    {
+      "rev": 2891,
+      "date": "2025-11-24",
+      "author": "Morrow",
+      "lines": [
+        "Updated the Service Module parts with Attach Nodes."
+      ]
+    },
+    {
+      "rev": 2892,
+      "date": "2025-11-24",
+      "author": "Morrow",
+      "lines": [
+        "Removed duplicate Editor Toggle menu button."
+      ]
+    },
+    {
+      "rev": 2893,
+      "date": "2025-11-24",
+      "author": "Morrow",
+      "lines": [
+        "Fixed some of the problems with gizmo rendering on older AMD cards. The Burn Node should no longer create crazy artifacts. The Sphere of Influence visualizer still causes crazy visual snow."
+      ]
+    }
+  ]
+}

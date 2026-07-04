@@ -1,0 +1,158 @@
+{
+  "build": "2025.9.8.2336",
+  "date": "2025-09-09",
+  "fromRevision": 2317,
+  "toRevision": 2336,
+  "commits": [
+    {
+      "rev": 2318,
+      "date": "2025-09-05",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix culling thread group count on one dimension exceeding the min guaranteed by Vulkan spec"
+      ]
+    },
+    {
+      "rev": 2319,
+      "date": "2025-09-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Clamp distant celestial sprite shadowing factor - previously it was possible for it to become greater than one."
+      ]
+    },
+    {
+      "rev": 2320,
+      "date": "2025-09-05",
+      "author": "Linx-RW",
+      "lines": [
+        "Implemented blackrack's edge tessellation heuristic into the terrain tessellation eval shader.",
+        "Moved edge tessellation heuristic from OceanTessControl.tesc to TessellationFuncs.glsl."
+      ]
+    },
+    {
+      "rev": 2321,
+      "date": "2025-09-07",
+      "author": "Linx-RW",
+      "lines": [
+        "Separated Biplanar texture sampling function into a version with a standard texture sample and one with a textureGrad sample."
+      ]
+    },
+    {
+      "rev": 2322,
+      "date": "2025-09-07",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Expanded manual control lockout system to be more fine-grained and issue precisely-worded alerts in all cases where manual inputs are disregarded.",
+        "Manual engine ignition is explicitly turned off in auto-burn mode to prevent a leftover manual ignition from overriding auto-burn engine shutdown."
+      ]
+    },
+    {
+      "rev": 2323,
+      "date": "2025-09-08",
+      "author": "Dan Southon",
+      "lines": [
+        "Removed scaling and offset of point lights for thrusters to fix issues with sim speeds below 1x"
+      ]
+    },
+    {
+      "rev": 2324,
+      "date": "2025-09-08",
+      "author": "Morrow",
+      "lines": [
+        "Fixed a bug where distant celestial rendering was setting bad depth values causing all downstream rendering to be culled."
+      ]
+    },
+    {
+      "rev": 2325,
+      "date": "2025-09-08",
+      "author": "matthew.caradus",
+      "lines": [
+        "Added Sample accurate music scheduling for SOI music system. When SyncPoints are specified in a music file the LocationMusicPlayer will switch tracks at the next available sync point. If none are added the music will switch directly."
+      ]
+    },
+    {
+      "rev": 2326,
+      "date": "2025-09-08",
+      "author": "Dan Southon",
+      "lines": [
+        "Updated the assignment of shadow tiles to lights, as some lights were rendering depth when they should not be."
+      ]
+    },
+    {
+      "rev": 2327,
+      "date": "2025-09-08",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added nuget package MathNet.Numerics to use for Eigen value calcuations.",
+        "Added ConjunctionAssessment class containing new closest approach method to solve: Conjunction Assessment Thnrough Chebyshev Polynomials (CATCH).",
+        "This is the new core math for solving closest approaches and encounters. On the surface the player will not notice much diference after this change, but it is more efficient and accurate than the old solver.",
+        "It sets us up to make further improvements and changes in the closest approach calculations and visuals.",
+        "Added Id string to PatchedConics and related data so that we have a backwards lookup to what Astronomical the Patch is for. Before this we only had the Parent body reference for the Patch Orbit.",
+        "Changed porkchop worker to split it's work further into four more worker tasks.",
+        "Renamed ClosestPoints struct to Encounter.",
+        "Changed PatchedConic.TryFindEncounter to TryFindEncounters and returns an array of all encounters with the body asked for. As there may be more than one.",
+        "Changed CheckUpdateEncounter replacing the old closest approach solver/logic with new CATCH logic.",
+        "Removed redundant old closest approach solver code.",
+        "Fixed issue in setting closest distance info on porkchop plots to ensure we are setting it for the target astronomical.",
+        "Fixed encounters are now possible with non-orbiting objects. EG: Sol aka The Sun aka a Star."
+      ]
+    },
+    {
+      "rev": 2328,
+      "date": "2025-09-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Corrected main engine plume and audio to match the actual engine thrust rather than the manual throttle setting. This was incorrect in the case where the manual input was set differently to the auto-burn control."
+      ]
+    },
+    {
+      "rev": 2329,
+      "date": "2025-09-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Renamed Vehicle.GetThrottle() to Vehicle.GetManualThrottle() to avoid future confusion."
+      ]
+    },
+    {
+      "rev": 2330,
+      "date": "2025-09-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Renamed two ThrusterState fields and added brief docs to clarify their meanings."
+      ]
+    },
+    {
+      "rev": 2331,
+      "date": "2025-09-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Set navball frame when toggling on/off auto burn mode."
+      ]
+    },
+    {
+      "rev": 2332,
+      "date": "2025-09-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "The burn computer will no longer ignite the main engine until the thrust direction is nearly aligned with the burn direction. This avoids burning in the wrong direction if auto burn is activated too late."
+      ]
+    },
+    {
+      "rev": 2333,
+      "date": "2025-09-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Modify closest approach search to clamp to half of the primary orbit.",
+        "Raise default search polynomial order to 16."
+      ]
+    },
+    {
+      "rev": 2334,
+      "date": "2025-09-09",
+      "author": "matthew.caradus",
+      "lines": [
+        "Fixed There could be an occasional burst of wind noise when transitioning in and out of atmospheric flight."
+      ]
+    }
+  ]
+}

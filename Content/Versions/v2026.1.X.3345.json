@@ -1,0 +1,83 @@
+{
+  "build": "2026.1.4.3345",
+  "date": "2026-01-30",
+  "fromRevision": 3335,
+  "toRevision": 3345,
+  "commits": [
+    {
+      "rev": 3336,
+      "date": "2026-01-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added PartDecoupler part component class. Doesn't function yet, but stay tuned - it soon will.",
+        "Added PartDecoupler component to existing interstage fairing parts."
+      ]
+    },
+    {
+      "rev": 3337,
+      "date": "2026-01-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed Decoupler part component, it does not need to be stateful."
+      ]
+    },
+    {
+      "rev": 3338,
+      "date": "2026-01-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Created a PartTree.Merge to accompany PartTree.Split and made the two methods roughly symmetric in how they operate."
+      ]
+    },
+    {
+      "rev": 3339,
+      "date": "2026-01-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Changed vehicle editor snapping to use screen space instead of assembly space.",
+        "Moved the point of nonzero mass property checks into the physics system instead of the part system to suppress spurious errors."
+      ]
+    },
+    {
+      "rev": 3340,
+      "date": "2026-01-30",
+      "author": "Morrow",
+      "lines": [
+        "Changed running Id to be a uint rather than ulong to align with project standards."
+      ]
+    },
+    {
+      "rev": 3341,
+      "date": "2026-01-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added StageList to PartList. This is used to manage stage assignment of parts in a part list.",
+        "Added temporary UI to Vehicle editor for Stage management, with some rudimentary capabilities."
+      ]
+    },
+    {
+      "rev": 3342,
+      "date": "2026-01-30",
+      "author": "Morrow",
+      "lines": [
+        "Added a fallback when raycasting towards a newly spawned part in the editor fails."
+      ]
+    },
+    {
+      "rev": 3343,
+      "date": "2026-01-30",
+      "author": "Morrow",
+      "lines": [
+        "Fixed spawning a new part not properly resetting 'selected' values of child parts."
+      ]
+    },
+    {
+      "rev": 3344,
+      "date": "2026-01-30",
+      "author": "Rocket",
+      "lines": [
+        "Added new part context menu and window. When right clicked, a part will show a condensed context menu including actions such as Decouple, and fuel tank status. A \"Window\" open will pull the context menu out into a moveable pinned window with further information, and will remain until closed."
+      ]
+    }
+  ]
+}

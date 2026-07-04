@@ -1,0 +1,16 @@
+{
+  "build": "2025.8.294.2252",
+  "date": "2025-08-29",
+  "fromRevision": 2250,
+  "toRevision": 2252,
+  "commits": [
+    {
+      "rev": 2251,
+      "date": "2025-08-29",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed handling of different events (Impact, multiple Encounters, Escape) in patched conics to correctly identify which event comes first and process accordingly."
+      ]
+    }
+  ]
+}

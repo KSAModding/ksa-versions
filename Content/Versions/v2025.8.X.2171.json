@@ -1,0 +1,26 @@
+{
+  "build": "2025.8.287.2171",
+  "date": "2025-08-25",
+  "fromRevision": 2169,
+  "toRevision": 2171,
+  "commits": [
+    {
+      "rev": 2170,
+      "date": "2025-08-25",
+      "author": "matthew.caradus",
+      "lines": [
+        "Added Wind sound for when craft is flying though the atmosphere. Pitch increases with speed and volume increases with dynamic pressure.",
+        "Added MultiChannel Sound behaviour for authoring layered sounds.",
+        "Added GetDynamicPressure Function to AtmosphereReference."
+      ]
+    },
+    {
+      "rev": 2171,
+      "date": "2025-08-25",
+      "author": "Rian Drake",
+      "lines": [
+        "Add Production configuration build option"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "build": "2025.12.29.3097",
+  "date": "2025-12-17",
+  "fromRevision": 3082,
+  "toRevision": 3097,
+  "commits": [
+    {
+      "rev": 3083,
+      "date": "2025-12-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added solid phases to substances.",
+        "Added Aluminum 2014."
+      ]
+    },
+    {
+      "rev": 3084,
+      "date": "2025-12-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Rationalize the Vehicle and Kitten constructors and move some initialization around so we don't get null mass vehicles being created.",
+        "Moved the serialization of the tgank states from the ResourceManager to the PartTree so we can have multiple ResourceManagers on a vehicle."
+      ]
+    },
+    {
+      "rev": 3085,
+      "date": "2025-12-16",
+      "author": "Rocket",
+      "lines": [
+        "Fix and harden ArrayPoolResult<T> usage. Avoid renting arrays when count == 0, guard Dispose() against null instances, removed unnecessary caching, and switched to ReadOnlySpan<T> for safer source input. Finally added some validation checking."
+      ]
+    },
+    {
+      "rev": 3086,
+      "date": "2025-12-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed issue where followed vehicle will always draw all of it's patches/orbits."
+      ]
+    },
+    {
+      "rev": 3087,
+      "date": "2025-12-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Expanded CustomMasses on Parts and SubParts to be InertMasses and take any MassTemplate.",
+        "Added MassGemoetry class to help compute the properties of common analytic shapes.",
+        "Added the first two geometric mass XML templates: a solid sphere, and a hollow cylinder.",
+        "Added millimeters and centimeters to DistanceReference."
+      ]
+    },
+    {
+      "rev": 3088,
+      "date": "2025-12-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed thruster positions in the engine debug overlay.",
+        "Added flow separation severity to the engine debug menu."
+      ]
+    },
+    {
+      "rev": 3089,
+      "date": "2025-12-16",
+      "author": "Dan Southon",
+      "lines": [
+        "Thumbnails are now decoupled from vehicles, solving an issue with requiring the creation of a dummy vehicle to render the parts. It should also solve the initial error spam on startup for mass and principal moments of inertia <= 0. (Note: there is a minor bug where some sub parts are missing from the thumbnail)",
+        "Removed reference to ThumbnailRender in SubPartModelRenderer in favour of passing in a render pass and sample count flags.",
+        "Removed ThumbnailReference class from PartTemplate file.",
+        "Created new code file for ThumbnailReference."
+      ]
+    },
+    {
+      "rev": 3090,
+      "date": "2025-12-16",
+      "author": "lghassen",
+      "lines": [
+        "Refactor the transparencies msaa resolve code and move it to its own file. Fix some layout transitions on hardware not using ShaderStorageImageMultisample"
+      ]
+    },
+    {
+      "rev": 3091,
+      "date": "2025-12-15",
+      "author": "Rian Drake",
+      "lines": [
+        "Change strategy for generating spaced points to reduce garbage pressure, by utilizing MemoryOwner<T> instead of returning arrays that rely on the GC to clean up later."
+      ]
+    },
+    {
+      "rev": 3092,
+      "date": "2025-12-17",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Change case of log and crashdump folders"
+      ]
+    },
+    {
+      "rev": 3093,
+      "date": "2025-12-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed bug in Resource System not correctly calculating mass fractions when refilling tanks.",
+        "Fixed bug in Resource System not adding produced mass when it equalled the capacity of the tank exactly."
+      ]
+    },
+    {
+      "rev": 3094,
+      "date": "2025-12-16",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added functions to compute the mass properties of ellipsoidal tank domes and complete tanks.",
+        "Added a CylindricalTankMass to the XML."
+      ]
+    },
+    {
+      "rev": 3095,
+      "date": "2025-12-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed cut and paste? error creating the orbit points for a vehicle when deserializing twice. We really only need to do that once.",
+        "Fixed potential null ref later when we add other substance phases such as gas."
+      ]
+    },
+    {
+      "rev": 3096,
+      "date": "2025-12-16",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added a spherical tank mass."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "build": "2025.9.5.2441",
+  "date": "2025-09-29",
+  "fromRevision": 2429,
+  "toRevision": 2441,
+  "commits": [
+    {
+      "rev": 2430,
+      "date": "2025-09-29",
+      "author": "Morrow",
+      "lines": [
+        "Added right clicking on parts to show info on it."
+      ]
+    },
+    {
+      "rev": 2431,
+      "date": "2025-09-29",
+      "author": "Morrow",
+      "lines": [
+        "Changed how the map gains control of the keyboard for offsetting the camera by adding an 'active' boolean rather than solely relying on a nullable check to make it less confusing to find the current vehicle. This fixes a few inconsistencies with orbit markers not being drawn when they should. As a byproduct, this enables the vehicle UI in map mode whether or not you are actively controlling the vehicle you are following. I'm not 100% sure which way I like more so I'll leave it for now and see how people feel."
+      ]
+    },
+    {
+      "rev": 2432,
+      "date": "2025-09-29",
+      "author": "Morrow",
+      "lines": [
+        "Removed map mode from the camera mode shift hotkey."
+      ]
+    },
+    {
+      "rev": 2433,
+      "date": "2025-09-29",
+      "author": "Morrow",
+      "lines": [
+        "Added message for swapping to orbit camera from free camera so players get consistent feedback."
+      ]
+    },
+    {
+      "rev": 2434,
+      "date": "2025-09-29",
+      "author": "Morrow",
+      "lines": [
+        "Fixed SoI's being drawn when they are targets of vehicles that are not currently followed. SoIs will still be drawn if the 'ShowSphereOfInfluence' flag is set if we want to display SoIs of other vehicle targets but showing all targets seems like an oversight."
+      ]
+    },
+    {
+      "rev": 2435,
+      "date": "2025-09-29",
+      "author": "Morrow",
+      "lines": [
+        "Fixed the map recenter logic immediately focusing on the controlled vehicle rather than recentering to the currently focused astronomical first."
+      ]
+    },
+    {
+      "rev": 2436,
+      "date": "2025-09-29",
+      "author": "Morrow",
+      "lines": [
+        "Fixed being unable to close burn menus."
+      ]
+    },
+    {
+      "rev": 2437,
+      "date": "2025-09-29",
+      "author": "Morrow",
+      "lines": [
+        "Fix for some situations where you can hover over an orbit line before the start or after the end of the orbit."
+      ]
+    },
+    {
+      "rev": 2438,
+      "date": "2025-09-26",
+      "author": "JoshRW",
+      "lines": [
+        "Fixup Gemini RoughMetalAO textures. The textures had been modified while debugging a while ago, so I updated them using a SketchFab model. They seem to look correct now."
+      ]
+    },
+    {
+      "rev": 2439,
+      "date": "2025-09-29",
+      "author": "GitHub",
+      "lines": [
+        "Integrated Brutal.Texture into KSA",
+        "Updated existing KSA texture code to use Brutal.Texture",
+        "Updated Brutal.Framework in KSA to 25.9.3.1",
+        "Added KTX ITexture abstractions for KTX2 support",
+        "Added unit tests where needed"
+      ]
+    },
+    {
+      "rev": 2440,
+      "date": "2025-09-29",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed incorrect shadowing past the max clipping plane"
+      ]
+    }
+  ]
+}

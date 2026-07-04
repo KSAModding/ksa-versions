@@ -1,0 +1,176 @@
+{
+  "build": "2025.10.6.2497",
+  "date": "2025-10-10",
+  "fromRevision": 2476,
+  "toRevision": 2497,
+  "commits": [
+    {
+      "rev": 2477,
+      "date": "2025-10-09",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed the accidental change I made to the altitude roller UI width."
+      ]
+    },
+    {
+      "rev": 2478,
+      "date": "2025-10-09",
+      "author": "Morrow",
+      "lines": [
+        "Added the second half of new gemini thruster parts. All of them will still need explicit thruster XML definitions but meshes are in properly."
+      ]
+    },
+    {
+      "rev": 2479,
+      "date": "2025-10-09",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added prerequisite latest Visual C++ Redist to the readme file as this is needed to run KSA Project."
+      ]
+    },
+    {
+      "rev": 2480,
+      "date": "2025-10-09",
+      "author": "Morrow",
+      "lines": [
+        "Fixed subpart rotations not being initialized properly in some cases."
+      ]
+    },
+    {
+      "rev": 2481,
+      "date": "2025-10-09",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Properly handle part transforms in thruster definitions."
+      ]
+    },
+    {
+      "rev": 2482,
+      "date": "2025-10-09",
+      "author": "Rocket",
+      "lines": [
+        "Moved unused source files to source folder so they were not taking up space in the build, roughly 1GB of files."
+      ]
+    },
+    {
+      "rev": 2483,
+      "date": "2025-10-09",
+      "author": "Morrow",
+      "lines": [
+        "Added passage hatch part."
+      ]
+    },
+    {
+      "rev": 2484,
+      "date": "2025-10-09",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed an issue where we were missing an orbit point from our orbit line rendering for patches with start and end TA not default."
+      ]
+    },
+    {
+      "rev": 2485,
+      "date": "2025-10-09",
+      "author": "Morrow",
+      "lines": [
+        "Settings resolution maximums now apply to DDS files and 16-bit channel PNG/JPGs. KTX is still unresized for the time being."
+      ]
+    },
+    {
+      "rev": 2486,
+      "date": "2025-10-09",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Rationalized two GenerateSpacedPoints methods (one for bound and one for unbound) into one method."
+      ]
+    },
+    {
+      "rev": 2487,
+      "date": "2025-10-09",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Moved engine definitions from vehicles to parts.",
+        "Merged thrusters and engines for most runtime purposes.",
+        "Renamed thruster to rocket in several instances where the object could either be a thruster or an engine."
+      ]
+    },
+    {
+      "rev": 2488,
+      "date": "2025-10-09",
+      "author": "Linx-RW",
+      "lines": [
+        "Resized all terrain textures to more appropriate resolutions.",
+        "Improved Earth's cliff texture blending.",
+        "Removed unused Mars diffuse and normal maps."
+      ]
+    },
+    {
+      "rev": 2489,
+      "date": "2025-10-09",
+      "author": "Linx-RW",
+      "lines": [
+        "Optimized the default mesh collection. Number of triangles reduced from ~5 million to ~1.6 million. The new mesh collection halves in resolution every log2 meters from the surface which means each LOD should be the same size on the screen, eliminating subpixel triangles that were previously harming performance from orbit."
+      ]
+    },
+    {
+      "rev": 2490,
+      "date": "2025-10-10",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Some adjustments to the game time and sim speed UI to make it more consistent."
+      ]
+    },
+    {
+      "rev": 2491,
+      "date": "2025-10-10",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Some more tweaks to the game time UI layout. Dean can fix it if he still doesn't like it.",
+        "Adjusted the timeout on the transfer planner worker tasks to allow a bit longer especially when it's calculating transfers to the outer planets on slower machines."
+      ]
+    },
+    {
+      "rev": 2492,
+      "date": "2025-10-10",
+      "author": "Morrow",
+      "lines": [
+        "Added first set of fuel tank parts."
+      ]
+    },
+    {
+      "rev": 2493,
+      "date": "2025-10-10",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed the font scale in the game time UI."
+      ]
+    },
+    {
+      "rev": 2494,
+      "date": "2025-10-10",
+      "author": "Morrow",
+      "lines": [
+        "Added medium service module part."
+      ]
+    },
+    {
+      "rev": 2495,
+      "date": "2025-10-10",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added a quick and dirty routine to remap thruster key bindings based on part position and orientation.",
+        "Regenerate flight computer vehicle config data when a vehicle is edited.",
+        "Recompute bounding sphere radius when a vehicle is edited."
+      ]
+    },
+    {
+      "rev": 2496,
+      "date": "2025-10-10",
+      "author": "Dan Southon",
+      "lines": [
+        "Stabilized shadow volumes for vessels and adjusted planet volumes.",
+        "Added debug visualizers for the sun shadow frustums, visible when the debug window is open"
+      ]
+    }
+  ]
+}

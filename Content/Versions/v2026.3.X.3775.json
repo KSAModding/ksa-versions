@@ -1,0 +1,139 @@
+{
+  "build": "2026.3.5.3775",
+  "date": "2026-03-09",
+  "fromRevision": 3759,
+  "toRevision": 3775,
+  "commits": [
+    {
+      "rev": 3760,
+      "date": "2026-03-05",
+      "author": "lghassen",
+      "lines": [
+        "Move cascaded shadow sampling function out of volumetric exhausts and back into the CascadedShadows include file"
+      ]
+    },
+    {
+      "rev": 3761,
+      "date": "2026-03-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed almost all XML mass units being off by a factor of 1000."
+      ]
+    },
+    {
+      "rev": 3762,
+      "date": "2026-03-06",
+      "author": "Morrow",
+      "lines": [
+        "Large overhaul of the XML<->game object<->rendering relationship for all of current part rendering. Rendering is now handled via the part module system. Lights defined by parts are currently broken but I should have that patched up by the end of the day. Quite a few follow on changes should be made easier by this."
+      ]
+    },
+    {
+      "rev": 3763,
+      "date": "2026-03-06",
+      "author": "Morrow",
+      "lines": [
+        "Fixed part light regression. They now work again and are added via the module system."
+      ]
+    },
+    {
+      "rev": 3764,
+      "date": "2026-03-06",
+      "author": "Morrow",
+      "lines": [
+        "Removed some no longer used light stuff that I missed in the last commit."
+      ]
+    },
+    {
+      "rev": 3765,
+      "date": "2026-03-06",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a residual problem with spans in ResourceManagerBase by clearing them before reusing them."
+      ]
+    },
+    {
+      "rev": 3766,
+      "date": "2026-03-06",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed some IMGUI ends that were missing for different logic in the part context windows."
+      ]
+    },
+    {
+      "rev": 3767,
+      "date": "2026-03-06",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Dock and Undock logic to DockingPort module. Now working."
+      ]
+    },
+    {
+      "rev": 3768,
+      "date": "2026-03-06",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Scrubbed the mass of every natural body in the game now that the XML unit conversions are correct. Fixed _many_ incorrect values, most egregiously Mars."
+      ]
+    },
+    {
+      "rev": 3769,
+      "date": "2026-03-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Configure the radial decoupler part to function as a decoupler."
+      ]
+    },
+    {
+      "rev": 3770,
+      "date": "2026-03-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed all the stages getting merged and mashed together when docking and undocking. This is not the end result, we have other work to do here to make our stage/sequence changes. But this fixes the current so at least the stages don't just all end up smashed together."
+      ]
+    },
+    {
+      "rev": 3771,
+      "date": "2026-03-09",
+      "author": "Morrow",
+      "lines": [
+        "Added rendering of windows to the IVA. The 'glass' shader may need another pass given the different scope."
+      ]
+    },
+    {
+      "rev": 3772,
+      "date": "2026-03-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "De/Serialize old vehicle names and restore them when docking/undocking vehicles."
+      ]
+    },
+    {
+      "rev": 3773,
+      "date": "2026-03-09",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added IVA raytracing.",
+        "Added raytraced reflections.",
+        "Added raytraced indirect lighting.",
+        "Added raytraced direct lighting and shadows.",
+        "Added MeshRaytraced.frag.",
+        "Added backend support for bottom level acceleration structures (Describes the shape of the raytraced meshes).",
+        "Added backend support for top level acceleration structures (Contains transformations for raytraced meshes).",
+        "Added cheap blur to soften the edges of direct lighting.",
+        "Added non-temporal 2 pass edge aware denoiser/blur for indirect lighting.",
+        "Minor refactor to prepass renderer.",
+        "Raytracing uses prepass normals allowing assets not included in the raytraced scene to still recieve raytraced reflections and lighting without contributing (Currently not used).",
+        "Meshes recieving raytracing now render in a seperate 'rasterized raytracing' pass."
+      ]
+    },
+    {
+      "rev": 3774,
+      "date": "2026-03-09",
+      "author": "rocket2guns",
+      "lines": [
+        "Added restart popup confirmation for IVA raytracing."
+      ]
+    }
+  ]
+}

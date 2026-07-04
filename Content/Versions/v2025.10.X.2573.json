@@ -1,0 +1,162 @@
+{
+  "build": "2025.10.5.2573",
+  "date": "2025-10-30",
+  "fromRevision": 2554,
+  "toRevision": 2573,
+  "commits": [
+    {
+      "rev": 2555,
+      "date": "2025-10-28",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed issue where burn markers where not being drawn if they were subsequent burns on the same patch."
+      ]
+    },
+    {
+      "rev": 2556,
+      "date": "2025-10-28",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed confusion by only allowing player to create burns for the currently controlled vehicle."
+      ]
+    },
+    {
+      "rev": 2557,
+      "date": "2025-10-29",
+      "author": "morrow-rw",
+      "lines": [
+        "Added SubPart XML flag for what SubParts should be gimbaled in an engine Part.",
+        "Added RocketState variable for the physics thread to update an engine's gimbal.",
+        "Added SubPart support for rendering with gimbal rotations."
+      ]
+    },
+    {
+      "rev": 2558,
+      "date": "2025-10-28",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Use the atmosphere LUTs on the terrain to add atmospheric transmittance, ambient, and a plausible environment specular",
+        "Fade out wave height queries away from projection origin",
+        "Don't change the wave seed on applying graphics settings"
+      ]
+    },
+    {
+      "rev": 2559,
+      "date": "2025-10-28",
+      "author": "Linx-RW",
+      "lines": [
+        "Improved craft collision with terrain using the Erosion modifier.",
+        "Fixed Decal modifier rotating arbitrarily about the surface normal vector when varying the longitude."
+      ]
+    },
+    {
+      "rev": 2560,
+      "date": "2025-10-29",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed confusion by only allowing player to create burns for the currently controlled vehicle. (missed a file from last commit)"
+      ]
+    },
+    {
+      "rev": 2561,
+      "date": "2025-10-29",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed burns not matching themselves to the correct patch."
+      ]
+    },
+    {
+      "rev": 2562,
+      "date": "2025-10-29",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed patch colour for burn patches not being set to the parent patch colour shade.",
+        "Fixed patch colour darkening for each subsequent patch."
+      ]
+    },
+    {
+      "rev": 2563,
+      "date": "2025-10-29",
+      "author": "Linx-RW",
+      "lines": [
+        "Increased the amplitude of Earth's sand dunes."
+      ]
+    },
+    {
+      "rev": 2564,
+      "date": "2025-10-30",
+      "author": "GitHub",
+      "lines": [
+        "Updated the Brutal.Vulkan package to version 0.1.1, this is a huge refactor that affects almost everything Vulkan related in the project."
+      ]
+    },
+    {
+      "rev": 2565,
+      "date": "2025-10-30",
+      "author": "JoshRW",
+      "lines": [
+        "Add shader hot reloader. The reloader can be turned on in the settings menu under \"Graphics -> Debug -> Shader hot reloading\". The code is integrated into the ModLibrary shader loading code. When a shader file is changed in the project directory, the file is copied into the runtime directory. Currently, only the shader files in the project directory are supported, not the files in the runtime directory (this will be fixed soon). Include files are also handled by reloading all dependencies.",
+        "Add shader compiler include resolve callbacks.",
+        "Add file watcher.",
+        "Add filepath and Content path utility code.",
+        "Fix ModLibrary using Windows only path separators."
+      ]
+    },
+    {
+      "rev": 2566,
+      "date": "2025-10-30",
+      "author": "rocket2guns",
+      "lines": [
+        "Changed default controled vehicle to the New Gemini craft, the one that utilizes our first parts. Includes a helper function to figure out the orbit camera settings."
+      ]
+    },
+    {
+      "rev": 2567,
+      "date": "2025-10-30",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Bindless texture support added"
+      ]
+    },
+    {
+      "rev": 2568,
+      "date": "2025-10-30",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Deleting unused rendering code"
+      ]
+    },
+    {
+      "rev": 2569,
+      "date": "2025-10-30",
+      "author": "josh",
+      "lines": [
+        "Delete ShaderPaths.cs. We have been using the ModLibrary to load shaders instead, so this file is redundant."
+      ]
+    },
+    {
+      "rev": 2570,
+      "date": "2025-10-30",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed burn patches should apply BurnPatchColor"
+      ]
+    },
+    {
+      "rev": 2571,
+      "date": "2025-10-30",
+      "author": "JoshRW",
+      "lines": [
+        "Rename \"Vessel reflections\" graphics checkbox to \"Vessel ambient lighting\"."
+      ]
+    },
+    {
+      "rev": 2572,
+      "date": "2025-10-30",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "NuGet warning NU1507 is now suppressed from logging. It is a harmless warning and can effectively be ignored."
+      ]
+    }
+  ]
+}

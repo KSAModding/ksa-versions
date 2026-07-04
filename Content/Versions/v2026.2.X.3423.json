@@ -1,0 +1,38 @@
+{
+  "build": "2026.2.4.3423",
+  "date": "2026-02-06",
+  "fromRevision": 3419,
+  "toRevision": 3423,
+  "commits": [
+    {
+      "rev": 3420,
+      "date": "2026-02-06",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ability to change the flow rule for each engine's context menu.",
+        "Added flow rules to ResourceManager. For now we have four defined.",
+        "Changed default flow rule for engines to be furtherest to nearest tank - only in same stage as the engine.",
+        "Fixed the UI draw flow graph to actually draw correctly based on the selected flow mode."
+      ]
+    },
+    {
+      "rev": 3421,
+      "date": "2026-02-06",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed stage highlighting in the debug vehicle editor getting undone by mouse hover highlighting.",
+        "Fixed flow graph drawing in the debug vehicle editor."
+      ]
+    },
+    {
+      "rev": 3422,
+      "date": "2026-02-06",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added logic to set stages on parent parts up to decouplers to match engine stage when attaching an engine in the debug vehicle editor.",
+        "Added logic to pre-fill tanks on parent parts up to decouplers when adding a new engine in the debug vehicle editor.",
+        "This is some basic logic for now, and will most likely change."
+      ]
+    }
+  ]
+}

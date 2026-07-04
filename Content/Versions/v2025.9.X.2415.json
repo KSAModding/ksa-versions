@@ -1,0 +1,90 @@
+{
+  "build": "2025.9.13.2415",
+  "date": "2025-09-23",
+  "fromRevision": 2404,
+  "toRevision": 2415,
+  "commits": [
+    {
+      "rev": 2405,
+      "date": "2025-09-22",
+      "author": "rocket2guns",
+      "lines": [
+        "Fixed making additional modfolders would cause an exception. This was caused by the async loading task being embedded inside the load for a modfolder, meaning multiple instances were generated when multiple modfolders exists. This has been moved outside. Next task is to split 'core' into submods to allow easier total conversion mods and better data separation down the line."
+      ]
+    },
+    {
+      "rev": 2406,
+      "date": "2025-09-17",
+      "author": "Linx-RW",
+      "lines": [
+        "Added gradient evaluation to CubicHermiteSpline.",
+        "Changed terrain modifier LUT from R16 storing value to R16G16 storing value and gradient."
+      ]
+    },
+    {
+      "rev": 2407,
+      "date": "2025-09-17",
+      "author": "Linx-RW",
+      "lines": [
+        "Added gradient voronoi noise function.",
+        "Added simple craters gradient function (stage 1).",
+        "Added 'Gradient' map type to the planet map exporter.",
+        "GetHeightMetersAt() in HeightFuncs.glsl now returns the gradient as well as the height value."
+      ]
+    },
+    {
+      "rev": 2408,
+      "date": "2025-09-20",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed derivative/gradient miscalculation in the Simplex Noise library where subsequent octave gradients were not being rescaled by the new frequency."
+      ]
+    },
+    {
+      "rev": 2409,
+      "date": "2025-09-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Changed procedural modifier LUT format from R16G16Unorm to R16G16SFloat to allow negative values for cubic hermite spline derivatives.",
+        "Added Eroded Craters modifier."
+      ]
+    },
+    {
+      "rev": 2410,
+      "date": "2025-09-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Added shader logic and CPU logic for the new eroded craters modifier.",
+        "Fixed errors in the simplex noise library where the gradient was incorrectly scaled.",
+        "Improved gradient calculation in the erosion function. Not yet sure if this is correct but it's a decent approximation.",
+        "Corrected modifier gradients by scaling by the celestial radius reciprocal. Not all modifiers return correct gradients yet but this scaling was missing."
+      ]
+    },
+    {
+      "rev": 2411,
+      "date": "2025-09-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Added a gradient visualisation to the planet exporter which computes the surface normal from the planet gradient rather than by using central differences. This will be useful for validating whether modifier gradients are correct.",
+        "Adjusted existing Erosion modifiers on Earth and Mars to respect the changes to the Erosion function."
+      ]
+    },
+    {
+      "rev": 2412,
+      "date": "2025-09-23",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed calculation of Argument of Periapsis when creating orbits where our Ascending Node is in the plane. In this case we must use the two dimension equation."
+      ]
+    },
+    {
+      "rev": 2413,
+      "date": "2025-09-23",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed planet map exporter not disposing gradient map resources.",
+        "Fixed planet map exporter always opening with 4096 x 2048 resolution. Now defaults to 1024 x 512 unless a different viewport size is provided."
+      ]
+    }
+  ]
+}

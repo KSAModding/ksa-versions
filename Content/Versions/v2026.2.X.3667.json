@@ -1,0 +1,98 @@
+{
+  "build": "2026.2.35.3667",
+  "date": "2026-02-24",
+  "fromRevision": 3656,
+  "toRevision": 3667,
+  "commits": [
+    {
+      "rev": 3657,
+      "date": "2026-02-23",
+      "author": "Dan Southon",
+      "lines": [
+        "WIP Clean up of shadow shader includes.",
+        "Moved shadow and punctual includes out of common and into lighting.",
+        "Started splitting common shadow functions into it's own include.",
+        "Added a 0.5 to CSM ViewDepthPadding",
+        "Added Sampler Macros to TextureSet.glsl.",
+        "Added a try catch to be a bit more verbal when a shader include fails on launch."
+      ]
+    },
+    {
+      "rev": 3658,
+      "date": "2026-02-23",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed buffer mapping safety issues in the ground track view, planet exporter and ground clutter renderers. This should improve Linux stability."
+      ]
+    },
+    {
+      "rev": 3659,
+      "date": "2026-02-24",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Fix for the remaining buffer mapping issues causing problems with Linux+AMD"
+      ]
+    },
+    {
+      "rev": 3660,
+      "date": "2026-02-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed issue where orbit was being incorrectly classifed as parabolic causing bizarre teleporting to occur.",
+        "Changed constructor for OrbitData to be defined from Periapsis rather than SemiMajorAxis.",
+        "Fixed bug where display of parabolic orbit velocity in UI caused crash because it was attempting to use MeanAnomaly."
+      ]
+    },
+    {
+      "rev": 3661,
+      "date": "2026-02-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Remove SMA constructor for OrbitData. We now use Periapsis always.",
+        "Changed Debug set orbit tool to only allow input of Periapsis."
+      ]
+    },
+    {
+      "rev": 3662,
+      "date": "2026-02-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fix out of range errors when displaying Flightplan UI and staging vehicle."
+      ]
+    },
+    {
+      "rev": 3663,
+      "date": "2026-02-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed Orbit constructor to use SMA and Mu to determine Orbit type.",
+        "Tweaked Static Orbit Constructor from State vectors to accurately handle false parabolic orbits by checking orbital energy and correcting eccentricity so we no longer get Parabolic Orbits that do not actually escape (not enough energy)."
+      ]
+    },
+    {
+      "rev": 3664,
+      "date": "2026-02-23",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Update vehicle kinematic states when a discontinuous change in vehicle configuration occurs. This should help prevent jumps caused by the torque-free rotation algorithm propagating an old initial state past the discontinuity."
+      ]
+    },
+    {
+      "rev": 3665,
+      "date": "2026-02-23",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed all redundant singularity checks from the asymmetric Euler-Poinsot algorithm. These have been replaced by a single check to determine the proximity of the angular momentum vector to the intermediate axis."
+      ]
+    },
+    {
+      "rev": 3666,
+      "date": "2026-02-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Renamed PartComponent to Module and all similar. This is to avoid any potential confusions with other game engines that like to use the name \"Compo",
+        "nent\"."
+      ]
+    }
+  ]
+}

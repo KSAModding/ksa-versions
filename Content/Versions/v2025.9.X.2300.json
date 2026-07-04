@@ -1,0 +1,16 @@
+{
+  "build": "2025.9.2.2300",
+  "date": "2025-09-04",
+  "fromRevision": 2298,
+  "toRevision": 2300,
+  "commits": [
+    {
+      "rev": 2299,
+      "date": "2025-09-04",
+      "author": "Dean Hall",
+      "lines": [
+        "Fixed nasty bug that would cause RCS spam. This was because of a serious issue with the pattern I implemented to avoid allocation. It was filling the span, which would leave garbage values inside. Insidiously, it worked fine for single movements - just not the flight computer control, by pure chance. Refactored to still use a fixed array, but make it nullable. This was a very silly, and dangerous mistake on my part. Credit: Anth for finding."
+      ]
+    }
+  ]
+}

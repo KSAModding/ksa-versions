@@ -1,0 +1,56 @@
+{
+  "build": "2025.12.25.3047",
+  "date": "2025-12-11",
+  "fromRevision": 3041,
+  "toRevision": 3047,
+  "commits": [
+    {
+      "rev": 3042,
+      "date": "2025-12-10",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Eliminate redundant combustor entries on the kitten MMU - all thrusters can share a single entry because we copy it when converting to runtime entities anyway."
+      ]
+    },
+    {
+      "rev": 3043,
+      "date": "2025-12-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Added terrain normal alignment to ground clutter.",
+        "Ground clutter is now able to sample the exact terrain height, processing the procedural modifiers. This results in a second compile of HeightFuncs.glsl which is slow on AMD due to the switch-case.",
+        "Added automatic shader compilation depending on whether ray queries are supported or not. If supported, a global macro 'RAY_QUERIES_SUPPORTED' is defined for shaders.",
+        "Removed unused ground clutter functions.",
+        "Removed unused 'meshTriangleIndex' field from ground clutter ObjectData struct."
+      ]
+    },
+    {
+      "rev": 3044,
+      "date": "2025-12-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Added new graphics section \"Terrain\".",
+        "Added new graphics setting \"Ground Clutter\", off by default while it's WIP.",
+        "Moved terrain tessellation graphics setting into the ground clutter section.",
+        "Moved ground clutter renderer out of main Program into PlanetRenderer."
+      ]
+    },
+    {
+      "rev": 3045,
+      "date": "2025-12-11",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed Multisampling from AMD 5000 and 6000 series GPUs. There are currently severe graphical artifacts caused by Multisampling on these GPUs."
+      ]
+    },
+    {
+      "rev": 3046,
+      "date": "2025-12-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added serialization and deserialization of InstanceId of parts and subparts into game save files. This will allow us to identify the correct instances of parts and subparts for serialization of additional data at the part and subpart level.",
+        "Fixed display of InstanceId ion SubPart and Part Menu UIs  in the Vehicle Editor tool."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+{
+  "build": "2026.6.2.4531",
+  "date": "2026-06-04",
+  "fromRevision": 4510,
+  "toRevision": 4531,
+  "commits": [
+    {
+      "rev": 4511,
+      "date": "2026-05-29",
+      "author": "lghassen",
+      "lines": [
+        "Use bindless for cloud textures",
+        "Split volumetric cloud fields into a separate reference for a more readable config",
+        "Separate 2d and volumetric textures",
+        "Check for single channel cloud maps and use the r channel as alpha",
+        "when for them",
+        "Separate cloud tile selector map from global cloud map",
+        "Add specialization constants to detect when volumetric coverage and tileSelector textures are cubemaps",
+        "Make 2d cloud normalmaps support cubemaps, make cloud shadows on terrain/ocean use bindless",
+        "Make clouds shadow volume compatible with cubemaps and single channel textures",
+        "Encode earth cloud maps to ktx BC4 cubemaps",
+        "Sync earth base and top layers to avoid duplication-like effect on 2d",
+        "clouds when they are initially drifting past each other"
+      ]
+    },
+    {
+      "rev": 4512,
+      "date": "2026-05-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added bounding box collision physics between vehicles and terrain.",
+        "Deleted the symplectic Euler integrator.",
+        "Disabled terrain collision particle effects temporarily because they were depending on a contact manifold that no longer exists.",
+        "Split KinematicStates into several pieces that can be updated at different times. These are joined by reference into a PhysicsStates ref struct for processing.",
+        "Store kinematic angular velocity is the PHYS frame rather than the BODY frame."
+      ]
+    },
+    {
+      "rev": 4513,
+      "date": "2026-06-01",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed issue if you rotate a part in the debug vehicle editor all of it's children rotate correctly with it. But as soon as you try and move it again all the children rotate back to their original rotation."
+      ]
+    },
+    {
+      "rev": 4514,
+      "date": "2026-06-01",
+      "author": "lghassen",
+      "lines": [
+        "Improve cloud upscaling and temporal accumulation: Reduce and better absorb noise visible on clouds from orbit, fix long streaks left on clouds by rockets in orbits most visible in time compression"
+      ]
+    },
+    {
+      "rev": 4515,
+      "date": "2026-06-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Go back to making lazy copies of module states. This was changed as part of persistent vehicle update tasks but it didn't actually make sense."
+      ]
+    },
+    {
+      "rev": 4516,
+      "date": "2026-06-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Created ReadOnlyPhysicsStates for situations where we only want read-only access (e.g. in module updaters). Moved most of the existing functionality to static methods and made thin forwarding methods on both PhysicsStates and ReadOnlyPhysicsStates.",
+        "Scrubbed existing uses and converted to the read-only version where possible."
+      ]
+    },
+    {
+      "rev": 4517,
+      "date": "2026-06-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Renamed SubPartTemplate.cs -> GimbalReference.cs since that's all it contains."
+      ]
+    },
+    {
+      "rev": 4518,
+      "date": "2026-06-02",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added experimental particle toggle under the debug menu. This allows us to easily disable WIP particle effects from running while they are still being worked on. This has been applied to the launch particle effects, they are now disabled by default.",
+        "Volumetric particles now have culling disabled again.",
+        "Tweaked the volumetric fragment shader to have better depth and a rough shadow implementation. This makes the effect looks less flat, as previously when multiple volumetric particles were stacked ontop of each other, the output would just be a solid color, without any proper depth. This is still a WIP implementation.",
+        "Volumetric particles now now have a lifespan relative to their scale."
+      ]
+    },
+    {
+      "rev": 4519,
+      "date": "2026-06-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Increased the read-onlyness of ReadOnlyPhysicsStates."
+      ]
+    },
+    {
+      "rev": 4520,
+      "date": "2026-06-02",
+      "author": "lghassen",
+      "lines": [
+        "Fix celestials appearing through clouds after reducing noise and trailing on clouds from orbit"
+      ]
+    },
+    {
+      "rev": 4521,
+      "date": "2026-06-02",
+      "author": "lghassen",
+      "lines": [
+        "Fix alignment and bindings for ocean cloud shadows"
+      ]
+    },
+    {
+      "rev": 4522,
+      "date": "2026-06-02",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Upgrade Bepu to 2.5.0-beta.29.",
+        "Create a global Shapes buffer and buffer pool so that we can share part geometry between vehicles and avoid migrating shape data between bubbles."
+      ]
+    },
+    {
+      "rev": 4523,
+      "date": "2026-06-03",
+      "author": "JoshRW",
+      "lines": [
+        "Distant glints v2. They are still enabled via the Debug menu as there are some existing bugs, such as glints not fading out with distance quick enough and vehicles disappearing above earth when distant glints are enabled. Distant glints now shine a lot brighter and take into account the object to camera orientation to simulate vehicles glinting at different rotations. This is done by taking the angle between the object forward vector and camera forward vector and using that angle to sample irregularity and specular curves for the vehicle. The valuse from these curves are then fed into a glint equation which modifies the pixel diameter of the distant celestial rendering. Curve editors were also added to modify these irregularity and specular curves for the vehicle, which is loaded from XML. The curve editor can be accessed from the debug menu. Distant glints are still only enabled for Kittens as they are the only distant objects at the moment to have a material and shape that can glint.",
+        "Modify CubicHermiteSplineEditor to add FlatZero spline and editor calmps for distant glints."
+      ]
+    },
+    {
+      "rev": 4524,
+      "date": "2026-06-03",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Visual adjustments to launch ice particles.",
+        "Improved volumetric particles fading out properly. Previously there was a noticable pop when they were culled due to the density not decreasing in time with the particles age accurately.",
+        "Adjusted spawn frequency of ice particles to create a more consistent stream of particles, while also reducing the total number of particles spawned. Many of these particles were too small to notice but were tanking performance at certain angles."
+      ]
+    },
+    {
+      "rev": 4525,
+      "date": "2026-06-03",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Cleaned up volumetric particles to reduce artifacts at the edge of the meshes where the fragment shader wasn't fading out properly causing some harsh edges and sudden cut offs from some angles."
+      ]
+    },
+    {
+      "rev": 4526,
+      "date": "2026-06-02",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added ColliderModule so that parts can define physics colliders.",
+        "Added Box, Capsule, Cylinder, and Sphere types.",
+        "Moved MeshViewModule into the Modules folder with its friends."
+      ]
+    },
+    {
+      "rev": 4527,
+      "date": "2026-06-03",
+      "author": "JoshRW",
+      "lines": [
+        "Set better specular and irregular curves in XML for distant glints on all Kittens. The previous curves were configured for testing instead of being realistic."
+      ]
+    },
+    {
+      "rev": 4528,
+      "date": "2026-06-03",
+      "author": "JoshRW",
+      "lines": [
+        "Move distant glints debug checkbox next to the distant glints editor toggle."
+      ]
+    },
+    {
+      "rev": 4529,
+      "date": "2026-06-03",
+      "author": "GitHub",
+      "lines": [
+        "Improved cascaded shadow quality by tightening how shadow cascades are calculated. This allows each cascade to use its available resolution more effectively, producing sharper and more consistent shadows.",
+        "Added a 3D cascade visualizer to the cascaded shadow system debug window, giving us a better visual representation of what the cascades are doing.",
+        "Added Percentage-Closer Soft Shadows (PCSS) support for cascaded shadows. PCSS is now the default shadow filter and provides more natural soft shadow edges based on sun size, while also giving us room to further refine penumbra behavior in future updates.",
+        "Added Shadow Filter setting for cascaded shadows. Users can now select from hard (pixelated shadows but best performance), pcf (slight fixed blur to soften the shadow edges, slightly higher performance cost than hard) and pcss (soft shadows related to sun size but at a much higher performance cost).",
+        "Added a DrawComboBox that allows for LString Tooltips, used to explain the Shadow Filter settings when the user hovers over an option.",
+        "Added IShadowTechniqueConfig and ShadowTechniques.glsl as a base skeleton to allow for swapping how shadow system functions in the future (DepthCompare, Variance, Moments, etc)",
+        "Upgraded DepthRenderTexture to ShadowRenderTarget to allow for color channels that are needed by Variance and Moment shadow techniques.",
+        "Added Golden Ratio Fractional Part to MathCommon.glsl",
+        "Added TEXTURE_ARRAY_SAMPLER and SAMPLE_ARRAY_TEXTURE defines to TextureSet.glsl",
+        "Added IsShadowCoordInBounds to ShadowCommon.glsl",
+        "Changed ApplyNormalBias to be in texel space instead of world in ShadowCommon.glsl",
+        "Added Float2Ex to VectorEx and added Orient2D, InScreenTriangle, InScreenQuad and InScreenRect extension methods."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "build": "2025.9.3.2279",
+  "date": "2025-09-02",
+  "fromRevision": 2270,
+  "toRevision": 2279,
+  "commits": [
+    {
+      "rev": 2271,
+      "date": "2025-09-01",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix validation errors with ocean rendertarget layouts when MSAA is off"
+      ]
+    },
+    {
+      "rev": 2272,
+      "date": "2025-09-01",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed planet editor which stopped working after recent buffer alignment changes."
+      ]
+    },
+    {
+      "rev": 2273,
+      "date": "2025-09-02",
+      "author": "Morrow",
+      "lines": [
+        "Fixed normals in the no-push version of PBR rendering being incorrectly transformed when non-identity scale values were in use."
+      ]
+    },
+    {
+      "rev": 2274,
+      "date": "2025-09-02",
+      "author": "Morrow",
+      "lines": [
+        "When in non-debug builds, the shader compiler now optimizes for performance. Interesting to note, glslc seems to default to performance optimizations but libshaderc (whether normally or due to interop shenanigans) defaults to no optimizations."
+      ]
+    },
+    {
+      "rev": 2275,
+      "date": "2025-09-02",
+      "author": "Rocket",
+      "lines": [
+        "Added first pass of save window. Available in the `File` menu option. Double-clicking loads a save. Shows a sortable list of all the saves and allows creation of new ones. Simple text input captured for naming new files. Next steps are content menu and other improvements."
+      ]
+    },
+    {
+      "rev": 2276,
+      "date": "2025-09-02",
+      "author": "Rocket",
+      "lines": [
+        "Added second pass to save/load menu. Allow sorting by any column. Tooltip help indicator lets you know how to use. Deletion and overwriting are available, and subject to confirm popups."
+      ]
+    },
+    {
+      "rev": 2277,
+      "date": "2025-09-02",
+      "author": "Rocket",
+      "lines": [
+        "Added loading confirmation. Now when loading via the save/load menu, you will be prompted if you want to load cancelling the current game."
+      ]
+    }
+  ]
+}

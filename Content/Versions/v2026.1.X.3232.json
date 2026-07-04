@@ -1,0 +1,337 @@
+{
+  "build": "2026.1.2.3232",
+  "date": "2026-01-15",
+  "fromRevision": 3194,
+  "toRevision": 3232,
+  "commits": [
+    {
+      "rev": 3195,
+      "date": "2026-01-08",
+      "author": "Linx-RW",
+      "lines": [
+        "Started initial pass for rendering multiple objects within an ecotype for ground clutter.",
+        "Added debug meshes for text letters ABCDE.",
+        "Removed shared memory LOD count accumlation from ground clutter evaluation shader, the performance benefit was negligible and it only complicates things for multi-object support."
+      ]
+    },
+    {
+      "rev": 3196,
+      "date": "2026-01-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Added support for multiple objects per ground clutter ecotype. These are different meshes belonging to the same family of clutter and are rendered with their own set of LODs in one draw submission.",
+        "Added two clutter object types to Luna, one renders numbers 1 to 5 depending on LOD and the other renders letters A to E depending on LOD. Commented out by default. For now, the distribution shader picks randomly between one of the two object types and is hardcoded to pick between only two, this will be changed in the future.",
+        "Fixed computing the prefix sum for ground clutter LODs inside the reordering shader, which was very dumb as this could not synchronized between workgroups and caused objects to flicker.",
+        "Added compute shader for calculating the prefix sum of the all LODs for all object types. Currently this brute forces the prefix sum in a single thread which is fast enough for now but will need improving if we have many ecotypes with many object types.",
+        "Fixed missing barrier for ground clutter LOD offsets which resulted in rare object flickering."
+      ]
+    },
+    {
+      "rev": 3197,
+      "date": "2026-01-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed missing cleanup of new ground clutter resources on dispose."
+      ]
+    },
+    {
+      "rev": 3198,
+      "date": "2026-01-12",
+      "author": "Morrow",
+      "lines": [
+        "Made the TRS sections of the Part/SubPart menus (visible when right clicking on a part in the debug editor) a bit better."
+      ]
+    },
+    {
+      "rev": 3199,
+      "date": "2026-01-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed resource graph processing to prebuild processing orders for closest/furtherest first and to consume/produce using these orders."
+      ]
+    },
+    {
+      "rev": 3200,
+      "date": "2026-01-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Removed unncessary debug logging from last commit."
+      ]
+    },
+    {
+      "rev": 3201,
+      "date": "2026-01-12",
+      "author": "Morrow",
+      "lines": [
+        "Cleaned up some doubled part symmetry code."
+      ]
+    },
+    {
+      "rev": 3202,
+      "date": "2026-01-12",
+      "author": "Morrow",
+      "lines": [
+        "Added symmetrical inheritence functionality to part connectors. Still hunting an issue with connectors not being connected properly but the symmetry is working.\""
+      ]
+    },
+    {
+      "rev": 3203,
+      "date": "2026-01-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added part highlighting in flight.",
+        "Added part action menu by clicking on highlighted part in flight."
+      ]
+    },
+    {
+      "rev": 3204,
+      "date": "2026-01-12",
+      "author": "Morrow",
+      "lines": [
+        "Fixed some problems with some symmetry parts not being cleaned up nicely which could cause big lag."
+      ]
+    },
+    {
+      "rev": 3205,
+      "date": "2026-01-12",
+      "author": "Dan Southon",
+      "lines": [
+        "Added new ImageBarrierInfo and ImageTransition to aid in pipeline barrier usage",
+        "Added debug names for image views in ThumbnailRenderer.",
+        "Added a generic function for updating and getting descriptor sets in SubPartModel, removing duplicate code.",
+        "Fixed Image memory barrier inconsistencies",
+        "Fixed buffer barrier for OceanRenderer, PlanetFrustumCulling and partial fix to PlanetRenderer"
+      ]
+    },
+    {
+      "rev": 3206,
+      "date": "2026-01-12",
+      "author": "Morrow",
+      "lines": [
+        "Changed mouse part hover outside the debug editor to use a different shader for highlighting. Needs some work more still."
+      ]
+    },
+    {
+      "rev": 3207,
+      "date": "2026-01-13",
+      "author": "Morrow",
+      "lines": [
+        "Fixed engine gimbal objects not populating from XML correctly."
+      ]
+    },
+    {
+      "rev": 3208,
+      "date": "2026-01-13",
+      "author": "Morrow",
+      "lines": [
+        "Fixed engine gimbal transforms having their parent's transform rather than their own."
+      ]
+    },
+    {
+      "rev": 3209,
+      "date": "2026-01-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Added randomized object type selection for ground clutter. For now there are no selection rules or probabilities.",
+        "Changed storage buffer read to instance vertex input rate for ground clutter, which should improve performance for meshes with many vertices.",
+        "Fixed BuildDrawCommands ground clutter stage only dispatching one workgroup causing some objects to skip rendering.",
+        "Added a warning to SimpleVkMeshAtlas if trying to obtain a vertex buffer that does not exist.",
+        "Added a means of obtaining the planet renderer's GPUTextureSystem and cloud shadows renderer descriptor set and descriptor set layout. This is used by ground clutter rather than passing all the renderers through to the ecotype data.",
+        "Added PBRMaterialReference to ground clutter on the ecotype level. In the future, we'll want to support materials per-object per-LOD, so moving this to the LOD level is the next course of action."
+      ]
+    },
+    {
+      "rev": 3210,
+      "date": "2026-01-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Added rocks to the Moon.",
+        "Added 7 test rock mesh variations each with 5 LODs. I am not an artist, I whipped these up in a couple of hours.",
+        "Added a diffuse, normal and ORM texture atlas for the new rocks.",
+        "The new Moon rocks are now active in XML, meaning enabling the Ground Clutter graphics option (off by default) will now render them."
+      ]
+    },
+    {
+      "rev": 3211,
+      "date": "2026-01-13",
+      "author": "Morrow",
+      "lines": [
+        "Fixed connector serializing being completely wrong after fixing a different problem with connector serializing.",
+        "The default vehicles are updated with correct connector data."
+      ]
+    },
+    {
+      "rev": 3212,
+      "date": "2026-01-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added lieft click elsewhere in flight will close all open part windows.",
+        "Added Decouple command to part window. Will decouple the part and it's children into a new separate vehicle. This is temporary, eventually will be replaced with actual separator part functionality. Also, will cause a hot mess if you decouple a part with no defined mass. So beware.",
+        "Fixed part positioning when creating new vehicles from the vehicle editor (was offsetting incorrectly since the mass changes were made a few weeks ago)."
+      ]
+    },
+    {
+      "rev": 3213,
+      "date": "2026-01-13",
+      "author": "Morrow",
+      "lines": [
+        "Added a mouse hover highlight color setting to the interface tab of the game settings."
+      ]
+    },
+    {
+      "rev": 3214,
+      "date": "2026-01-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added small fake force for now when parts decouple."
+      ]
+    },
+    {
+      "rev": 3215,
+      "date": "2026-01-13",
+      "author": "Morrow",
+      "lines": [
+        "Modified part left mouse button to open the part menu to be right mouse button and added some auto-closing logic. Pinning menus is on the TODO list."
+      ]
+    },
+    {
+      "rev": 3216,
+      "date": "2026-01-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Added rotation and scale variation to ground clutter, currently hardcoded to break up the uniformity.",
+        "Increased frustum culling sphere radius to prevent pop-in."
+      ]
+    },
+    {
+      "rev": 3217,
+      "date": "2026-01-13",
+      "author": "Morrow",
+      "lines": [
+        "Updated the Core Propulsion Set A asset XML to signify they use a heat map."
+      ]
+    },
+    {
+      "rev": 3218,
+      "date": "2026-01-13",
+      "author": "Morrow",
+      "lines": [
+        "First pass on dragging parts from the spawn menu in the editor. Still need to fight ImGui to give me back my scroll wheel while the ImGui button is in an 'activated' state."
+      ]
+    },
+    {
+      "rev": 3219,
+      "date": "2026-01-12",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added dynamic gimbal states for all sub parts with defined gimbals.",
+        "Compute and store gimbaled thrust location and direction on each nozzle state.",
+        "Added the ability for the flight computer to issue gimbal commands. At the moment it doesn't do anything - control will come in a separate commit.",
+        "Fixed locations of several debug visualizations and effects that hadn't been updated for center of mass shift."
+      ]
+    },
+    {
+      "rev": 3220,
+      "date": "2026-01-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the camera distance zoom changing when you decouple parts so it stays at the same distance before decoupling and just shifts it's focus to the new shifted center of mass."
+      ]
+    },
+    {
+      "rev": 3221,
+      "date": "2026-01-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed write-after-read synchronization issue in planet renderer UV offsets CopyBuffer command.",
+        "Fixed write-after-read synchronization issue in planet frustum culling count reset FillBuffer command.",
+        "Fixed barrier sizes for RenderableVertexBuffer and RenderableNormalBuffer set to VK_WHOLE_SIZE when we just need to cover the vertex count for the current frame."
+      ]
+    },
+    {
+      "rev": 3222,
+      "date": "2026-01-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed write-write synchronization issue when building a SimpleVkMeshAtlas."
+      ]
+    },
+    {
+      "rev": 3223,
+      "date": "2026-01-14",
+      "author": "Morrow",
+      "lines": [
+        "Fixed camera repositioning in editor when radius and/or center of mass change."
+      ]
+    },
+    {
+      "rev": 3224,
+      "date": "2026-01-14",
+      "author": "Morrow",
+      "lines": [
+        "Your mouse wheel is no longer apprehended by ImGui until you release the mouse button when you spawn a part in the editor."
+      ]
+    },
+    {
+      "rev": 3225,
+      "date": "2026-01-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Added ground clutter shadow casting support. The shadows won't yet be visible because the terrain shadowmap uses too high a bias and too low a resolution to represent the ground clutter."
+      ]
+    },
+    {
+      "rev": 3226,
+      "date": "2026-01-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Added XML attributes to ground clutter LODs for LOD selection customization. WIP."
+      ]
+    },
+    {
+      "rev": 3227,
+      "date": "2026-01-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Added automatic LOD selection using screen bounding sphere size. This means LOD selection is now not only distance based but is now distance, FOV and screen resolution dependent.",
+        "Added bounding sphere size per sub mesh to SimpleVkMeshAtlas."
+      ]
+    },
+    {
+      "rev": 3228,
+      "date": "2026-01-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed ground clutter frustum culling not respecting the new bounding sphere radius."
+      ]
+    },
+    {
+      "rev": 3229,
+      "date": "2026-01-15",
+      "author": "Morrow",
+      "lines": [
+        "Fixed some doubling of symmetry data when handling recursive symmetry."
+      ]
+    },
+    {
+      "rev": 3230,
+      "date": "2026-01-15",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a Preload to ModLibrary mods so that definition XML files can be preloaded for the game startup screen.",
+        "Changed the game startup menu to now allow you to select the system by dropdown (existing options of Sol, Earth and Moon, and Earth only).",
+        "Changed the game startup menu to now allow you to select the starting vehicle and location from dropdown menus. This allows you to start the game with a different vehicle focused/controlled and from any available location (including on the ground).",
+        "For now - you can't do this with the Kittens on EVA, we need to do more work to get them to walk first before we enable this.",
+        "Changed the game startup menu to now have a \"start KSA\" button that you must click to start the game."
+      ]
+    },
+    {
+      "rev": 3231,
+      "date": "2026-01-15",
+      "author": "Rian Drake",
+      "lines": [
+        "Fix CI after organization updates"
+      ]
+    }
+  ]
+}

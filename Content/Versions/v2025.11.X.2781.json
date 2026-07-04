@@ -1,0 +1,337 @@
+{
+  "build": "2025.11.2.2781",
+  "date": "2025-11-14",
+  "fromRevision": 2742,
+  "toRevision": 2781,
+  "commits": [
+    {
+      "rev": 2743,
+      "date": "2025-11-12",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Add flowmap support for 2d clouds",
+        "Add 2d cloud flowmap to jupiter, cloud swirling and bands moving can now be seen in map view and from high orbits",
+        "Fix seam-like singularities in Jupiter's flowmap with volumetrics"
+      ]
+    },
+    {
+      "rev": 2744,
+      "date": "2025-11-13",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added basic idle system to pick between one of the two MMU idle 'shuffle' animations, else it will play the default MMU idle. It is currently set to play one of the idle animations every 45 seconds."
+      ]
+    },
+    {
+      "rev": 2745,
+      "date": "2025-11-05",
+      "author": "Benoit Fouletier",
+      "lines": [
+        "fix SetWindowTitle() was using ReadonlySpan<byte>.ToString()"
+      ]
+    },
+    {
+      "rev": 2746,
+      "date": "2025-11-13",
+      "author": "Benoit Fouletier",
+      "lines": [
+        "suppress warnings regarding using statics in ImGui extension classes"
+      ]
+    },
+    {
+      "rev": 2747,
+      "date": "2025-11-13",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed bug which would result in ambient occlusion getting multiplied by 0 for the cats head. This was caused by an RMA scale parameter getting initialized without data."
+      ]
+    },
+    {
+      "rev": 2748,
+      "date": "2025-11-12",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Clean up several cases where new kinematic states would be generated but never modified."
+      ]
+    },
+    {
+      "rev": 2749,
+      "date": "2025-11-13",
+      "author": "JoshRW",
+      "lines": [
+        "Add reflections to visor",
+        "Add commented out shader code to make visor shiny instead of cloudy",
+        "Add hot reloading to \"ModelGlass.frag\" visor shader"
+      ]
+    },
+    {
+      "rev": 2750,
+      "date": "2025-11-13",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Added ability to override material of certain meshes"
+      ]
+    },
+    {
+      "rev": 2751,
+      "date": "2025-11-13",
+      "author": "Morrow",
+      "lines": [
+        "Removed deprecated gizmo render system.",
+        "Fixed ordering of default gemini part tree.",
+        "Fixed part delete button not working for unattached parts.",
+        "Added functionality to reroot the part tree.",
+        "Added first pass on connectors between parts in the debug vehicle editor. Currently only the 3W3H fuel tank has connectors."
+      ]
+    },
+    {
+      "rev": 2752,
+      "date": "2025-11-13",
+      "author": "matthew.caradus",
+      "lines": [
+        "Changed Reduced volume of music tracks"
+      ]
+    },
+    {
+      "rev": 2753,
+      "date": "2025-11-13",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed a throw exception when saves folder contains an empty folder to now only log a console warning and ignore the folder.",
+        "Fixed deserialize of save failing when trying to load a save created in the same game session.",
+        "Fixed a crash where trying to create a new save and not entering a save game name would cause a crash."
+      ]
+    },
+    {
+      "rev": 2754,
+      "date": "2025-11-13",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Removed device feature requirements that weren't being used"
+      ]
+    },
+    {
+      "rev": 2755,
+      "date": "2025-11-13",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Added one feature back in"
+      ]
+    },
+    {
+      "rev": 2756,
+      "date": "2025-11-13",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed burn flightplan becomming disconnected from vehicle actual flightplan when the vehicle flightplan changes."
+      ]
+    },
+    {
+      "rev": 2757,
+      "date": "2025-11-13",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Updated kitten visor to have proper PBR textures, these were previously hardcoded values. However the roughness value of the visor is still hard-coded for now."
+      ]
+    },
+    {
+      "rev": 2758,
+      "date": "2025-11-13",
+      "author": "JoshRW",
+      "lines": [
+        "Fix issue where ao was applied twice to ambient lighting on the kitten mesh instead of once"
+      ]
+    },
+    {
+      "rev": 2759,
+      "date": "2025-11-13",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added a few other checks to save game processing to ensure we don't have an empty save name."
+      ]
+    },
+    {
+      "rev": 2760,
+      "date": "2025-11-13",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added Sklera to the cat. This is a translucent sphere over the cats eyeballs that provide the shine and reflection from the eyes.",
+        "Added fragment shader for the sklera. This is a modified version of the glass fragment shader with hard coded values for the eyes."
+      ]
+    },
+    {
+      "rev": 2761,
+      "date": "2025-11-13",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Moved selected transfer refinement that occurs when you make a selection in the Porkchop Transfer planner to a worker task as sometimes it can take a while."
+      ]
+    },
+    {
+      "rev": 2762,
+      "date": "2025-11-13",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed supported texture sizes dropdown list to be in order of largest to smallest size."
+      ]
+    },
+    {
+      "rev": 2763,
+      "date": "2025-11-13",
+      "author": "JoshRW",
+      "lines": [
+        "Change visor to be shiny with specular highlights as most people in the team preferred this option. Scratches from the new visor art asset are also in."
+      ]
+    },
+    {
+      "rev": 2764,
+      "date": "2025-11-13",
+      "author": "Christopher Howlett",
+      "lines": [
+        "ImGui fixes for ConsoleWindow after the overhaul (like textboxes not clearing and arrow inputs)",
+        "Implements our new logging system to replace the one we had before"
+      ]
+    },
+    {
+      "rev": 2765,
+      "date": "2025-11-13",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Improved thin film interference blend method to be more physically accurate."
+      ]
+    },
+    {
+      "rev": 2766,
+      "date": "2025-11-13",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Added a basic blink system"
+      ]
+    },
+    {
+      "rev": 2767,
+      "date": "2025-11-13",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Adjusted visor roughness and diffuse values to remove materials that were obscuring or pulling focus away from the kittens face."
+      ]
+    },
+    {
+      "rev": 2768,
+      "date": "2025-11-13",
+      "author": "Morrow",
+      "lines": [
+        "Modified SubPartModelRenderer to minimize command buffer state changes."
+      ]
+    },
+    {
+      "rev": 2769,
+      "date": "2025-11-13",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Revert \"* Fixed burn flightplan becomming disconnected from vehicle actual flightplan when the vehicle flightplan changes.\"",
+        "This reverts commit cfa2b9bcc1b36e96305797dd61ba90c21f47fd05."
+      ]
+    },
+    {
+      "rev": 2770,
+      "date": "2025-11-13",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed debug window ImGui Issues for columns (Ocean, Atmosphere, Exhaust, Bloom)",
+        "Fixed an ImGui ID issue for Celestial Info",
+        "Added some safety checks for LightCollection"
+      ]
+    },
+    {
+      "rev": 2771,
+      "date": "2025-11-13",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed vulkan bind issue when instance vectors are null on 4000 series NVIDIA GPUs."
+      ]
+    },
+    {
+      "rev": 2772,
+      "date": "2025-11-13",
+      "author": "Dan Southon",
+      "lines": [
+        "Changed CloudRenderer UI to use column helper"
+      ]
+    },
+    {
+      "rev": 2773,
+      "date": "2025-11-13",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added console command to set map camera azimuth, elevation and distance.",
+        "Moved Rocket's starting position on orbit.",
+        "Made Rocket the focused/controlled Vehicle again on game startup.",
+        "Changed starting camera positions for best dramatic effect on game startup."
+      ]
+    },
+    {
+      "rev": 2774,
+      "date": "2025-11-13",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix imgui error with SetCursorScreenPos in SplineEditor"
+      ]
+    },
+    {
+      "rev": 2775,
+      "date": "2025-11-13",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Scale earth atmosphere and clouds back to realistic settings since terrain is also set to a realistic height now",
+        "Add placeholder clouds to Venus and Titan",
+        "Tweak Titan atmosphere settings",
+        "Do not rebuild cloud layer pipeline on UI changes unless needed"
+      ]
+    },
+    {
+      "rev": 2776,
+      "date": "2025-11-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed planet terrain debug ImGui columns.",
+        "Re-enabled the Moon's test decal.",
+        "Adjusted the Moon's decal texture to something more decal-appropriate.",
+        "Removed debug logging from the biome map exporter."
+      ]
+    },
+    {
+      "rev": 2777,
+      "date": "2025-11-14",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Delete obsolete Imgui drawlist helper functions"
+      ]
+    },
+    {
+      "rev": 2778,
+      "date": "2025-11-14",
+      "author": "Morrow",
+      "lines": [
+        "Reverted commit 099a06119dc4315cf22c17c804e2bd58b7dff91f. The validation warnings were due to a bug in vulkan validation layers. Updating VulkanSDK fixes the incorrect warning."
+      ]
+    },
+    {
+      "rev": 2779,
+      "date": "2025-11-14",
+      "author": "Rian Drake",
+      "lines": [
+        "Remove unused namespace using"
+      ]
+    },
+    {
+      "rev": 2780,
+      "date": "2025-11-14",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed the Transfer planner to automatically select the most approriate time unit to display it's data.",
+        "Changed the Transfer Planner to continue to draw all of it's UI whilst background workers are running but disable input."
+      ]
+    }
+  ]
+}

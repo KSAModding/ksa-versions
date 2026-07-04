@@ -1,0 +1,94 @@
+{
+  "build": "2025.11.6.2829",
+  "date": "2025-11-19",
+  "fromRevision": 2819,
+  "toRevision": 2829,
+  "commits": [
+    {
+      "rev": 2820,
+      "date": "2025-11-17",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix changing MSAA setting causing issues with kitten rendering",
+        "Fix occlusion by planet radius shadowing vessels below the mean radius",
+        "Fix vessel lighting using atmospheric transmittance when atmosphere is disabled"
+      ]
+    },
+    {
+      "rev": 2821,
+      "date": "2025-11-18",
+      "author": "JoshRW",
+      "lines": [
+        "Add time switch shader function to alternate between different pieces of shader code for testing / debugging. The function is currently unused but will be used later as the code has been used a lot in the past for a temporary test."
+      ]
+    },
+    {
+      "rev": 2822,
+      "date": "2025-11-18",
+      "author": "JoshRW",
+      "lines": [
+        "Shader hot reloader fixes and improvements.",
+        "Tidier wording on logged messages on shader hot reload",
+        "Fixed runtime shader files not hot reloading",
+        "Make Filepath.IsRuntimePath() use AppDomain.CurrentDomain.BaseDirectory instead of a \"/bin/\" string.",
+        "Add more shader files to be hot reloaded by recompiling them on frame rebuild",
+        "Disable shader hot reloader in production due to file permissions needed in the build to save shader files. Enabling file permissions here is too risky for users."
+      ]
+    },
+    {
+      "rev": 2823,
+      "date": "2025-11-18",
+      "author": "JoshRW",
+      "lines": [
+        "Change Filepath.CorrectSeparators to not use \"this\" input argument. This makes the function more flexible if people want to compare the uncorrected path with the corrected path, instead of modifying the string when calling the function."
+      ]
+    },
+    {
+      "rev": 2824,
+      "date": "2025-11-18",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed to ensure you cannot create a Burn on a stale flightplan. eg: A Burn's flightplan that is old (in the past).",
+        "Added screen notifications when you try to create a Burn on a stale flightplan to inform you why it has not created a burn in this case.",
+        "Fixed potential invalid burn/patch processing when updating the Burn Plan for a vehicle by ensuring the Vehicle's Flight Plan is also updated first before updating the Burn Plan."
+      ]
+    },
+    {
+      "rev": 2825,
+      "date": "2025-11-19",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Smoothed out animation inputs so Hunter's MMU animation is less jittery"
+      ]
+    },
+    {
+      "rev": 2826,
+      "date": "2025-11-19",
+      "author": "rocket2guns",
+      "lines": [
+        "Changed RadixSorter to use stackalloc rather than creating an array to reduce heap allocation. This will limit the size of the inSource."
+      ]
+    },
+    {
+      "rev": 2827,
+      "date": "2025-11-19",
+      "author": "Morrow",
+      "lines": [
+        "Added/updated fuel tank parts. They should all now have Attach Nodes.",
+        "Updated the circle mesh in the combined transform gizmos so it faces 'forward' correctly. Changed required code to factor in the difference in rotation."
+      ]
+    },
+    {
+      "rev": 2828,
+      "date": "2025-11-19",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed incorrect collisions for procedural crater modifiers.",
+        "Unified cell based hash functions to HashFunctions.glsl and HashFunctions.cs.",
+        "Replaced precision-sensitive hash functions with a PCG integer hash.",
+        "Fixed mismatching epsilon values in CPU and GPU voronoi functions.",
+        "Removed unused hashing functions from ModifiersCommon.glsl."
+      ]
+    }
+  ]
+}

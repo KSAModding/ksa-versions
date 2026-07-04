@@ -1,0 +1,92 @@
+{
+  "build": "2025.8.24.2263",
+  "date": "2025-08-30",
+  "fromRevision": 2252,
+  "toRevision": 2263,
+  "commits": [
+    {
+      "rev": 2253,
+      "date": "2025-08-29",
+      "author": "Dean Hall",
+      "lines": [
+        "Fixed digit rollers could heavily overshoot at large warp speeds, causing them to oscillate. Now digit rollers will instead snap at significant simulation speeds to prevent this."
+      ]
+    },
+    {
+      "rev": 2254,
+      "date": "2025-08-29",
+      "author": "Dean Hall",
+      "lines": [
+        "Fixed aspect ratio not correctly locked during resizing for some gauge panels.",
+        "Added a very small alignment offset for roller digits, almost imperceptible. This aligns them visually with real world rollers, which have a very small alignment variation per digit."
+      ]
+    },
+    {
+      "rev": 2255,
+      "date": "2025-08-29",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed planet renderer buffers' alignments.",
+        "Fixed terrain material textures not matching up with the tessellated surface."
+      ]
+    },
+    {
+      "rev": 2256,
+      "date": "2025-08-29",
+      "author": "Linx-RW",
+      "lines": [
+        "Removed Size struct attribute layout for the PlanetUbo and MeshUbo as they are now automatically padded to the minUniformBufferOffsetAlignment."
+      ]
+    },
+    {
+      "rev": 2257,
+      "date": "2025-08-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Converted unused mean anomaly at epoch in the set orbit debug menu to time since periapsis which can be used in this case."
+      ]
+    },
+    {
+      "rev": 2258,
+      "date": "2025-08-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed thrust-to-weight calculation. Previously it was actually exhaust-velocity-to-mass."
+      ]
+    },
+    {
+      "rev": 2259,
+      "date": "2025-08-30",
+      "author": "Dean Hall",
+      "lines": [
+        "Added extra digit to rollers on Rendezvous Control panel.",
+        "Added XML parsing and stripping for easier and cleaner export of edited gauge canvases from within in the game."
+      ]
+    },
+    {
+      "rev": 2260,
+      "date": "2025-08-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Reverted the change to properly handle multiple trajectory events simultaneously because it caused two important regressions (failure to compute trajectories after escapes, failure to show closest approach to target)."
+      ]
+    },
+    {
+      "rev": 2261,
+      "date": "2025-08-30",
+      "author": "Dean Hall",
+      "lines": [
+        "Added another significant digit for rendezvous control panel to bridge gap completely from KM to GM and beyond.",
+        "Changed threshold values for time rollers, to provide better readability as the values move through hours, minutes, and to seconds."
+      ]
+    },
+    {
+      "rev": 2262,
+      "date": "2025-08-30",
+      "author": "Dean Hall",
+      "lines": [
+        "Fixed gauge roller animations would have a weird backwards animation when rolling from 9 to 0. This had a variety of causes and required a complete rewrite of roller animation."
+      ]
+    }
+  ]
+}

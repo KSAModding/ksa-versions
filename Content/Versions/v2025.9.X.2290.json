@@ -1,0 +1,101 @@
+{
+  "build": "2025.9.4.2290",
+  "date": "2025-09-03",
+  "fromRevision": 2279,
+  "toRevision": 2290,
+  "commits": [
+    {
+      "rev": 2280,
+      "date": "2025-09-02",
+      "author": "Linx-RW",
+      "lines": [
+        "Added panning and zooming to the ground track window."
+      ]
+    },
+    {
+      "rev": 2281,
+      "date": "2025-09-02",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed incorrect amplitude for Earth Erosion modifier.",
+        "Fixed dynamic offset calculation in the planet map exporter."
+      ]
+    },
+    {
+      "rev": 2282,
+      "date": "2025-09-03",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added ability to preview the porkchop selected transfer flightplan UI window from the Transfer Planner."
+      ]
+    },
+    {
+      "rev": 2283,
+      "date": "2025-09-03",
+      "author": "Morrow",
+      "lines": [
+        "Map grid now turns off when UI is toggled off."
+      ]
+    },
+    {
+      "rev": 2284,
+      "date": "2025-09-03",
+      "author": "Morrow",
+      "lines": [
+        "Did another pass on distant celestial rendering to get them closer to how we render our stars."
+      ]
+    },
+    {
+      "rev": 2285,
+      "date": "2025-09-02",
+      "author": "gravhoek-rw",
+      "lines": [
+        "All attitude tracking targets now reference the inertial CCI frame internally. This makes the requirement for attitude target angular rates explicit in all cases.",
+        "Split out custom attitude target into its own field which is now required since we still want those to be frame-relative.",
+        "Added missing angular rates for surface velocity and vehicle attitude targets. This should significantly improve tracking performance in these cases.",
+        "Added new Flight Path (FLP), Docking (DOCK), and Target Velocity (TVEL) frames internally to support the new attitude targets.",
+        "Switched 'toward' and 'away' targets to reference the local up vector instead of the target's up vector."
+      ]
+    },
+    {
+      "rev": 2286,
+      "date": "2025-09-02",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Rearranged TGT panel attitude target buttons to more closely follow the convention of the main panel.",
+        "Relabeled the VLF frame on the control panels from VEL to OVEL to try and emphasize that it's orbital velocity.",
+        "Reworded NUL ROT tooltip to clarify that RCS is incapable of perefectly nulling all rotation.",
+        "Fixed tooltips for attitude targets which changed orientation.",
+        "Internally renamed VehicleReferenceFrame.Tgt to VehicleReferenceFrame.Dock. The XML enum value is still Tgt until I figure out how to prevent it from throwing an exception when loading old saves.",
+        "Deleted old Vehicle.DrawAttitudeControlPanel() method since it's now unused."
+      ]
+    },
+    {
+      "rev": 2287,
+      "date": "2025-09-02",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fix TAIL coordinate frame rotation rates."
+      ]
+    },
+    {
+      "rev": 2288,
+      "date": "2025-09-02",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed the TGT-relative NUL ROT button which got missed in my enum change."
+      ]
+    },
+    {
+      "rev": 2289,
+      "date": "2025-09-03",
+      "author": "Rocket",
+      "lines": [
+        "Refined rendering of distant celestial objects and their blending from sprites to spheres. Blending now occurs both on the sprite and the emission of the distant sphere, both occurring prior to rendering very close with spherical billboards.",
+        "Added celestial sprite occlusion. Child moons will occlude their sprites at all distances, when their parent is occluding them from the sun. This is tied with the skybox shadow option, so can be disabled.",
+        "Added size based blending of celestial sprites. This ensures that child objects merge with their parent at great distances, such as child planets merging correctly with their parent when viewing a star from a another solar system.",
+        "Added handling of stellar sprites. The primary body (sun) is now handled like regular a celestial object, allowing rendering of distant stellar systems to be handled by the celestial sprite system. This is blended with the lens flare system."
+      ]
+    }
+  ]
+}

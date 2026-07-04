@@ -1,0 +1,186 @@
+{
+  "build": "2026.4.18.4206",
+  "date": "2026-04-29",
+  "fromRevision": 4184,
+  "toRevision": 4206,
+  "commits": [
+    {
+      "rev": 4185,
+      "date": "2026-04-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Ap and Pe markers to Lvc orbit plot in the Target Track Window."
+      ]
+    },
+    {
+      "rev": 4186,
+      "date": "2026-04-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added scale markers and scale readout to Target Track Window."
+      ]
+    },
+    {
+      "rev": 4187,
+      "date": "2026-04-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Cleaned up particle emitter systems in preperation for refactor of how particles are rendered."
+      ]
+    },
+    {
+      "rev": 4188,
+      "date": "2026-04-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added Gpu debug label when particle states are updated."
+      ]
+    },
+    {
+      "rev": 4189,
+      "date": "2026-04-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added up to 4 burn patches into the Target Track Window plots."
+      ]
+    },
+    {
+      "rev": 4190,
+      "date": "2026-04-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed particle emitters incorrectly setting active particle count when updating maximum particle count."
+      ]
+    },
+    {
+      "rev": 4191,
+      "date": "2026-04-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added loading tag when initalizing particle resources on load."
+      ]
+    },
+    {
+      "rev": 4192,
+      "date": "2026-04-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added scaled zooming on the Target Track Window.",
+        "Added Mouse wheel zoom in and out on the two panels on the Target Track Window. Double click middle mouse button to reset the zoom level."
+      ]
+    },
+    {
+      "rev": 4193,
+      "date": "2026-04-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "WIP particle rendering refactor."
+      ]
+    },
+    {
+      "rev": 4194,
+      "date": "2026-04-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added right click dragging on the two plot windows in the Target Track Window."
+      ]
+    },
+    {
+      "rev": 4195,
+      "date": "2026-04-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added closest point to mouse tooltip in Target Track Window."
+      ]
+    },
+    {
+      "rev": 4196,
+      "date": "2026-04-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Zoom menu items to top bar of TargetTrackWindow in addition to the mouse scrollwheel input already in place."
+      ]
+    },
+    {
+      "rev": 4197,
+      "date": "2026-04-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added bool to indicate if KeyframAnimationModule should treat animation as a deploy/retract type. In this case it will display a deploy and retract button and state in the part window instead of an animation slider.",
+        "Added SolarPanel module to deployable solar panel. Note: Still to come, actual sun tracking."
+      ]
+    },
+    {
+      "rev": 4198,
+      "date": "2026-04-27",
+      "author": "lghassen",
+      "lines": [
+        "Add back mach diamonds, use physical formulas from literature where possible for the length of the shock cells and the diamond's size and visibility",
+        "Use a LUT for diamonds shape/density and structure inside shock cells to get smoother and more interesting results than the purely procedural version, sample blurred versions when diamonds are less visible. Allow the lut to be rescaled when the diamond's radii rescale",
+        "Add computation of mach disk start radius from middle radius and area ratio, set middle radius arbitrarily",
+        "Add contractions and expansions for overexpanded and underexpanded plumes, still missing the effect of an immediate contraction into a single mach disk for highly overexpanded plumes",
+        "Fade out mach diamond and shock cells when the plume doesn't expand/contract a lot",
+        "Add a barrel shock on the outside of the plume, more tweaks needed for the appearance. Use Rankine-Hugoniot conditions to estimate mach diamonds density and barrel shock density",
+        "Add a more turbulent noise to the plume when in-atmosphere which can push it off axis, gives a more natural less rigid appearance",
+        "Add a fake way to make RCS plumes \"burn clean\" when in the atmosphere, this will replaced with a more physical formula",
+        "Move some of the clutter out of the main exhaust shader and into include files"
+      ]
+    },
+    {
+      "rev": 4199,
+      "date": "2026-04-28",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Optimized how particles are destroyed to remove redundant loop through particles."
+      ]
+    },
+    {
+      "rev": 4200,
+      "date": "2026-04-28",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "ParticleEmitterRenderer cleanup and minor optimizations."
+      ]
+    },
+    {
+      "rev": 4201,
+      "date": "2026-04-28",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed DistantSphereRenderer not disposing correctly on shutdown."
+      ]
+    },
+    {
+      "rev": 4202,
+      "date": "2026-04-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed Imgui Bug in display of Tank Ids in Debug Vehicle Editor UI."
+      ]
+    },
+    {
+      "rev": 4203,
+      "date": "2026-04-28",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed redundant particle emitter list from particle renderer."
+      ]
+    },
+    {
+      "rev": 4204,
+      "date": "2026-04-28",
+      "author": "Morrow",
+      "lines": [
+        "Fixed the Keyframe Animator breaking mouse hover detection."
+      ]
+    },
+    {
+      "rev": 4205,
+      "date": "2026-04-28",
+      "author": "Morrow",
+      "lines": [
+        "Set up the surface connectors for the two solar panels. This should make using them in the editor far easier."
+      ]
+    }
+  ]
+}

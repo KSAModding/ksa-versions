@@ -1,0 +1,129 @@
+{
+  "build": "2025.8.293.2250",
+  "date": "2025-08-29",
+  "fromRevision": 2234,
+  "toRevision": 2250,
+  "commits": [
+    {
+      "rev": 2235,
+      "date": "2025-08-29",
+      "author": "Heightmare",
+      "lines": [
+        "Switched discord notify to new embed system for testing."
+      ]
+    },
+    {
+      "rev": 2236,
+      "date": "2025-08-29",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added Expiry processing to FlightPlans and BurnPlans. This is because the solver only searches a certain time into the future for encounters. We need to expire them on the first encounter or at the end of the time we searched and recalculate them."
+      ]
+    },
+    {
+      "rev": 2237,
+      "date": "2025-08-29",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added Expiry of transfer planner burn creation if the time passes before the user presses \"Create\"."
+      ]
+    },
+    {
+      "rev": 2238,
+      "date": "2025-08-29",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed the Impact and Encounter hover information Time in: readout was wrong and showing negative values. Victim of cut and paste."
+      ]
+    },
+    {
+      "rev": 2239,
+      "date": "2025-08-29",
+      "author": "morrow-rw",
+      "lines": [
+        "Fixed SoI sphere gizmo causing burn node gizmos to not draw correctly. This required adding a second pass to the gizmo pass(es) to get the transparency working. The index of the pass the gizmo should be rendered in is now specified by the 'PassIndex' variable. The vast majority of gizmos should currently be in pass 0."
+      ]
+    },
+    {
+      "rev": 2240,
+      "date": "2025-08-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Integrated flight plan expiry into the the inner vehicle update loop.",
+        "Fixed an error where the expiry time could be the start of the flight plan if the closest encounter occurred at the start of a patch.",
+        "Fixed an error in Orbit.GetRemainingTimeTo where a negative time could be returned."
+      ]
+    },
+    {
+      "rev": 2241,
+      "date": "2025-08-29",
+      "author": "Morrow",
+      "lines": [
+        "Fixed an issue where patches from last frame were being compared against patches from the current frame and giving false equality checks when trying to create a burn node."
+      ]
+    },
+    {
+      "rev": 2242,
+      "date": "2025-08-29",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed issue where not all constructors in FlightPlan were setting the reference Id.",
+        "Fixed issue where a patch was more than one period was causing incorrect orbit points generation and subsequent rendering of the orbit points to be incorrect."
+      ]
+    },
+    {
+      "rev": 2243,
+      "date": "2025-08-29",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed missing set flightplan expiry when an impact occurs.",
+        "Fixed the closest approach info vs an actual Encounter info in the Flightplan UI to make it easier to distinguish between closest approaches and encounters."
+      ]
+    },
+    {
+      "rev": 2244,
+      "date": "2025-08-29",
+      "author": "JoshRW",
+      "lines": [
+        "Make atmosphere reflection attenuation much slower for vessels. The",
+        "reflection was changing from atmosphere to stars way too fast when",
+        "exiting the atmosphere before."
+      ]
+    },
+    {
+      "rev": 2245,
+      "date": "2025-08-29",
+      "author": "Rocket",
+      "lines": [
+        "Added application `always on top` setting, that will force the application window to always be on top while running.",
+        "Added default setting to focus the game window on launch to help prevent graphics api buffering issues when multithreaded loading overloads the OS during launch, running out of VRAM and causing crashes.",
+        "Added `always on top` setting to windows and gauge panels, on by default. This will force `detatched` windows to be rendered on top of everything, making them much easier to use.",
+        "Fixed target text was not being drawn using shadowed text, so was very hard to read as it was grey."
+      ]
+    },
+    {
+      "rev": 2246,
+      "date": "2025-08-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Changed the transfer planner porkchop to have a nice color gradient instead of discrete bands."
+      ]
+    },
+    {
+      "rev": 2247,
+      "date": "2025-08-29",
+      "author": "Rocket",
+      "lines": [
+        "Removed debug code that was causing compile error, as it was no longer being maintained."
+      ]
+    },
+    {
+      "rev": 2248,
+      "date": "2025-08-29",
+      "author": "Rocket",
+      "lines": [
+        "Added new Engine Control panel. This includes the old total DeltaV roller with updated units and more digits, as well as the propellant, thrust-to-weight-ratio, throttle, and buttons for main engine ignite and main engine shutdown."
+      ]
+    }
+  ]
+}

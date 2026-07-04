@@ -1,0 +1,254 @@
+{
+  "build": "2025.10.10.2530",
+  "date": "2025-10-22",
+  "fromRevision": 2502,
+  "toRevision": 2530,
+  "commits": [
+    {
+      "rev": 2503,
+      "date": "2025-10-14",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Mesh abstraction changes that allow for buffer packing",
+        "Removed unused renderers"
+      ]
+    },
+    {
+      "rev": 2504,
+      "date": "2025-10-14",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed Orbit line colours in additional camera windows not using the colours as per what is being followed. ie: followed vehicle orbit lines where being drawin the in inactive colour instead of the active colour in camera windows other than the main window."
+      ]
+    },
+    {
+      "rev": 2505,
+      "date": "2025-10-14",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed UI display of orbiting objects names and details so that it now also displays in additional camera windows, not just the main window."
+      ]
+    },
+    {
+      "rev": 2506,
+      "date": "2025-10-14",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix broken RCS exhaust transient startup and shutdown animations",
+        "Fix volumetric exhausts receiving shadows at the wrong position/depth"
+      ]
+    },
+    {
+      "rev": 2507,
+      "date": "2025-10-15",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added Destroy console command to destroy and remove a vehicle from the simulation."
+      ]
+    },
+    {
+      "rev": 2508,
+      "date": "2025-10-15",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed cursor pos update when hovering on any window, not just main window.",
+        "Fixed hovering UI details update when hovering over an astronomical in any camera window, not just main window."
+      ]
+    },
+    {
+      "rev": 2509,
+      "date": "2025-10-15",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed some of the logic around deciding whether to drawn ORbital Lines and markers when not following a vehicle and checking if the viewport we are drawing in is in Mapnode (not just the main viewport)."
+      ]
+    },
+    {
+      "rev": 2510,
+      "date": "2025-10-15",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed small tweak to last commit to ensure we aren't always drawing orbit lines and markers for the followed vehicle and still obey the distance from camera and camera mode rules."
+      ]
+    },
+    {
+      "rev": 2511,
+      "date": "2025-10-16",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added ability to circularise elliptical orbits at Apoapsis or Periapsis to the Transfer Planner."
+      ]
+    },
+    {
+      "rev": 2512,
+      "date": "2025-10-16",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed CubeMesh generation code, which was causing artifacts for high subdivision counts."
+      ]
+    },
+    {
+      "rev": 2513,
+      "date": "2025-10-15",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed distant sphere renderer not sampling the planet's normal map.",
+        "Fixed planet mesh collection always trying to use the Default mesh in the mesh data pass, which would cause the planet to disappear if trying to render with a different mesh."
+      ]
+    },
+    {
+      "rev": 2514,
+      "date": "2025-10-16",
+      "author": "Linx-RW",
+      "lines": [
+        "Added Phobos.",
+        "Added mesh collection \"AsteroidScaleMesh\" for very small celestial bodies.",
+        "Added variable terrain detail fade start and fade end values, useful when configuring tiny celestial bodies.",
+        "Added terrain materials for Phobos."
+      ]
+    },
+    {
+      "rev": 2515,
+      "date": "2025-10-17",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Better ocean mesh settings taking advantage of the mesh generator fix, more detail in ocean geometry and small waves can now be seen up-close",
+        "Allow ocean mesh to snap independently of terrain mesh",
+        "Run all FFTs in a single dispatch for better performance",
+        "Generate FFT mipmaps in a single pass compute shader instead of multiple iterative blits for better performance",
+        "Reduce ocean shader register usage for better performance",
+        "Use a localized ocean color map for earth, algal blooms and other color variations can now be seen from space",
+        "Fix landmasses disappearing when changing water properties from the UI",
+        "Rename OptimizedMeshes to OceanMeshes"
+      ]
+    },
+    {
+      "rev": 2516,
+      "date": "2025-10-20",
+      "author": "Morrow",
+      "lines": [
+        "Bandaid fix to stop the camera shifting while moving parts in the editor."
+      ]
+    },
+    {
+      "rev": 2517,
+      "date": "2025-10-20",
+      "author": "Morrow",
+      "lines": [
+        "Added medium capsule part."
+      ]
+    },
+    {
+      "rev": 2518,
+      "date": "2025-10-20",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed no longer deleting burns that are in the future from another burn when the earlier burn is changed. Future burns will still be deleted if an earlier burn is deleted. But now they will be adjusted if the earlier burn is only moved or changed."
+      ]
+    },
+    {
+      "rev": 2519,
+      "date": "2025-10-20",
+      "author": "Morrow",
+      "lines": [
+        "Replaced one of the default geminis with new version using new parts. Thrusters need some work still. The new parts may need a big rotation to match coordinate spaces properly."
+      ]
+    },
+    {
+      "rev": 2520,
+      "date": "2025-10-20",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed Earth terrain material displacements that were too high.",
+        "Adjusted the detail fade altitudes for Earth to improve the transition from orbit to surface with the new mesh collection."
+      ]
+    },
+    {
+      "rev": 2521,
+      "date": "2025-10-20",
+      "author": "AaronRKB",
+      "lines": [
+        "Updates to Brutal.Core 0.3.1. Multiple texture changes.",
+        "Updated texture GPU upload code to be more robust over more formats",
+        "Updated to Brutal.Core 0.3.1",
+        "Made texture quality level scaling work over many more texture formats",
+        "Numerous bug fixes."
+      ]
+    },
+    {
+      "rev": 2522,
+      "date": "2025-10-20",
+      "author": "Morrow",
+      "lines": [
+        "Fixed orbit and object highlight being stuck on when the cursor mode is changed (i.e. while rotating the camera)."
+      ]
+    },
+    {
+      "rev": 2523,
+      "date": "2025-10-20",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Add ocean readback and a way to query wave heights",
+        "Tweak ocean color"
+      ]
+    },
+    {
+      "rev": 2524,
+      "date": "2025-10-21",
+      "author": "Morrow",
+      "lines": [
+        "Fixed crash when there's no nearby celestial for the Ocean Renderer readback to reference."
+      ]
+    },
+    {
+      "rev": 2525,
+      "date": "2025-10-21",
+      "author": "Morrow",
+      "lines": [
+        "Added runtime part thumbnail rendering on game load",
+        "Added thumbnail mipmaps",
+        "Added ThumbnailReference for data driven curation",
+        "Added part selector buttons using the thumbnails for the VehicleEditor",
+        "Fixed SubPartModelRenderer.DepthData updating descriptors during bind"
+      ]
+    },
+    {
+      "rev": 2526,
+      "date": "2025-10-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Split PoolExecutionCompletedSemaphore into an array of one per frame in flight to weed out a potential synchronization issue with the CommandBufferPool."
+      ]
+    },
+    {
+      "rev": 2527,
+      "date": "2025-10-21",
+      "author": "Dan Southon",
+      "lines": [
+        "Adjusted thumbnail scissors",
+        "Adapted part bound calculation to factor in subpart matrices"
+      ]
+    },
+    {
+      "rev": 2528,
+      "date": "2025-10-21",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Add atmosphere start altitude setting to atmosphereReference",
+        "Match atmosphere and dust storm start altitudes on Mars to new terrain data which goes below the mean radius",
+        "Fix scattering artifacts on planets that are close but not rendering detailed terrain by using the analytic sphere surface position for scattering",
+        "Fix error when disabling then re-enabling height queries"
+      ]
+    },
+    {
+      "rev": 2529,
+      "date": "2025-10-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Rescaled terrain materials tiling to proper scales relative to the craft. We have the mesh density to be able to represent proper terrain textures at appropriate scales now.",
+        "Fixed CPU height sampling still using the old heightmap sampling function, it now matches the shader.",
+        "Fixed an off-by-half texel error in the CPU bilinear height map sampling function."
+      ]
+    }
+  ]
+}

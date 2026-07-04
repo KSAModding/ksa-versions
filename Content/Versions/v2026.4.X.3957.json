@@ -1,0 +1,121 @@
+{
+  "build": "2026.4.3.3957",
+  "date": "2026-04-03",
+  "fromRevision": 3942,
+  "toRevision": 3957,
+  "commits": [
+    {
+      "rev": 3943,
+      "date": "2026-04-01",
+      "author": "Linx-RW",
+      "lines": [
+        "Improved the grass lighting and how it was coloured by the underlying terrain.",
+        "Added new ground clutter rotation type 'SurfaceNormalSmooth'. This should only be used with non-collideable ground clutter objects because it relies on the normals of the planet mesh LOD currently being rendered. This rotation mode aligns objects to the smooth terrain normal rather than the face normal as well as using the smooth normal for terrain colour sampling - ideal only for foliage. If the ground clutter mesh LOD is not LOD0, face normals are used instead.",
+        "Compressed ground clutter quaternion representation from vec4 to vec3, freeing up a float or uint for future object data. The quaternion W component is always dropped and reconstructed later.",
+        "Moved quaternion functions out of the ground clutter compute shaders and into GroundClutterCommon.glsl.",
+        "Updated access mask flags for the terrain normals buffer now that it can be used in ground clutter generation."
+      ]
+    },
+    {
+      "rev": 3944,
+      "date": "2026-04-02",
+      "author": "JoshRW",
+      "lines": [
+        "Name all Vulkan images. This was done to help searching for images in the VulkanProfiler image preview tool, but it also helps when debugging Vulkan errors as image names are now provided."
+      ]
+    },
+    {
+      "rev": 3945,
+      "date": "2026-04-02",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reenabled kittens rendering into prepass."
+      ]
+    },
+    {
+      "rev": 3946,
+      "date": "2026-04-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the best DV checks on the transfer planner to exclude any inter-transitory encounters."
+      ]
+    },
+    {
+      "rev": 3947,
+      "date": "2026-04-02",
+      "author": "Chris",
+      "lines": [
+        "The game window is now hidden until the first frame renders, this should hopefully prevent the blinding flash for a couple of frames"
+      ]
+    },
+    {
+      "rev": 3948,
+      "date": "2026-04-02",
+      "author": "Chris",
+      "lines": [
+        "Suppress GLFW window positioning error in Wayland. It's not really an error, just not supported by Wayland windows (and potentionally other DEs)"
+      ]
+    },
+    {
+      "rev": 3949,
+      "date": "2026-04-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Removed double allocation of rented array."
+      ]
+    },
+    {
+      "rev": 3950,
+      "date": "2026-04-02",
+      "author": "Chris",
+      "lines": [
+        "Update to latest Brutal.Vulkan packages"
+      ]
+    },
+    {
+      "rev": 3951,
+      "date": "2026-04-02",
+      "author": "lghassen",
+      "lines": [
+        "Fix clouds shadow volume causing stretched cloud shadows on purely vertical camera movements",
+        "Fix artifacts in atmosphere shader when very close to the planet radius or water surface",
+        "Limit artifacting on clouds when camera is zoomed all the way inside jupiter"
+      ]
+    },
+    {
+      "rev": 3952,
+      "date": "2026-04-03",
+      "author": "Rocket",
+      "lines": [
+        "Major refactor of the backing LookupCollection and its implementation on CelestialSystem particularly. The two Vehicles and All collections are now merged into a single collect, and a lookupindex maintained. This enabled the use of structs and stackalloc for handling temporary collections made off this. There was limited benefit to maintaining the two collections, currently, and if required a collection of indices would be better. Span returns replace List usage.",
+        "Refactor of transfer planner to use stackalloc and eliminate garbage collection, will only impact large solar system collections of the future realistically."
+      ]
+    },
+    {
+      "rev": 3953,
+      "date": "2026-04-03",
+      "author": "Rocket",
+      "lines": [
+        "Replaced illegal hardcoded references to \"Sol\" along with their companion illegal string literal equals checks. Now this check is passed by type to Universe, who uses type to check result. This would have broken custom solar system mods, but now are fixed and the pattern matches the rest of the project and studio coding standards."
+      ]
+    },
+    {
+      "rev": 3954,
+      "date": "2026-04-03",
+      "author": "Rocket",
+      "lines": [
+        "Fixed what appears to be a bug in denoise dispatch. The shader uses local size 16, dispatch was called using individual pixels instead of the 16x16 grouping. From what I could tell this would cause x256 more GPU threads than intended. This change appears to have given me a 33% increase in FPS in raytraced mode. I think this increase would scale with resolution (1920 would be >500M threads v the needed 2M). Requires validation from graphics team.",
+        "Added early out for empty pixels in raygen shader. From what I could tell, there is the opportunity to exit early from the translucent pass fetch.",
+        "Replaced denoise sampling kernel having a radius of imageSize.x/16 that sampled nearly every pixel with a parity filter. Instead replaced with stepped sampling to a max of 32 samples at most. This should, I believe, have the same effective blur radius and cuts texture fetches by 2 to 4x per denoise pass."
+      ]
+    },
+    {
+      "rev": 3955,
+      "date": "2026-04-03",
+      "author": "Rocket",
+      "lines": [
+        "Added first pass of thread profiling tool."
+      ]
+    }
+  ]
+}

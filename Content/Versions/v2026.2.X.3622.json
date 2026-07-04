@@ -1,0 +1,284 @@
+{
+  "build": "2026.2.18.3622",
+  "date": "2026-02-19",
+  "fromRevision": 3592,
+  "toRevision": 3622,
+  "commits": [
+    {
+      "rev": 3593,
+      "date": "2026-02-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "WIP RaytraceRenderer backend setup."
+      ]
+    },
+    {
+      "rev": 3594,
+      "date": "2026-02-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added initial raytracing shaders."
+      ]
+    },
+    {
+      "rev": 3595,
+      "date": "2026-02-19",
+      "author": "Morrow",
+      "lines": [
+        "Added a setting for toggling the IVA ray tracing on and off. Currently disabled while it is nonfunctional."
+      ]
+    },
+    {
+      "rev": 3596,
+      "date": "2026-02-19",
+      "author": "Morrow",
+      "lines": [
+        "Command capsule interiors now spawn properly in custom craft."
+      ]
+    },
+    {
+      "rev": 3597,
+      "date": "2026-02-19",
+      "author": "AaronRKB",
+      "lines": [
+        "Integrate Brutal.Concurrency v2026.2.0",
+        "Allow GetMetrics and other metrics functions to run even while jobs",
+        "are executing.",
+        "Add GetMetrics and ResetMetrics methods that don't have to synchronise",
+        "with runner threads for cases where you know it's safe.",
+        "Trim down JobRunner metrics to be stackalloc safe. Now only contains",
+        "the timings.",
+        "Expose the Name of JobRunners and make it settable.",
+        "JobRunner ThreadPriority can be read and set.",
+        "Allow JobScheduler name to be read and set",
+        "Can configure thread priorities and capacities when initialising the",
+        "JobScheduler.",
+        "Expose the JobRunner collection to clients allowing them to call",
+        "JobRunner methods.",
+        "Expose the workloads of the runners with JobScheduler.GetWorkLoads()",
+        "Added an initial set of benchmarks for the Job system.",
+        "Added more JobRunner constructors for the various new config options.",
+        "Added GetMetrics taking a Span so they can be written directly to a",
+        "user buffer",
+        "Fixed some concurrency issues"
+      ]
+    },
+    {
+      "rev": 3598,
+      "date": "2026-02-19",
+      "author": "Morrow",
+      "lines": [
+        "Added some rotation limits to the IVA camera to avoid nauseating gimbal lock on the locked 'up' axis."
+      ]
+    },
+    {
+      "rev": 3599,
+      "date": "2026-02-19",
+      "author": "Morrow",
+      "lines": [
+        "Modified some ImGui windows to only force your mouse on if focused.",
+        "IVA Camera now respects ImGui windows trying to force your mouse on."
+      ]
+    },
+    {
+      "rev": 3600,
+      "date": "2026-02-18",
+      "author": "Linx-RW",
+      "lines": [
+        "Added basic ground clutter distribution texture, sampled with an anti-tiling technique to break up tiling.",
+        "Changed ground clutter generation shader to append into each cell's buffer block, allowing for early-outs if placement isn't allowed.",
+        "Added TextureHandles to ecotype info ubo which tracks the bindless texture handles used in ground clutter generation."
+      ]
+    },
+    {
+      "rev": 3601,
+      "date": "2026-02-18",
+      "author": "Linx-RW",
+      "lines": [
+        "Added preliminary biome support to the ground clutter generation. Uses bitflags to mask allowed biomes. Clutter density falls off based on the ratio of allowed to disallowed biomes at that given sample position."
+      ]
+    },
+    {
+      "rev": 3602,
+      "date": "2026-02-18",
+      "author": "Linx-RW",
+      "lines": [
+        "Re-exported Earth_Height.ktx2 using ktx create with the correct wrap mode which should fix an issue where it would not load on MoltenVk."
+      ]
+    },
+    {
+      "rev": 3603,
+      "date": "2026-02-19",
+      "author": "Morrow",
+      "lines": [
+        "Modified vehicle mouse hover logic to only be active when in orbit camera."
+      ]
+    },
+    {
+      "rev": 3604,
+      "date": "2026-02-19",
+      "author": "Morrow",
+      "lines": [
+        "Added a button (default 'c') to swap seats when in IVA camera/controller.",
+        "The second seat in the command module is now defined as an IVA seat."
+      ]
+    },
+    {
+      "rev": 3605,
+      "date": "2026-02-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added PowerManager to manage power.",
+        "Added PowerManager instance to each PowerConsumer and Generator components.",
+        "Added display of Batteries and Generators and Consumers to the Resource UI. Also the numbering/displaying Batteries and the flow arrows for each."
+      ]
+    },
+    {
+      "rev": 3606,
+      "date": "2026-02-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Missed a file from last commit."
+      ]
+    },
+    {
+      "rev": 3607,
+      "date": "2026-02-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added raytracing rendering device feature support which builds on Linx's rayQueries device feature support."
+      ]
+    },
+    {
+      "rev": 3608,
+      "date": "2026-02-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Continued WIP backend setup for RaytracingRenderer. Still nothing user facing."
+      ]
+    },
+    {
+      "rev": 3609,
+      "date": "2026-02-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added safety to ensure raytraceRenderer is properly disabled while its WIP"
+      ]
+    },
+    {
+      "rev": 3610,
+      "date": "2026-02-19",
+      "author": "Rocket",
+      "lines": [
+        "Refactored deployment prep scripts to specify win-64 to allow support for native linux-64 compile and deployment."
+      ]
+    },
+    {
+      "rev": 3611,
+      "date": "2026-02-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Let's complete the circuit . Add the wiring for the power management system.",
+        "Added consumption and production of electric charge via the PowerManager into/out of the batteries. We now have a complete electric charge circuit. (pun intended)"
+      ]
+    },
+    {
+      "rev": 3612,
+      "date": "2026-02-19",
+      "author": "Morrow",
+      "lines": [
+        "Added a way to specify when a part model is the exterior window of an IVA area so it doesn't render when in the IVA Camera. This makes it so lighting from outside can properly affect the interior of the craft."
+      ]
+    },
+    {
+      "rev": 3613,
+      "date": "2026-02-19",
+      "author": "Rocket",
+      "lines": [
+        "Minor code cleanup in FlightPlans."
+      ]
+    },
+    {
+      "rev": 3614,
+      "date": "2026-02-19",
+      "author": "Morrow",
+      "lines": [
+        "Added a flag to the part renderer so planet shine will be turned off when in the interior of a vehicle."
+      ]
+    },
+    {
+      "rev": 3615,
+      "date": "2026-02-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added RaytracingRendererUtils and refactored some key structures out of RaytracingRenderer to help with code readability."
+      ]
+    },
+    {
+      "rev": 3616,
+      "date": "2026-02-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Assorted code cleanup for RaytracingRenderer"
+      ]
+    },
+    {
+      "rev": 3617,
+      "date": "2026-02-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "_ Add de/serialize of stored energy in each battery to save data."
+      ]
+    },
+    {
+      "rev": 3618,
+      "date": "2026-02-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Temporarily added helper shaders for raytracing. These will need to be either replaced with proper systems from KSA or removed completely."
+      ]
+    },
+    {
+      "rev": 3619,
+      "date": "2026-02-19",
+      "author": "GitHub",
+      "lines": [
+        "WIP 5 Cascade Shadow System. This is created to help capture finer details like ground clutter that the planet shadow precision can not. This system utilizes MultiView, an approach of rendering all cascade views in one pass instead of one pass per cascade.",
+        "Adapted the current depth render texture system to handle single, multi view and per layer modes.",
+        "Added shadow caster interface",
+        "Added internal setting structure for controlling the cascade system and in preparation for exposing data in UI.",
+        "Enabled Vulkan Biasing. (currently only used with cascades)",
+        "Added new settings for VkDepth/VkSlope bias and kept old vars for shader biasing.",
+        "Added Vogel Disk Sampling to help with pixel distribution on shadows.",
+        "Setup pre gen vs auto gen cascade slices, adjustable in interal settings.",
+        "Setup controllable blending between cascades.",
+        "Added cascade shadow resolution setting to Intro config window and setting window.",
+        "Added cascaded shadows to mesh and dynamic mesh. You will see these shadows on other meshes of the same type and the terrain (kittens are WIP).",
+        "Changed TransitionImages2 to use a pool in case span pointers are some how invalidated.",
+        "Changed stack allocated cascade data into heap allocated and stored as a property",
+        "Split out common math constants and useful functions out of Shared.glsl and into MathCommon.glsl.",
+        "Moved interleavedGradientNoise to MathCommon",
+        "Added rand fuctions and a bunch of constant values to MathCommon.",
+        "Moved SamplerConfig from LightUtils to ShadowUtils",
+        "Fixed CalculateShadowMatrices using non normalized direction.",
+        "Removed old VehicleDepthRenderer."
+      ]
+    },
+    {
+      "rev": 3620,
+      "date": "2026-02-19",
+      "author": "Rocket",
+      "lines": [
+        "Added deployment log generation for different platforms. Builds will now prepare to deploy Linux-64 and Win-64, and will indicate success/failure for each one."
+      ]
+    },
+    {
+      "rev": 3621,
+      "date": "2026-02-19",
+      "author": "Rocket",
+      "lines": [
+        "Added additional webhook build server generation to indicate to the central server which build platforms have been deployed."
+      ]
+    }
+  ]
+}

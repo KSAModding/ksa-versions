@@ -1,0 +1,73 @@
+{
+  "build": "2025.8.282.2121",
+  "date": "2025-08-20",
+  "fromRevision": 2112,
+  "toRevision": 2121,
+  "commits": [
+    {
+      "rev": 2113,
+      "date": "2025-08-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Corrected target relative distance and speed data displayed under the label."
+      ]
+    },
+    {
+      "rev": 2114,
+      "date": "2025-08-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Replaced navball TGT stub code with the correct calculations."
+      ]
+    },
+    {
+      "rev": 2115,
+      "date": "2025-08-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added tooltips to the navball frame buttons.",
+        "Moved \"per/s\" labels into the toolips for delta-v and speed gauges."
+      ]
+    },
+    {
+      "rev": 2116,
+      "date": "2025-08-20",
+      "author": "Morrow",
+      "lines": [
+        "Fixed a few editor vulkan warnings."
+      ]
+    },
+    {
+      "rev": 2117,
+      "date": "2025-08-20",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Asset naming fix for linux"
+      ]
+    },
+    {
+      "rev": 2118,
+      "date": "2025-08-20",
+      "author": "Rocket",
+      "lines": [
+        "Fixed update checker would trigger for build variations over revision variations, but build variation should only be used where the revision is the same."
+      ]
+    },
+    {
+      "rev": 2119,
+      "date": "2025-08-20",
+      "author": "Rian Drake",
+      "lines": [
+        "Update README"
+      ]
+    },
+    {
+      "rev": 2120,
+      "date": "2025-08-20",
+      "author": "Rocket",
+      "lines": [
+        "Added first pass of changelog recording in project."
+      ]
+    }
+  ]
+}

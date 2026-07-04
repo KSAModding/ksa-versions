@@ -1,0 +1,469 @@
+{
+  "build": "2026.2.9.3529",
+  "date": "2026-02-13",
+  "fromRevision": 3473,
+  "toRevision": 3529,
+  "commits": [
+    {
+      "rev": 3474,
+      "date": "2026-02-10",
+      "author": "lghassen",
+      "lines": [
+        "Sample ring detail textures in the volumetric ring shader, adds detail to the volumetric effect and makes the individual rings more visible up-close. Use derivatives in screen space and relative to step size, plus a different raymarching parametrization to fix aliasing with the added detail"
+      ]
+    },
+    {
+      "rev": 3475,
+      "date": "2026-02-10",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Replaced GetAllComponents() with GetComponentsThatImplement<T>() which will test each component against the passed-in interface or class and return the casted version."
+      ]
+    },
+    {
+      "rev": 3476,
+      "date": "2026-02-11",
+      "author": "Rocket",
+      "lines": [
+        "Renaming of various Component functions to condense functions where parent type is apparent.",
+        "Minor code cleanup for Part and Vehicle editor."
+      ]
+    },
+    {
+      "rev": 3477,
+      "date": "2026-02-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed crash when you attempt to activate a part with a decoupler module that is not actually attached to another part.",
+        "Added Activated bool to a Stage. Which is set true when the stage is activated.",
+        "Changed ActivateNextStage to activate the next highest stage in the stage list that is not already Activated.",
+        "Fixed potential bug when Adding a stage to insert correctly and renumber following stages.",
+        "Fixed potential bug when Removing a stage causing index out of range errors. Ensure stages after the stage being removed are renumbered correctly."
+      ]
+    },
+    {
+      "rev": 3478,
+      "date": "2026-02-10",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Automatically reset the source body to the currently-controlled vehicle when opening the transfer planner."
+      ]
+    },
+    {
+      "rev": 3479,
+      "date": "2026-02-10",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Changed the attitude alignment gate for the burn computer to directly match the RCS controller logic. This should prevent any situation in which the burn waiting for attitude to align, but it isn't actually doing anything."
+      ]
+    },
+    {
+      "rev": 3480,
+      "date": "2026-02-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed an out of range error in the stage list from my last commit when adding new stages."
+      ]
+    },
+    {
+      "rev": 3481,
+      "date": "2026-02-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed issue where extra stage 0 stages were being added when attaching parts in the debug vehicle editor.",
+        "Fixed issue where repeated empty stages were being added when detaching/reattaching engines in the debug vehicle editor.",
+        "Fixed symmetry pair parts and their children not having their stages set correctly when attaching."
+      ]
+    },
+    {
+      "rev": 3482,
+      "date": "2026-02-11",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Moved dynamic component state from Tank to Mole. This fixes a lurking danger where the thread worker was modifying data directly accessed by the render thread.",
+        "Increased the restriction on component state from 'struct' to 'unmanaged' which further reduces the chances of this being possible in the future.",
+        "Added the ability to create hot path lists for components in addition to the pre-existing method for states.",
+        "Added IReactantMix to support future non-combustion reactant combinations (e.g. pure substances for cold gas thrusters).",
+        "Renamed Empty to Deplete in several places to disambiguate between zero-length sequences and removing substance mass."
+      ]
+    },
+    {
+      "rev": 3483,
+      "date": "2026-02-12",
+      "author": "Morrow",
+      "lines": [
+        "Added very basic pass on generating Connections for Parts so resource flow can be easily modified per Connection."
+      ]
+    },
+    {
+      "rev": 3484,
+      "date": "2026-02-12",
+      "author": "Morrow",
+      "lines": [
+        "Changing to map camera mode no longer turns off your engine if it isn't set to vehicle control."
+      ]
+    },
+    {
+      "rev": 3485,
+      "date": "2026-02-12",
+      "author": "Timberfox",
+      "lines": [
+        "To allow for lunar testing with current assets and solar system size, gave 3m diameter tanks a virtual size of 8m, 2m tanks a virtual size of 4m and 1m tanks a virtual size of 2m.  This was perfered over creating alternative fuels with increased burn temperatures.", 
+        "Added mass to engines, inline with real counterparts * fixed two instances of 3m tanks not having the same wall thickness as the others, resulting in lower dry masses.",
+        "fixed inconsistant whitespacing in some engine definitions."
+      ]
+    },
+    {
+      "rev": 3486,
+      "date": "2026-02-12",
+      "author": "Morrow",
+      "lines": [
+        "Added support for deserializing and presenting display names of parts. Most parts do not yet have display names."
+      ]
+    },
+    {
+      "rev": 3487,
+      "date": "2026-02-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed setting of active stage when deserializing a vehicle save.",
+        "Fixed stages in Gemini7 and Rocket.",
+        "Added a second stage to Rocket for testing."
+      ]
+    },
+    {
+      "rev": 3488,
+      "date": "2026-02-11",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed type-casting part component enumerator only iterating through the first matching type list."
+      ]
+    },
+    {
+      "rev": 3489,
+      "date": "2026-02-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed decoupler fake force to a real force with mass taken into account.",
+        "Added force element to XML to define the force for a decoupler to be applied."
+      ]
+    },
+    {
+      "rev": 3490,
+      "date": "2026-02-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed decoupler so it actually checks the defined decoupler connection for a connection before decoupling. Now that we have connections."
+      ]
+    },
+    {
+      "rev": 3491,
+      "date": "2026-02-11",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Make mole serialization more resilient by storing mass fraction instead of container volume."
+      ]
+    },
+    {
+      "rev": 3492,
+      "date": "2026-02-12",
+      "author": "Morrow",
+      "lines": [
+        "Started work on part connector flags and compatibility."
+      ]
+    },
+    {
+      "rev": 3493,
+      "date": "2026-02-12",
+      "author": "Morrow",
+      "lines": [
+        "Added 'surface' connector concept so things like RCS can be nicely mounted radially without fiddling with the snapping tool. Only the first large RCS thruster has it configured (for now)."
+      ]
+    },
+    {
+      "rev": 3494,
+      "date": "2026-02-12",
+      "author": "Morrow",
+      "lines": [
+        "Removed some of the compatibility restrictions on connectors."
+      ]
+    },
+    {
+      "rev": 3495,
+      "date": "2026-02-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Make the display of the Combustion process substances a text field in the UI for engines (As they cannot be changed at runtime currently).",
+        "Set the selected dropdown com bunstion process entry for tanks to the entry that the tank currently contains by default to also remove some confusion."
+      ]
+    },
+    {
+      "rev": 3496,
+      "date": "2026-02-12",
+      "author": "Morrow",
+      "lines": [
+        "Allowed internal connectors to attach to connectors of same size and smaller to help with stacking while minimizing floating behavior."
+      ]
+    },
+    {
+      "rev": 3497,
+      "date": "2026-02-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the prebuilt vehicle active stages. Again."
+      ]
+    },
+    {
+      "rev": 3498,
+      "date": "2026-02-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed ResoureceManager to now populate it's graph using the part Connections instead of the tree hierarchy. Another step away from being reliant on any kind of part hierarchy in our logic."
+      ]
+    },
+    {
+      "rev": 3499,
+      "date": "2026-02-12",
+      "author": "lghassen",
+      "lines": [
+        "Fix unexpectedly low ring mesh culling performance on some GPUs, notably nvidia 50 series but not 20 series, caused by input buffer size and stride, increases framerate inside the rings on affected GPUs."
+      ]
+    },
+    {
+      "rev": 3500,
+      "date": "2026-02-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Readded Pan's height map.",
+        "Added procedural craters and perturbations to Pan's terrain."
+      ]
+    },
+    {
+      "rev": 3501,
+      "date": "2026-02-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Added Pan, one of Saturn's moons.",
+        "Renamed some cubemaps that weren't using the existing planet texture convention.",
+        "Applied supercompression to Earth's diffuse texture and transcoded to BC7, reducing its file size from 128MB to 30.1MB. More textures will use supercompression soon.",
+        "Removed unused cubemaps.",
+        "Updated the planet map exporter to save heightmaps as PGM, so it can now export 16 bits-per-pixel height data.",
+        "Fixed Phobos' normal map missing a manifest file, causing it to transcode to the wrong BC format."
+      ]
+    },
+    {
+      "rev": 3502,
+      "date": "2026-02-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed Pan's mass being 1000 times its real mass (was 4.3E+18 instead of 4.3E+15) kg. Pan still has a sphere of influence and so it is landable, but it is very small."
+      ]
+    },
+    {
+      "rev": 3503,
+      "date": "2026-02-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Removed old RoughSpecAO textures that were replaced with AoRoughMetal textures.",
+        "Converted all terrain tessellation displacement maps from png to BC4, which is an 8:1 compression ratio. This should improve tessellation performance and reduce VRAM usage slightly."
+      ]
+    },
+    {
+      "rev": 3504,
+      "date": "2026-02-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Revert \"* Changed ResoureceManager to now populate it's graph using the part Connections instead of the tree hierarchy. Another step away from being reliant on any kind of part hierarchy in our logic.\"",
+        "This reverts commit dc3291c5d1645ff5f2bd199e855159384c2523b6."
+      ]
+    },
+    {
+      "rev": 3505,
+      "date": "2026-02-13",
+      "author": "Morrow",
+      "lines": [
+        "Added surface connectors to the rest of the RCS parts."
+      ]
+    },
+    {
+      "rev": 3506,
+      "date": "2026-02-13",
+      "author": "Morrow",
+      "lines": [
+        "Added RCS editor tags to all of the RCS parts."
+      ]
+    },
+    {
+      "rev": 3507,
+      "date": "2026-02-13",
+      "author": "Morrow",
+      "lines": [
+        "Added a toggle for connector typing"
+      ]
+    },
+    {
+      "rev": 3508,
+      "date": "2026-02-13",
+      "author": "Morrow",
+      "lines": [
+        "Found approximately 500 megabytes of allocated but mostly unused VRAM. Reduced it to about 20 megabytes to better fit the size needed."
+      ]
+    },
+    {
+      "rev": 3509,
+      "date": "2026-02-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed dropdown mixture selection on tanks in the debug vehicle editor being reset every frame."
+      ]
+    },
+    {
+      "rev": 3510,
+      "date": "2026-02-13",
+      "author": "Morrow",
+      "lines": [
+        "Compressed older light pack part textures. We may want to just replace these at some point."
+      ]
+    },
+    {
+      "rev": 3511,
+      "date": "2026-02-13",
+      "author": "JoshRW",
+      "lines": [
+        "Remove pbr textures. Remove stars irradiance texture and replace the texture sample with a hardcoded number in the shader. Remove old BRDF preview .png texture."
+      ]
+    },
+    {
+      "rev": 3512,
+      "date": "2026-02-12",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Assign sub parts the same part tree as their full part."
+      ]
+    },
+    {
+      "rev": 3513,
+      "date": "2026-02-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the resource manager to use the connections to build our graph - second attempt. This time it works."
+      ]
+    },
+    {
+      "rev": 3514,
+      "date": "2026-02-13",
+      "author": "Morrow",
+      "lines": [
+        "Converted Sol Diffuse to KTX2 and changed the xml so it isn't being double loaded."
+      ]
+    },
+    {
+      "rev": 3515,
+      "date": "2026-02-13",
+      "author": "Timberfox",
+      "lines": [
+        "Reduced tank wall thickness, decreased engine mass, and changed engines to use hydrogen, to allow current assets to perform lunar missions."
+      ]
+    },
+    {
+      "rev": 3516,
+      "date": "2026-02-13",
+      "author": "Morrow",
+      "lines": [
+        "Added options for part thumbnail texture sizes to the startup and graphics settings. Lowered default size from 1024x1024 to 512x512."
+      ]
+    },
+    {
+      "rev": 3517,
+      "date": "2026-02-13",
+      "author": "Timberfox",
+      "lines": [
+        "Increased RCS strength to better control current vehicle masses.",
+        "Added placeholder mass values to all RCS housings.",
+        "Increased Sphereical tank virtual volumes to match the increases on the base tanks.",
+        "Added Mass values to interstage sections.",
+        "Decreased Service module mass."
+      ]
+    },
+    {
+      "rev": 3518,
+      "date": "2026-02-12",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed the majority of short-term garbage generators for vehicles with RCS which significantly improves performance at high time warp."
+      ]
+    },
+    {
+      "rev": 3519,
+      "date": "2026-02-13",
+      "author": "Rocket",
+      "lines": [
+        "Minor change of GetComponents to Get, as the components was implicit."
+      ]
+    },
+    {
+      "rev": 3520,
+      "date": "2026-02-12",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Replaced enum HasFlag with a bitwise operator that does not allocate."
+      ]
+    },
+    {
+      "rev": 3521,
+      "date": "2026-02-13",
+      "author": "Timberfox",
+      "lines": [
+        "Increased dev rocket engine config to have more usable thrust."
+      ]
+    },
+    {
+      "rev": 3522,
+      "date": "2026-02-13",
+      "author": "Rocket",
+      "lines": [
+        "Replaced various HasFlags with bitwise operator per commit earlier by gravhoek-rw."
+      ]
+    },
+    {
+      "rev": 3523,
+      "date": "2026-02-12",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Increased visual temperature time scales by 10x to better match reference data."
+      ]
+    },
+    {
+      "rev": 3524,
+      "date": "2026-02-12",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fix several cases where the flight computer could request a very tiny timestep but not actually be able to do anything. This should improve time warp performance when e.g. RCS propellant is depleted.",
+        "Added a few ways to skip work in the flight computer when the outputs could not be used.",
+        "Split gimbal, engine, and thruster controller command states out into separate components from the simulation states.",
+        "Removed intermediate flight computer command structs and directly command controller components.",
+        "Cut off auto-burn if there is no propellant available to any active engine.",
+        "Zero out TVC commands if engines are idle to avoid them getting stuck at odd angles.",
+        "Removed the prioritization of the roll axis in detumble control since roll is no longer automatically the minor axis of inertia.",
+        "Stop auto warp if the editor is opened."
+      ]
+    },
+    {
+      "rev": 3525,
+      "date": "2026-02-12",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Zero out controller commands when they become inactive.",
+        "Fixed an off-by-one error where the last engine on a vehicle could fail to affect physics."
+      ]
+    },
+    {
+      "rev": 3526,
+      "date": "2026-02-12",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Don't compute terrain and ocean heights for vehicles above the physics radius."
+      ]
+    }
+  ]
+}

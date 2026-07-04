@@ -1,0 +1,25 @@
+{
+  "build": "2025.11.5.2897",
+  "date": "2025-11-24",
+  "fromRevision": 2894,
+  "toRevision": 2897,
+  "commits": [
+    {
+      "rev": 2895,
+      "date": "2025-11-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added two new kittens to the game, they have unique fur textures and eye colors. We do support each cat having their own fur masks, different suit textures etc, however for now the only difference between the cats are their fur textures and eyes."
+      ]
+    },
+    {
+      "rev": 2896,
+      "date": "2025-11-24",
+      "author": "rocket2guns",
+      "lines": [
+        "Revert \"+ Modified fullscreen/borderless/windowed modes to work more as you would expect them to. Turned off ImGui popout windows when in fullscreen.\"",
+        "This reverts commit f2d640256f3e7e63ddb27ada8cc22a8ecfd8a123."
+      ]
+    }
+  ]
+}

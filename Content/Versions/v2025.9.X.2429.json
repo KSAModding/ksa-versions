@@ -1,0 +1,123 @@
+{
+  "build": "2025.9.4.2429",
+  "date": "2025-09-27",
+  "fromRevision": 2415,
+  "toRevision": 2429,
+  "commits": [
+    {
+      "rev": 2416,
+      "date": "2025-09-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Deleted teleport states from the vehicle update task. We now directly modify the orbit in the UI context when the workers are shut down and this is safe to do."
+      ]
+    },
+    {
+      "rev": 2417,
+      "date": "2025-09-24",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed issue where Transfer Planner was picking up mouse clicks even when the mouse was outside it's window. This caused the selected point to be changed and be drawn outside of the transfer planner window."
+      ]
+    },
+    {
+      "rev": 2418,
+      "date": "2025-09-24",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed issue with porkchop best and select points markers being drawn above other overlapping UI windows."
+      ]
+    },
+    {
+      "rev": 2419,
+      "date": "2025-09-24",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added buttons to Transfer Planner under the Porkchop plot that allows the user to fine tune the selected porkchop point up/down/left/right one index at a time."
+      ]
+    },
+    {
+      "rev": 2420,
+      "date": "2025-09-24",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed further improvements to the transfer planner to adjust our Lambert solutions for our porkchop to ensure we get an encounter (sometimes it misses, due to imprecisions in the methods we are using to convert the hyperboic escape velocity back to the starting orbit, and that assumes near circular orbit). This is a placeholder brute force adjustement. A further iteration is needed to replace this method with a gradient descent method to allow us to solve the encounter in a more methodical method that will also allow us to solve the encounter end to create a solution to a user defined ending altitude/radius."
+      ]
+    },
+    {
+      "rev": 2421,
+      "date": "2025-09-24",
+      "author": "Dan Southon",
+      "lines": [
+        "New combined sun shadow system in preparation for vessels casting shadows onto terrain.",
+        "New depth renderer for vehicles.",
+        "Added early exits for sub part instance rendering.",
+        "Added Vehicle Max Render Distance to Constants.",
+        "Added hard shadows only toggle for light system.",
+        "Converted all usages of the old sun shadow systems to now utilize the new system.",
+        "Removed old sun shadow renderers."
+      ]
+    },
+    {
+      "rev": 2422,
+      "date": "2025-09-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed discontinuities in erosion modifier value and gradients."
+      ]
+    },
+    {
+      "rev": 2423,
+      "date": "2025-09-25",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added new bool flag to the astronomical body template \"TidallyLocked\" which is false by default. For bodies that have this defined as true they will not have their rotation period automatically calculated and set at startup to match their orbital period so that they are tidally locked.",
+        "Fixed issue where satellites (moons) in the solar system were not correctly tidally locked in their rotation period."
+      ]
+    },
+    {
+      "rev": 2424,
+      "date": "2025-09-25",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Reapply \"* Fixed calculation of burn duration and ignition time for burn UI to incorporate user set throttle setting.\"",
+        "Throttle setting is only considered when the FlightComputer is in Manual mode. In Automatic Mode throttle is currently set at 100% for the UI calculations and the burn regardless of what the user has set it too."
+      ]
+    },
+    {
+      "rev": 2425,
+      "date": "2025-09-25",
+      "author": "Dan Southon",
+      "lines": [
+        "Moved the shader layouts for shadows out of the common glsl and added them to each frag/comp shader that used them, allowing for better control over.",
+        "Changed the shadows glsl calculations to require parameters for a shadow struct uniform and texture.",
+        "Removed unneeded lighting/shadows includes from vert shaders."
+      ]
+    },
+    {
+      "rev": 2426,
+      "date": "2025-09-25",
+      "author": "Dan Southon",
+      "lines": [
+        "Added WIP vessel shadows on terrain (currently clips too early/they are only visible when very close to the ground)",
+        "Fixed areas in full shadow when they are out of the shadow map."
+      ]
+    },
+    {
+      "rev": 2427,
+      "date": "2025-09-25",
+      "author": "Dan Southon",
+      "lines": [
+        "Adjusted max shadow distance for vessel shadow map"
+      ]
+    },
+    {
+      "rev": 2428,
+      "date": "2025-09-25",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed ground track and planet exporter window gradient texture using r32f on the shader side rather than rgba8. This fixes a validation error and also the ground track view opening after a delay."
+      ]
+    }
+  ]
+}

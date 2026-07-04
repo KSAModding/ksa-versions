@@ -1,0 +1,909 @@
+{
+  "build": "2025.11.4.2742",
+  "date": "2025-11-13",
+  "fromRevision": 2634,
+  "toRevision": 2742,
+  "commits": [
+    {
+      "rev": 2635,
+      "date": "2025-11-03",
+      "author": "Morrow",
+      "lines": [
+        "Replaced the old 'Rocket' vehicle with a copy of the new parts Gemini as the old way we were doing rendering and physics is slowly being deprecated and its thrusters are broken."
+      ]
+    },
+    {
+      "rev": 2636,
+      "date": "2025-11-03",
+      "author": "Morrow",
+      "lines": [
+        "Updated part PBR textures."
+      ]
+    },
+    {
+      "rev": 2637,
+      "date": "2025-11-03",
+      "author": "Morrow",
+      "lines": [
+        "Updated Service Module PBR texture that I forgot in my last commit."
+      ]
+    },
+    {
+      "rev": 2638,
+      "date": "2025-11-03",
+      "author": "Dan Southon",
+      "lines": [
+        "Added setting for LightSystem shadow slots.",
+        "Adapted how ShadowAtlas tile count and sizes are calculated with the new shadow slots.",
+        "Cleaned up more, redundant namespaces."
+      ]
+    },
+    {
+      "rev": 2639,
+      "date": "2025-11-03",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed mesh collection LOD names.",
+        "Reduced Earth Beach material displacement."
+      ]
+    },
+    {
+      "rev": 2640,
+      "date": "2025-11-04",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed collisions with the Hybrid Multifractal terrain modifier."
+      ]
+    },
+    {
+      "rev": 2641,
+      "date": "2025-11-04",
+      "author": "Linx-RW",
+      "lines": [
+        "Converted the Moon's diffuse texture to BC7 KTX2, fixing the green-purple discolouration from previously using BC1 compression."
+      ]
+    },
+    {
+      "rev": 2642,
+      "date": "2025-11-04",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Merging kitten branch to main",
+        "Added rendering for Kittens!",
+        "Added animation system",
+        "Updated Gltf loading to use new Gltf package"
+      ]
+    },
+    {
+      "rev": 2643,
+      "date": "2025-11-04",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed crash when vehicle is hyperboic and user accidentally clicks (or on purpose) the parent body orbit line, causing the game to try to create a parent burn, which of course is not valid when your starting orbit is hyerbolic."
+      ]
+    },
+    {
+      "rev": 2644,
+      "date": "2025-11-05",
+      "author": "matthew.caradus",
+      "lines": [
+        "Fixed an issue where sounds with multiple params would only have the first one applied correctly.",
+        "Tweaked atmospheric re-entry wind sound param values to more accurately reflect real world behaviour."
+      ]
+    },
+    {
+      "rev": 2645,
+      "date": "2025-11-05",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed prioritize controlled vehicle orbit line hovering over other orbit lines when they are near."
+      ]
+    },
+    {
+      "rev": 2646,
+      "date": "2025-11-05",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added test kitten eva to Earth Only scenario. We still need to replace the apollo part with the jetpack part.",
+        "Added overload to Vehicle UpdateRenderData to allow Kitten rendering to occur."
+      ]
+    },
+    {
+      "rev": 2647,
+      "date": "2025-11-05",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added the kitten to Earth Only scenario. Missed a XML file."
+      ]
+    },
+    {
+      "rev": 2648,
+      "date": "2025-11-05",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added KittenBackPack part and subpart definitions.",
+        "Changed apollo part with Kitten BackPack placeholder part."
+      ]
+    },
+    {
+      "rev": 2649,
+      "date": "2025-11-05",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Fixed a crash on some PCs"
+      ]
+    },
+    {
+      "rev": 2650,
+      "date": "2025-11-05",
+      "author": "Morrow",
+      "lines": [
+        "Re-added required include for production builds."
+      ]
+    },
+    {
+      "rev": 2651,
+      "date": "2025-11-05",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Cat works with multisampling and window resizes"
+      ]
+    },
+    {
+      "rev": 2652,
+      "date": "2025-11-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added ability to add or remove the helmet for the kitten. This is currently hard coded to on, however the logic for toggling it is ready to be hooked into where needed.",
+        "Added initial expressions setup. Similar to above this isn't currently tied into any systems, so the kitten is defaulted to being scared.",
+        "Added LOD system for cat fur, aswell as quality settings to adjust the maximum number of fur shells rendered per cat.",
+        "Fixed crash on launch caused by the fur renderer sometimes being null, when initializing dependent systems."
+      ]
+    },
+    {
+      "rev": 2653,
+      "date": "2025-11-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Kitten animation speed is now affected by global simulation speed. This currently does not affect the viewing direction of the cats."
+      ]
+    },
+    {
+      "rev": 2654,
+      "date": "2025-11-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed crash caused by trying to dispose the fur renderer when its null."
+      ]
+    },
+    {
+      "rev": 2655,
+      "date": "2025-11-05",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Cleanup of fur resources, setting up glass shader"
+      ]
+    },
+    {
+      "rev": 2656,
+      "date": "2025-11-05",
+      "author": "Morrow",
+      "lines": [
+        "Turned off libshaderc optimizations due to causing infinite hanging when creating some compute pipelines on 6000 series AMD cards."
+      ]
+    },
+    {
+      "rev": 2657,
+      "date": "2025-11-05",
+      "author": "Morrow",
+      "lines": [
+        "Moved some of the default RCS thruster locations to cause less rotation when doing translations."
+      ]
+    },
+    {
+      "rev": 2658,
+      "date": "2025-11-05",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix depth and multisampling-related issues in screen-space ocean mode, still need to fix fireflies around vessel outlines caused by calculating derivatives using depth buffer position",
+        "Restore depth resolve to max",
+        "De-duplicate functions in tesselation and screen-space ocean shaders",
+        "Fix typo in exhaust startOffset"
+      ]
+    },
+    {
+      "rev": 2659,
+      "date": "2025-11-06",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Fixed MSAA issue with fur renderer (at least on startup)"
+      ]
+    },
+    {
+      "rev": 2660,
+      "date": "2025-11-06",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Transparency works with bucket system"
+      ]
+    },
+    {
+      "rev": 2661,
+      "date": "2025-11-06",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Restored fur"
+      ]
+    },
+    {
+      "rev": 2662,
+      "date": "2025-11-06",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed broken parent eject burn creation. This was broken due to changes made to the flightplan and burnplan data structures a couple of weeks ago. Now brought this functionality into line with those changes so it functions again."
+      ]
+    },
+    {
+      "rev": 2663,
+      "date": "2025-11-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added an .editorconfig to control project-specific IDE settings.",
+        "Turned off the persistent IDE recommendations to use primary constructors, as these create inconsistencies and often duplicate members unless they are used exactly correctly. Normal constructors work fine and are what people expect."
+      ]
+    },
+    {
+      "rev": 2664,
+      "date": "2025-11-06",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added translucent visor to the cats helmet, textures are currently not setup for it so it looks very flat."
+      ]
+    },
+    {
+      "rev": 2665,
+      "date": "2025-11-06",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed Transfer Planner not showing options for transfers between Moons around the same parent body."
+      ]
+    },
+    {
+      "rev": 2666,
+      "date": "2025-11-06",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed CPU erosion terrain modifier returning slightly different values to the GPU version.",
+        "Changed the DecodeBC1, 5 and uncompressed functions to no longer return the scaled and reconstructed z normal. This means we can do bilinear interpolation before reconstructing the z component which matches the shader code. These were only used on Celestial and should be moved to a more appropriate place."
+      ]
+    },
+    {
+      "rev": 2667,
+      "date": "2025-11-06",
+      "author": "Linx-RW",
+      "lines": [
+        "Replaced the Moon's rocky textures with dusty textures which better represents the regolith.",
+        "Added subtle erosion with low curvature to the Moon which represents surface material slumping.",
+        "Adjusted the proecdural craters on the Moon so they blend in better with the real craters.",
+        "Updated the Moon's normal map with the above change."
+      ]
+    },
+    {
+      "rev": 2668,
+      "date": "2025-11-06",
+      "author": "Linx-RW",
+      "lines": [
+        "Reduced unnecessary work done by the complex craters modifier."
+      ]
+    },
+    {
+      "rev": 2669,
+      "date": "2025-11-06",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fur renderer optimizations. Changed how the total number of fur shells directly affect the alpha threshold, meaning that less fur shells are now more viable as they appear to be 'thicker'."
+      ]
+    },
+    {
+      "rev": 2670,
+      "date": "2025-11-06",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed Glass Renderer artifacts caused by lack of rasterization culling. This resulted in single meshes having transparency ordering artifacts."
+      ]
+    },
+    {
+      "rev": 2671,
+      "date": "2025-11-06",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Enabled DepthWrite for glass renderer. This fixes artifacts that were occuring when looking through glass towards earth, were there were depth sorting artifacts from water and clouds."
+      ]
+    },
+    {
+      "rev": 2672,
+      "date": "2025-11-06",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Very rough pass on the glass fragment shader. This has some temporary values hardcoded into it, while we wait for the visor to get proper textures made."
+      ]
+    },
+    {
+      "rev": 2673,
+      "date": "2025-11-06",
+      "author": "Christopher Howlett",
+      "lines": [
+        "ImGui overhaul + Custom backend implementation for GLFW and Vulkan"
+      ]
+    },
+    {
+      "rev": 2674,
+      "date": "2025-11-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Quick patch to fix an error where loading games would not restore any vehicle properties."
+      ]
+    },
+    {
+      "rev": 2675,
+      "date": "2025-11-06",
+      "author": "morrow-rw",
+      "lines": [
+        "Fixed crash when entering debug vehicle editor. ImGui descriptor pool was running out due to thumbnails asking for a new descriptor set per frame."
+      ]
+    },
+    {
+      "rev": 2676,
+      "date": "2025-11-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Significant rework of the total physics loop as a step towards multi-vehicle physics. This clusters nearby vehicles into a single physics solver and then synchronizes their timesteps with each other. Since all vehicles in the same cluster will now share a common time grid, we can apply inter-vehicle interactions as a next step."
+      ]
+    },
+    {
+      "rev": 2677,
+      "date": "2025-11-06",
+      "author": "morrow-rw",
+      "lines": [
+        "Added support for subparts with no meshes.",
+        "Set vehicle default bounding box and bounding sphere to non-zero values if a vehicle has no parts or parts with no meshes.",
+        "Gave kittens some propellant for their EVA activities."
+      ]
+    },
+    {
+      "rev": 2678,
+      "date": "2025-11-06",
+      "author": "Dan Southon",
+      "lines": [
+        "Updated thumbnail rendering (no longer needs Rocket, and should be safe on window resize)",
+        "Fixed creation and destruction with new imgui  texture for thumbnails.",
+        "Added more variants of TransitionImage functions to CommandBufferEx",
+        "Added new pipeline in SubPartRenderer for thumbnail rendering.",
+        "Removed PreparePartThumbnails from program (now in ThumbnailEditor)"
+      ]
+    },
+    {
+      "rev": 2679,
+      "date": "2025-11-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Enabled back face culling for fur renderer."
+      ]
+    },
+    {
+      "rev": 2680,
+      "date": "2025-11-07",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Kittty mod data updates"
+      ]
+    },
+    {
+      "rev": 2681,
+      "date": "2025-11-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Compressed kitten fur textures to dds.",
+        "Kitten helmet now uses back face culling."
+      ]
+    },
+    {
+      "rev": 2682,
+      "date": "2025-11-06",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed generation of mesh collections that aren't present in the currently loaded system."
+      ]
+    },
+    {
+      "rev": 2683,
+      "date": "2025-11-06",
+      "author": "Linx-RW",
+      "lines": [
+        "Removed redundant list used when deciding which mesh collections to generate."
+      ]
+    },
+    {
+      "rev": 2684,
+      "date": "2025-11-07",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Fixed secondary window resizing event after ImGui overhaul"
+      ]
+    },
+    {
+      "rev": 2685,
+      "date": "2025-11-07",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Fixed rendering bugs with cat"
+      ]
+    },
+    {
+      "rev": 2686,
+      "date": "2025-11-07",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Hooking vehicle accelleration to velocity"
+      ]
+    },
+    {
+      "rev": 2687,
+      "date": "2025-11-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added MMU to the kitten."
+      ]
+    },
+    {
+      "rev": 2688,
+      "date": "2025-11-07",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed issue where target UI elements disappear when zooming into followed vehicle., Now the test for whether we should draw UI and lines will measure from either the object the camera is following or the astronomical of interest based on which one is furtherest away from the camera."
+      ]
+    },
+    {
+      "rev": 2689,
+      "date": "2025-11-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added animations for the cat with MMU. Currently only directional loops (up, down, left, right, forward, backward)."
+      ]
+    },
+    {
+      "rev": 2690,
+      "date": "2025-11-07",
+      "author": "Linx-RW",
+      "lines": [
+        "Reduced biome map exporter memory usage by 4x, allowing us to export 16k ID and Control maps."
+      ]
+    },
+    {
+      "rev": 2691,
+      "date": "2025-11-07",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Cat anchoring WIP"
+      ]
+    },
+    {
+      "rev": 2692,
+      "date": "2025-11-07",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Removed dependency to VMA"
+      ]
+    },
+    {
+      "rev": 2693,
+      "date": "2025-11-07",
+      "author": "Linx-RW",
+      "lines": [
+        "Removed unused uint functions in the biome map exporter shaders."
+      ]
+    },
+    {
+      "rev": 2694,
+      "date": "2025-11-09",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Minor warning/suggestion fixes and renamed Thruster.cs to Rocket.cs."
+      ]
+    },
+    {
+      "rev": 2695,
+      "date": "2025-11-10",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Moved cat content to different directory"
+      ]
+    },
+    {
+      "rev": 2696,
+      "date": "2025-11-10",
+      "author": "Morrow",
+      "lines": [
+        "Added new versions of 3 wide fuel tanks and updated fuel tank textures and meshes."
+      ]
+    },
+    {
+      "rev": 2697,
+      "date": "2025-11-10",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Cat is locked to MMU, and can now be treated like a vehicle when in EVA"
+      ]
+    },
+    {
+      "rev": 2698,
+      "date": "2025-11-09",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Changed TWR gauge to display surface thrust-to-weight ratio for the currently-orbited body rather than the thrust-to-weight at your current altitude."
+      ]
+    },
+    {
+      "rev": 2699,
+      "date": "2025-11-10",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed incorrect normals being calculated for skinned meshes. This was caused by the normals getting transformed by the inverse of the skinning matrix, instead of by the skinning matrix directly."
+      ]
+    },
+    {
+      "rev": 2700,
+      "date": "2025-11-10",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Made it easier to scale cat in the future",
+        "Added basic expression system to cat in EVA (they react to acceleration)"
+      ]
+    },
+    {
+      "rev": 2701,
+      "date": "2025-11-10",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Kitten fur length and fur LOD speed are now values calculated based on the scale of the kitten. This means that fur length will appear consistent regardless of how big or small the cat is, aswell as ensuring the LOD system works as intended on large kittens as previously larger kittens would have very few fur shells due to the LOD system expecting the kitten to be a specific size."
+      ]
+    },
+    {
+      "rev": 2702,
+      "date": "2025-11-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Added procedural small craters to the Moon.",
+        "Added size variation parameter to the existing procedural craters modifiers, allowing crater size randomization.",
+        "Allowed terrain gradient strength parameter to affect all modifier gradient output, not just the initial height gradient.",
+        "Added CPU gradient evaluation for the simple craters modifier."
+      ]
+    },
+    {
+      "rev": 2703,
+      "date": "2025-11-10",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Moved orbit line transparency and darkening from CPU to GPU."
+      ]
+    },
+    {
+      "rev": 2704,
+      "date": "2025-11-10",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Cleanup pass on cats"
+      ]
+    },
+    {
+      "rev": 2705,
+      "date": "2025-11-10",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Cat fur cleanup"
+      ]
+    },
+    {
+      "rev": 2706,
+      "date": "2025-11-10",
+      "author": "Morrow",
+      "lines": [
+        "Updated engine part meshes and textures."
+      ]
+    },
+    {
+      "rev": 2707,
+      "date": "2025-11-10",
+      "author": "Morrow",
+      "lines": [
+        "Added support to offset the gimbal position of an engine."
+      ]
+    },
+    {
+      "rev": 2708,
+      "date": "2025-11-10",
+      "author": "Morrow",
+      "lines": [
+        "Fixed misplaced debug GPU label causing validation errors."
+      ]
+    },
+    {
+      "rev": 2709,
+      "date": "2025-11-10",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Shrunk cat to a more appropriate size"
+      ]
+    },
+    {
+      "rev": 2710,
+      "date": "2025-11-10",
+      "author": "Morrow",
+      "lines": [
+        "Added 'KittenOne' to the Earth System default and the Sol System default systems."
+      ]
+    },
+    {
+      "rev": 2711,
+      "date": "2025-11-09",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added angular acceleration to the list of kinematic measurements output from the physics system during an update."
+      ]
+    },
+    {
+      "rev": 2712,
+      "date": "2025-11-10",
+      "author": "Dan Southon",
+      "lines": [
+        "Converted all CombinedImages for shadows to split SampledImage+Sampler in preparation for bindless"
+      ]
+    },
+    {
+      "rev": 2713,
+      "date": "2025-11-10",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Build a separate pipeline for every volumetric cloud layer and use specialization constants, to preserve performance when enabling/disabling specific features",
+        "Improve cloud performance when a single noise scale is used per-layer",
+        "Add flowmap support for volumetric clouds to create swirls",
+        "Initial volumetric configs, textures and flowmap for Jupiter, needs some refinements and more variety as well as more vertical formations",
+        "Support for local color maps for volumetric clouds",
+        "Expose per-planet flickering reduction distance setting for volumetric clouds",
+        "Add a setting for 2d cloud layers to use only the alpha channel if needed, still need to consolidate some settings"
+      ]
+    },
+    {
+      "rev": 2714,
+      "date": "2025-11-11",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed Model.vert outputting incorrect normals to the fragment shader due to not getting normalized after getting multiplied by the transform matrix."
+      ]
+    },
+    {
+      "rev": 2715,
+      "date": "2025-11-11",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Fixed rendering crash in vehicle editor",
+        "Minor improvements to cat MMU animations"
+      ]
+    },
+    {
+      "rev": 2716,
+      "date": "2025-11-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Updated the ground clutter renderer to the latest version of KSA.",
+        "Fixed BVH generation using unpacked and origin-shifted vertices. In the future, I'll look into utilizing the origin shift for the extra precision it grants us.",
+        "Moved ground clutter generation off the async compute queue for now."
+      ]
+    },
+    {
+      "rev": 2717,
+      "date": "2025-11-11",
+      "author": "Dan Southon",
+      "lines": [
+        "Converted RenderTargets in ShadowTechniques to use SimpleVkTexture for bindless prep"
+      ]
+    },
+    {
+      "rev": 2718,
+      "date": "2025-11-11",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed Kitten Sub part definition.",
+        "Added MmuRcsVac volumetric exhaust template.",
+        "Added ability to turn off RCS thruster lighting.",
+        "Switched kitten MMU to use new volunetrix exhaust FX and turn off thruster lighting."
+      ]
+    },
+    {
+      "rev": 2719,
+      "date": "2025-11-11",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Named the first kitten. Dean will reveal his name soon (TM)."
+      ]
+    },
+    {
+      "rev": 2720,
+      "date": "2025-11-11",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Forgot the other XML files for the first kitten name."
+      ]
+    },
+    {
+      "rev": 2721,
+      "date": "2025-11-11",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Removed engine canvas from Kitty."
+      ]
+    },
+    {
+      "rev": 2722,
+      "date": "2025-11-11",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed so Kittens on EVA cannot create burns. Removed burn canvas as well."
+      ]
+    },
+    {
+      "rev": 2723,
+      "date": "2025-11-11",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix validation errors related to Jupiter textures"
+      ]
+    },
+    {
+      "rev": 2724,
+      "date": "2025-11-12",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Flipped KittenEva upside down"
+      ]
+    },
+    {
+      "rev": 2725,
+      "date": "2025-11-12",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed Kittens on EVA camera by default is Chase view."
+      ]
+    },
+    {
+      "rev": 2726,
+      "date": "2025-11-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed incorrect PBR material setup on the kittens. This was caused by either glbs missing the RMA textures, or fragment shaders expecting textures to be formatted as ORM instead of RMA.",
+        "Updated kitten space suit to use white suit variation."
+      ]
+    },
+    {
+      "rev": 2727,
+      "date": "2025-11-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Reverted unintended change from updating the ground clutter where the terrain heightmap was always being sampled with mip 0."
+      ]
+    },
+    {
+      "rev": 2728,
+      "date": "2025-11-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed inverted normal axis on kitten suit and MMU."
+      ]
+    },
+    {
+      "rev": 2729,
+      "date": "2025-11-12",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Shadow rendering WIP",
+        "Added shadow bucketing system"
+      ]
+    },
+    {
+      "rev": 2730,
+      "date": "2025-11-12",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Tweaks to MMU thrusters. These are nowhere near final and are still visually mis-aligned. They will need to be until we complete Mass implementation to parts."
+      ]
+    },
+    {
+      "rev": 2731,
+      "date": "2025-11-12",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Moved the first Kitten to ever EVA down near the Gemini Capsule vehicles. - PHew that was close. Nearly gave away his real name there in the commit message."
+      ]
+    },
+    {
+      "rev": 2732,
+      "date": "2025-11-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added simple rim lighting on kitten fur. The intensity is expected to be tweaked after kittens have shadows implemented properly."
+      ]
+    },
+    {
+      "rev": 2733,
+      "date": "2025-11-12",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Added depth pass renderer for static meshes (WIP)"
+      ]
+    },
+    {
+      "rev": 2734,
+      "date": "2025-11-12",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed disconnected Ap markers being drawn in UI on orbits where start TA < -Pi."
+      ]
+    },
+    {
+      "rev": 2735,
+      "date": "2025-11-12",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Static meshes cast sun shadows"
+      ]
+    },
+    {
+      "rev": 2736,
+      "date": "2025-11-12",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Fixed multisampling crash for shadows"
+      ]
+    },
+    {
+      "rev": 2737,
+      "date": "2025-11-11",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Catch exceptions thrown in the vehicle update task so that we receive the error messages outside of the debugger."
+      ]
+    },
+    {
+      "rev": 2738,
+      "date": "2025-11-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added 3 new idle animations for the kitten with MMU. Currently only idle 1 is used, however idles 2 and 3 are ready to be setup once a system for switching between idles gets implemented."
+      ]
+    },
+    {
+      "rev": 2739,
+      "date": "2025-11-12",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Fix broken ImGui columns in some windows after the overhaul"
+      ]
+    },
+    {
+      "rev": 2740,
+      "date": "2025-11-12",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Skinned meshes cast shadows too"
+      ]
+    },
+    {
+      "rev": 2741,
+      "date": "2025-11-12",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed feet movement to pitch controls on EVA Kitten."
+      ]
+    }
+  ]
+}

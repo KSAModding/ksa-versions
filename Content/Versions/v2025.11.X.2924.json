@@ -1,0 +1,81 @@
+{
+  "build": "2025.11.11.2924",
+  "date": "2025-11-26",
+  "fromRevision": 2915,
+  "toRevision": 2924,
+  "commits": [
+    {
+      "rev": 2916,
+      "date": "2025-11-25",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed the computation of control authority for kitten EVA thrusters, thus re-enabling flight computer control of the kittens."
+      ]
+    },
+    {
+      "rev": 2917,
+      "date": "2025-11-25",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Implemented a simple nozzle flow separation model to prevent nozzle thrust from becoming zero or negative. This also produces a flow separation severity metric which we can use to drive separation-induced engine damage in the future."
+      ]
+    },
+    {
+      "rev": 2918,
+      "date": "2025-11-25",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed some old state from the now-deleted thrust editor."
+      ]
+    },
+    {
+      "rev": 2919,
+      "date": "2025-11-26",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed BodyTemplate optional in Astronomical class, so Vehicles can have them optional.",
+        "Removed GaugeCanvas references from VehicleTemplate and vehicle definitions in XML files, they are now referenced via statics in the GaugeCanvas class.",
+        "Removed VehicleTemplate reference from Vehicle class. A Vehicle can still be built from a VehicleTemplate but we no longer store and reference the template after the instance is created. This will allow us to serialize vehicles now without the need of a template.",
+        "PSA: THIS CHANGE WILL BREAK ALL EXISTING SAVE Files!!!! That is your one and only warning. Also, there is further changes coming very soon that will break them again as we look to serialize and deserialize vehicles and parts.",
+        "Fixed issue when trying to delete save files that are under Windows OneDrive sync would fail and crash the game.",
+        "Added ColorExtensions.RandomColor function."
+      ]
+    },
+    {
+      "rev": 2920,
+      "date": "2025-11-26",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Case fixes for asset paths"
+      ]
+    },
+    {
+      "rev": 2921,
+      "date": "2025-11-25",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed flight computer wakeup time not being respected again, causing attitude control instability at high warp.",
+        "Eliminated cases of extremely tiny timesteps caused by numerical imprecision.",
+        "Fixed minimum thruster time not being respected after the engines overhaul."
+      ]
+    },
+    {
+      "rev": 2922,
+      "date": "2025-11-26",
+      "author": "Dan Southon",
+      "lines": [
+        "Packed PBRPushConstants into 1 uint as this was just setting a few bools",
+        "Removed PushConstant offset for PBRPushConstants as it is no longer needed.",
+        "Added bit extract helpers to Mesh.Frag for PBRPushConstants."
+      ]
+    },
+    {
+      "rev": 2923,
+      "date": "2025-11-26",
+      "author": "Morrow",
+      "lines": [
+        "Moved Part and SubPart gameplay data to its own concept to deconflict the art import pipeline and gameplay changes."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "build": "2026.2.37.3699",
+  "date": "2026-02-26",
+  "fromRevision": 3695,
+  "toRevision": 3699,
+  "commits": [
+    {
+      "rev": 3696,
+      "date": "2026-02-26",
+      "author": "Dan Southon",
+      "lines": [
+        "Set debug names for fences across the project"
+      ]
+    },
+    {
+      "rev": 3697,
+      "date": "2026-02-26",
+      "author": "GitHub",
+      "lines": [
+        "Updated kittens to use cascaded shadows.",
+        "Hopefully improved some of the gpu warps/hotspots in the shadow shaders.",
+        "Updated the CSM system to use the new interface IRenderPassInfo.",
+        "Added receiver plane depth bias to cascaded shadows."
+      ]
+    },
+    {
+      "rev": 3698,
+      "date": "2026-02-25",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Uncommented the line which allows vehicles to go into the landed state. This was accidentally commented out in 880889e."
+      ]
+    }
+  ]
+}

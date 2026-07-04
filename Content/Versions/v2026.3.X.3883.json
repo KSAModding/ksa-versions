@@ -1,0 +1,299 @@
+{
+  "build": "2026.3.8.3883",
+  "date": "2026-03-25",
+  "fromRevision": 3848,
+  "toRevision": 3883,
+  "commits": [
+    {
+      "rev": 3849,
+      "date": "2026-03-19",
+      "author": "Morrow",
+      "lines": [
+        "Fixed composite renderer accidentally running twice."
+      ]
+    },
+    {
+      "rev": 3850,
+      "date": "2026-03-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed unused shaders added during initial implementation of raytracing."
+      ]
+    },
+    {
+      "rev": 3851,
+      "date": "2026-03-19",
+      "author": "Morrow",
+      "lines": [
+        "Added support for ray tracing to use the same light data that non-ray tracing would use. This still needs to be set up on the ray tracing side."
+      ]
+    },
+    {
+      "rev": 3852,
+      "date": "2026-03-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Raytracing now supports emissive materials. This will add lighting into the scene directly from the material instead of requiring an explict light.",
+        "GpuTextureSystem now universally support bindless emissive textures."
+      ]
+    },
+    {
+      "rev": 3853,
+      "date": "2026-03-19",
+      "author": "Morrow",
+      "lines": [
+        "Differentiated the concept of frames in flight and swapchain image count. This touches pretty much all of the rendering code in the game. If there's anything oddly flickering (that didn't used to flicker) please yell out."
+      ]
+    },
+    {
+      "rev": 3854,
+      "date": "2026-03-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added support for raytracing to setup point lights using data from LightModule instead of hardcoding data."
+      ]
+    },
+    {
+      "rev": 3855,
+      "date": "2026-03-19",
+      "author": "JoshRW",
+      "lines": [
+        "Update README instructions with .NET 10 install instead of .NET 9"
+      ]
+    },
+    {
+      "rev": 3856,
+      "date": "2026-03-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reduced intensity of the raytraced emissives."
+      ]
+    },
+    {
+      "rev": 3857,
+      "date": "2026-03-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ability to set target vehicle and docking port from the docking port part context menu.",
+        "Added UI readouts in the docking port camera for target offsets and alignment crosshairs.",
+        "Added OnDrawUi method and call to Module base class."
+      ]
+    },
+    {
+      "rev": 3858,
+      "date": "2026-03-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reworked how shadow indirect lighting is calculated. Previously shadows were arbitrarily reduced, now there is more of a relationship between lights in the scene and reflection lighting."
+      ]
+    },
+    {
+      "rev": 3859,
+      "date": "2026-03-19",
+      "author": "lghassen",
+      "lines": [
+        "Optimize clouds shadow volume updates for better cache hits, improves framerate by 10-15% around low earth orbit with default settings",
+        "Small tweaks to ocean varyings"
+      ]
+    },
+    {
+      "rev": 3860,
+      "date": "2026-03-20",
+      "author": "Morrow",
+      "lines": [
+        "Fixed a rare situation where shared device memory pointers could end up out of date.",
+        "Added a basic debug menu for the global DeviceHostSharedMemory as well as an output that will complain if someone is manipulating the shared memory when they shouldn't."
+      ]
+    },
+    {
+      "rev": 3861,
+      "date": "2026-03-20",
+      "author": "Morrow",
+      "lines": [
+        "Switched DeviceHostSharedMemory to use ByteSize rather than ByteSize64 as they are both 64-bit and the former has better support."
+      ]
+    },
+    {
+      "rev": 3862,
+      "date": "2026-03-20",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Kittens helmets now render translucency correctly. This means that planets are visible through the helmet."
+      ]
+    },
+    {
+      "rev": 3863,
+      "date": "2026-03-20",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed crash when moving near small ellipsoid celestial bodies like Pan"
+      ]
+    },
+    {
+      "rev": 3864,
+      "date": "2026-03-20",
+      "author": "lghassen",
+      "lines": [
+        "Fix validation error due to ocean tesselation control shader inputs not matching vertex outputs"
+      ]
+    },
+    {
+      "rev": 3865,
+      "date": "2026-03-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Increase atmospheric pressure and density cutoff levels so that the vacuum discontinuity is much smaller. This raises the current Earth hard atmospheric edge up to ~167 km."
+      ]
+    },
+    {
+      "rev": 3866,
+      "date": "2026-03-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Clamp plume pressure ratios to the new minimum atmospheric pressure limit and remove the special infinite case from the physical plume data.",
+        "Don't calculate plume data for engines which are off."
+      ]
+    },
+    {
+      "rev": 3867,
+      "date": "2026-03-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Small clean up to plume mixing layer expansion."
+      ]
+    },
+    {
+      "rev": 3868,
+      "date": "2026-03-22",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added visual effect exhaust radii to rocket nozzles.",
+        "Removed unused thruster part data."
+      ]
+    },
+    {
+      "rev": 3869,
+      "date": "2026-03-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed a bug resulting in an arbitrary limit for the number of meshes that can recieve raytraced data."
+      ]
+    },
+    {
+      "rev": 3870,
+      "date": "2026-03-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "PartModel now determines if a part contributes to raytracing using an enum instead of a bool. This allows for differnt types of raytracing such as ShadowProxys which contribute to the raytraced lighting but aren't rasterized.",
+        "Fixed multiple shadow artifacts visible in raytraced IVA."
+      ]
+    },
+    {
+      "rev": 3871,
+      "date": "2026-03-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Raytracing enum cleanup."
+      ]
+    },
+    {
+      "rev": 3872,
+      "date": "2026-03-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "De/Serialize Vehicle Target Part so saves persist docking port target port setting."
+      ]
+    },
+    {
+      "rev": 3873,
+      "date": "2026-03-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed artifacts at the edge of the raytracing denoiser.",
+        "General raytracing denoiser code cleanup."
+      ]
+    },
+    {
+      "rev": 3874,
+      "date": "2026-03-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Raytracing shadow proxies now use a mask to disable them from affecting lighting or reflections. This means they explictly only affecting shadow calculations."
+      ]
+    },
+    {
+      "rev": 3875,
+      "date": "2026-03-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Minor raytacing settings and graphical adjustments."
+      ]
+    },
+    {
+      "rev": 3876,
+      "date": "2026-03-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Removed redundant PartTree Merges for every part in a vehicle when regenerating the Vehicle from serialized save. We can then just rebuilt the PartTree ONCE at the end improving loading performance."
+      ]
+    },
+    {
+      "rev": 3877,
+      "date": "2026-03-23",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Readded ambient lighting calculation to MeshIndirectRaytraced.frag. This means when you get close to a planet you will now get ambient lighting inside the IVA, instead of it always acting as if its in space."
+      ]
+    },
+    {
+      "rev": 3878,
+      "date": "2026-03-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed bug when docking and vehicles are set to target each other causing a crash."
+      ]
+    },
+    {
+      "rev": 3879,
+      "date": "2026-03-24",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added 1st pass on environmental sound system. Sounds are driven of the biome data, currently there are sounds for earth water and earth grasslands biomes.",
+        "Moved Sound data from DefaultAssets.xml into Sounds.xml"
+      ]
+    },
+    {
+      "rev": 3880,
+      "date": "2026-03-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed invalid casting in Get method for T on CurrentSystem causing exceptions and game crash."
+      ]
+    },
+    {
+      "rev": 3881,
+      "date": "2026-03-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Vehicles no longer have shadows outside of the main viewport. Previously all viewports would share the same shadow data from the main viewport which would cause artifacts."
+      ]
+    },
+    {
+      "rev": 3882,
+      "date": "2026-03-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed PartModelGlass accessing shared memory when it shouldn't be.",
+        "IVA now renders properly outside of the IVA camera mode."
+      ]
+    },
+    {
+      "rev": 3883,
+      "date": "2026-03-24",
+      "author": "lghassen",
+      "lines": [
+        "Store plume's own depth when rendering, and take it into account when upscaling exhausts, not just terrain depth. Fixes pixelation on plumes when they pass in front of very distant terrain or ring meshes"
+      ]
+    }
+  ]
+}

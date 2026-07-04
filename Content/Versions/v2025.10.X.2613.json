@@ -1,0 +1,239 @@
+{
+  "build": "2025.10.10.2613",
+  "date": "2025-10-31",
+  "fromRevision": 2584,
+  "toRevision": 2613,
+  "commits": [
+    {
+      "rev": 2585,
+      "date": "2025-10-30",
+      "author": "JoshRW",
+      "lines": [
+        "Fix vessel reflections showing Earth when teleporting to the Moon. The issue was the planet shader data not updating after teleporting and moving away from the planet."
+      ]
+    },
+    {
+      "rev": 2586,
+      "date": "2025-10-30",
+      "author": "JoshRW",
+      "lines": [
+        "Change shader hot reloading checkbox text to warn against using it on a build version of the game. This text will be removed once the bug is fixed later."
+      ]
+    },
+    {
+      "rev": 2587,
+      "date": "2025-10-30",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed display of Ap and Pe markers on Burn patches."
+      ]
+    },
+    {
+      "rev": 2588,
+      "date": "2025-10-30",
+      "author": "Dan Southon",
+      "lines": [
+        "Smoothed out the scaling of the sun shadow volume for planets",
+        "Visual improvements on PCF, the range was too large.",
+        "Trialing an adaptive filter count on PCSS (may help with GPU performance but needs more testing)"
+      ]
+    },
+    {
+      "rev": 2589,
+      "date": "2025-10-30",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix issue with dust storms drawing over craft in certain orbits"
+      ]
+    },
+    {
+      "rev": 2590,
+      "date": "2025-10-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added current gravitation to the celestial info window."
+      ]
+    },
+    {
+      "rev": 2591,
+      "date": "2025-10-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Moved temporary metrics reset point to _after_ we collect job metrics. This was preventing simulation speed descaling from functioning."
+      ]
+    },
+    {
+      "rev": 2592,
+      "date": "2025-10-31",
+      "author": "JoshRW",
+      "lines": [
+        "Disable shader hot reloader for production builds. This is a temporary fix for the shader reloader crash, and a proper fix will be implemented soon."
+      ]
+    },
+    {
+      "rev": 2593,
+      "date": "2025-10-31",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed Burn edit UI not appearing once you have completed the Burn or it was in the past and no longer on the flightplan."
+      ]
+    },
+    {
+      "rev": 2594,
+      "date": "2025-10-31",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed opacity and fading on orbit patches to be more obvious and to include Burn - Burn patches."
+      ]
+    },
+    {
+      "rev": 2595,
+      "date": "2025-10-31",
+      "author": "rocket2guns",
+      "lines": [
+        "Optimized use of string looking for id when doing encounters, standardized to use of IOrbiting as the implication is clearer and cleaner, and then used Hash for comparison instead of string."
+      ]
+    },
+    {
+      "rev": 2596,
+      "date": "2025-10-31",
+      "author": "rocket2guns",
+      "lines": [
+        "Fixed flight plan exceptions were being written to dev console, not to game console."
+      ]
+    },
+    {
+      "rev": 2597,
+      "date": "2025-10-31",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed so you can no longer create a Burn on an invalid timeline part of a patch/flightplan. EG: Clicking on the original patch after another Burn."
+      ]
+    },
+    {
+      "rev": 2598,
+      "date": "2025-10-31",
+      "author": "rocket2guns",
+      "lines": [
+        "Optimized FindClosestApproaches first pass, moved timeRanges to use stackalloc and avoid unnecessary allocation. Much more to follow."
+      ]
+    },
+    {
+      "rev": 2599,
+      "date": "2025-10-31",
+      "author": "Morrow",
+      "lines": [
+        "Swapped the 'positive' direction burn node mesh from a cone to a cone with a little tail. The reverse is still just a cone."
+      ]
+    },
+    {
+      "rev": 2600,
+      "date": "2025-10-31",
+      "author": "Morrow",
+      "lines": [
+        "Increased color contrast between 'positive' and 'negative' burn node handles."
+      ]
+    },
+    {
+      "rev": 2601,
+      "date": "2025-10-31",
+      "author": "rocket2guns",
+      "lines": [
+        "Optimized Chebyshev Polynomial Catch Conjunction Assessment to utilize stackalloc instead of Lists. This is heavily utilized for encounters, so runs a lot on the simulation. This change will dramatically reduce both the allocation cost and execution cost of the function, by utilizing buffers. Still returning a List, will be switched to a rented array."
+      ]
+    },
+    {
+      "rev": 2602,
+      "date": "2025-10-31",
+      "author": "Morrow",
+      "lines": [
+        "Slightly decreased the contrast between 'positive' and 'negative' burn node handles. We had a non-colorblind person come look at it."
+      ]
+    },
+    {
+      "rev": 2603,
+      "date": "2025-10-31",
+      "author": "Morrow",
+      "lines": [
+        "Added delete button to part menus (accessible by right clicking on the part) in debug vehicle editor."
+      ]
+    },
+    {
+      "rev": 2604,
+      "date": "2025-10-31",
+      "author": "rocket2guns",
+      "lines": [
+        "Optimized Catch Candidates to be returned as a rented array, avoiding allocation costs when evaluating encounters. Next step will be to migrate last phase of Encounters to be a rented array, rather than lists. Dynamic Celestial objects evaluate this both when changing their orbits, but also as they progress through. So this optimization will benefit significantly, especially with lots of dynamic objects."
+      ]
+    },
+    {
+      "rev": 2605,
+      "date": "2025-10-31",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed thin film interference appearing brighter on darker materials, due to how it was getting mixed into the diffuse."
+      ]
+    },
+    {
+      "rev": 2606,
+      "date": "2025-10-31",
+      "author": "Dan Southon",
+      "lines": [
+        "Added texture size setting LightSystem shadow atlas.",
+        "Reduced down the LightSystem shadow slots to 16 (drastically improves performance )"
+      ]
+    },
+    {
+      "rev": 2607,
+      "date": "2025-10-31",
+      "author": "Morrow",
+      "lines": [
+        "Centered the vehicle's camera when leaving the editor and loading."
+      ]
+    },
+    {
+      "rev": 2608,
+      "date": "2025-10-31",
+      "author": "GitHub",
+      "lines": [
+        "Job metric changes (#72)",
+        "Reduce garbage in metrics collection",
+        "Fixed job timing for rare case",
+        "Updated to framework 25.10.0.5",
+        "Added cached metric function"
+      ]
+    },
+    {
+      "rev": 2609,
+      "date": "2025-10-31",
+      "author": "Dan Southon",
+      "lines": [
+        "Improved light priorities based on screen influence, distance and intensity"
+      ]
+    },
+    {
+      "rev": 2610,
+      "date": "2025-10-31",
+      "author": "Dan Southon",
+      "lines": [
+        "Added a hard cap to light count (512 for now)"
+      ]
+    },
+    {
+      "rev": 2611,
+      "date": "2025-10-31",
+      "author": "rocket2guns",
+      "lines": [
+        "Optimized IJK matrix generation. Implemented static caching of precomputed IJK coefficients keyed by N. The matrix is built only on first request and reused on subsequent calls, eliminating repeated cosine and scaling computations. Benchmark test case runtime improved from approximately 9 ms to 2.5 ms after this change (with other optimizations applied)."
+      ]
+    },
+    {
+      "rev": 2612,
+      "date": "2025-10-31",
+      "author": "rocket2guns",
+      "lines": [
+        "Removed VRAM estimation as it was completely broken and reporting every user did not have enough VRAM to run that system, regardless of how much they have."
+      ]
+    }
+  ]
+}

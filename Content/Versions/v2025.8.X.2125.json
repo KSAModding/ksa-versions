@@ -1,0 +1,28 @@
+{
+  "build": "2025.8.14.2125",
+  "date": "2025-08-21",
+  "fromRevision": 2121,
+  "toRevision": 2125,
+  "commits": [
+    {
+      "rev": 2122,
+      "date": "2025-08-20",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Update ocean level and mask correctly on changes from debug UI",
+        "Add terrain GPU frustum culling, save some terrain performance especially with tessellation",
+        "Fix agressive terrain culling near camera by using a tolerance for max tesselation displacement in world space",
+        "Rename ocean-specific culling files and move shared culling functions"
+      ]
+    },
+    {
+      "rev": 2123,
+      "date": "2025-08-21",
+      "author": "Dean Hall",
+      "lines": [
+        "Added Version History section, that by default will automatically show on boot of a new version.",
+        "Fixed build deployment bug where build number would iterate whenever a run within the IDE, not just when publish action was run."
+      ]
+    }
+  ]
+}

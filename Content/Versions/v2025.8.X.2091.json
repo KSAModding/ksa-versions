@@ -1,0 +1,35 @@
+{
+  "build": "2025.8.33.2091",
+  "date": "2025-08-18",
+  "fromRevision": 2088,
+  "toRevision": 2091,
+  "commits": [
+    {
+      "rev": 2089,
+      "date": "2025-08-18",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added current target and relative inclination between vehicle and burn orbit when a target is set."
+      ]
+    },
+    {
+      "rev": 2090,
+      "date": "2025-08-18",
+      "author": "Dean Hall",
+      "lines": [
+        "Added patches and orbit lines for vehicles that are not currently followed by that camera will be drawn an 'inactive' color, which by default is grey. This will help make it clear in map view what is followed, controlled, and reduce orbit line clutter."
+      ]
+    },
+    {
+      "rev": 2091,
+      "date": "2025-08-18",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix derivatives near poles for terrain mesh height mip selection",
+        "Remove cubemesh storage radius",
+        "Revert the more agressive snapping on the terrain meshCollection",
+        "Change default tonemapper and exposure to Hable"
+      ]
+    }
+  ]
+}

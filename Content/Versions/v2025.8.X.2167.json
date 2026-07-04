@@ -1,0 +1,41 @@
+{
+  "build": "2025.8.21.2167",
+  "date": "2025-08-23",
+  "fromRevision": 2163,
+  "toRevision": 2167,
+  "commits": [
+    {
+      "rev": 2164,
+      "date": "2025-08-22",
+      "author": "Rocket",
+      "lines": [
+        "Fixed bug with deployment build generation that would generate discord embeds that exceeded the cap, forcing the build deployment to split them up."
+      ]
+    },
+    {
+      "rev": 2165,
+      "date": "2025-08-21",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Add throttle modifiers to volumetric exhausts and connect them to",
+        "engine throttle",
+        "Fix Spline.Evaluate to be non-allocating"
+      ]
+    },
+    {
+      "rev": 2166,
+      "date": "2025-08-22",
+      "author": "GitHub",
+      "lines": [
+        "Converted planet renderer coordinates from kilometers to meters and fixed texture UV jittering.",
+        "Converted all planet rendering calculations from kilometers to meters.",
+        "Fixed the planet terrain texture jittering. Heavy temporary performance loss.",
+        "Added storage buffer for per-frame UV offsets passed from the CPU.",
+        "Fixed the performance drop caused by the texture jittering fix.",
+        "Changed UV offset SSBO to a UBO.",
+        "Cleaned up stride logic in PlanetRenderer.cs.",
+        "Added a warning in Planet.glsl about incorrect UV offset retrieval causing performance degradation."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "build": "2026.4.6.4036",
+  "date": "2026-04-09",
+  "fromRevision": 3999,
+  "toRevision": 4036,
+  "commits": [
+    {
+      "rev": 4000,
+      "date": "2026-04-08",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed shadow artifacts on kittens while multiple viewports are active."
+      ]
+    },
+    {
+      "rev": 4001,
+      "date": "2026-04-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Switched the closest approach from Chebeshev to simplistic Newton method for better performance"
+      ]
+    },
+    {
+      "rev": 4002,
+      "date": "2026-04-08",
+      "author": "Rocket",
+      "lines": [
+        "Added first pass of Universe Library for listing details of all celestial objects, their SOI, Ap and Pe. Uses the new buffer approach for characters, so no string allocation. To be expanded for targeting, searching, and other details.",
+        "Added new methods to DistanceReference and TimeSpanReference to produce ToNearest values into a buffer, so values can be draw with no allocation on the heap. This passes a span which can be passed directly to ImGui."
+      ]
+    },
+    {
+      "rev": 4003,
+      "date": "2026-04-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a potential null ref when drawing UI for all astronomicals."
+      ]
+    },
+    {
+      "rev": 4004,
+      "date": "2026-04-08",
+      "author": "Rocket",
+      "lines": [
+        "Added second pass of Universe Manifest (formerly library). Added default assignment F11, also available via \"Universe\" menu. This window allows you to filter the objects in the loaded universe by type, as well as altering column types visible. Double clicking on a row will follow (and control) the selected object. Relative distance and velocity is shown (to controlled vehicle). All this text is drawn using the new stackalloc span method, so no garbage collection. Selections and targets are colored in the list.",
+        "Optimized text for celestial objects to use the new zero allocation buffer method, providing improved FPS especially when large amounts of objects will be visible using the interface."
+      ]
+    },
+    {
+      "rev": 4005,
+      "date": "2026-04-08",
+      "author": "Rocket",
+      "lines": [
+        "Fixed targeting would not override orbit line and name occlusion. Now targeting should ensure orbit lines and names will be shown, regardless of occlusion state.",
+        "Added Shift-Click toggle for targets in Universe Manifest. Doing this will Set/Unset for the current controlled vehicle."
+      ]
+    },
+    {
+      "rev": 4006,
+      "date": "2026-04-08",
+      "author": "Rocket",
+      "lines": [
+        "Fixed encounter target text would not fade with successive encounters, following patch fading. Now encounter text related to target will slowly get a bit darker, helping avoid UI clutter.",
+        "Optimized a number of uses of ToNearest(), to use the new non-allocating buffer system. Some of the uses are still concatinating strings, so will require more work.",
+        "Added JouleReference ToNearest override that works with non-allocating span, and applied it use uses of JouleReference."
+      ]
+    },
+    {
+      "rev": 4007,
+      "date": "2026-04-08",
+      "author": "Rocket",
+      "lines": [
+        "Fixed possible regression with how encounters display. Now they are sorted by ClosestTime. It might be that we are supposed to display only the most immediate one, will confirm with jamie/stefan.",
+        "Added Encounter text will fade using the same logic as the patch fading. Additionally drawing in reverse order so the more relevant ones are displayed on top of the others."
+      ]
+    },
+    {
+      "rev": 4008,
+      "date": "2026-04-09",
+      "author": "rocket2guns",
+      "lines": [
+        "Fixed Planets filter on Universe Manifest was filtering for terrestrial bodies, not Planetary Bodies."
+      ]
+    },
+    {
+      "rev": 4009,
+      "date": "2026-04-09",
+      "author": "rocket2guns",
+      "lines": [
+        "Cleanup of params to used ReadOnlySpan and avoid allocation.",
+        "Cleanup of Approach Nearest text and points. Ensured they do not allocate, made helpers to help draw, and fixed up sequencing."
+      ]
+    },
+    {
+      "rev": 4010,
+      "date": "2026-04-09",
+      "author": "rocket2guns",
+      "lines": [
+        "Migrated Patch Text to non-allocating spans."
+      ]
+    },
+    {
+      "rev": 4011,
+      "date": "2026-04-08",
+      "author": "Linx-RW",
+      "lines": [
+        "Added terrain improvements to Earth's hills, mountains, alpine mountains and desert mountains.",
+        "Fixed precision issue in GPU terrain height sampling causing the sampled heightmap to contain an error of around +-5 meters.",
+        "Replaced previous cubic weights with Catmull-Rom weights for bicubic heightmap sampling.",
+        "Removed the hardware bilinear filtering optimization from the bicubic heightmap sampling function as hardware filtering is done at a lower precision than our height data. Now the filtering is done in the shader, which is slower but more precise."
+      ]
+    },
+    {
+      "rev": 4012,
+      "date": "2026-04-09",
+      "author": "JoshRW",
+      "lines": [
+        "Improve Vulkan object naming in many places. Most images and buffers are now named, and an error is thrown if the names are null or empty string."
+      ]
+    },
+    {
+      "rev": 4013,
+      "date": "2026-04-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Exclude time interval boundaries from closest approach list."
+      ]
+    },
+    {
+      "rev": 4014,
+      "date": "2026-04-09",
+      "author": "brogan",
+      "lines": [
+        "Fix program hanging on Linux Wayland"
+      ]
+    },
+    {
+      "rev": 4015,
+      "date": "2026-04-09",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added WIP GPU particle system.",
+        "Added Basic GPU particle shaders.",
+        "Added setting to enable or disable particles, this is off by default."
+      ]
+    },
+    {
+      "rev": 4016,
+      "date": "2026-04-09",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed particle shaders not overwritng the emitters default shaders until after rebuilding pipelines."
+      ]
+    },
+    {
+      "rev": 4017,
+      "date": "2026-04-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Corrected slope term in the second branch of the Euler-Poinsot rotation algorithm."
+      ]
+    },
+    {
+      "rev": 4018,
+      "date": "2026-04-09",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Particles now obey simulation speed properly, previously they would still get age even when simulation speed was 0.",
+        "Fixed validation error caused by not disposing emitters that were previously marked has having completed their simulation. We will likely need to handle this in a better way in the future."
+      ]
+    },
+    {
+      "rev": 4019,
+      "date": "2026-04-09",
+      "author": "Rocket",
+      "lines": [
+        "Removed polynomial handling from Orbital Solving as a parameter. It was being passed and adjusted but it was no longer used, so was a dead end.",
+        "Added a drawUi buffer per frame. A stack buffer is made of all celestial objects, a basic frustrum check is made, and this buffer is then sorted back to front. This limits the drawing but also ensures that UI is layered correctly based on distance. Objects nearer to the camera will draw their UI on top of distant ones. It also avoids trying to draw UI that would not be in the frustrum. This may have some flow-on effects for misuse of drawUi (it should not be spawning detachable windows) so we will solve those on an exceptions basis."
+      ]
+    },
+    {
+      "rev": 4020,
+      "date": "2026-04-09",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added ParticleEmitterRenderer. This removes the ownership of rendering from specific particle emitters and moves it to a renderer that handles all emitters bound to it. This means when we create a particle emitter at runtime we are not needing to build rendering pipelines in realtime."
+      ]
+    },
+    {
+      "rev": 4021,
+      "date": "2026-04-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Revert frame time-averaging. This can be made to work but the real answer is to fully fix the physics time step and interpolate positions for rendering."
+      ]
+    },
+    {
+      "rev": 4022,
+      "date": "2026-04-09",
+      "author": "JoshRW",
+      "lines": [
+        "Add naming for SimpleVkTexture images and image views. Naming images in SimpleVkTexture is currently done in KSA as a temporary fix as brutal has a bug where it doesn't name images on creation."
+      ]
+    },
+    {
+      "rev": 4023,
+      "date": "2026-04-09",
+      "author": "JoshRW",
+      "lines": [
+        "Remove redundant image view names from GlobalShaderBindings"
+      ]
+    },
+    {
+      "rev": 4024,
+      "date": "2026-04-09",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Refactored how meshes are setup for particle emitters to properly use the mod libraries mesh ID references. Removed some redundant code as a result of this change."
+      ]
+    },
+    {
+      "rev": 4025,
+      "date": "2026-04-09",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added SoundDesign pass for Rocket Engine. Additional layers to the default engine sound cluster type help to better express engine sound behaviour over the full audible range.",
+        "Refactored ClusterSound playback handling to fix a number of issues. Sound cluster playback is now owned by GameAudio, rather than owned by individual vehicles.",
+        "Added SoundGroups for engine Sounds."
+      ]
+    },
+    {
+      "rev": 4026,
+      "date": "2026-04-09",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Rebound ownership back to ParticleEmitter instead of ParticleEmitterRenderer. This means we can now have multiple particle emitters with different meshes all going through the same particleEmitterRenderer."
+      ]
+    },
+    {
+      "rev": 4027,
+      "date": "2026-04-09",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added temp debug option for particle emitters to automatically spawn particles following the currently selected vessel."
+      ]
+    },
+    {
+      "rev": 4030,
+      "date": "2026-04-09",
+      "author": "Rocket",
+      "lines": [
+        "Temporary fix for Fix long-standing regression of execution drift of next work for orbit solvers. Orbit solvers has been split into two. Orbit Solvers is now no longer bound to the frame, and lowered in priority, and will execute its work only once its previous work is finished, and will not delay the frame. It's quantity of workers is reduced. VehicleSolvers has increased priority, and remains frame blocking. It is also given a larger share of the workers. This gives it more chance to complete before the next frame begins. In my testing, this resulted in a performance improvement of ~20% when under load. However, it is a temporary solution. A more perm solution will be to properly separate out what cannot be done following the job architecture, and use a more traditional thread architecture.",
+        "Moved ConcurrentWorkers to not be frame-blocking and reduced priorty, to reduce load on the last part of the frame to keep it clear for Vehicle thread work."
+      ]
+    },
+    {
+      "rev": 4031,
+      "date": "2026-04-09",
+      "author": "rocket2guns",
+      "lines": [
+        "Fixed Patched Conic name drawing regression I added, where it would add the name of an object unnecessarily to the additional local patch. Now it is only shown on true hyperbolic orbits, rather than the \"helper\" patches where the body is local with encounters.",
+        "Migrated some work in Program that is between the Job application and job starting, that did not need to be. This adds more time for the jobs to execute.",
+        "Split handling of OrbitSolver and VehicleSolvers, and made the functions clearer. Added an option for OrbitSolvers to wait and result (used during deserialization). OrbitSolver is now moved to immediately after resolution, this gives OrbitSolvers maximum time to do their work during the frame. They may be resolved before the VehicleSolvers, easing congestion and making sure the VehicleSolvers have a good shot of resolving before next frame."
+      ]
+    },
+    {
+      "rev": 4032,
+      "date": "2026-04-09",
+      "author": "rocket2guns",
+      "lines": [
+        "Cleanup of OnFrame inside Program. Separated out the frame into segments, to help prevent execution drift between preparing for the frame and executing jobs. This will maintain a small DMZ between applying concurrent jobs, and executing them again. Limited work can be done here (VehicleSolvers). This will make it easier for anyone to position work during the frame.",
+        "First pass of inventory of frame tasks to identify work that does not need to be done in the concurrency DMZ. A proper review of all this work will be conducted over time, to check what needs to be in the DMZ."
+      ]
+    },
+    {
+      "rev": 4033,
+      "date": "2026-04-09",
+      "author": "rocket2guns",
+      "lines": [
+        "Second pass on cleanup of OnFrame. Now split out PreRender, Render, and PostRender. Additional audit on contents of the ConcurrencyDMZ, moving a bunch of ImGui content out of the DMZ to be done in the frame. Significant stability improvement, to the point I can now see the Vehicle Jobs executing and potentially completing during the frame even at high FPS, eliminating the high-fps camera stuttering."
+      ]
+    },
+    {
+      "rev": 4034,
+      "date": "2026-04-09",
+      "author": "rocket2guns",
+      "lines": [
+        "Third pass on DMZ audit. Moved as much as possible outside the concurrency DMZ as I could identify positively that it was safe to do so. DMZ is now down below 1ms for my test case, in a frame of 10ms.",
+        "Added DMZ indicator to ThreadProfiler window. This shows the time taken for the Concurrency DMZ to run. It is only calculated while the window is open. This will help diagnoze if too much is in the DMZ and it causes the camera to stutter due to concurrency issues.",
+        "Fixed regression I caused where you could not have the Universe Manifest and Thread Profiler open at the same time, as they would merge."
+      ]
+    }
+  ]
+}

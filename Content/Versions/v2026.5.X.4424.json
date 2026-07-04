@@ -1,0 +1,221 @@
+{
+  "build": "2026.5.10.4424",
+  "date": "2026-05-19",
+  "fromRevision": 4397,
+  "toRevision": 4424,
+  "commits": [
+    {
+      "rev": 4398,
+      "date": "2026-05-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a single frame of incorrectly-displayed orbit when transitioning spheres of influence while off-rails.",
+        "Made a small reduction in duplicated bubble origin maintenance."
+      ]
+    },
+    {
+      "rev": 4399,
+      "date": "2026-05-18",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed camera serialize and deserialize to correctly restore and set the follow information regardless of the current main viewport camera settings. This was not being set correctly especially when restoring a save with the mainviewport camera set to map view resulting in the following information not being set for the base camera."
+      ]
+    },
+    {
+      "rev": 4400,
+      "date": "2026-05-18",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Improved raytracing denoiser to fully remove all grid artifacts and maintain stability. This is done by implementing a proper ATrous algorithm into the denoiser, recursively denoising and increasing the step size each iteration. This implementation may need to be investigated further as it introduces 5 new compute dispatches, however we are still getting ~2ms savings with the new implementation."
+      ]
+    },
+    {
+      "rev": 4401,
+      "date": "2026-05-18",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added LaunchGameTime to Vessel class. Used to set the game time a vehicle is initially launched."
+      ]
+    },
+    {
+      "rev": 4402,
+      "date": "2026-05-18",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Add deserialize of LaunchGameTime"
+      ]
+    },
+    {
+      "rev": 4403,
+      "date": "2026-05-18",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Cleaned up raytracing renderer to remove unused variables."
+      ]
+    },
+    {
+      "rev": 4404,
+      "date": "2026-05-18",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added basic particle emitter editor to help make particles easier."
+      ]
+    },
+    {
+      "rev": 4405,
+      "date": "2026-05-18",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Refactored particle emitter editor to correct directory."
+      ]
+    },
+    {
+      "rev": 4406,
+      "date": "2026-05-18",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Raytracing denoiser properly implements a 3x3 kernel size instead of a 5x5 kernel. While this was mostly already implemented, there were a few places that were acting as if the kernel was still 5x5, such as the spatial weighting array having 5 elements instead of 3."
+      ]
+    },
+    {
+      "rev": 4407,
+      "date": "2026-05-18",
+      "author": "Rocket",
+      "lines": [
+        "Major refactor of Gauge UI system. Like components are now coalesced into GaugeBundle, which are what is drawn. This reduces drawcalls by the gauge system by 30% in the standard case, while retaining the flexibility of making multiple components for ease of editing.",
+        "Added GPU profiler information to gauge editor hierarcy. This gives GPU timing data while the hierarchy window is open, indicating the real overall cost of the shader (above minimum values)."
+      ]
+    },
+    {
+      "rev": 4408,
+      "date": "2026-05-18",
+      "author": "Linx-RW",
+      "lines": [
+        "Removed unused legacy tiling heightmap params."
+      ]
+    },
+    {
+      "rev": 4409,
+      "date": "2026-05-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed particles constantly changing hue when spawned while sim speed is 0, while also using the HueShift updater."
+      ]
+    },
+    {
+      "rev": 4410,
+      "date": "2026-05-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Raytracing denoiser's, ATrous step size is now explicitly passed in as a specialization constant, instead of being inferred inside the shader."
+      ]
+    },
+    {
+      "rev": 4411,
+      "date": "2026-05-19",
+      "author": "Dan Southon",
+      "lines": [
+        "Setup light map dummy descriptors for secondary viewports to avoid visual artifacts (for now)"
+      ]
+    },
+    {
+      "rev": 4412,
+      "date": "2026-05-19",
+      "author": "Rocket",
+      "lines": [
+        "Optimized Navball. Test case went from 250Î¼ to 50Î¼."
+      ]
+    },
+    {
+      "rev": 4413,
+      "date": "2026-05-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reordered main pixel sample in raytracing denoiser so that it gets sampled after the early exit for invalid prePass. This removes an additional pixel sample when e.g looking out the IVA windows."
+      ]
+    },
+    {
+      "rev": 4414,
+      "date": "2026-05-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added UT/MET button to gametime gauge. Time displayed toggles between Universal Game time and Mission Elapsed Time."
+      ]
+    },
+    {
+      "rev": 4415,
+      "date": "2026-05-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Adjusted raytraced glass fragment shader to help make reflections that aren't directly lit by the sun easier to see. Previously the reflections could only really be seen if they had direct sunlight on them."
+      ]
+    },
+    {
+      "rev": 4416,
+      "date": "2026-05-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "All glass fragment shaders now properly set the star and atmosphere reflections, based on the games settings. Previously these were hard-coded to on."
+      ]
+    },
+    {
+      "rev": 4417,
+      "date": "2026-05-19",
+      "author": "Rocket",
+      "lines": [
+        "Optimized Gauge base shader includes for drawing lines and letters. This resulted in a significant reduction in gpu timing for all gauge elements of between 10-40%. Navball went from ~50mu to ~30mu.",
+        "Added avg and spike values to gauge ui profiling in the hierarchy editor."
+      ]
+    },
+    {
+      "rev": 4418,
+      "date": "2026-05-19",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed kitten idle animations not playing correctly. The timer was completely broken for this, resulting in the kittens playing an idle action for a set amount of time repeatedly, and then never playing another animation again.",
+        "Kittens no longer have a fixed delay between idle actions. This is now randomly set each time an idle action is played."
+      ]
+    },
+    {
+      "rev": 4419,
+      "date": "2026-05-19",
+      "author": "Rocket",
+      "lines": [
+        "Pulled most hardcoded strings in GameSettings to be localizable strings."
+      ]
+    },
+    {
+      "rev": 4420,
+      "date": "2026-05-19",
+      "author": "Rocket",
+      "lines": [
+        "Added Gauge shader selection to inspector to help with editing.",
+        "Added ability to make new Canvas and components to Gauge Editor. Still WIP and somewhat crashy."
+      ]
+    },
+    {
+      "rev": 4421,
+      "date": "2026-05-19",
+      "author": "Rian Drake",
+      "lines": [
+        "Update Brutal.ImGui to 2026.5.0"
+      ]
+    },
+    {
+      "rev": 4422,
+      "date": "2026-05-19",
+      "author": "Rian Drake",
+      "lines": [
+        "Update usages of LString in ImGui to implicitly convert to LString instead of using Format"
+      ]
+    },
+    {
+      "rev": 4423,
+      "date": "2026-05-19",
+      "author": "Rocket",
+      "lines": [
+        "Fixed GaugeBundles were not disposing when removed. Only really affected editor."
+      ]
+    }
+  ]
+}

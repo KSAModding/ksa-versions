@@ -1,0 +1,58 @@
+{
+  "build": "2025.9.2.2383",
+  "date": "2025-09-18",
+  "fromRevision": 2376,
+  "toRevision": 2383,
+  "commits": [
+    {
+      "rev": 2377,
+      "date": "2025-09-16",
+      "author": "Morrow",
+      "lines": [
+        "Changed git to use csharp diffs for csharp files. Diffs are a bit cleaner for those using CLI git."
+      ]
+    },
+    {
+      "rev": 2378,
+      "date": "2025-09-16",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Add cloud shadows to terrain and ocean, approximate the volumetric shadows by sampling a single slice of the volumetric layer"
+      ]
+    },
+    {
+      "rev": 2379,
+      "date": "2025-09-17",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed ability to add burn to parent body orbit line and then transfer it to the controlled vehicle flight plan. This was removed when the gizmo was updated a few months back.",
+        "Added missing override for GetStateVectorsAt( game time) to Vehicle class."
+      ]
+    },
+    {
+      "rev": 2380,
+      "date": "2025-09-17",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed so we don't actually need an actual encounter with our target body to transfer a burn from the parent orbit to the vehicle's flight plan."
+      ]
+    },
+    {
+      "rev": 2381,
+      "date": "2025-09-16",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Show distance and time of flight on closest approach markers."
+      ]
+    },
+    {
+      "rev": 2382,
+      "date": "2025-09-17",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed incorrect Ap Pe overlap check in find encounters and removed this overlap check from Find closest approaches, because we don't want it for encounters. They may not overlap for a closest encounter.",
+        "Fixed find closest approach to actually search the correct overlap points and merge into one search where it makes sense."
+      ]
+    }
+  ]
+}

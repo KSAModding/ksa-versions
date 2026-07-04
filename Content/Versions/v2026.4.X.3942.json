@@ -1,0 +1,239 @@
+{
+  "build": "2026.4.2.3942",
+  "date": "2026-04-01",
+  "fromRevision": 3916,
+  "toRevision": 3942,
+  "commits": [
+    {
+      "rev": 3917,
+      "date": "2026-03-30",
+      "author": "Morrow",
+      "lines": [
+        "Updated IVA textures."
+      ]
+    },
+    {
+      "rev": 3918,
+      "date": "2026-03-30",
+      "author": "Morrow",
+      "lines": [
+        "Updated CoreFuelTankA textures."
+      ]
+    },
+    {
+      "rev": 3919,
+      "date": "2026-03-30",
+      "author": "Morrow",
+      "lines": [
+        "Added CoreLandingA assets. These are not yet configured for actual landing purposes."
+      ]
+    },
+    {
+      "rev": 3920,
+      "date": "2026-03-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed duplicate ID on Orbit items in IMGUI menu when viewing flightplans."
+      ]
+    },
+    {
+      "rev": 3921,
+      "date": "2026-03-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added GetVelocityOrb(TrueAnomaly) to Orbit classes.",
+        "Changed Orbit.GetStateVectorsAt to only call GetTrueAnomaly ONCE instead of three times (which is expensive).",
+        "Removed unnecessary sanity check from Statevectors constructor that was very costly.",
+        "This partially improves the time the transfer planner takes to do it's calculations. But there is still a lot more to do to improve it's performance."
+      ]
+    },
+    {
+      "rev": 3922,
+      "date": "2026-03-30",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Added some missing functionality for changing pipeline textures"
+      ]
+    },
+    {
+      "rev": 3923,
+      "date": "2026-03-30",
+      "author": "Rocket",
+      "lines": [
+        "Added stack size output to SystemInfo console command to assist with debugging. Only outputs for windows (linux has an enormous stack anyway)."
+      ]
+    },
+    {
+      "rev": 3924,
+      "date": "2026-03-30",
+      "author": "Dan Southon",
+      "lines": [
+        "Resolved image layout sync errors in relation to the offscreen target.",
+        "Updated subpass dependencies for OffscreenTarget, PrePassRenderer and OceanRendererResources",
+        "Updated barriers for TransparencyMSAAResolve, GizmoPass and Raytracing.",
+        "Moved selected image color clear into PartSelectedRenderer."
+      ]
+    },
+    {
+      "rev": 3925,
+      "date": "2026-03-30",
+      "author": "lghassen",
+      "lines": [
+        "Ring shader code refactors: De-duplicate ring fragment shader code between mesh and impostor shaders, move ring shaders to subfolders by category, de-duplicate code between 2d ring shader and upscaling shader",
+        "De-duplicate code to compose transparencies with MSAA scene from atmosphere, rings, clouds and exhaust shaders"
+      ]
+    },
+    {
+      "rev": 3926,
+      "date": "2026-03-31",
+      "author": "Morrow",
+      "lines": [
+        "Fixed a memory leak with ray tracing on when you were not in the IVA."
+      ]
+    },
+    {
+      "rev": 3927,
+      "date": "2026-03-31",
+      "author": "Dan Southon",
+      "lines": [
+        "Resolved more image sync issues that were showing up on some hardware."
+      ]
+    },
+    {
+      "rev": 3928,
+      "date": "2026-03-31",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed all the broken shader compilation errors on case sensitive OS's."
+      ]
+    },
+    {
+      "rev": 3929,
+      "date": "2026-03-31",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed same SOI transfers in the transfer planner, which were accidentally broken since December last year."
+      ]
+    },
+    {
+      "rev": 3930,
+      "date": "2026-03-31",
+      "author": "JoshRW",
+      "lines": [
+        "Tidy CharacterReference boneNames variable to be names instead, as the code isn't just for bones."
+      ]
+    },
+    {
+      "rev": 3931,
+      "date": "2026-03-31",
+      "author": "JoshRW",
+      "lines": [
+        "Name GpuTextureSystem Vulkan textures"
+      ]
+    },
+    {
+      "rev": 3932,
+      "date": "2026-03-31",
+      "author": "JoshRW",
+      "lines": [
+        "Increase MeshIndirectSystem buffer sizes as I ran out of space when adding the debug pbr spheres."
+      ]
+    },
+    {
+      "rev": 3933,
+      "date": "2026-03-31",
+      "author": "JoshRW",
+      "lines": [
+        "Tidy sun rendering code."
+      ]
+    },
+    {
+      "rev": 3934,
+      "date": "2026-03-31",
+      "author": "JoshRW",
+      "lines": [
+        "Fix debug PBR spheres not loading."
+      ]
+    },
+    {
+      "rev": 3935,
+      "date": "2026-03-31",
+      "author": "Morrow",
+      "lines": [
+        "Fix for gauge related rendering problems that occur on Nvidia drivers newer than 595.79. Shoutout to the Nvidia folks for looking into the problem and helping find a fix."
+      ]
+    },
+    {
+      "rev": 3936,
+      "date": "2026-03-31",
+      "author": "GitHub",
+      "lines": [
+        "Depth Pre Pass",
+        "Added depth pre-pass as a ground clutter optimization. The depth pre-pass is renderer-wide, but currently only ground clutter renders into it.",
+        "Added alpha-to-coverage to the depth pre-pass.",
+        "Added new glsl include 'Dithering.glsl' and moved ground clutter LOD fading logic into it.",
+        "Added new rendering preset 'DepthEqualTestNoWrite' for use with depth pre-pass pipelines.",
+        "Updated the flags in Framebuffer.cs to avoid adding the SampledBit and InputAttachmentBit if the VkImageUsageFlags contains TransientAttachmentBit.",
+        "Updated OffscreenTarget.cs to manage the depth pre pass attachments. This might not be the correct place for it, but it was the best place I could find so far.",
+        "Fixed incorrect parameter name in CreateRenderPass.",
+        "Reimplemented depth-only pre-pass using dynamic rendering to reduce framebuffer and render pass usage.",
+        "Fixed alpha-to-coverage using raw pixel alpha, now sharpens to 1px and lets MSAA handle the edge.",
+        "Removed old depth pre-pass resources from OffscreenTarget, excluding the alpha-to-coverage image."
+      ]
+    },
+    {
+      "rev": 3937,
+      "date": "2026-03-31",
+      "author": "lghassen",
+      "lines": [
+        "Better distribute exhaust samples to focus them near the nozzle and the center of the plume, reduces noise and low quality from certain angles and when RCS plumes expand during transients"
+      ]
+    },
+    {
+      "rev": 3938,
+      "date": "2026-04-01",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added ClusterSound type. This allows for layering complex behaviour representing multiple sounds. Any SoundBehavior type may optionally be assigned one ClusterSound, when that sound is played the ClusterSound will also be played. multiple instances of the sound will not cause additional clusterSounds of that type to play, but the number of instances playing can be used to drive audio effects in the clusterSound.",
+        "Added ClusterSound tracking to Vehicle Engines.",
+        "Added 1st pass cluster sound for default rocket engine sound. This currently plays a distant loop when in an atmosphere.",
+        "Changed Exploded a number of audio classes into their own files."
+      ]
+    },
+    {
+      "rev": 3939,
+      "date": "2026-04-01",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Moved Sound classes into Sound folder.",
+        "Exploded out ChannelWrapper sub types into their own files.",
+        "Fixed Envronment sound altitude param was not clamped to sea-level.",
+        "Moved biome sound onto its own class."
+      ]
+    },
+    {
+      "rev": 3940,
+      "date": "2026-04-01",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Program Menu Bar hook method."
+      ]
+    },
+    {
+      "rev": 3941,
+      "date": "2026-04-01",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed bad subpass dependencies for the offscreen target introduced by the depth pre-pass changes left over from when the pre-pass was rendered in a subpass."
+      ]
+    },
+    {
+      "rev": 3942,
+      "date": "2026-04-01",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed same SOI Transfer planner porkchops in a better way."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "build": "2026.2.31.3640",
+  "date": "2026-02-20",
+  "fromRevision": 3638,
+  "toRevision": 3640,
+  "commits": [
+    {
+      "rev": 3639,
+      "date": "2026-02-20",
+      "author": "Rocket",
+      "lines": [
+        "Fixed linux crash on startup due to current directory not set."
+      ]
+    }
+  ]
+}

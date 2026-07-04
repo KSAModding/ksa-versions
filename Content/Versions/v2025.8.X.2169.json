@@ -1,0 +1,16 @@
+{
+  "build": "2025.8.22.2169",
+  "date": "2025-08-24",
+  "fromRevision": 2167,
+  "toRevision": 2169,
+  "commits": [
+    {
+      "rev": 2168,
+      "date": "2025-08-23",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix one more jittering issue in the terrain height sampling by precombining world and texture matrices. One more issue remains when getting far from the billboard origin"
+      ]
+    }
+  ]
+}

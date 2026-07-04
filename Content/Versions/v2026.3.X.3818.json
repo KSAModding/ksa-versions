@@ -1,0 +1,362 @@
+{
+  "build": "2026.3.6.3818",
+  "date": "2026-03-14",
+  "fromRevision": 3775,
+  "toRevision": 3818,
+  "commits": [
+    {
+      "rev": 3776,
+      "date": "2026-03-09",
+      "author": "lghassen",
+      "lines": [
+        "Improve ring mesh and rotation animation precision: Simulation time is now passed to the GPU as a high-precision value decomposed across multiple floats, achieving near double-precision accuracy in the shader without the performance cost of hardware doubles or emulated-double/extended precision. This eliminates visible quantization/clustering in ring mesh speeds on planets with relatively low orbital speeds, and removes discontinuities in the animation of 2d rings that occurred with the previous time-looping approach.",
+        "Fix issue with broken ring shadows on planets when using the same ring texture for multiple rings",
+        "Remove redudant ring_absorption_multiplier constant set to 1.0"
+      ]
+    },
+    {
+      "rev": 3777,
+      "date": "2026-03-10",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed vessels not rendering correctly in editor."
+      ]
+    },
+    {
+      "rev": 3778,
+      "date": "2026-03-10",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed redundant or duplicate shaders.",
+        "Raytracing denoiser shaders now uses mod library instead of being hardcoded."
+      ]
+    },
+    {
+      "rev": 3779,
+      "date": "2026-03-10",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added initial raytracing graphics settings."
+      ]
+    },
+    {
+      "rev": 3780,
+      "date": "2026-03-10",
+      "author": "Morrow",
+      "lines": [
+        "Fixed dev engine not having a view mesh to calculate bounding objects from."
+      ]
+    },
+    {
+      "rev": 3781,
+      "date": "2026-03-06",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed an issue with ground clutter colour generation where the ground detail textures weren't being sampled because the wrong sampler was being used.",
+        "Reduced terrain shader register usage from 126 to 113 which may contribute to a small performance improvement."
+      ]
+    },
+    {
+      "rev": 3782,
+      "date": "2026-03-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed sand dune CPU height not matching GPU height, caused by C# modulus operator not matching glsl's mod function."
+      ]
+    },
+    {
+      "rev": 3783,
+      "date": "2026-03-10",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Decouple sound.",
+        "Added Some additional constructors to Spatial audio to reduce some code duplication when playing a sound.",
+        "Added TwoDFloor Element to SpatialSoundData, This allows author to specifiy a minimum 2d component for a sound regardless of distance."
+      ]
+    },
+    {
+      "rev": 3784,
+      "date": "2026-03-10",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Raytracing shadow performance fix"
+      ]
+    },
+    {
+      "rev": 3785,
+      "date": "2026-03-10",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Raytraced PBR lighting equation adjustments"
+      ]
+    },
+    {
+      "rev": 3786,
+      "date": "2026-03-10",
+      "author": "joshohagan",
+      "lines": [
+        "Remove old sun surface sphere asset."
+      ]
+    },
+    {
+      "rev": 3787,
+      "date": "2026-03-10",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Raytracing shader now uses specialization constants for settings."
+      ]
+    },
+    {
+      "rev": 3788,
+      "date": "2026-03-10",
+      "author": "Dan Southon",
+      "lines": [
+        "WIP Bug fix for terrain shadows far plane causing an unintended ring when looking at a planet from orbit."
+      ]
+    },
+    {
+      "rev": 3789,
+      "date": "2026-03-10",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Minor refactor to raytrace renderers rasterizer in preperation for prepass data."
+      ]
+    },
+    {
+      "rev": 3790,
+      "date": "2026-03-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Added new terrain modifier 'TilingDetail'.",
+        "Increased the last few LOD distances for the Earth mesh collection (better quality LODs at higher altitudes).",
+        "Fixed not normalizing the direction from planet center after multiply with texture rotation matrix before passing into height sampling functions."
+      ]
+    },
+    {
+      "rev": 3791,
+      "date": "2026-03-11",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added meshes that are flagged for raytracing to the prepass. This artifacts from the raytracing denoiser."
+      ]
+    },
+    {
+      "rev": 3792,
+      "date": "2026-03-11",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed crash caused by prepass renderer trying to render raytaced meshes when raytracing is disabled."
+      ]
+    },
+    {
+      "rev": 3793,
+      "date": "2026-03-11",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added emissive map for lights in IVA."
+      ]
+    },
+    {
+      "rev": 3794,
+      "date": "2026-03-11",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added hatches to IVA. Meshes are currently using a placeholder texture."
+      ]
+    },
+    {
+      "rev": 3795,
+      "date": "2026-03-11",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added an initial point light to the raytraced IVA. This point light is not tied to any lighting systems, and is expected to be replaced with proper data in the future."
+      ]
+    },
+    {
+      "rev": 3796,
+      "date": "2026-03-11",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Updated CoreCommandA_MeshAtlas inorder to fix an artifact visible in the IVA."
+      ]
+    },
+    {
+      "rev": 3797,
+      "date": "2026-03-11",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed inverted normals on raytraced IVA.",
+        "Adjusted IVA pointlight to be closer to actual light position."
+      ]
+    },
+    {
+      "rev": 3798,
+      "date": "2026-03-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Refactored raytracing shaders, reducing the rayPayload size by ~61%.",
+        "Removed unused functions in raytracing shaders."
+      ]
+    },
+    {
+      "rev": 3799,
+      "date": "2026-03-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed incorrect ImageTransition usages resulting in raytraced direct lighting not visible on screen."
+      ]
+    },
+    {
+      "rev": 3800,
+      "date": "2026-03-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Minor refactor of PrePassRenderer to setup passing depth data into raytracer, aswell as reducing potential validation errors during usage."
+      ]
+    },
+    {
+      "rev": 3801,
+      "date": "2026-03-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added depth from prepass to raygen.rgen.",
+        "Removed camera.glsl as its now redundant."
+      ]
+    },
+    {
+      "rev": 3802,
+      "date": "2026-03-12",
+      "author": "Morrow",
+      "lines": [
+        "Fixed Part Selected Renderer image not being resized on screen resizing."
+      ]
+    },
+    {
+      "rev": 3803,
+      "date": "2026-03-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added prepass depth texture to raytraced indirect lighting denoiser to prevent bleeding across meshes."
+      ]
+    },
+    {
+      "rev": 3804,
+      "date": "2026-03-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed validation error caused by depth image transitioning with incorrect flags."
+      ]
+    },
+    {
+      "rev": 3805,
+      "date": "2026-03-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Raytracing denoiser now changes direction using a specialization constant, instead of relying on two duplicate shaders.",
+        "removed denoise2.comp."
+      ]
+    },
+    {
+      "rev": 3806,
+      "date": "2026-03-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Assorted optimizations for raytracer denoiser."
+      ]
+    },
+    {
+      "rev": 3807,
+      "date": "2026-03-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Disabled raytrace denoiser when indirect lighting bounces are 0."
+      ]
+    },
+    {
+      "rev": 3808,
+      "date": "2026-03-11",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed an error where valid part module states could be forgotten after removing unrelated module states. This was caused by a second use of the existing removal function which uninentionally violated the conditions of the first use. We now do something slightly more expensive but slightly less tricky."
+      ]
+    },
+    {
+      "rev": 3809,
+      "date": "2026-03-12",
+      "author": "Dan Southon",
+      "lines": [
+        "Reduced shadow flickering on terrain shadows",
+        "Added ReverseZ capability to DepthRenderTexture"
+      ]
+    },
+    {
+      "rev": 3810,
+      "date": "2026-03-12",
+      "author": "lghassen",
+      "lines": [
+        "Delete now unused getSunShadowNoFade and getSunShadowNoBias functions from SunShadows.glsl causing compilation error"
+      ]
+    },
+    {
+      "rev": 3811,
+      "date": "2026-03-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed swapchain error that occurs semi-regularly in debug mode."
+      ]
+    },
+    {
+      "rev": 3812,
+      "date": "2026-03-12",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Overhauled terrain collision from sphere-sphere to box-triangle. This is an incremental step towards mesh-mesh collision that significantly improves collision fidelity and feel. It also serves as a proof-of-concept for our approach of using Bepu Physics collision internals in our more general physics system.",
+        "Added Bepu Physics to package dependencies.",
+        "Split bounding sphere into Body and Asmb versions. The Asmb version is centered on the geometry and is a much tighter bound, while the Body version is about the center of mass and serves as a cheaper gross check.",
+        "Changed buoyancy to use the geometry bounding sphere instead of the body sphere for draft.",
+        "Moved total bounding box collision computation from Vehicle to PartTree.",
+        "Lowered default contact physics rate from 400 Hz to 180 Hz."
+      ]
+    },
+    {
+      "rev": 3813,
+      "date": "2026-03-13",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Setup raytrcing shaders to initalize ray position and direction using prepass data. This means that we can remove an initial ray trace to calculate the first hit, aswell as allowing for assets not included in the raytracing scene to recieve raytraced lighting, shadows and reflections."
+      ]
+    },
+    {
+      "rev": 3814,
+      "date": "2026-03-12",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed seemingly-unused missing folder from the project file."
+      ]
+    },
+    {
+      "rev": 3815,
+      "date": "2026-03-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed an issue where sometimes orbits were being classified incorrectly when determining orbit points to draw. Removed some of the less reliable methods using eccentricity as well to clean this up a bit more."
+      ]
+    },
+    {
+      "rev": 3816,
+      "date": "2026-03-13",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Assorted raytracing visual tweaks to reduce it looking washed out."
+      ]
+    },
+    {
+      "rev": 3817,
+      "date": "2026-03-13",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added early exit to raytracer if prepass data is invalid."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "build": "2026.2.3.3549",
+  "date": "2026-02-16",
+  "fromRevision": 3538,
+  "toRevision": 3549,
+  "commits": [
+    {
+      "rev": 3539,
+      "date": "2026-02-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Replaced HasFlag call with the raw flag check to avoid allocations in ProceduralModifiersRenderData."
+      ]
+    },
+    {
+      "rev": 3540,
+      "date": "2026-02-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed a minor seam in Earth's normal map."
+      ]
+    },
+    {
+      "rev": 3541,
+      "date": "2026-02-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Renamed IOrbiting to IOrbiter which permits more natural variable names in a few places.",
+        "Created IParentBody, a new interface for objects which can be orbited by IOrbiters.",
+        "The three archetypes are now StellarBody (IParentBody), Vehicle (IOrbiter), and Celestial (IParentBody, IOrbiter). This means Astronomical does not implement either, so a bunch of boilerplate that was not appropriate for Vehicle has been removed.",
+        "Created IOrientation and IPerFrameCache to cover a few other loose ends.",
+        "Removed Astronomical.Reset() which hasn't been necessary for a while now."
+      ]
+    },
+    {
+      "rev": 3542,
+      "date": "2026-02-16",
+      "author": "Morrow",
+      "lines": [
+        "Changed the 'Copy Tree' button in the debug editor to copy as if the current selected part is the tree root."
+      ]
+    },
+    {
+      "rev": 3543,
+      "date": "2026-02-16",
+      "author": "Morrow",
+      "lines": [
+        "'Remove All' in the Debug Vehicle Editor works again when you are editing an already spawned vehicle."
+      ]
+    },
+    {
+      "rev": 3544,
+      "date": "2026-02-16",
+      "author": "Morrow",
+      "lines": [
+        "Fixed a doubled connection when using connectors over symmetry."
+      ]
+    },
+    {
+      "rev": 3545,
+      "date": "2026-02-16",
+      "author": "Morrow",
+      "lines": [
+        "Fixed an issue where special formatting identifiers were getting passed through to ImGui without proper sanitization causing crashes when viewing version history. This needs followed up on as this should not be possible."
+      ]
+    },
+    {
+      "rev": 3546,
+      "date": "2026-02-16",
+      "author": "Morrow",
+      "lines": [
+        "Fixed an issue where a symmetry's radial order wasn't being set in some cases causing incorrect behavior."
+      ]
+    },
+    {
+      "rev": 3547,
+      "date": "2026-02-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed bug where its possible to get two stages with the same stage number.",
+        "Fixed bug where attaching engines in symmetry sets were causing extra stages and some parent parts to not match stages."
+      ]
+    },
+    {
+      "rev": 3548,
+      "date": "2026-02-16",
+      "author": "JoshRW",
+      "lines": [
+        "Delete unused Sol_Diffuse.ktx2 texture"
+      ]
+    }
+  ]
+}

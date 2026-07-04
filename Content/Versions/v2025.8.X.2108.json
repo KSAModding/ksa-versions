@@ -1,0 +1,66 @@
+{
+  "build": "2025.8.86.2108",
+  "date": "2025-08-19",
+  "fromRevision": 2101,
+  "toRevision": 2108,
+  "commits": [
+    {
+      "rev": 2102,
+      "date": "2025-08-19",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed Burn marker to appear/disappear in flight at the same time as the orbit/patch lines appear/disappear."
+      ]
+    },
+    {
+      "rev": 2103,
+      "date": "2025-08-18",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Changed main engine control from push-to-fire (space) to startup/shutdown (z/x).",
+        "Added logic for main engine throttle control, but the throttle is currently set to 1 always until we get a basic UI up.",
+        "Added a minimum throttle setting to the engine XML."
+      ]
+    },
+    {
+      "rev": 2104,
+      "date": "2025-08-19",
+      "author": "Morrow",
+      "lines": [
+        "Attempted fix for crashes experienced by folks who have bandicam installed. It seems like they don't handle vkDestroySwapchainKHR() correctly when the passed in swapchain is null (which the vulkan specification states should be supported)."
+      ]
+    },
+    {
+      "rev": 2105,
+      "date": "2025-08-19",
+      "author": "Rocket",
+      "lines": [
+        "Fixed if InputActions were removed by developers, settings files would become corrupted. Now deserialize these in a safe way."
+      ]
+    },
+    {
+      "rev": 2106,
+      "date": "2025-08-19",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed Target SOI rendering to appear/disappear in flight at the same time as the orbit/patch lines appear/disappear."
+      ]
+    },
+    {
+      "rev": 2107,
+      "date": "2025-08-18",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Quick adjustment to inter-frame time tracking to use doubles rather than floats. We had an issue with time precision at higher warp - not certain this fixes it but it should help in some cases and doesn't seem to have broken anything."
+      ]
+    },
+    {
+      "rev": 2108,
+      "date": "2025-08-19",
+      "author": "Rocket",
+      "lines": [
+        "Fixed critical issue with version checking that would cause a grey screen if WelcomePopup and ConfigSelectOnStart were enabled, and a new version deployed."
+      ]
+    }
+  ]
+}

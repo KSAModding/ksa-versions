@@ -1,0 +1,226 @@
+{
+  "build": "2025.12.3.2971",
+  "date": "2025-12-02",
+  "fromRevision": 2945,
+  "toRevision": 2971,
+  "commits": [
+    {
+      "rev": 2946,
+      "date": "2025-11-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Corrected the orientation of the Celestial-Centered Inertial frame (CCI) so that the X vector points to the vernal point instead of the periapsis.",
+        "Renamed rotation-related XML parameters in the astronomical XML to be more clear (Period -> RotationPeriod, Retrograde -> RetrogradeRotation).",
+        "Added an InitialRotation XML parameter for astronomicals.",
+        "Added a missing function in IReferenceFrames."
+      ]
+    },
+    {
+      "rev": 2947,
+      "date": "2025-11-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Reverted 90-degree rotation of the vernal point axis. Instead, simply change the AxialTilt axis to be the inertial X axis instead of the Y axis, which was the correct thing to do in the first place."
+      ]
+    },
+    {
+      "rev": 2948,
+      "date": "2025-12-01",
+      "author": "Morrow",
+      "lines": [
+        "Added a first pass to make attach nodes unusable if something is in the way."
+      ]
+    },
+    {
+      "rev": 2949,
+      "date": "2025-12-01",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added ability to not register an Astronomical to the System in constructor.",
+        "Added VehicleSaveData, VehicleSave, UncompressedVehicleSave and VehicleSaves classes to process Vehicle save files.",
+        "Changed GameSave class to be more abstract so that VehicleSave can also inherit and implement.",
+        "Added ability to process UncompressedVehicleSave meta data in SaveMetaData class.",
+        "Added ability to Create a Vehicle Save file via Part context menu in the Developer Vehicle Editor Tool. Vehicle saves are written to \"vehicles\" folder next to the \"Saves\" folder.",
+        "Added ability to Right click in Developer Vehicle Editor Tool to open Load Vehicle dialog to load a vehicle save into the Developer Vehicle Editor Tool."
+      ]
+    },
+    {
+      "rev": 2950,
+      "date": "2025-12-01",
+      "author": "Morrow",
+      "lines": [
+        "Added a first pass on deep copying Part Trees."
+      ]
+    },
+    {
+      "rev": 2951,
+      "date": "2025-12-01",
+      "author": "Morrow",
+      "lines": [
+        "Added PartReference to store per instance data for Parts. Switched over XML for vehicles to utilize it."
+      ]
+    },
+    {
+      "rev": 2952,
+      "date": "2025-12-01",
+      "author": "Morrow",
+      "lines": [
+        "Fixed updated bounding boxes for Parts when leaving the debug editor."
+      ]
+    },
+    {
+      "rev": 2953,
+      "date": "2025-12-01",
+      "author": "Dan Southon",
+      "lines": [
+        "Primitive fix to descriptor set validation errors when exiting the editor."
+      ]
+    },
+    {
+      "rev": 2954,
+      "date": "2025-12-01",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed offset issue on newly created vehicles.",
+        "MAde the Developer VEhicle Editor window a better starting size so it doesn't start outside of the main game window."
+      ]
+    },
+    {
+      "rev": 2955,
+      "date": "2025-11-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added the ability to set XML orbital elements in the ecliptic frame as well as the equatorial frame. This will help modders import real-world object ephemerides.",
+        "Moved XML orbital elements into a new <Orbit> sub-tag. The definition frame is set by <Orbit DefinitionFrame=\"X\">, where X is either Equatorial (default) or Ecliptic.",
+        "Removed hidden derived orbital quantites from the XML templates as they need outside context (e.g. the parent) to be computed properly. These should now be obtained by creating an OrbitData struct.",
+        "Removed several OrbitData constructors to try and consolidate the now-redundant multiple ways to create this data.",
+        "Updated Earth and Luna ephemerides to 2025-11-30.",
+        "Deleted unused EarthMercuryLoveJoy.xml."
+      ]
+    },
+    {
+      "rev": 2956,
+      "date": "2025-11-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed an issue causing the interstellar objects to not load orbits correctly."
+      ]
+    },
+    {
+      "rev": 2957,
+      "date": "2025-12-01",
+      "author": "lghassen",
+      "lines": [
+        "Fix sun visible through clouds with MSAA due to the latest MSAA transparencies changes"
+      ]
+    },
+    {
+      "rev": 2958,
+      "date": "2025-12-01",
+      "author": "Dan Southon",
+      "lines": [
+        "Converted SunShadowRenderers to use Bindless Textures",
+        "Renamed Shadows.glsl to SunShadows.glsl, making it more descriptive.",
+        "Added GpuTextureSystem to descriptor layouts that use SunShadowRenderer.",
+        "Added ComputeBit to StageFlags in BindlessTexture"
+      ]
+    },
+    {
+      "rev": 2959,
+      "date": "2025-12-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed potential duplicate vehicle names when creating new ones in the editor."
+      ]
+    },
+    {
+      "rev": 2960,
+      "date": "2025-12-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Moved the starting vehicles and kittens into the daylight at game start."
+      ]
+    },
+    {
+      "rev": 2961,
+      "date": "2025-12-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed vehicle target orbit being drawn when not in map mode."
+      ]
+    },
+    {
+      "rev": 2962,
+      "date": "2025-12-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Corrected minor console command pluralization issue."
+      ]
+    },
+    {
+      "rev": 2963,
+      "date": "2025-12-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed issue where BoundingBoxVehicleBody needs to be recomputed now when creating a new vehicle."
+      ]
+    },
+    {
+      "rev": 2964,
+      "date": "2025-12-02",
+      "author": "Morrow",
+      "lines": [
+        "Fixed SoI transparency levels."
+      ]
+    },
+    {
+      "rev": 2965,
+      "date": "2025-12-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed the IOrbit interface as it was hiding straightforward data retrieval behind virtual functions and forcing the code to make up values that couldn't be computed in some cases. If orbital data is required, one should now access the appropriate Orbit or OrbitData object."
+      ]
+    },
+    {
+      "rev": 2966,
+      "date": "2025-12-02",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Mesh rendering reorganisation: position data in dedicated buffer for more performant depth passes"
+      ]
+    },
+    {
+      "rev": 2967,
+      "date": "2025-12-02",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Reduced VRAM usage on shared buffers"
+      ]
+    },
+    {
+      "rev": 2968,
+      "date": "2025-12-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Optimized several rocket performance functions by pre-computing common subexpressions.",
+        "Clamped two cases of bad rocket performance outputs when given extreme design inputs."
+      ]
+    },
+    {
+      "rev": 2969,
+      "date": "2025-12-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Allow engine controllers to be defined on sub parts."
+      ]
+    },
+    {
+      "rev": 2970,
+      "date": "2025-12-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed two unnecessary TODOs."
+      ]
+    }
+  ]
+}

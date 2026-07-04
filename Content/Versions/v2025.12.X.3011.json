@@ -1,0 +1,98 @@
+{
+  "build": "2025.12.6.3011",
+  "date": "2025-12-05",
+  "fromRevision": 3000,
+  "toRevision": 3011,
+  "commits": [
+    {
+      "rev": 3001,
+      "date": "2025-12-03",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed reversed cm <-> m conversion.",
+        "Added cm^2 <-> m^2, cm^2 <-> m^3, and mm^2 <-> m^3 conversions so it's less easy to forget to convert each dimension individually.",
+        "Added mm^3 input to VolumeReference.",
+        "Fixed conversion factors in VolumeReference.",
+        "Removed VolumeReference methods that were copied over from distance and don't apply to volume.",
+        "Renamed VolumeReference some copy/paste variables.",
+        "Fixed VolumeReference string conversion.",
+        "Converted several unit powers to fancy superscripts in string printouts."
+      ]
+    },
+    {
+      "rev": 3002,
+      "date": "2025-12-03",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Reverted test XML with mm^3 volume."
+      ]
+    },
+    {
+      "rev": 3003,
+      "date": "2025-12-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Kitten fur mask can now be defined directly in xml."
+      ]
+    },
+    {
+      "rev": 3004,
+      "date": "2025-12-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Character attachment system now supports multiple materials. This means that the MMU now goes through the proper texture system. MMU textures have also been compressed to ktx2 as a result."
+      ]
+    },
+    {
+      "rev": 3005,
+      "date": "2025-12-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added character cosmetic attachment system. While this is not currently used in game, it allows for additional meshes to be attached to characters as defined in XML."
+      ]
+    },
+    {
+      "rev": 3006,
+      "date": "2025-12-05",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Fixed bug that would sometimes give Hunter wrong fur material"
+      ]
+    },
+    {
+      "rev": 3007,
+      "date": "2025-12-05",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed Vulkan crashing the app on startup 1/4-5 times under Linux."
+      ]
+    },
+    {
+      "rev": 3008,
+      "date": "2025-12-05",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Re-adding Brutal.Monitor after fixing issues with the Subprocess in packaged/installed builds of KSA"
+      ]
+    },
+    {
+      "rev": 3009,
+      "date": "2025-12-05",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Re-revert Brutal.Monitor. It crashes for some people on some platforms",
+        "This reverts commit 0a3aff06d35d39169c28e2811390c1050867da25."
+      ]
+    },
+    {
+      "rev": 3010,
+      "date": "2025-12-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added a system for generating a random kitten. This system is not currently used in the game, however it allows us to generate a randomized kitten based on data defined in XML, instead of needing to explicitly define a kitten everytime we want to generate one. As part of this, attachments and gltfs can now explicitly have their usage or attachment type explictly defined inorder to help the kitten generator determine the different usecase of assets.",
+        "Removed excessive logging caused when loading the kitten.",
+        "General kitten code cleanup."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "build": "2026.7.3.4826",
+  "date": "2026-07-03",
+  "fromRevision": 4824,
+  "toRevision": 4826,
+  "commits": [
+    {
+      "rev": 4825,
+      "date": "2026-07-02",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Significantly improved the performance of terrain sampling by skipping most unnecessary work.",
+        "Place the terrain patch at the predicted vacuum impact point rather than directly under the vehicle to avoid sampling terrain we will never hit.",
+        "Don't sample terrain at all until an impact is imminent.",
+        "Improved tracking of when resampling is actually necessary.",
+        "As a side benefit, improved the prediction of the terrain impact point as seen by the Kepler orbit lines (by using the same method)."
+      ]
+    }
+  ]
+}

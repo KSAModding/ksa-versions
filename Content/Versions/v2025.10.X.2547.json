@@ -1,0 +1,60 @@
+{
+  "build": "2025.10.12.2547",
+  "date": "2025-10-24",
+  "fromRevision": 2540,
+  "toRevision": 2547,
+  "commits": [
+    {
+      "rev": 2541,
+      "date": "2025-10-23",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Render an ambient atmosphere LUT to make sampling ambient in clouds and ocean cheaper",
+        "Change cloud shadows textures to sampledImages to save on samplers"
+      ]
+    },
+    {
+      "rev": 2542,
+      "date": "2025-10-23",
+      "author": "Linx-RW",
+      "lines": [
+        "Rescaled Phobos' terrain textures to appropriate real scales.",
+        "Increased the resolution of the asteroid scale mesh.",
+        "Reduced the tiling on Mars' Sand material.",
+        "Defaulted the distant sphere metallic and roughness values to those in planet.frag."
+      ]
+    },
+    {
+      "rev": 2543,
+      "date": "2025-10-24",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Rationalized some more data in Burn Flightplans. Removed unnecessary need for first patch to be copied into each burn's flightplan."
+      ]
+    },
+    {
+      "rev": 2544,
+      "date": "2025-10-24",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed deleting of future burns when you delete an earlier burn. Now that we have decoupled all the data, you can happily delete burns in any order and all existing burns will simply stay on the Time that they were created and move to your current flightplan."
+      ]
+    },
+    {
+      "rev": 2545,
+      "date": "2025-10-24",
+      "author": "Morrow",
+      "lines": [
+        "Updated some tweaked textures for the medium capsule part."
+      ]
+    },
+    {
+      "rev": 2546,
+      "date": "2025-10-24",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fix mismatch between initialSpectrums image format and descriptor"
+      ]
+    }
+  ]
+}

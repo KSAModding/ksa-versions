@@ -1,0 +1,60 @@
+{
+  "build": "2025.11.2.2620",
+  "date": "2025-11-02",
+  "fromRevision": 2613,
+  "toRevision": 2620,
+  "commits": [
+    {
+      "rev": 2614,
+      "date": "2025-10-31",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Use the atmosphere ambient LUT for the vessel diffuse ambient instead of using a single sample of the sky LUT, reduces reflective/metallic look on matte parts in the absence of a pre-filtered environment reflection method"
+      ]
+    },
+    {
+      "rev": 2615,
+      "date": "2025-10-30",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Use a better Jupiter texture, in preparation for Jupiter volumetrics"
+      ]
+    },
+    {
+      "rev": 2616,
+      "date": "2025-10-31",
+      "author": "Linx-RW",
+      "lines": [
+        "Initial porting of external biome tool to KSA.",
+        "Lowered the curvature of Earth's erosion."
+      ]
+    },
+    {
+      "rev": 2617,
+      "date": "2025-11-01",
+      "author": "Linx-RW",
+      "lines": [
+        "Added erosion to Mars.",
+        "Fixed white-screen graphical error caused by rare div-by-zero in the procedural modifiers code.",
+        "Added GradientStrength parameter to procedural modifiers for artificially scaling the terrain gradient."
+      ]
+    },
+    {
+      "rev": 2618,
+      "date": "2025-11-01",
+      "author": "Linx-RW",
+      "lines": [
+        "Added the Max filter stage to the biome map exporter."
+      ]
+    },
+    {
+      "rev": 2619,
+      "date": "2025-11-01",
+      "author": "Linx-RW",
+      "lines": [
+        "Removed the old sand dunes from Mars and replaced them with the newer version.",
+        "Updated Mars' normal map."
+      ]
+    }
+  ]
+}

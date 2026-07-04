@@ -1,0 +1,40 @@
+{
+  "build": "2025.12.5.2976",
+  "date": "2025-12-02",
+  "fromRevision": 2971,
+  "toRevision": 2976,
+  "commits": [
+    {
+      "rev": 2972,
+      "date": "2025-12-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added a simple data readout to the engine debug display to help inspect engine performance parameters."
+      ]
+    },
+    {
+      "rev": 2973,
+      "date": "2025-12-02",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed kitten animation delay when changing animations. This previously took 0.25 seconds, now its immediate."
+      ]
+    },
+    {
+      "rev": 2974,
+      "date": "2025-12-02",
+      "author": "Morrow",
+      "lines": [
+        "Require gizmo pass images to be allocated to device local memory since the 'AllocPreference' variable doesn't seem to do anything."
+      ]
+    },
+    {
+      "rev": 2975,
+      "date": "2025-12-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a missing mouse hover case when using the new engine debug window."
+      ]
+    }
+  ]
+}

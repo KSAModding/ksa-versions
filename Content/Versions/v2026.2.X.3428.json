@@ -1,0 +1,48 @@
+{
+  "build": "2026.2.5.3428",
+  "date": "2026-02-08",
+  "fromRevision": 3423,
+  "toRevision": 3428,
+  "commits": [
+    {
+      "rev": 3424,
+      "date": "2026-02-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed potential infinite fuel scenario where an engine has no tanks available to it (due to flow rules) but the vehicle still has the fuel the engine uses."
+      ]
+    },
+    {
+      "rev": 3425,
+      "date": "2026-02-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed deserialize of engine active bool when loading vehicles from saves.",
+        "Fixed the two test vehicles \"rocket\" and \"Gemini7\" to have their main engine active when loading the game."
+      ]
+    },
+    {
+      "rev": 3426,
+      "date": "2026-02-06",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Moved the enforcement of maximum gimbal angle from the flight computer to the simulation.",
+        "Added an XML specification for maximum gimbal angles in the Y and Z directions. We no longer create components for gimbals with zero maximum angle.",
+        "Made it possible to add game data to sub part instances.",
+        "Increased maximum WASD slew rate from 30 deg/s to 45 deg/s.",
+        "Changed TransformReference to have nullable fields so we can tell the difference between an identity value and an unset value.",
+        "Removed PartConnector template reference and cached important transform variables to avoid calling through to the expensive template versions.",
+        "Changed the order of the stabilization toggle function. If the flight computer is set to track a specific target, the first toggle will now drop to RATE mode in that same frame. The second toggle will set attitude control to MANUAL."
+      ]
+    },
+    {
+      "rev": 3427,
+      "date": "2026-02-06",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Major overhaul of the auto-warp logic internals. We now interpolate between the start and end times of the warp with smootherstep, which means all auto-warps take exactly the same amount of player time and end precisely where they are targeted to.",
+        "Added a three-second margin when auto-warping to planned burns."
+      ]
+    }
+  ]
+}

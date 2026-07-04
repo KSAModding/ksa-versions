@@ -1,0 +1,93 @@
+{
+  "build": "2025.12.11.3082",
+  "date": "2025-12-16",
+  "fromRevision": 3072,
+  "toRevision": 3082,
+  "commits": [
+    {
+      "rev": 3073,
+      "date": "2025-12-15",
+      "author": "lghassen",
+      "lines": [
+        "Fix potential buffer issues in clouds/ocean/atmosphere/bloom, where buffers are aligned correctly with the supported gpu offset alignment, but indexed incorrectly for writes from the CPU. Should fix shadow flickering issues on nvidia 10 series cards and below",
+        "Add a fallback two-pass method for MSAA transparencies handling for devices not supporting shaderStorageImageMultisample"
+      ]
+    },
+    {
+      "rev": 3074,
+      "date": "2025-12-15",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed synchronization issue with planet matrices buffer causing ground clutter to render a frame ahead or behind.",
+        "Double/Triple buffered the ground clutter instanced transforms buffer."
+      ]
+    },
+    {
+      "rev": 3075,
+      "date": "2025-12-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed PositionEgo on Part and SubPart to offset the center of mass.",
+        "Added Ability to display the tank numbers over the parts in game for debugging purposes."
+      ]
+    },
+    {
+      "rev": 3076,
+      "date": "2025-12-16",
+      "author": "Morrow",
+      "lines": [
+        "Fixed crash when switching from no MSAA to MSAA."
+      ]
+    },
+    {
+      "rev": 3077,
+      "date": "2025-12-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Renamed MatrixParent2EgoPosAndCceRot -> MatrixParentAsmb2Ego.",
+        "Renamed Matrix2EgoPosAndCceRot -> MatrixAsmb2Ego.",
+        "Fixd Part.MatrixParentAsmb2Ego.",
+        "Fixed SubPart.PositionEgo.",
+        "Removed unused ParentMatrix2EgoPosAndCceRot."
+      ]
+    },
+    {
+      "rev": 3078,
+      "date": "2025-12-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the Sun lost it's mass... yes a massless sun. That would explain all the weird things that were going on when you went into solar orbit."
+      ]
+    },
+    {
+      "rev": 3079,
+      "date": "2025-12-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Made StellarBodyTemplate inherit from AstronomicalTemplate to match the StellarBody : Astronomical hierarchy."
+      ]
+    },
+    {
+      "rev": 3080,
+      "date": "2025-12-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Set editor camera reference frame to chase (BODY).",
+        "Offset editor camera from BODY into ASMB so that it does not move with the center of mass.",
+        "Update editor before updating the camera because it can affect the center of mass and thus part of the camera target.",
+        "Changed Vehicle.CenterOfMassAsmb to return a double3 and made a float3 version (Vehicle.CenterOfMassAsmbF)."
+      ]
+    },
+    {
+      "rev": 3081,
+      "date": "2025-12-16",
+      "author": "JoshRW",
+      "lines": [
+        "First pass on sun surface rendering. A ray marched plasma waves shader is used to give an orange look. This shader is faded in with the existing sunbloom as you zoom in. The plasma waves move very slowly, but can be sped up in the shader.",
+        "Fix sunbloom shader squashing near the sides of the camera by using correct perspective projection.",
+        "Fix sunbloom occlusion map not using perspective projection.",
+        "Fix sun surface shader hot reloader"
+      ]
+    }
+  ]
+}

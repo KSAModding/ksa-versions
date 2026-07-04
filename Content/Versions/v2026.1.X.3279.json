@@ -1,0 +1,75 @@
+{
+  "build": "2026.1.8.3279",
+  "date": "2026-01-23",
+  "fromRevision": 3270,
+  "toRevision": 3279,
+  "commits": [
+    {
+      "rev": 3271,
+      "date": "2026-01-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a HomeBody definition to a CelestialSystem and defined Earth as the home system for now."
+      ]
+    },
+    {
+      "rev": 3272,
+      "date": "2026-01-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ability to Pin Part Windows. (This is very placeholder UI)."
+      ]
+    },
+    {
+      "rev": 3273,
+      "date": "2026-01-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed broken Vehicle Editor when entering with no vehicle currently being followed.",
+        "Added pod only vehicle to be constructed when entering the vehicle editor with no vehicle currently being followed. This vehicle is spawned into tghe first location found on the home body wehen exiting the vehicle editor."
+      ]
+    },
+    {
+      "rev": 3274,
+      "date": "2026-01-22",
+      "author": "Morrow",
+      "lines": [
+        "Added initial support for higher order radial symmetry in the editor. Likely there are still a few bugs here."
+      ]
+    },
+    {
+      "rev": 3275,
+      "date": "2026-01-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ability to select Body and Location in the Vehicle Editor when creating a NEW vehicle. When you exit the editor the new vehicle is spawned at the selected body and locaiton."
+      ]
+    },
+    {
+      "rev": 3276,
+      "date": "2026-01-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added build new vehicle option to the File menu that will start the Vehicle Editor to allow you to construct and spawn a new vehicle."
+      ]
+    },
+    {
+      "rev": 3277,
+      "date": "2026-01-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved Launch site information from main Vehcile Editor UI to a separate UI window.",
+        "Added LAUNCH button to vehicle Editor UI. Pressing this when building a new vehicle will launch the vehicle to the selected body and location. If you enter the Vehcile Editor to build a new vehicle and you exit the editor again (using Shift-E for example) without hitting Launch button the game will go back to the astronomical/vehicle you were previously following/controlling."
+      ]
+    },
+    {
+      "rev": 3278,
+      "date": "2026-01-22",
+      "author": "lghassen",
+      "lines": [
+        "Fix inscatter fallback value in case of NaN",
+        "Fix Vulkan validation error on exit due to image not destroyed"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "build": "2025.11.3.2789",
+  "date": "2025-11-14",
+  "fromRevision": 2781,
+  "toRevision": 2789,
+  "commits": [
+    {
+      "rev": 2782,
+      "date": "2025-11-14",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed the Kitty MMU thrusters to be more reasonable in the thrust generated."
+      ]
+    },
+    {
+      "rev": 2783,
+      "date": "2025-11-14",
+      "author": "Morrow",
+      "lines": [
+        "Removed console-to-screen text fading for start up for most messages. The first screen when starting should be quite a bit cleaner now."
+      ]
+    },
+    {
+      "rev": 2784,
+      "date": "2025-11-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed NaNs produced by the Voronoi noise functions.",
+        "Rescaled the ranges for the terrain modifier values in the GUI to cover commonly used values."
+      ]
+    },
+    {
+      "rev": 2785,
+      "date": "2025-11-14",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Changed the drawing of the UI astronomical object markers to be visible at much closer range in Map camera mode to allow the player to set target in map mode for objects close to the one they are controlling."
+      ]
+    },
+    {
+      "rev": 2786,
+      "date": "2025-11-14",
+      "author": "Timberfox",
+      "lines": [
+        "Updated Welcome Text Popup to have up to date gameplay information"
+      ]
+    },
+    {
+      "rev": 2787,
+      "date": "2025-11-14",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed Transfer Planner Window Porkchop texture disappearing when you switch between Transfer Types.",
+        "Changed CATCH EigenValues error debug message to info message."
+      ]
+    },
+    {
+      "rev": 2788,
+      "date": "2025-11-14",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Turned off the CATCH Eigenvalues message for now until we fix the console window messages."
+      ]
+    }
+  ]
+}

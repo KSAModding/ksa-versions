@@ -1,0 +1,24 @@
+{
+  "build": "2025.12.13.2994",
+  "date": "2025-12-04",
+  "fromRevision": 2991,
+  "toRevision": 2994,
+  "commits": [
+    {
+      "rev": 2992,
+      "date": "2025-12-03",
+      "author": "lghassen",
+      "lines": [
+        "Fix NaNs in the atmosphere shader when the direction to the planet is aligned with the direction to the sun"
+      ]
+    },
+    {
+      "rev": 2993,
+      "date": "2025-12-04",
+      "author": "rocket2guns",
+      "lines": [
+        "Reverted addition of BRUTAL monitoring tool, with prejudice, as it prevents running completely in compiled build."
+      ]
+    }
+  ]
+}

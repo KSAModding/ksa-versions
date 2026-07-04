@@ -1,0 +1,311 @@
+{
+  "build": "2025.10.5.2476",
+  "date": "2025-10-09",
+  "fromRevision": 2441,
+  "toRevision": 2476,
+  "commits": [
+    {
+      "rev": 2442,
+      "date": "2025-09-29",
+      "author": "Dan Southon",
+      "lines": [
+        "Reduced performance costs of sun shadow calcs and PCSS is a work in progress.",
+        "Added a shadow sample type selector (Hard, PCF, PCSS)"
+      ]
+    },
+    {
+      "rev": 2443,
+      "date": "2025-09-30",
+      "author": "Morrow",
+      "lines": [
+        "Added ability to close part menu by right clicking again on the part.",
+        "Added some handling to differentiate between right click actions and right click dragging."
+      ]
+    },
+    {
+      "rev": 2444,
+      "date": "2025-09-30",
+      "author": "Dan Southon",
+      "lines": [
+        "Defaulted to percentage-closer soft shadows using poisson sampling",
+        "Moved pre-generated poisson disc to separate glsl"
+      ]
+    },
+    {
+      "rev": 2445,
+      "date": "2025-10-01",
+      "author": "Linx-RW",
+      "lines": [
+        "Added ColorAlphaReference. This is separate from ColorReference but can be merged in the future."
+      ]
+    },
+    {
+      "rev": 2446,
+      "date": "2025-10-01",
+      "author": "Linx-RW",
+      "lines": [
+        "Added ImGui helper DrawColor4"
+      ]
+    },
+    {
+      "rev": 2447,
+      "date": "2025-10-01",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed incorrect modifier amplitudes for hybrid multifractal noise on Luna and sand dunes on Earth"
+      ]
+    },
+    {
+      "rev": 2448,
+      "date": "2025-10-01",
+      "author": "Linx-RW",
+      "lines": [
+        "Added modifier colour support. The pipeline and refactor is in place; only a few modifiers currently output colour. Modifier colours are built up in premultiplied alpha space then converted to straight alpha and blended with the planet's colour map.",
+        "Added a simple bicubic texture sampling function, unused for now.",
+        "Updated the planet texture exporter to include generated colour in the preview and export.",
+        "Moved modifier functions to new ModifiersCommon.glsl."
+      ]
+    },
+    {
+      "rev": 2449,
+      "date": "2025-10-01",
+      "author": "morrow-rw",
+      "lines": [
+        "Added first set of RCS Thruster parts.",
+        "Updated SubPart creation to respect a template's custom transforms."
+      ]
+    },
+    {
+      "rev": 2450,
+      "date": "2025-10-01",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added ability in code to mark a Burn instance as no longer valid. And the worker process - when applying changes will delete invalid Burns. This allows and enforces changes to persistent data to occur at the correct time.",
+        "Fixed and enhanced the \"Parent Eject Burn\" functionality. This includes projecting and displaying the full flightplan from parking orbit when creating and manipulating a parent eject burn.",
+        "The Burn UI now provides better UX and feedback on what the DV is from the Parent Orbit (where the burn is located) and the actual DV and time that the burn will require to meet the burn from the parking orbit."
+      ]
+    },
+    {
+      "rev": 2451,
+      "date": "2025-10-01",
+      "author": "RWMax",
+      "lines": [
+        "Initial implementation of Thin Film Interference. Currently implemented on all rockets, will be updated to be masked when assets are ready. Thin Film Interference is an optical effect which results in a rainbow-like colorshift around surfaces such as heated metal and glass.",
+        "Renamed ReflectionPushConstants to PBRPushConstants due to including non-reflection values."
+      ]
+    },
+    {
+      "rev": 2452,
+      "date": "2025-10-02",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed calculation of max time value used for Conjunction Assessment when Finding Closest Approach when both orbits we are testing are unbound. This was a TODO, prior to this if both orbits are unbound no closest approach assessment was being made."
+      ]
+    },
+    {
+      "rev": 2453,
+      "date": "2025-10-02",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed broken burn input fields in UI that I broke when making \"Parent Eject Burn\" changes yesterday."
+      ]
+    },
+    {
+      "rev": 2454,
+      "date": "2025-10-03",
+      "author": "RWMax",
+      "lines": [
+        "Updated NormalMap calculations to fix an error with how tangents are interpolated, currently only applied to vessel shader.",
+        "Added SharedFrag shader file, for common shader code that can only compile in the fragment shader, such as dFdx/dFdy."
+      ]
+    },
+    {
+      "rev": 2455,
+      "date": "2025-10-02",
+      "author": "JoshRW",
+      "lines": [
+        "Delete old Gemini textures. The textures have been fixed, so the old",
+        "ones are no longer needed for reference."
+      ]
+    },
+    {
+      "rev": 2456,
+      "date": "2025-10-03",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added Game Sim Speed to UI",
+        "Added Game Elapsed Time to UI"
+      ]
+    },
+    {
+      "rev": 2457,
+      "date": "2025-10-03",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed bug where auto warp to buttons were not respecting if they were disabled or not.",
+        "Added Warp to next SOI change event button to UI to allow user to warp to next encounter or SOI exit event in their flightplan."
+      ]
+    },
+    {
+      "rev": 2458,
+      "date": "2025-10-03",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Switch ocean from mesh to screen-space at high altitude: Fix occasional z-fighting issues resulting in concentric circles at some distances, and better support Casper's new height data sets",
+        "Simplify how ocean shore filtering is handled at high altitude by using the heightmap directly"
+      ]
+    },
+    {
+      "rev": 2459,
+      "date": "2025-10-03",
+      "author": "GitHub",
+      "lines": [
+        "KTX2 Heightmaps",
+        "Replaced Earth's heightmap with the latest GEBCO 2025 topo-bathemetry data and rescaled the elevation range appropriately.",
+        "Converted Earth and Moon heightmaps to 16 bit (R16Unorm) single channel KTX2.",
+        "Added terrain debug settings to adjust the minimum and maximum heights for the currently selected planet.",
+        "Updated Earth's diffuse map to be more biased towards land at shorelines to help prevent ocean colour leaking onto land.",
+        "Created new shared glsl 'SamplingFunctions' and moved the existing sampling functions out of Shared.glsl.",
+        "Fixed incorrect Moon elevation ranges.",
+        "Fixed CPU-side terrain sampling lerping between 0 and max height rather than min height and max height.",
+        "Added ktx2 to LFS tracking.",
+        "Replaced Mars' heightmap with an R16Unorm version and set its terrain minimum and maximum elevations to their real values.",
+        "Updated the normal maps for the Moon and Mars to match their new elevation ranges."
+      ]
+    },
+    {
+      "rev": 2460,
+      "date": "2025-10-03",
+      "author": "Linx-RW",
+      "lines": [
+        "Added analytical derivatives for the complex craters modifier.",
+        "Adjusted the altitude height curve for the complex craters modifier to work with the new Moon elevation range."
+      ]
+    },
+    {
+      "rev": 2461,
+      "date": "2025-10-05",
+      "author": "Rocket",
+      "lines": [
+        "Fixed interface windows would be too narrow when operating at certain sizes with a smaller font."
+      ]
+    },
+    {
+      "rev": 2462,
+      "date": "2025-10-07",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed game speed gauge (and other gauges) not animating when sim speed is zero."
+      ]
+    },
+    {
+      "rev": 2463,
+      "date": "2025-10-07",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added background to the game speed UI component."
+      ]
+    },
+    {
+      "rev": 2464,
+      "date": "2025-10-07",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed location points on the planet to only render the UI box if they are visible to the camera. Also added ability to hover over the location boxes to display the location Name UI text."
+      ]
+    },
+    {
+      "rev": 2465,
+      "date": "2025-10-07",
+      "author": "Morrow",
+      "lines": [
+        "Fixed some normal mapping problems. The new parts no longer have their tangents inverted."
+      ]
+    },
+    {
+      "rev": 2466,
+      "date": "2025-10-07",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added seconds to the elapsed Game Time UI."
+      ]
+    },
+    {
+      "rev": 2467,
+      "date": "2025-10-07",
+      "author": "Dan Southon",
+      "lines": [
+        "Combined descriptor for sun shadow maps",
+        "Vessel shadows now affect direct lighting on clouds (not the in-scatter yet)",
+        "Added shadow derivative receiver plane bias",
+        "Added shadow normal offset to aid removing shadow acne",
+        "Adapted how the PCSS to reduce shadow acne"
+      ]
+    },
+    {
+      "rev": 2468,
+      "date": "2025-10-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Reworked generic Tree structure into a Part-specific tree in preparation for moving aggregate lists like thrusters into it."
+      ]
+    },
+    {
+      "rev": 2469,
+      "date": "2025-10-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed ejection burn dV display for normal and outward components."
+      ]
+    },
+    {
+      "rev": 2470,
+      "date": "2025-10-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Only limit throttle-up due to time warp, not auto burn status."
+      ]
+    },
+    {
+      "rev": 2471,
+      "date": "2025-10-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Revert previous commit due to a broken cherry pick."
+      ]
+    },
+    {
+      "rev": 2472,
+      "date": "2025-10-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Only limit throttle due to time warp, not auto-burn status."
+      ]
+    },
+    {
+      "rev": 2473,
+      "date": "2025-10-08",
+      "author": "Morrow",
+      "lines": [
+        "Updated RCS thruster part textures."
+      ]
+    },
+    {
+      "rev": 2474,
+      "date": "2025-10-08",
+      "author": "Dan Southon",
+      "lines": [
+        "Disabled vma usage to reduce VRAM overhead"
+      ]
+    },
+    {
+      "rev": 2475,
+      "date": "2025-10-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Moved thruster definitions from the top-level vehicle into parts. This immediately deduplicates a bunch of XML.",
+        "Moved all thruster-related structs into the new PartTree where the parallel indices can be managed correctly. This also eliminates the duplicate SubPartThrusters list that used to exist."
+      ]
+    }
+  ]
+}

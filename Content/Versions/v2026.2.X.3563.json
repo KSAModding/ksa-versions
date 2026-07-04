@@ -1,0 +1,120 @@
+{
+  "build": "2026.2.5.3563",
+  "date": "2026-02-17",
+  "fromRevision": 3549,
+  "toRevision": 3563,
+  "commits": [
+    {
+      "rev": 3550,
+      "date": "2026-02-16",
+      "author": "lghassen",
+      "lines": [
+        "Fix seams visible on the planet from orbit with the ocean shore filtering, caused by height cubemap mips not generated with neighbour/cubemap awareness"
+      ]
+    },
+    {
+      "rev": 3551,
+      "date": "2026-02-16",
+      "author": "Linx-RW",
+      "lines": [
+        "Increased Pan's SOI to 50km, allowing it to be more easily intercepted and allowing landing on its ridge which was previously outside the SOI."
+      ]
+    },
+    {
+      "rev": 3552,
+      "date": "2026-02-16",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed seam in Earth's diffuse texture caused by incorrect mip generation."
+      ]
+    },
+    {
+      "rev": 3553,
+      "date": "2026-02-16",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed an error where only one of many parallel gimbaled engines would function."
+      ]
+    },
+    {
+      "rev": 3554,
+      "date": "2026-02-17",
+      "author": "Morrow",
+      "lines": [
+        "Updated Core Propulsion A Assets. Two new engines added and are unconfigured for now: A5, A6.",
+        "Changed RocketReference to use the Part Template's Id for lookup. We'll need to do more work here for situations when there's more than one SubPart using the same Part Template."
+      ]
+    },
+    {
+      "rev": 3555,
+      "date": "2026-02-17",
+      "author": "Morrow",
+      "lines": [
+        "Added editor tags for engines."
+      ]
+    },
+    {
+      "rev": 3556,
+      "date": "2026-02-17",
+      "author": "Morrow",
+      "lines": [
+        "Updated Brutal ImGui package to 2026.2.0 which should resolve potential printf style formatting problems."
+      ]
+    },
+    {
+      "rev": 3557,
+      "date": "2026-02-16",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Moved gimbaled nozzle control data cache from the flight computer to the gimbal controller.",
+        "Fixed multi-engine gimbal control instability at high time warp.",
+        "Added some floatQuat extension convenience methods."
+      ]
+    },
+    {
+      "rev": 3558,
+      "date": "2026-02-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Battery PartComponent and BatteryState.",
+        "Added Joules struct for energy management.",
+        "Added JoulesReference for context formatting/reference of Joules.",
+        "Added BatteryTemplate to PartTemplate."
+      ]
+    },
+    {
+      "rev": 3559,
+      "date": "2026-02-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed bug when attaching an interstage with decoupler onto a part that also has an engine attached not setting staging correctly."
+      ]
+    },
+    {
+      "rev": 3560,
+      "date": "2026-02-17",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed ground clutter not receiving the sphere celestial shadow. Ground clutter will no longer be lit from below at night."
+      ]
+    },
+    {
+      "rev": 3561,
+      "date": "2026-02-17",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Replaced all enum HasFlag calls with our own solution to avoid allocations"
+      ]
+    },
+    {
+      "rev": 3562,
+      "date": "2026-02-17",
+      "author": "Rocket",
+      "lines": [
+        "Added autohide feature as an option on windows using the base ImGuiWindow class. This will hide the menubar and title when the window is not hovered.",
+        "Added Autohide default to on for the staging window and editor part windows, to reduce visual clutter.",
+        "Fixed bug with detatched ImGuiWindow base windows, where when being reattached they would retain their old position, which is off of the screen. Now when reattached to the main screen, their ID and other attributes will be reset."
+      ]
+    }
+  ]
+}

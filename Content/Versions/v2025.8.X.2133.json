@@ -1,0 +1,60 @@
+{
+  "build": "2025.8.19.2133",
+  "date": "2025-08-21",
+  "fromRevision": 2125,
+  "toRevision": 2133,
+  "commits": [
+    {
+      "rev": 2126,
+      "date": "2025-08-20",
+      "author": "Linx-RW",
+      "lines": [
+        "Temporarily disabled the planet renderer ubo dynamic offset if the terrain editor menu is open until I make the GUI work with a dynamic offset."
+      ]
+    },
+    {
+      "rev": 2127,
+      "date": "2025-08-21",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed burn marker visibility in map mode and normal camera mode to use the correct orbit to measure when to turn it on and off."
+      ]
+    },
+    {
+      "rev": 2128,
+      "date": "2025-08-21",
+      "author": "GitHub",
+      "lines": [
+        "Add atmosphere reflections to vessels",
+        "Add atmosphere reflections to vessels",
+        "Atmosphere reflections were added for reflection rays which do not intersect the planet (we don't have a good way to do planet reflections yet).",
+        "This is only enabled when the vessel is inside the atmosphere as when it exits the atmosphere, the atmosphere lut produces incorrect rainbow colors (this is something I'm currently debugging). This means that the atmosphere color is attenuated to zero as we exit the atmosphere.",
+        "The stars are also disabled when reflection rays intersect the planet inside the atmosphere, as they look weird if enabled here. The stars are enabled for all reflection angles when we exit the atmosphere."
+      ]
+    },
+    {
+      "rev": 2129,
+      "date": "2025-08-21",
+      "author": "Morrow",
+      "lines": [
+        "Fixed a crash when collapsing the map UI menu."
+      ]
+    },
+    {
+      "rev": 2130,
+      "date": "2025-08-21",
+      "author": "Rian Drake",
+      "lines": [
+        "Simplify the BRUTAL package reference"
+      ]
+    },
+    {
+      "rev": 2131,
+      "date": "2025-08-21",
+      "author": "Dean Hall",
+      "lines": [
+        "Added build process handling so that discord version messages and other webhook payloads will be prepared by the build server, so that this process can be automated."
+      ]
+    }
+  ]
+}

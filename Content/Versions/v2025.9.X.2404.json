@@ -1,0 +1,50 @@
+{
+  "build": "2025.9.3.2404",
+  "date": "2025-09-20",
+  "fromRevision": 2399,
+  "toRevision": 2404,
+  "commits": [
+    {
+      "rev": 2400,
+      "date": "2025-09-18",
+      "author": "Ghassen Lahmar",
+      "lines": [
+        "Fade volumetric cloud shadows to 2d cloud shadows when zooming out",
+        "Sample cloud noise mips correctly for all cloud types when raymarching, small performance improvement"
+      ]
+    },
+    {
+      "rev": 2401,
+      "date": "2025-09-19",
+      "author": "JoshRW",
+      "lines": [
+        "Remove TODO comment about reflections wanting to intersect the moon surface"
+      ]
+    },
+    {
+      "rev": 2402,
+      "date": "2025-09-19",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed more issues with merging of two searches into one on closest approach calculations.",
+        "Fixed issue where CATCH was trying to solve a zero time interval due to double precision issue, So now we just go over the time interval, which doesn't hurt us, and also means CATCH doesn't grind to a halt trying to find EigenValues on infinity values."
+      ]
+    },
+    {
+      "rev": 2403,
+      "date": "2025-09-18",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a case where zero eccentricity could cause a divide-by-zero."
+      ]
+    },
+    {
+      "rev": 2404,
+      "date": "2025-09-20",
+      "author": "Dan Southon",
+      "lines": [
+        "Sub part models now render to the light system shadow maps"
+      ]
+    }
+  ]
+}

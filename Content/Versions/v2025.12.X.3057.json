@@ -1,0 +1,91 @@
+{
+  "build": "2025.12.10.3057",
+  "date": "2025-12-12",
+  "fromRevision": 3047,
+  "toRevision": 3057,
+  "commits": [
+    {
+      "rev": 3048,
+      "date": "2025-12-11",
+      "author": "lghassen",
+      "lines": [
+        "Add large scale cloud shadowing and ambient, via dedicated shadow system that runs over multiple frames. Allows clouds to cast shadows and godrays over large distances and different layers to shadow each other, improves the cloud lighting greatly and sunsets look so much better now. Clouds shapes and types will need a rework to take advantage of the new lighting. Also a good candidate for async compute.",
+        "Increase mie scattering on earth for better sunsets with cloud godrays",
+        "Fix negative values on godrays on clouds",
+        "Sample aerial perspective LUTs using bicubic to fix linear interpolation artifacts visible with strong mie scattering and godrays",
+        "Fix validation errors about mismatching formats with MSAA transparencies textures when MSAA is disabled"
+      ]
+    },
+    {
+      "rev": 3049,
+      "date": "2025-12-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Suppress warning about save data being invalid - this is because the prebuilt vehicles have not had storage defined to them yet."
+      ]
+    },
+    {
+      "rev": 3050,
+      "date": "2025-12-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Suppress this warning as well, same reason."
+      ]
+    },
+    {
+      "rev": 3051,
+      "date": "2025-12-12",
+      "author": "Morrow",
+      "lines": [
+        "Fixed orbit lines overdrawing when toggling UI on and off."
+      ]
+    },
+    {
+      "rev": 3052,
+      "date": "2025-12-12",
+      "author": "Morrow",
+      "lines": [
+        "Imported new PropulsionA textures and corrected positions of SRBs."
+      ]
+    },
+    {
+      "rev": 3053,
+      "date": "2025-12-12",
+      "author": "Morrow",
+      "lines": [
+        "Added an optional solution filter for a minimal build of KSA to speed up start times by not compiling unreferenced projects and tests."
+      ]
+    },
+    {
+      "rev": 3054,
+      "date": "2025-12-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed kittens letting go of the MMU handles when using the MMU."
+      ]
+    },
+    {
+      "rev": 3055,
+      "date": "2025-12-12",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Updated Hunter to be a bengal with dark green eyes. Hunters previous textures have not been deleted, and are still available in the project.",
+        "Added new kitten fur texture, also currently unused."
+      ]
+    },
+    {
+      "rev": 3056,
+      "date": "2025-12-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added TankStates to PartTree to manage tank states of course. This is done via TankStateList class instance on each PartTree.",
+        "Added ability to produce and consume liquid substances from the TankStates.",
+        "Added Mole class to manage storage of liquid substances by mass in TankState instances.",
+        "Added TankState class to manage the Mole instances and consumption and production of liquid substances in a TankState.",
+        "Added TankState instance to each SubPart instance that has storage capacity.",
+        "Added serialization and deserialization of Moles/TankStates at a SubPart instance level so save games now save and load liquid substances.",
+        "Changed the ResourceManager to manage all of the above and handle resource requests from the vehicle worker thread tasks."
+      ]
+    }
+  ]
+}

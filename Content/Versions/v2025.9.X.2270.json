@@ -1,0 +1,62 @@
+{
+  "build": "2025.9.2.2270",
+  "date": "2025-09-01",
+  "fromRevision": 2263,
+  "toRevision": 2270,
+  "commits": [
+    {
+      "rev": 2264,
+      "date": "2025-08-30",
+      "author": "Dean Hall",
+      "lines": [
+        "Fixed sign digit rollers were broken as bitfield pack was not correctly configured for them.",
+        "Fixed roller animation was not being applied to unit rollers such as distance and time. Now this is correctly applied, and they will animate between their various unit states as the other rollers do."
+      ]
+    },
+    {
+      "rev": 2265,
+      "date": "2025-09-01",
+      "author": "Dan Southon",
+      "lines": [
+        "Adjusted how the shadow map mem alignment is working"
+      ]
+    },
+    {
+      "rev": 2266,
+      "date": "2025-09-01",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Removed all if DEBUG only code from Orbit and TransferPlanner.",
+        "Reinstated Orbit degree markers debug UI.",
+        "Changed aN and dN markers and lines to have 50% transparency."
+      ]
+    },
+    {
+      "rev": 2267,
+      "date": "2025-09-01",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed bug in relative orbit line drawing where the time was between -1 and 1 second. Amended GetPositivePeriodicTime to handle -1 to 1 second and return zero seconds in this case instead of adding a period."
+      ]
+    },
+    {
+      "rev": 2268,
+      "date": "2025-09-01",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed issue where dN and aN lines and markers were being drawn when their positions were outside the start and end anomaly of a patch."
+      ]
+    },
+    {
+      "rev": 2269,
+      "date": "2025-09-01",
+      "author": "Dan Southon",
+      "lines": [
+        "Changed how shadow map gpu data is assigned to account for new alignments",
+        "Changed mem alignments for godrays and kawase overall bloom renderer",
+        "Renamed shader ubo's for shadow passes",
+        "Removed hardcoded struct size for ShadowSystemUbo."
+      ]
+    }
+  ]
+}

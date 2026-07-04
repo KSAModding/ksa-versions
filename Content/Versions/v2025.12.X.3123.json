@@ -1,0 +1,181 @@
+{
+  "build": "2025.12.33.3123",
+  "date": "2025-12-23",
+  "fromRevision": 3103,
+  "toRevision": 3123,
+  "commits": [
+    {
+      "rev": 3104,
+      "date": "2025-12-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed all principal mass moments using the Ixx moment when combined (oops).",
+        "Tagged a bunch of mass properties methods as readonly."
+      ]
+    },
+    {
+      "rev": 3105,
+      "date": "2025-12-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Renamed a bunch of variables in the vehicle editor which used to be in BODY but are now in ASMB."
+      ]
+    },
+    {
+      "rev": 3106,
+      "date": "2025-12-18",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added SituationTemplate and xml file to define starting situations for the prebuilt vehicles. This allows us to define situations other than the prebuilt ones for spawning new vehicles into the game. Also supports spawning vehicles to any defined Locations on any celestials (ie. landed).",
+        "Changed prebuit vehicle references to use the new situation templates."
+      ]
+    },
+    {
+      "rev": 3107,
+      "date": "2025-12-17",
+      "author": "lghassen",
+      "lines": [
+        "Tone down ambient lighting saturation on meshes"
+      ]
+    },
+    {
+      "rev": 3108,
+      "date": "2025-12-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Removed need for Vessel reference in ResourceManager instance so we can go multi-instance for the ResourceManager per consumer/producer."
+      ]
+    },
+    {
+      "rev": 3109,
+      "date": "2025-12-18",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Replace SubstanceStorageVolumes with Tanks that provide both a volume and a geometry. Not all parts have been converted yet.",
+        "Changed a bunch of resource values from double to float since the extra memory bandwidth usage is not neccesary here.",
+        "Tank mass properties are not in the correct vehicle location yet because we are dropping the tank state <-> sub part link in PartTree - need to address with with a follow-on commit."
+      ]
+    },
+    {
+      "rev": 3110,
+      "date": "2025-12-18",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Restored kitten RCS propellant."
+      ]
+    },
+    {
+      "rev": 3111,
+      "date": "2025-12-18",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a case where an elliptic integral parameter could go out of domain because we were only clamping positive values."
+      ]
+    },
+    {
+      "rev": 3112,
+      "date": "2025-12-19",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed a bug where the relation between camera and sun causes NaN transform matrix for thumbnails",
+        "Removed camera transform override from ThumbnailReference now that Thumbnail parts are moved in relation to the camera."
+      ]
+    },
+    {
+      "rev": 3113,
+      "date": "2025-12-18",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed the location of vehicle propellant mass properties.",
+        "Reorganized tank data into a static Tank and dynamic TankState.",
+        "Deleted ResourceStates.",
+        "Create a new copy of the tank states for the worker. NOTE: We don't currently deep copy the moles, so this doesn't actually quite create a new set of states yet.",
+        "Turned several parameters into methods with 'Compute' prefixes to indicate that they should not be treated as cheap to access."
+      ]
+    },
+    {
+      "rev": 3114,
+      "date": "2025-12-19",
+      "author": "lghassen",
+      "lines": [
+        "Fix horizon discontinuity artifact on atmosphere aerial perspective visible on mountain sides, reintroduced recently by sampling the LUTs using bicubic",
+        "Fix all-consuming white orb emanating from the clouds by fixing NaNs in the atmosphere LUT sampling introduced by using bicubic"
+      ]
+    },
+    {
+      "rev": 3115,
+      "date": "2025-12-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Minor renames to clarify tank reference frames."
+      ]
+    },
+    {
+      "rev": 3116,
+      "date": "2025-12-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Use full mass properties when precomputing thruster torque rather than just the static mass properties. With shifting centers of mass this whole system needs to be changed, but at least now it's more correct at vehicle initialization."
+      ]
+    },
+    {
+      "rev": 3117,
+      "date": "2025-12-19",
+      "author": "Linx-RW",
+      "lines": [
+        "Added WIP ground clutter GPU driven LOD system. Very barebones currently, still yet to create the appended mesh buffers.",
+        "Temporarily coloured ground clutter meshes by their LOD.",
+        "Set LOD_COUNT to 5 initially.",
+        "Removed unnecessary CellData padding."
+      ]
+    },
+    {
+      "rev": 3118,
+      "date": "2025-12-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Switched tank states to use a sorted list of moles for faster lookups."
+      ]
+    },
+    {
+      "rev": 3119,
+      "date": "2025-12-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added BiDirectionalGraph<T> class.",
+        "Changed Resource manager to build a graph of tanks it can access, for now this is filled by part relationships. But ultimately will be populated by part connectors and stage and flow rules (to be added in future weeks).",
+        "Changed ResourceManager from being a single instance on a vehicle to now be an instance on each Nozzle in an engine. This allows the ResourceManager to build a graph of tanks it will draw from based on future stages and flow rules.",
+        "Changed the Resource Debug UI to display all ResourceManager instances and their tank graphs."
+      ]
+    },
+    {
+      "rev": 3120,
+      "date": "2025-12-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed VehicleUpdateTGask to take a deep copy of TankStates to separate worker thread data from simulation data so the updates to the tanks can be applied at the correct time at the start of the next frame."
+      ]
+    },
+    {
+      "rev": 3121,
+      "date": "2025-12-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Added LOD rendering to the ground clutter renderer.",
+        "Added 'SimpleVkMeshAtlas' which compacts multiple meshes into one big mesh for GPU driven rendering.",
+        "Added debug number meshes 1 through 5 for testing LODs.",
+        "Fixed incorrect ground clutter rotation matrix."
+      ]
+    },
+    {
+      "rev": 3122,
+      "date": "2025-12-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ResourceManager into the propellant methods so we can use it's graph to correctly drain tanks in the correct order (still to come).",
+        "Changed Physics steps to break up the propellant mass changes by nozzle via it's ResourceManager instance.",
+        "Added ResourceManager instance for each Rocket Nozzle."
+      ]
+    }
+  ]
+}

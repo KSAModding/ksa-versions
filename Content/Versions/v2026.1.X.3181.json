@@ -1,0 +1,510 @@
+{
+  "build": "2026.1.2.3181",
+  "date": "2026-01-08",
+  "fromRevision": 3123,
+  "toRevision": 3181,
+  "commits": [
+    {
+      "rev": 3124,
+      "date": "2025-12-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Connector Ids to all predefined parts connectors. This is so they will be stored into the ModLibrary on startup and we can reference them via connector instances in saved vehciles and saved games.",
+        "Added ModLibrary.Get function to be able to retrieve connect templates.",
+        "Added serialization of part instances and connector instances into vehicle saves and saved games.",
+        "Added renumbering and handling of serialized instance Ids on parts/subparts and connectors if we load a vehicle save with instance Ids already in use.",
+        "Moved the enumerator for the Unqiue part, subpart and connector instances to the Universe class and reset it whenever we load a new save game."
+      ]
+    },
+    {
+      "rev": 3125,
+      "date": "2025-12-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Added basic ground clutter frustum culling. Currently does not use a bounding sphere/box to test the extents against the frustum (point for now) - this is next.",
+        "Reduced polycounts for the debug text meshes.",
+        "Fixed crash when changing graphics settings with ground clutter enabled.",
+        "Added indirect dispatch command building stage so we only need to dispatch the reodering stage for objects that survived culling (an optimization).",
+        "Removed debug LOD colouration."
+      ]
+    },
+    {
+      "rev": 3126,
+      "date": "2025-12-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a TODO by renaming the \"Tgt\" vehicle reference frame to \"Dock\" (so the XML now matches the code). This will break save games but it will only get more painful the longer we wait."
+      ]
+    },
+    {
+      "rev": 3127,
+      "date": "2025-12-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fix TGT button on navball.",
+        "Skip malformed save games and log an error rather than prevent the game from launching."
+      ]
+    },
+    {
+      "rev": 3128,
+      "date": "2025-12-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Reworked tank and mass class hierarchies to eliminate a bogus set of methods on tanks at the cost of two parsed-but-ignored fields on custom masses.",
+        "Reduced rotational inertia for current placeholder mass."
+      ]
+    },
+    {
+      "rev": 3129,
+      "date": "2025-12-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Simplified quaternion construction in asymmetric Euler-Poinsot algorithm."
+      ]
+    },
+    {
+      "rev": 3130,
+      "date": "2026-01-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added two different Part Connector types, Fixed and Surface.",
+        "Added Surface Attachment connectors to all parts, except engines for now.",
+        "Added handling of surface attachment connectors to the vehicle editor."
+      ]
+    },
+    {
+      "rev": 3131,
+      "date": "2026-01-02",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added a PAF (Principal Axes Frame) computation + cache to KinematicStates. This prepares arbitrary combinations of rigid masses for attitude simulation and control.",
+        "Eliminated potential left-handed frame and removed all matrix construction in the Euler-Poinsot algorithm.",
+        "Fixed inertia tensor parallel axis transformation error.",
+        "Added a mass debug overlay to the physics debug window.",
+        "Recompute flight computer authority when refilling consumables. This almost works but is still broken due to the thruster intended torque variable, which needs to be removed now that we have a dynamic center of mass."
+      ]
+    },
+    {
+      "rev": 3132,
+      "date": "2026-01-03",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added solid and hollow spheres, cylinders, and cuboids to the library of inert masses."
+      ]
+    },
+    {
+      "rev": 3133,
+      "date": "2026-01-03",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed connector positions in the vehicle editor."
+      ]
+    },
+    {
+      "rev": 3134,
+      "date": "2026-01-05",
+      "author": "Morrow",
+      "lines": [
+        "Added buffer syncing for subpart rendering to guarantee host memory has been flushed before drawing occurs."
+      ]
+    },
+    {
+      "rev": 3135,
+      "date": "2026-01-05",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a couple of IMGUI errors in the display of resources UI."
+      ]
+    },
+    {
+      "rev": 3136,
+      "date": "2026-01-05",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed kittens normal maps being flipped on the x axis."
+      ]
+    },
+    {
+      "rev": 3137,
+      "date": "2026-01-05",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed situation where player could create invalid parent transfer burns when vehicle already has other active burns that invalidates a parent transfer burn. Instead, now an alert is presented to the player in this situation and prevents the creation of the parent transfer burn node."
+      ]
+    },
+    {
+      "rev": 3138,
+      "date": "2026-01-05",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed resource graph generation from part tree traversal. This is temp, pending other changes to switch over to part connections."
+      ]
+    },
+    {
+      "rev": 3139,
+      "date": "2026-01-05",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Added first cut, very rough - resource graph visualisation."
+      ]
+    },
+    {
+      "rev": 3140,
+      "date": "2026-01-05",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Fixed issue with deserialization of tank states from saves."
+      ]
+    },
+    {
+      "rev": 3141,
+      "date": "2026-01-05",
+      "author": "Dan Southon",
+      "lines": [
+        "Changed PipelineBarrier helper for transitioning image layouts, removing duplicate code and adding missing flags for depth attachments.",
+        "Removed cancellation token in thumbnail render as it is not currently async."
+      ]
+    },
+    {
+      "rev": 3142,
+      "date": "2026-01-05",
+      "author": "Linx-RW",
+      "lines": [
+        "Cleaned up the ground clutter renderer descriptor pool and bindings by using the Utils functions available.",
+        "Now init shared memory LOD counts in parallel so that each thread in the evaluate compute shader only needs to wait on one iteration rather than the LOD count.",
+        "Removed unused transforms count binding from BuildDrawCommands.comp.",
+        "Removed unused code in ground clutter renderer."
+      ]
+    },
+    {
+      "rev": 3143,
+      "date": "2026-01-05",
+      "author": "Linx-RW",
+      "lines": [
+        "Replaced Dispatch with DispatchIndirect for ground clutter instance reordering."
+      ]
+    },
+    {
+      "rev": 3144,
+      "date": "2026-01-05",
+      "author": "Linx-RW",
+      "lines": [
+        "Optimized ground clutter draw command generation workgroup efficiency."
+      ]
+    },
+    {
+      "rev": 3145,
+      "date": "2026-01-06",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed resource graph generation logic."
+      ]
+    },
+    {
+      "rev": 3146,
+      "date": "2026-01-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added cones and truncated cones to the list of available mass property shapes."
+      ]
+    },
+    {
+      "rev": 3147,
+      "date": "2026-01-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Revert fix to deserialization of tank states and remove a redundant call to part tree instead."
+      ]
+    },
+    {
+      "rev": 3148,
+      "date": "2026-01-06",
+      "author": "Morrow",
+      "lines": [
+        "Added part connector serializing.",
+        "Added part connectors to the astronomicals xml so they're loaded in properly.",
+        "Removed typed part connectors as we're likely going to want to do this a bit differently."
+      ]
+    },
+    {
+      "rev": 3149,
+      "date": "2026-01-06",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the Refill command to fill tanks in a balanced even manner.",
+        "Added error message to log if we attempt to add a mass to a mole and it doesn't fit the available capacity."
+      ]
+    },
+    {
+      "rev": 3150,
+      "date": "2026-01-06",
+      "author": "Morrow",
+      "lines": [
+        "Fixed tank states not being saved and loaded correctly."
+      ]
+    },
+    {
+      "rev": 3151,
+      "date": "2026-01-06",
+      "author": "Morrow",
+      "lines": [
+        "Changed the Device Vector to transfer via host memory rather than via command buffer submitted copy commands which seems to fix a few sync problems (mostly in thumbnail generation)."
+      ]
+    },
+    {
+      "rev": 3152,
+      "date": "2026-01-06",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed 'character loading' from startup log, to prevent log spam."
+      ]
+    },
+    {
+      "rev": 3153,
+      "date": "2026-01-06",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed moved resource serialized data for moles not having the ondataload performed to set the initial value from the MassReference."
+      ]
+    },
+    {
+      "rev": 3154,
+      "date": "2026-01-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added subtract method to float3x3."
+      ]
+    },
+    {
+      "rev": 3155,
+      "date": "2026-01-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Break out integration propellant deltas for easier debugging."
+      ]
+    },
+    {
+      "rev": 3156,
+      "date": "2026-01-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added initial rendering support for thrusters heating up and glowing. Currently the values to control the thrusters temperature are not tied to anything, so the effect is not visible.",
+        "Moved GetThinFilm out of Mesh.frag and into SharedFrag.glsl.",
+        "Added new InstancedData type for parts. This instanced data contains the temperature for thrusters aswell as the thickness of the thin film thats built up on the thrusters.",
+        "Added DynamicMesh.frag/vert. Thrusters can now be set to use DynamicMesh.frag/vert instead of Mesh.frag/vert due to unique logic and data passed into the shaders.",
+        "Added initial heat glow emissive texture for Core_Propulsion_A.",
+        "Marked all Core_Propulsion_A assets with 'UsesTemperature'. This file will be overriden and this data will need to be setup correctly for auto-generated files."
+      ]
+    },
+    {
+      "rev": 3157,
+      "date": "2026-01-07",
+      "author": "Morrow",
+      "lines": [
+        "Fixed a part snapping problem when vehicle assembly bodies were rotated."
+      ]
+    },
+    {
+      "rev": 3158,
+      "date": "2026-01-07",
+      "author": "Morrow",
+      "lines": [
+        "Fixed some connector rotations not offsetting by the assembly frame which was causing the 'blocked' logic to be incorrect."
+      ]
+    },
+    {
+      "rev": 3159,
+      "date": "2026-01-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed audio not working for vehicles on loaded saves.",
+        "Fixed camera not being reset on loaded saves to the saved camera settings."
+      ]
+    },
+    {
+      "rev": 3160,
+      "date": "2026-01-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed part thumbnails showing heated version of thrusters"
+      ]
+    },
+    {
+      "rev": 3161,
+      "date": "2026-01-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Improve how the emissive glow from hot thrusters are blended into the rest of the shader."
+      ]
+    },
+    {
+      "rev": 3162,
+      "date": "2026-01-07",
+      "author": "Morrow",
+      "lines": [
+        "Started work on retaining mirrored part information.",
+        "Added a 'remove all' button to the debug editor."
+      ]
+    },
+    {
+      "rev": 3163,
+      "date": "2026-01-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed up normal map implementation in various fragment shaders. This will help reduce bugs caused by normal maps with differing compression types aswell as remove unnecessary copy pasted code."
+      ]
+    },
+    {
+      "rev": 3164,
+      "date": "2026-01-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed redundant fragment shader code from DynamicMesh.frag"
+      ]
+    },
+    {
+      "rev": 3165,
+      "date": "2026-01-06",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Moved KinematicStates inertia properties into the extension class so they can return references."
+      ]
+    },
+    {
+      "rev": 3166,
+      "date": "2026-01-06",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Remove vehicle angular momentum from ejected reaction mass in the velocity verlet integrator to avoid spinning up during burns. The symplectic Euler integrator uses angular velocity rather than angular momentum so does not need this correction term."
+      ]
+    },
+    {
+      "rev": 3167,
+      "date": "2026-01-08",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed multi-second delay when loading saves."
+      ]
+    },
+    {
+      "rev": 3168,
+      "date": "2026-01-07",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Small improvements to camera handling when transitioning in/out of the vehicle editor."
+      ]
+    },
+    {
+      "rev": 3169,
+      "date": "2026-01-08",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Ensure PipelineDynamic gets rebuilt properly in SubPartModelRenderer"
+      ]
+    },
+    {
+      "rev": 3170,
+      "date": "2026-01-07",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Separate bounding sphere debug color from SOI color."
+      ]
+    },
+    {
+      "rev": 3171,
+      "date": "2026-01-08",
+      "author": "Morrow",
+      "lines": [
+        "Fixed a bug with propellant deserialization where the root part wouldn't recreate its tank state."
+      ]
+    },
+    {
+      "rev": 3172,
+      "date": "2026-01-07",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added VSFB LC-4 and Starbase OLM A landmarks.",
+        "Hide teleport-to-landmark debug buttons when the associated celestial does not exist."
+      ]
+    },
+    {
+      "rev": 3173,
+      "date": "2026-01-06",
+      "author": "Linx-RW",
+      "lines": [
+        "Renamed ground clutter 'group' to 'ecotype'.",
+        "Reorganized ground clutter renderer to support multiple ecotypes and multiple planets (still WIP).",
+        "Fixed validation error on a barrier missing DrawIndirectBit."
+      ]
+    },
+    {
+      "rev": 3174,
+      "date": "2026-01-06",
+      "author": "Linx-RW",
+      "lines": [
+        "Allowed ground clutter cell grid to be created from XML parameters rather than constants.",
+        "Fixed ground clutter object separation and generation range XML distance references not being loaded."
+      ]
+    },
+    {
+      "rev": 3175,
+      "date": "2026-01-07",
+      "author": "Linx-RW",
+      "lines": [
+        "Added util function for creating buffer memory barriers.",
+        "Pulled unload and generation of ground clutter out of the ecotype render data into the ground clutter renderer."
+      ]
+    },
+    {
+      "rev": 3176,
+      "date": "2026-01-07",
+      "author": "Linx-RW",
+      "lines": [
+        "Completed ground clutter renderer refactor to support multiple ecotypes per celestial and multiple celestials.",
+        "Replaced individual staging pools with one to reduce the number of fences waited on during ground clutter setup.",
+        "Removed IndirectArgs struct in the ground clutter renderer, replaced with the proper VkDrawIndexedIndirectCommand."
+      ]
+    },
+    {
+      "rev": 3177,
+      "date": "2026-01-08",
+      "author": "Linx-RW",
+      "lines": [
+        "More appropriately handle rebuilding of ground clutter frame resources.",
+        "Cleaned up unnecessary parameters passed to ground clutter renderer building functions."
+      ]
+    },
+    {
+      "rev": 3178,
+      "date": "2026-01-08",
+      "author": "Morrow",
+      "lines": [
+        "Added SubPartReference Ids to the Xml so they can be referenced.",
+        "Fixed engine gimbals being in the wrong place in the Xml.",
+        "Updated the engine textures while I was there.",
+        "Broke the new temperature maps since they need to be handled differently."
+      ]
+    },
+    {
+      "rev": 3179,
+      "date": "2026-01-08",
+      "author": "Morrow",
+      "lines": [
+        "Added very WIP symmetry inheritance to the debug editor."
+      ]
+    },
+    {
+      "rev": 3180,
+      "date": "2026-01-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved the definitions of the prebuilt vehicles and kittens into separate files so they are handled as normal vehicle saves. They now live in Content/defaultvehicles folder.",
+        "Aded DefaultVehicles class to manage above prebuilt vehicle loading.",
+        "Added fuel into the prebuilt vehicle saves, and removed the automatic refill when loading prebuilt vehicles.",
+        "Consolidated Kitten data elements into Vehicle data elements for save files so we no longer need to maintain two sets of data classes for save data for these objects. This is facilitated through changes in the KittenEva constructors.",
+        "Minor changes to Mole serialization to match our patterns (changed name and element to attributes).",
+        "Added LoadVesselFromLibrary element to handle loading vehicles from default vehicles files and still support a VehicleTemplate to define starting situation, etc."
+      ]
+    }
+  ]
+}

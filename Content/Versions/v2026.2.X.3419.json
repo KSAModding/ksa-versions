@@ -1,0 +1,198 @@
+{
+  "build": "2026.2.3.3419",
+  "date": "2026-02-06",
+  "fromRevision": 3396,
+  "toRevision": 3419,
+  "commits": [
+    {
+      "rev": 3397,
+      "date": "2026-02-04",
+      "author": "lghassen",
+      "lines": [
+        "Fix jittering and occasional snapping of ring mesh positions/orbits. Some jittering remains in the scale calculation and at high time compression meshes still move through their orbits",
+        "Fix ring meshes fadeout forming visible bright edges in some cases when viewed from the dark side of the rings",
+        "Fix ring mesh shaders not using hot reload"
+      ]
+    },
+    {
+      "rev": 3398,
+      "date": "2026-02-05",
+      "author": "Morrow",
+      "lines": [
+        "Part PBR textures now use KTX2 rather than DDS."
+      ]
+    },
+    {
+      "rev": 3399,
+      "date": "2026-02-05",
+      "author": "Morrow",
+      "lines": [
+        "Fixed right clicking in the editor turning off selection rather than highlight."
+      ]
+    },
+    {
+      "rev": 3400,
+      "date": "2026-02-05",
+      "author": "Morrow",
+      "lines": [
+        "Changed how emissive maps were being handled in the shader to make them a bit less obtuse."
+      ]
+    },
+    {
+      "rev": 3401,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed the circularize at periapsis function for the transfer planner not returning an answer for hyperbolic orbits."
+      ]
+    },
+    {
+      "rev": 3402,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed auto burn not going into alignment mode when the vehicle has RCS on board. This was broken during the TVC update."
+      ]
+    },
+    {
+      "rev": 3403,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed GetSubtreeComponents enumerator.",
+        "Added a SubtreeComponents list to Part for easy access to all components from a part and its sub-parts."
+      ]
+    },
+    {
+      "rev": 3404,
+      "date": "2026-02-05",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added concept of a component being active in stage or not.",
+        "Added de/serialize of active status for components.",
+        "Added ability to toggle active status for engines and thrusters via part context window.",
+        "Decoupler component now decouples when activated.",
+        "Added concept of currently active stage to the StageList.",
+        "Added ability to activate next stage on the currently controlled vehicle via the space bar.",
+        "Changed the sim speed to normal speed when you launch a new vehicle.",
+        "Changed physics processing to identify if engines or thrusters are active or not and not use them when not active."
+      ]
+    },
+    {
+      "rev": 3405,
+      "date": "2026-02-05",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed same issue with game crashing with no planets with rings when the renderers are rebuilt (changing resolution, etc)."
+      ]
+    },
+    {
+      "rev": 3406,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Improve flight computer performance and visualization when one or more axes lack authority."
+      ]
+    },
+    {
+      "rev": 3407,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Incrementally remove parts from split tress rather than rebuilding the entire thing."
+      ]
+    },
+    {
+      "rev": 3408,
+      "date": "2026-02-05",
+      "author": "Morrow",
+      "lines": [
+        "Fixed one of the few bugs related to radial symmetry order level swapping when inheriting symmetry. Still a few more issues to hunt down here."
+      ]
+    },
+    {
+      "rev": 3409,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fix a case where part state indexes could get corrupted during removal."
+      ]
+    },
+    {
+      "rev": 3410,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Enable the use of WASD while the flight computer is in an auto attitude mode. This will temporarily override the flight computer's target angle and rate in the given axis with the player's input, allowing e.g. steering adjustments on ascent while letting the computer keep stability control. The DIRECT and PULSE buttons change the magnitude of the override angular rate.",
+        "Removed the auto attitude lockout system and message."
+      ]
+    },
+    {
+      "rev": 3411,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a case where auto burn would not ignite if one more axes have no RCS authority."
+      ]
+    },
+    {
+      "rev": 3412,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Hide orbit lines for landed/splashed vehicles."
+      ]
+    },
+    {
+      "rev": 3413,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed copy/paste error for landed orbit hiding."
+      ]
+    },
+    {
+      "rev": 3414,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Renamed NUL ROT to RATE in the attitude control panel to indicate its new function as the rate hold mode, of which null rotation is the special case with no manual input."
+      ]
+    },
+    {
+      "rev": 3415,
+      "date": "2026-02-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added a duty cycle metric to nozzles to differentiate between a constant level of low thrust vs. a pulse-width-modulated actuation. This fixes rocket engine exhaust plume flickering when at low throttle and moderate time compression."
+      ]
+    },
+    {
+      "rev": 3416,
+      "date": "2026-02-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Changed the current time update in Universe so that GetElapsed*() is now consistent with the data available to the rendering thread. The next sim step is cached and applied when the worker threads complete.",
+        "Added Universe.GetLastSimStep() which is the SimStep that was used to compute the sim data available to the rendering thread.",
+        "Fixed planetary ring rock jitter caused by the difference between sim time and render time."
+      ]
+    },
+    {
+      "rev": 3417,
+      "date": "2026-02-06",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed problem where staging can cause an exception when the vehicle splits."
+      ]
+    },
+    {
+      "rev": 3418,
+      "date": "2026-02-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added an option to show gimbals in the engine debug window.",
+        "Fixed a couple of tooltips in the engine designer."
+      ]
+    }
+  ]
+}

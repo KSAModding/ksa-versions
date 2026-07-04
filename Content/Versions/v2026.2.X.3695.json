@@ -1,0 +1,239 @@
+{
+  "build": "2026.2.36.3695",
+  "date": "2026-02-26",
+  "fromRevision": 3667,
+  "toRevision": 3695,
+  "commits": [
+    {
+      "rev": 3668,
+      "date": "2026-02-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Added three orientation modes to the ground clutter: 1. Up, which just aligns the ground clutter so the up vector points outwards from the planet. 2. SurfaceNormal, which aligns the ground clutter so the up vector becomes the terrain normal vector. 3. SurfaceNormalAndGradient, which behaves like SurfaceNormal mode and also orients the forward vector to point in the direction of decreasing terrain elevation.",
+        "Defaulted all existing ground clutter to use SurfaceNormal orientation.",
+        "Added ground clutter placement param 'distribution texture tiling'.",
+        "Fixed snapping too infrequently for MarsScaleMesh which was causing the camera to be able to reach lower detailed parts of the mesh.",
+        "Changed ground clutter rotation output - Rather than using XYZ for rotation and W for padding and representing the rotation as about the mesh up axis, XYZW now stores a quaternion. This allows representing any arbitrary ground clutter rotation with the same memory footprint.",
+        "Massively simplified ground clutter rotation calculations in Generate.comp and Evaluate.comp.",
+        "Factored in half-diagonal of ground clutter cell when calculating the generation range, so cells now generate if their bounding square intersects the sphere defined by the visible generation range centered on the camera."
+      ]
+    },
+    {
+      "rev": 3669,
+      "date": "2026-02-24",
+      "author": "lghassen",
+      "lines": [
+        "Add differential rotations to ring meshes. Every individual ring mesh now orbits with a different speed, with rocks in lower orbits moving faster. This was previously faked by moving all rocks together at varying speeds based on the camera position, but is now accurate for individual rocks, rocks can now be seen moving relative to each other and can be seen moving at different speeds from outside the ring. This creates some interesting visual effects when orbiting inside the rings as rocks move at different speeds around you, but can be very disorienting to look at in time compression. A similar effect will be added with noise to the 2d rings to make it visible from some distance.",
+        "Add some randomization the ring meshes to make chunks less obvious/tiling",
+        "Fix ring rocks changing position when moving the camera or focusing on a different object, rocks are now always consistent thanks to the above changes",
+        "Fix cases where the pre-allocated max instances count is inaccurate for very thin rings"
+      ]
+    },
+    {
+      "rev": 3670,
+      "date": "2026-02-24",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed an error where a landed vehicle's kinematic position could end up in the wrong frame after a part tree update."
+      ]
+    },
+    {
+      "rev": 3671,
+      "date": "2026-02-25",
+      "author": "Morrow",
+      "lines": [
+        "Added necessary hooks for passing part transforms over to ray tracing land."
+      ]
+    },
+    {
+      "rev": 3672,
+      "date": "2026-02-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed bug causing NaNs in patched conics due to incorrectly classified orbit type.",
+        "Changed Orbit.GetOrbitType to use orbitalEnergy instead of Eccentricity.",
+        "Added static helper method Orbit.GetOrbitalEnergy.",
+        "Changed everything to now use orbital energy when classifying the orbit type. There is one exception - that is when we are creating orbits from the XML definitions. In that case we will use the XML defined Eccentricity."
+      ]
+    },
+    {
+      "rev": 3673,
+      "date": "2026-02-25",
+      "author": "Morrow",
+      "lines": [
+        "Fixed flashbangs being thrown on the horizons of some planets when multisampling is on. This increases the cost of multisampling when rendering planetary surfaces."
+      ]
+    },
+    {
+      "rev": 3674,
+      "date": "2026-02-25",
+      "author": "Morrow",
+      "lines": [
+        "Turned off the forced sample rate shading for the planetary fragment shader. Added centroid qualifiers to the necessary variables so values stay bounded by their expected ranges. This should fix the flashbang effect near planetary boundaries while maintaining closer to previous levels of performance."
+      ]
+    },
+    {
+      "rev": 3675,
+      "date": "2026-02-25",
+      "author": "Morrow",
+      "lines": [
+        "Updated Core Fairing A Assets.",
+        "Moved Core Fairing A game data out of PartGameData.xml and into CoreFairingAGameData.xml."
+      ]
+    },
+    {
+      "rev": 3676,
+      "date": "2026-02-25",
+      "author": "Morrow",
+      "lines": [
+        "Updated RCS surface connector positions.",
+        "Moved Core Propulsion B data from PartGameData.xml to CorePropulsionBGameData.xml."
+      ]
+    },
+    {
+      "rev": 3677,
+      "date": "2026-02-25",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Minor render context additions allowing a pipeline to let it's render context supply relevent pipeline info"
+      ]
+    },
+    {
+      "rev": 3678,
+      "date": "2026-02-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed rogue orbit points being generated for hyperbolic orbits by clamping them to only draw between the asymptote angles avoiding infinity."
+      ]
+    },
+    {
+      "rev": 3679,
+      "date": "2026-02-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed drawing of celestial impact point in UI to sample the terrain height so it actually draws at the impact point on the surface."
+      ]
+    },
+    {
+      "rev": 3680,
+      "date": "2026-02-25",
+      "author": "Dan Southon",
+      "lines": [
+        "Small fix to render pass state not factoring in viewports or scissors."
+      ]
+    },
+    {
+      "rev": 3681,
+      "date": "2026-02-25",
+      "author": "lghassen",
+      "lines": [
+        "Fix ring meshes flickering/jittering due to an index issue in the lod sorting shader"
+      ]
+    },
+    {
+      "rev": 3682,
+      "date": "2026-02-25",
+      "author": "Linx-RW",
+      "lines": [
+        "Added ground clutter object type variation texture and parameters which may be useful for forests or other flora distributions that aren't completely random."
+      ]
+    },
+    {
+      "rev": 3683,
+      "date": "2026-02-25",
+      "author": "Linx-RW",
+      "lines": [
+        "Added minor sand dunes to Mars to add some more small-scale detail to its surface."
+      ]
+    },
+    {
+      "rev": 3684,
+      "date": "2026-02-26",
+      "author": "Morrow",
+      "lines": [
+        "Imported Core Structural A Assets.",
+        "Started work on differentiating connector expections of connector attaching to a surface vs a surface attaching to a connector."
+      ]
+    },
+    {
+      "rev": 3685,
+      "date": "2026-02-26",
+      "author": "JPLRepoRocketwerkz",
+      "lines": [
+        "Lets use SafeAcos so we stop infinite looping."
+      ]
+    },
+    {
+      "rev": 3686,
+      "date": "2026-02-25",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Converted a batch of Acos and Asin calls to use the safe (clamping) versions."
+      ]
+    },
+    {
+      "rev": 3687,
+      "date": "2026-02-26",
+      "author": "Morrow",
+      "lines": [
+        "First pass on handling surface->connector connections with connecting enabled in the debug editor. Currently only used by radial decouplers."
+      ]
+    },
+    {
+      "rev": 3688,
+      "date": "2026-02-26",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved all Modules into a project Folder together."
+      ]
+    },
+    {
+      "rev": 3689,
+      "date": "2026-02-26",
+      "author": "Morrow",
+      "lines": [
+        "Fix for potential swapchain image synchronization problems."
+      ]
+    },
+    {
+      "rev": 3690,
+      "date": "2026-02-26",
+      "author": "joshohagan",
+      "lines": [
+        "Temp fix for sun outline issue on multisampling disabled where sun outline area appears as black. I will investigate a proper solution now."
+      ]
+    },
+    {
+      "rev": 3691,
+      "date": "2026-02-26",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added initial depth and normal map pre-pass for vessels. This is currently disabled as its not used by anything yet, but will be used for raytracing."
+      ]
+    },
+    {
+      "rev": 3692,
+      "date": "2026-02-26",
+      "author": "joshohagan",
+      "lines": [
+        "Add comment explaining close up sun fix for black outline on multisampling disabled."
+      ]
+    },
+    {
+      "rev": 3693,
+      "date": "2026-02-26",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Minor code cleanup to PrePassData."
+      ]
+    },
+    {
+      "rev": 3694,
+      "date": "2026-02-26",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Changed Normal pre-pass to use RGBA16SNorm instead of RGBA8UNorm."
+      ]
+    }
+  ]
+}
