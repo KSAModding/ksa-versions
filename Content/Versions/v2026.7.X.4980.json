@@ -1,0 +1,350 @@
+{
+  "build": "2026.7.8.4980",
+  "date": "2026-07-22",
+  "fromRevision": 4939,
+  "toRevision": 4980,
+  "commits": [
+    {
+      "rev": 4940,
+      "date": "2026-07-16",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Hud dropdown to file bar. This now contains tools for hud management including new layouts feature as well as the toggles for enabling/disabling gauges that were previously found in the View dropdown.",
+        "Added save any arrangement of gauges as a HudLayout, using the Save Current Layout Button in the Hud dropdown, you may check one layout as your default.",
+        "Added Hotkeys for selecting and cycling layouts.",
+        "Added Layout Config Window for managing saved layouts and their hotkeys.",
+        "HudLayouts are serialized in same location as Saves/Vehicles etc in the HUDLayouts folder."
+      ]
+    },
+    {
+      "rev": 4941,
+      "date": "2026-07-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed default vehicles missing propellants after tank XML rework.",
+        "Made the 'Rocket' first stage have T/W > 1 when teleported to Earth."
+      ]
+    },
+    {
+      "rev": 4942,
+      "date": "2026-07-16",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Added screenshot capabilities"
+      ]
+    },
+    {
+      "rev": 4943,
+      "date": "2026-07-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed the odd camera zoom/jump that could happen when decopuling or docking vehicles."
+      ]
+    },
+    {
+      "rev": 4944,
+      "date": "2026-07-16",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed the console duplicate command not properly duplicating vehicles.",
+        "Updated PartTree.Serialize() so that it serializes all important parts of the tree, not just the parts list."
+      ]
+    },
+    {
+      "rev": 4945,
+      "date": "2026-07-16",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed vehicle data being left in a bad spot after docking. This would present as parts not highlighting when hovered and the center of mass not being correct.",
+        "Hoisted the decision of whether to recompute derived data after part tree operations up to the top of the part system API rather than having it buried and implicitly chosen in several places."
+      ]
+    },
+    {
+      "rev": 4946,
+      "date": "2026-07-17",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added RCS toggle to Engine Control Gauge Canvas.",
+        "Updated FlightComputer to respect RCS toggle when orienting the vessel."
+      ]
+    },
+    {
+      "rev": 4947,
+      "date": "2026-07-17",
+      "author": "Morrow",
+      "lines": [
+        "Added new texture category 'TerrainHeight' for terrain textures that affect height calculations. These no longer get downmipped or downsampled by the terrain texture max size setting. This will cause increased VRAM usage for people who were previously setting these textures to be resized. This change is intended to avoid the misalignment between the rendered and collided with terrain."
+      ]
+    },
+    {
+      "rev": 4948,
+      "date": "2026-07-17",
+      "author": "Morrow",
+      "lines": [
+        "Modified some CPU sampling of terrain textures to more accurately align with GPU sampling to help with rendered terrain and terrain collision alignment."
+      ]
+    },
+    {
+      "rev": 4949,
+      "date": "2026-07-17",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Where RCSMode was being evaluated by the flight computer as it was doing a number of needless RCS calculations when RCS was disabled."
+      ]
+    },
+    {
+      "rev": 4950,
+      "date": "2026-07-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a new vehicle's attitude reference from becoming corrupted after undocking.",
+        "Store vehicle names on Control modules. This is the name we will use for undocked vehicles, if available.",
+        "Fixed a couple of insidious frame errors lurking in the code for making part connections and moving part trees around in ASMB.",
+        "Consolidated the 4x copies of code for moving the root part and all of its children into a single place."
+      ]
+    },
+    {
+      "rev": 4951,
+      "date": "2026-07-17",
+      "author": "Dan Southon",
+      "lines": [
+        "Changed the cascaded shadow filter to a specialization constant instead of being apart of the uniform data."
+      ]
+    },
+    {
+      "rev": 4952,
+      "date": "2026-07-17",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed an edge-case where ThrustVectorControl would not be used despite RCS being disabled, if the vessel had lots of rcs thrusters and limited tvc. Introduced in commit ef37582b."
+      ]
+    },
+    {
+      "rev": 4953,
+      "date": "2026-07-18",
+      "author": "Dan Southon",
+      "lines": [
+        "Converted cascaded shadows to manual rendering instead of multi-view rendering. MVR did not have the ability for us to curate what we render to each cascade. This is preparing for ground clutter culling for shadows."
+      ]
+    },
+    {
+      "rev": 4954,
+      "date": "2026-07-10",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Prevented freshly-decoupled vehicles from colliding with each other until they are out of contact to avoid them getting stuck inside each other."
+      ]
+    },
+    {
+      "rev": 4955,
+      "date": "2026-07-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Gave vehicles with no defined mass a total mass based on a density, not a hardcoded value. This should help prevent massless parts from becoming inadvertent airships."
+      ]
+    },
+    {
+      "rev": 4956,
+      "date": "2026-07-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed physics constants from the game settings menu and made them internal constants to prevent them from getting \"stuck\" to the values when players first launched the game."
+      ]
+    },
+    {
+      "rev": 4957,
+      "date": "2026-07-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed per-sequence delta-v/TWR/Isp lumping the entire reachable fuel supply into the sequence that first ignites the engines, leaving later decouple sequences blank.",
+        "Each sequence's burn now ends at the next staging event that drops tanks out of its fuel supply.",
+        "Known limitation: the estimate is availability-based, not a time simulation, so designs where engines drain separate tanks simultaneously (parallel boosters without fuel lines, solid+liquid first",
+        "stages) attribute all of a tank's fuel to the earlier sequence instead of splitting it by burn time — crossfed and serial designs are exact.",
+        "Fixing this requires an event-driven fuel-flow time simulation, planned for a later date.",
+        "Fixed the sequence-performance simulation draining tanks in a fixed nearest-first order regardless of each engine's fuel flow rule. It now consumes in the same order the engine actually drains in flight.    * Changed the default fuel flow rule for engines from nearest-to-furtherest to furtherest-to-nearest by stage."
+      ]
+    },
+    {
+      "rev": 4958,
+      "date": "2026-07-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added persistence for the engine Fuel Flow rule: a rule picked in the flow-rule dropdown (editor or flight part window) is now saved with the vehicle and restored on load, instead of silently resetting to the default."
+      ]
+    },
+    {
+      "rev": 4959,
+      "date": "2026-07-20",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Reworked the burn UI to be integrated into the gauge canvas system.",
+        "Added support for plus symbol in Gauges.glsl.",
+        "Added Creating a burn now automatically selects that burn is the current active burn for editing.",
+        "Added Lcontrol/LShift act as modifiers when clicking -/+ buttons on burn editor window they will modify the mul value by 0.1/10."
+      ]
+    },
+    {
+      "rev": 4960,
+      "date": "2026-07-20",
+      "author": "Linx-RW",
+      "lines": [
+        "Enabled the non uniform extension for terrain and ground clutter shaders that use indirection to obtain the texture array IDs. This should fix issues with terrain flickering on some devices."
+      ]
+    },
+    {
+      "rev": 4961,
+      "date": "2026-07-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Removed unnecessary debug log spam."
+      ]
+    },
+    {
+      "rev": 4962,
+      "date": "2026-07-21",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed Imgui Input fields in new Burn Edit Window impinged slightly on '-' button.",
+        "Fixed the burn edit window could be \"disabled\" in the same way as the other gauge canvasses, this was un-intuitive as the enable/disable feature is primarily linked to whether a node is selected.",
+        "Added AlwaysEnabled flag to GaugeCanvases for canvases that rely of gameplay state for their enabled behaviour."
+      ]
+    },
+    {
+      "rev": 4963,
+      "date": "2026-07-21",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Delete pill button to burn gizmos, the pill button appears when a burn gizmo is hovered and stays active until the mouse position moves out of the hysteresis range."
+      ]
+    },
+    {
+      "rev": 4964,
+      "date": "2026-07-21",
+      "author": "Chris",
+      "lines": [
+        "Update Brutal.Monitor to the latest package"
+      ]
+    },
+    {
+      "rev": 4965,
+      "date": "2026-07-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed per-sequence delta-v/TWR/Isp attributing a whole tank's fuel to whichever sequence ignites first when engines drain separate tanks simultaneously (parallel boosters without fuel lines, solid+liquid first stages).",
+        "Replaced the availability-based truncation with an event-driven fuel-flow time simulation."
+      ]
+    },
+    {
+      "rev": 4966,
+      "date": "2026-07-20",
+      "author": "Linx-RW",
+      "lines": [
+        "Split CullInstances.comp into two mains depending on whether shadow culling is enabled or not."
+      ]
+    },
+    {
+      "rev": 4967,
+      "date": "2026-07-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Added per-cascade shadow culling for ground clutter, improving forest rendering performance on Earth.",
+        "Moved ground clutter draw command ownership from ecotype data to view resources.",
+        "Added a GPU marker for ground clutter cascade index when drawing."
+      ]
+    },
+    {
+      "rev": 4968,
+      "date": "2026-07-21",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Instead of forbidding all collision between newly-decoupled vehicles that spawn with interpenetrating colliders, reject only the contacts which would prevent them from pushing away from the parent vehicle. This helps prevent the collision avoidance system from becoming a permanent state of affairs where vehicles aren't able to get away from each other.",
+        "Decrease penetration recovery velocity from 5 m/s to 1.5 m/s now that we don't get embedded in hillsides."
+      ]
+    },
+    {
+      "rev": 4969,
+      "date": "2026-07-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Removed the dropdown-based fuel line creation controls (two part pickers + \"Add Line\") from the vehicle Resources window; existing links are still listed there with their enabled toggle, flow-direction cycle button, and delete button."
+      ]
+    },
+    {
+      "rev": 4970,
+      "date": "2026-07-22",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Velocity Markers to navball Prograde/Retrograde, Normal/AntiNormal, In/Out Target Prograde/Retrogade and Burn. These are drawn from the Navball frag shader using sdf equations for pixel perfect scaling at any resolution.",
+        "Added NavballMarkers.glsl this contains all the functions required to draw the Navball markers."
+      ]
+    },
+    {
+      "rev": 4971,
+      "date": "2026-07-22",
+      "author": "Morrow-RW",
+      "lines": [
+        "Improved mouse hover logic over extreme hyperbolic orbits."
+      ]
+    },
+    {
+      "rev": 4972,
+      "date": "2026-07-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a way to switch which vehicle is the active build target in the Vehicle Editor: a \"Switch Vehicle\" button, and a \"Make Vehicle Root\" option on any unattached vehicle's part menu.",
+        "Added a save prompt on exiting the editor when any vehicle with unsaved changes would otherwise be discarded — lets you save each one before continuing, whether it's an unattached vehicle sitting in the build area or a brand-new vehicle you built from scratch",
+        "and didn't launch.",
+        "Fixed the vehicle picker mislabeling whichever vehicle was currently focused as the \"Existing Vehicle\" instead of the one actually loaded from the original save."
+      ]
+    },
+    {
+      "rev": 4973,
+      "date": "2026-07-22",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Destroy button next to vehicles in the manifest. Destroy is gated behind a confirmation pop-up."
+      ]
+    },
+    {
+      "rev": 4974,
+      "date": "2026-07-22",
+      "author": "Morrow-RW",
+      "lines": [
+        "First pass on texture streaming functionality. This is enabled by default and can be toggled off via the startup config. The texture streaming will attempt to stream textures as they're needed and maintain a VRAM cache of textures ready to go on the GPU. This only affects large terrain related textures for now. This is early/experimental work and will be refined as we find issues."
+      ]
+    },
+    {
+      "rev": 4975,
+      "date": "2026-07-22",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added KeyBinding for ToggleRCS. Defaulted to R."
+      ]
+    },
+    {
+      "rev": 4976,
+      "date": "2026-07-22",
+      "author": "Morrow-RW",
+      "lines": [
+        "Fixed texture streaming auto budget calculating incorrectly."
+      ]
+    },
+    {
+      "rev": 4977,
+      "date": "2026-07-21",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a sigificant error in velocity verlet integration where stale position values were being used to compute environmental parameters like gravitation and drag. At high time warp under physics this could result in adding significant orbital energy.",
+        "Properly handle edge cases where we need to apply atmospheric forces in the CCI frame."
+      ]
+    },
+    {
+      "rev": 4978,
+      "date": "2026-07-22",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Start flight computer roll in the \"ANY\" mode to stop unnecessary roll actuation unless specifically requested."
+      ]
+    }
+  ]
+}
