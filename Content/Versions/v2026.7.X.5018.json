@@ -1,0 +1,361 @@
+{
+  "build": "2026.7.9.5018",
+  "date": "2026-07-25",
+  "fromRevision": 4980,
+  "toRevision": 5018,
+  "commits": [
+    {
+      "rev": 4981,
+      "date": "2026-07-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Moved terrain modifier CPU evaluation from double to float to match GPU terrain construction. This fixes some rare cases where the terrain would mismatch due to hashing functions working with slightly different inputs.",
+        "Split simplex noise library into float and double precision versions."
+      ]
+    },
+    {
+      "rev": 4982,
+      "date": "2026-07-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Extruded the shadow cascade frusta towards the sun to include objects that cast into the cascades."
+      ]
+    },
+    {
+      "rev": 4983,
+      "date": "2026-07-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed nonuniformEXT missing from biplanar sampling function definitions. If non uniform access is required, shaders can now declare USE_NONUNIFORM_EXT to enable the qualifier."
+      ]
+    },
+    {
+      "rev": 4984,
+      "date": "2026-07-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the Vehicle Editor camera not recentering when switching the active build target between vehicles — \"Switch Vehicle\"/\"Make Vehicle Root\" now reframe the camera onto the newly-focused vehicle's root part, reusing the same OrbitView.OffsetPart mechanism flight's \"Focus Camera\" already uses."
+      ]
+    },
+    {
+      "rev": 4985,
+      "date": "2026-07-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the Vehicle Editor camera not recentering when switching the active build target between vehicles — \"Switch Vehicle\"/\"Make Vehicle Root\" now snapshot the camera onto the newly-focused vehicle's root part (same one-time recenter the EditorCameraFocus hotkey already uses), instead of a live per-frame follow that fought with dragging the root part and sent the camera flying out of the editor cube."
+      ]
+    },
+    {
+      "rev": 4986,
+      "date": "2026-07-23",
+      "author": "Morrow",
+      "lines": [
+        "Added texture streaming context to the game settings."
+      ]
+    },
+    {
+      "rev": 4987,
+      "date": "2026-07-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the \"New Vehicle?\" confirmation wiping the editor with no chance to save — clicking Ok now checks every unattached vehicle and the focused build for unsaved changes and, if any are found, offers the same \"Unsaved Vehicles\" save prompt the exit flow already uses before clearing them."
+      ]
+    },
+    {
+      "rev": 4988,
+      "date": "2026-07-15",
+      "author": "joshohagan",
+      "lines": [
+        "Added MilkyWay renderer, decoupling the milkyway from the star renderer.",
+        "Cleaned up milkyway references so textures are not all bound into the global textures.",
+        "Added generate simplex noise compute shader, similar to the generate worley noise, this writes a simplex noise texture to a target image.",
+        "The MilkyWay now reads from a pre-baked simplex noise texture instead of dynamically generating simplex noise in the fragment shader. This reduces the milkyway frametime by ~half."
+      ]
+    },
+    {
+      "rev": 4989,
+      "date": "2026-07-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a guard for timeToFirstEncounter being NaN (previously only the infinity case was caught), ending the patch the same way as the other edge cases."
+      ]
+    },
+    {
+      "rev": 4990,
+      "date": "2026-07-22",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Modified Module.List to store modules with the same concrete type in contiguous segments. This allows us to efficiently query Modules based on their interfaces in _all_ cases, not just when the top-level TModule implements the interface."
+      ]
+    },
+    {
+      "rev": 4991,
+      "date": "2026-07-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Replaced the flat SOI-size cutoff for automatic encounter detection with an orbital-geometry check; siblings are now excluded only when their radius band can't overlap ours or when an approximate MOID (evaluated at the two mutual orbital nodes) puts them well beyond their own sphere of influence,",
+        "so small moons like Phobos and Deimos are no longer silently skipped just for having a small SOI.",
+        "Fixed a radius-band gap where bodies orbiting entirely inside our own periapsis weren't excluded from candidacy either.",
+        "Removed the now-unused FlightPlan.FAST_SOI_PATCH_SIZE constant."
+      ]
+    },
+    {
+      "rev": 4992,
+      "date": "2026-07-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added solid rocket motors to the game. The motor feeds from solid fuel segments, which can be stacked on top of each other in the vehicle editor to adjust the amount of propellant per booster.",
+        "Added the ability to select the grain geometry for each segment, which defines the thrust profile of the booster over its burn. It defaults to a neutral star grain as a sane default.",
+        "Added a new concept called Capabilities to part connectors. These determine what kinds of interactions are permitted across the connector, currently: Electricity, BulkFluid (e.g. engines), ServiceFluid (e.g. RCS), SolidMotorCase (for building boosters). Electrity and ServiceFluid are assumed by default, while BulkFluid and SolidMotorCase are opt-in.",
+        "Made the feed sources for rocket engines explicit in the XML so that specific connectors or Part-internal tanks can be selected where appropriate.",
+        "Added generate_grains.py to ThermoToolkit.",
+        "Added the ability to call GetUsing<T>() on individual module type lists to find specific sub-classes.",
+        "Generalized many systems in the game that had assumed liquid propellants and Combustors to also handle SolidMotors and solid propellants."
+      ]
+    },
+    {
+      "rev": 4993,
+      "date": "2026-07-23",
+      "author": "Morrow",
+      "lines": [
+        "Fixed rare texture streaming edge case when terrain textures are forcibly downsampled below 512x512.",
+        "Added planet terrain normals to the texture streaming system which should farther help with VRAM usage.",
+        "Fixed ground clutter not getting refreshed while mips are streamed nicely which sometimes caused mysterious floating clutter.",
+        "Better handled balancing texture sizes against our VRAM budget and prioritized terrain height related maps to help avoid terrain mismatches."
+      ]
+    },
+    {
+      "rev": 4994,
+      "date": "2026-07-23",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Esc Menu. With the following buttons: RESUME, SAVE/LOAD, NEW VEHICLE, Launch VEHICLE, ABANDON VEHICLE, SETTINGS, QUIT.",
+        "Added in Editor SAVE/LOAD brings up vehicle save load menu, other non vehicle editor buttons hidden.",
+        "Added ImGauge and ImGauge helper classes. This allow the drawing of Gauge styled UI directly from code (as you would auther imgui ui), This should make the generation of styled UI elements easier to create quickly.",
+        "Fixed an issue with Gauges.glsl where gauge buttons would only draw their bezel and dropshadow correctly at one asset ratio."
+      ]
+    },
+    {
+      "rev": 4995,
+      "date": "2026-07-23",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Removed accidently commited file."
+      ]
+    },
+    {
+      "rev": 4996,
+      "date": "2026-07-23",
+      "author": "lghassen",
+      "lines": [
+        "Implement simple LOD for plume trails. Simplify distant plume trails by",
+        "merging consecutive segments to reduce GPU workload. Compute LOD levels",
+        "on a worker using the job system running one frame behind to minimize",
+        "CPU overhead. Upload newly added segments from the current frame directly",
+        "to the GPU without waiting for LOD processing. Additional LOD improvements",
+        "will be added to handle cells with a high number of small segments from",
+        "multiple emitters.",
+        "Lock clouds shadow volume to slowest moving layer, avoids discontinuities",
+        "in clouds lighting at high time compression",
+        "Only use plume trails on SRBs",
+        "Change how multiple plume trail emitters stack for large combined",
+        "plumes, still a placeholder",
+        "Optimize coarse to fine plume trail segment culling grid refinement",
+        "Group plume emitters across vehicles, this is needed when emitters are",
+        "staged but keep flying together for a bit.",
+        "Tweak plume trails noise",
+        "Better handle sampling of smaller plumes when in proximity to large",
+        "plumes",
+        "Simplify some of the segment weighting math in the plume trail shader,",
+        "optimize how trail data is accessed and preocompute some values",
+        "Fix issue with cloud shadows not being sampled on plume trails when",
+        "above clouds top boundary",
+        "Refactor trail segment bucket",
+        "Remove some unnecessary guards in the plume trail shader",
+        "Remove some unused stats from the trail renderer",
+        "Set plume end radius via template, set start radius from nozzle fxRadius",
+        "Start merging non fully expanded segments when radius permits"
+      ]
+    },
+    {
+      "rev": 4997,
+      "date": "2026-07-23",
+      "author": "lghassen",
+      "lines": [
+        "Enable plume trails by default",
+        "Small tweak to trails distant raymarching quality",
+        "Small tweak to trail merging logic"
+      ]
+    },
+    {
+      "rev": 4998,
+      "date": "2026-07-23",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Tweaking some volumetric plume parameters to amp up the aggressiveness and match real values more closely.",
+        "Added a simple model of plume velocity loss when passing through a normal shock which has a pretty large effect.",
+        "Removed the barrel shock fading from the shader so that it's always present. This is a huge part of what gives supersonic plumes their rough and fuzzy edges.",
+        "Cut emission values in half across the board due to the increased brightness of the ever-present barrel shock.",
+        "Increased the off-axis and turbulent noise scrolling velocities to be much closer to the plume velocity, making them seem less candle-like and much more violent.",
+        "Fixed incorrect exit plane location for the compact engine.",
+        "Clamp exit mach number at 1.05 instead of 1 to prevent the mach disk effect freaking out."
+      ]
+    },
+    {
+      "rev": 4999,
+      "date": "2026-07-23",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Correctly account for unburnable solid propellant in the dV simulation."
+      ]
+    },
+    {
+      "rev": 5000,
+      "date": "2026-07-24",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed particle positional offset caused by particles getting rebased at age 0. Because particles are getting spawned already offset, we were applying the rebase to them immediately which would apply that offset a second time. It is now only applied if their age is greater than 0.",
+        "Fixed particle frame jitter. This was caused by an order of operation bug where the ModelMatrixUpdater was executing after the position updaters, which would prepare the particles for the next frame."
+      ]
+    },
+    {
+      "rev": 5001,
+      "date": "2026-07-24",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed VehicleEditor deleting the root part of the of the currently editing vehicle will automaticall switch your edit view to the next available vehicle if one exists.",
+        "Refactored delete part code into helper method."
+      ]
+    },
+    {
+      "rev": 5002,
+      "date": "2026-07-23",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added solid rocket modules to all existing booster parts.",
+        "Moved default grain geometry from the segment XML to the motor XML.",
+        "Added HollowOpenSemiEllipsoidMass to the XML mass properties options.",
+        "Added the ability to specify feeding from sub-parts.",
+        "Added solid motor casing to the part preview mass."
+      ]
+    },
+    {
+      "rev": 5003,
+      "date": "2026-07-24",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed All UI pop-ups to use the Gauge Window styling."
+      ]
+    },
+    {
+      "rev": 5004,
+      "date": "2026-07-24",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed WelcomePopup Window height too small."
+      ]
+    },
+    {
+      "rev": 5005,
+      "date": "2026-07-24",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed can't exit Main Menu by pressing Esc after changing it to a modal window."
+      ]
+    },
+    {
+      "rev": 5006,
+      "date": "2026-07-24",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed PartTreeSelectionPopup now scales its height with number of available part-trees."
+      ]
+    },
+    {
+      "rev": 5007,
+      "date": "2026-07-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Swapped _decouplerConnections for a ConnectorCapability.DecouplerJoint flag authored per-connector to fit the ConnectorCapability extension introduced with SRBs.",
+        "Added DecouplerJoint Capability to all decoupler's connectors.",
+        "Replaced the symmetry-index crossfeed check with a proper junction/branch comparison whilst doing the above."
+      ]
+    },
+    {
+      "rev": 5008,
+      "date": "2026-07-23",
+      "author": "Linx-RW",
+      "lines": [
+        "Changed view proj matrix retrieval from ubo to push constant in the ground clutter shadow pass."
+      ]
+    },
+    {
+      "rev": 5009,
+      "date": "2026-07-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Added LOD bias to the opacity texture in the ground clutter shadow pass.",
+        "Added shadow rendering toggle to ground clutter per-LOD.",
+        "Excluded far away tree instances from shadow casting.",
+        "Added a third tree variant."
+      ]
+    },
+    {
+      "rev": 5010,
+      "date": "2026-07-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Lowered ground clutter shadow LOD bias from 2 to 1."
+      ]
+    },
+    {
+      "rev": 5011,
+      "date": "2026-07-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed forcing shadow LOD to 3 (last commit)."
+      ]
+    },
+    {
+      "rev": 5012,
+      "date": "2026-07-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Included LOD sort when building ground clutter draw commands. Commands are now sorted by pipeline, then LOD."
+      ]
+    },
+    {
+      "rev": 5013,
+      "date": "2026-07-24",
+      "author": "lghassen",
+      "lines": [
+        "Fix instability in clouds and plumes temporal upscaling when in front of terrain discontinuities like dense trees and the horizon, this was previously implemented but broken due to a typo"
+      ]
+    },
+    {
+      "rev": 5014,
+      "date": "2026-07-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Added 3 small tree variants to Earth.",
+        "Added distribution texture for Earth's forests - Large trees spawn in large forest regions, small trees can spawn here too but also spawn in sparser areas."
+      ]
+    },
+    {
+      "rev": 5015,
+      "date": "2026-07-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Removed unnecessary atomic add in Generate.comp."
+      ]
+    },
+    {
+      "rev": 5016,
+      "date": "2026-07-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed fading LODs 'snapping' to fully opaque if the ground clutter regenerates after a planet mesh snap."
+      ]
+    }
+  ]
+}
