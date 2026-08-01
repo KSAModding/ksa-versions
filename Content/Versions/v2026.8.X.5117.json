@@ -1,0 +1,583 @@
+{
+  "build": "2026.8.3.5117",
+  "date": "2026-08-01",
+  "fromRevision": 5056,
+  "toRevision": 5117,
+  "commits": [
+    {
+      "rev": 5057,
+      "date": "2026-07-28",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed tree leaves being opaque and having backface culling enabled when starting the game with MSAA enabled."
+      ]
+    },
+    {
+      "rev": 5058,
+      "date": "2026-07-28",
+      "author": "Linx-RW",
+      "lines": [
+        "Prevented using the transient alpha-to-coverage attachment if MSAA is disabled.",
+        "Changed alpha-to-coverage attachment to R8UNorm since the attachment is only bound so the shader can output coverage (stores nothing), reducing VRAM usage.",
+        "Fixed SimplePipelineCreator alpha-to-coverage state becoming stale."
+      ]
+    },
+    {
+      "rev": 5059,
+      "date": "2026-07-28",
+      "author": "lghassen",
+      "lines": [
+        "Clean up the code for the PlumeTrailSegmentsManager and split it into multiple smaller classes with clearly defined responsibilities",
+        "Extract shared plume trail cursor creation/dragging logic",
+        "Share plume junction vertices on the CPU instead of synchronizing duplicated endpoints",
+        "Centralize current plume timing rules instead of splitting them over multiple files",
+        "Split smaller classes out of TrailSegmentLodHierarchy",
+        "Better organize plume trail sources into folders by role"
+      ]
+    },
+    {
+      "rev": 5060,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added a warning to the GLB importer to detect non-identity transform in subpart meshes.",
+        "Organized and regularized script console output a bit."
+      ]
+    },
+    {
+      "rev": 5061,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a case where contact docking could cause a position jump via the physics bubble origin snap if a certain order of events occurred."
+      ]
+    },
+    {
+      "rev": 5062,
+      "date": "2026-07-29",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added ProfilerTags around the highlevel function calls in Program.OnFrame."
+      ]
+    },
+    {
+      "rev": 5063,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Updated Rocket and Gemini7 to have correct sequencing with the newly-introduced decouplers on existing modules.",
+        "Reduced the oversizing of 3m tanks to be the same amount of oversizing as the other diameter tanks.",
+        "Reduced oversizing of all spherical tanks to make them more inline with the oversizing of cylindrical tanks in total volume.",
+        "Added comments showing the true geometric size for each tank."
+      ]
+    },
+    {
+      "rev": 5064,
+      "date": "2026-07-29",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed RandomStartTime flag on stream from disk environment sounds was causing a 100ms hitch on playback due to the file streams needing to seek a new position. This would occur when zooming into the planet when the camera crossed aournd ~40km in altitude. When the stream is initialized on DataLoad the buffer is pre-pumped to avoid this hitch, however the seek on playback means it needs to wait for it to be pumped again before playing. I Have removed RandomStartTime from these sound behaviours as a temporary fix for now. Pending an investigation into making this a non blocking behaviour."
+      ]
+    },
+    {
+      "rev": 5065,
+      "date": "2026-07-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed unsaved vehicle popup appearing outside viewport when in windowed mode.",
+        "Fixed new vehicle popup appearing outside viewport when in windowed mode."
+      ]
+    },
+    {
+      "rev": 5066,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Changed editor WSADQE to rotate parts in the same way as you command rotation for vehicles in flight."
+      ]
+    },
+    {
+      "rev": 5067,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed Double3Ex Up/Forward/etc. vectors as they were misleading and often misused.",
+        "Added named vectors to Camera as they were used legitimately for this purpose in a few cases.",
+        "Clarified reference frame for camera vectors."
+      ]
+    },
+    {
+      "rev": 5068,
+      "date": "2026-07-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Kitten Name Generator class."
+      ]
+    },
+    {
+      "rev": 5069,
+      "date": "2026-07-29",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Streamed Sounds are now loaded with the NonBlocking Mode flag. These means the main thread will no longer be stalled during intitial playback or seeking while waiting for the steamed audio to buffer.",
+        "Restored RandomStartTime for Environment Sounds."
+      ]
+    },
+    {
+      "rev": 5070,
+      "date": "2026-07-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added memorial/special names list to the Kitten name generator. These have a 5% probability of being used. These are outside of our special names list as well (Hunter, Banjo and Polaris for now)."
+      ]
+    },
+    {
+      "rev": 5071,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Made the camera smoothly interpolate between positions when the center of mass changes (e.g. when docking).",
+        "Changed the camera smoothing method to a critically-damped spring instead of an exponential moving average which tightens up control significantly."
+      ]
+    },
+    {
+      "rev": 5072,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added debug drawing for vehicle colliders to the physics debug menu."
+      ]
+    },
+    {
+      "rev": 5073,
+      "date": "2026-07-29",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Trash area in Vehicle Editor for droping parts to delete them.",
+        "Fixed Boosters not using the solidengine icon."
+      ]
+    },
+    {
+      "rev": 5074,
+      "date": "2026-07-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added KittenRoster and KittenRosterEntryData to track kittens in each save, each kitten's assigned vehicle, current mission start time, total mission time and mission count.",
+        "Generate a new roster on new-save creation (Hunter/Banjo/Polaris plus 17 randomly-named kittens) and persisted as part of the universe save data.",
+        "Added serialize/deserialize of kitten roster from Game save files.",
+        "Changed EVADoor kitten spawning to pull the kitten's name and character from the new roster. (This wil be changed to have crew stored in each vehicle and only EVA them if they are in the vehicle).",
+        "Changed Vehicle disposal to finalize a kitten's mission stats whenever its an EVA vehicle. (stats will be finalized on vehicle recovery when that is done)."
+      ]
+    },
+    {
+      "rev": 5075,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Imported a new version of CorePropulsionA with applied local transforms."
+      ]
+    },
+    {
+      "rev": 5076,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Make sure larger vehicles absorb smaller vehicles when docking."
+      ]
+    },
+    {
+      "rev": 5077,
+      "date": "2026-07-29",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Removed prototype icons from vehicleEditor and replaced with text, Icons will be reauthored as svgs at some point in the future.",
+        "Fixed some alignment issues with the vehicleEditor parts window.",
+        "Fixed some structural parts not using the correct seperator icon in the sequence window."
+      ]
+    },
+    {
+      "rev": 5078,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Imported a new version of CoreElectricalA. Removed some now-redundant placeholder colliders."
+      ]
+    },
+    {
+      "rev": 5079,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed an error where adding/removing/modifying fuel lines would not trigger tank reconfiguration.",
+        "Fixed an error where deleting a fuel port could leave dangling fuel line entries."
+      ]
+    },
+    {
+      "rev": 5080,
+      "date": "2026-07-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed kitten EVA jetpack thrusters spawning with no propellant."
+      ]
+    },
+    {
+      "rev": 5081,
+      "date": "2026-07-28",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Don't require 'enter' to save values in the Set Orbit debug.",
+        "Stop altitude reverting to semi-major axis in the Set Orbit debug.",
+        "Default destination body to the home body in the Set Orbit debug."
+      ]
+    },
+    {
+      "rev": 5082,
+      "date": "2026-07-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Kitten Roster window UI to Universe Topbar menu."
+      ]
+    },
+    {
+      "rev": 5083,
+      "date": "2026-07-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added AssignedKittenHash field to IVASeat plus save/load support (SaveData.AssignedKittenName, GetSaveData/ApplySaveData) so seat occupancy persists across saves.",
+        "Added Crew (enumeration of a vehicle's seats), SeatCount, ability to AddCrew (assign to a specific seat) and AddCrewToFirstAvailableSeat(kittenHash) as well as RemoveCrew functions to Vehicle class.",
+        "Changed the \"Enter vehicle\" EVA-door interaction to now actually call AddCrewToFirstAvailableSeat."
+      ]
+    },
+    {
+      "rev": 5084,
+      "date": "2026-07-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added colors to all consumables.",
+        "Change fill bars to use the new consumable colors, include consumable names and tooltips, and display total quantity rather than percentage (the bar already does that).",
+        "Added roll-up fill bars to solid rocket motors."
+      ]
+    },
+    {
+      "rev": 5085,
+      "date": "2026-07-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added EVADoor and IVASeat linking.",
+        "Added SeatId to EVADoorTemplate/EVADoor and IVASeat. These are now resolved and aligned between each Internal and external part.",
+        "Added id's for the existing internal and pod part.",
+        "Changed the part boarding logic to now target the specific seat the user selects. Already in-use seats are not shown so you cannot enter an already occupied seat.",
+        "Changed EVADoor to now only show the \"EVA\" button when there it's aligned IVASeat is occupied.",
+        "Changed the exit logic to no longer spawn a new kitten and instead spawns the kitten assigned to the aligned seat and updates the vehicle's seat assigned appropriately.",
+        "Added Vehicle.HasLaunched and a situaiton change triggers this to be set so we can record when missions actually start and update kitten stats appropriately.",
+        "Added to the start and end mission events to now bank elapsed mission times for assigned kittens.",
+        "Fixed distinguish between start of a mission (as mentioned above) vs the continuation of a mission (Transfering between vehicles, going on EVA, etc).",
+        "Added explicit kitten assignment for the test vehicle scenario only (Rocket and Gemini7) so that each now has one kitten on board.",
+        "Changed the Kitten Roster window to split the mission count, current mission elapsed and total mission elapsed times in separate columns."
+      ]
+    },
+    {
+      "rev": 5086,
+      "date": "2026-07-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed hideously low-resolution orbit lines during atmospheric launch by only sampling points on or above the minimum terrain radius.",
+        "Added markers for the beginning/end of red danger orbital arcs.",
+        "Sample elliptical orbit points in eccentric anomaly for somewhat improved point distribution."
+      ]
+    },
+    {
+      "rev": 5087,
+      "date": "2026-07-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added CrewAssignmentWindow listing every seat across the whole vehicle currently open in the editor and allows assignment of kittens via dropdown lists for each seat. Window UI is accessible via the editor's topbar Editor menu.",
+        "Added Crew Assignment section to the main menu Launch Existing Vehicle menu to allow assignment of crew.",
+        "Added warning pop-up window when user attempts to launch a vehicle from the vehicle editor or the main menu - launch existing vehicle menu with NO assigned crew at all.",
+        "Fixed a duplicte imgui id bug in the Assigned Vehicle column of the KittenRosterWindow.",
+        "Fixed assignment of Hunter, Banjo and Polaris in the Kitten Roster when launching the testing scenario (As these kittens are automaticaly spawned on EVA in this scenario)."
+      ]
+    },
+    {
+      "rev": 5088,
+      "date": "2026-07-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed docking camera viewport not working."
+      ]
+    },
+    {
+      "rev": 5089,
+      "date": "2026-07-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed Set target option in a docking port's part window.",
+        "Fixed highlighting of set target part once it is set.",
+        "Added the currently set target into the docking port part menu and hovering over the target in the UI will highlight that part so the user can know which one is the current target.",
+        "Added ability to unset the target docking port in the docking port part window."
+      ]
+    },
+    {
+      "rev": 5090,
+      "date": "2026-07-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a placeholder launch pad structure at launch sites driven by a new IsLaunchPad flag on Landmark location definitions.",
+        "Added the launch pad  height when computing initial spawn/teleport placement.",
+        "Added interaction between vehicles and launch pad collider.",
+        "Ensure vehicles resting on a launch pad register as ground contact so they sleep the same way they do on terrain.",
+        "Don't spawn rock particles from being emitted when a vehicle impacts a launch pad.",
+        "Added a ground clutter exclusion zone around launch pads, vegetation will not spawn on or immediately around a the pad."
+      ]
+    },
+    {
+      "rev": 5091,
+      "date": "2026-07-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed EVA kittens spawning without propellant, fixed game-start kittens spawning without propellant, and fixed SRBs spawning without propellant. Everyone has propellant.",
+        "Added many warnings for part modules which are not wired up correctly in the template XML or in save game data."
+      ]
+    },
+    {
+      "rev": 5092,
+      "date": "2026-07-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Made many improvements to burn creation UX.",
+        "Added a right-click menu that allows you to warp to point on your orbit, create a manual burn, or create special burns like circularizations and target plane matches.",
+        "Prevented left-clicking on an orbit from creating any more than the first burn to avoid great confusion.",
+        "Prevented users from being able to create left-click burns on hidden orbit lines which was extremely confusing.",
+        "Made parent departure burns accessible only through the right-click menu.",
+        "Moved burn click handling to its own file.",
+        "Added a new time formatter (1y 32d 16h 4m 22s).",
+        "Made the map view change focus with the bracket keys along with the flight view."
+      ]
+    },
+    {
+      "rev": 5093,
+      "date": "2026-07-29",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Draw non-periodic orbits starting from the orbiter's current position."
+      ]
+    },
+    {
+      "rev": 5094,
+      "date": "2026-07-30",
+      "author": "Dan Southon",
+      "lines": [
+        "Updated the launch pad from rendering unlit to using PBR + Lighting.",
+        "Added GltfFile: LaunchPad to DefaultAssets.xml",
+        "Added LaunchPadRenderer to handle instancing.",
+        "Fixed LaunchPad spinning and not correctly conforming it's parent celestial rotation."
+      ]
+    },
+    {
+      "rev": 5095,
+      "date": "2026-07-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added a default phase for substances which controls their name presentation. The default phase gets no prefix (e.g. just 'Water' when liquid), while the non-default phases get a qualifier word: Vapor, Liquid, or Ice."
+      ]
+    },
+    {
+      "rev": 5096,
+      "date": "2026-07-30",
+      "author": "Linx-RW",
+      "lines": [
+        "Removed old planet shaders (HeightFuncs, GenerateMeshHeight) that were replaced with the procedural modifiers refactor.",
+        "Fixed terrain normal map sampling using hardware linear interpolation that would create stepping in areas where erosion is applied."
+      ]
+    },
+    {
+      "rev": 5097,
+      "date": "2026-07-30",
+      "author": "lghassen",
+      "lines": [
+        "Fix a full scan of all plume segments when adding segments not yet in LOD to the GPU list",
+        "Add a VRAM usage display and breakdown for the plume trails in the trails debug UI, reduce size of intersections list allocated for the coarse grid",
+        "Remove vestigial scratch list in PlumeSegmentStore",
+        "Refactor trailSegmentLodFrame to make it more readable and add some code comments"
+      ]
+    },
+    {
+      "rev": 5098,
+      "date": "2026-07-30",
+      "author": "Linx-RW",
+      "lines": [
+        "Changed ground clutter scales from continuous between [minScale, maxScale] to 16 discrete scales for Bepu integration.",
+        "Fixed launch site exclusions not applying to ground clutter physical data.",
+        "Added a warning for non-uniform scale for collideable ground clutter objects.",
+        "Fixed ground clutter physical data disposing grid data immediately instead of waiting for the GPU to finish using it."
+      ]
+    },
+    {
+      "rev": 5099,
+      "date": "2026-07-30",
+      "author": "Linx-RW",
+      "lines": [
+        "WIP implementation of ground clutter collider primitive processing.",
+        "Split 'Collideable' into three collideable types 'None', 'PrimitiveList' and 'Mesh' ahead of bepu integration."
+      ]
+    },
+    {
+      "rev": 5100,
+      "date": "2026-07-30",
+      "author": "lghassen",
+      "lines": [
+        "Sample cloud shadows on vessels, kittens, launchpads and other shaders, use the cheap volumetric shadow as these objects tends to be smaller on-screen and can move through clouds. This is currently difficult to see on the placeholder launchpad because of its high albedo",
+        "Replace the atmosphere push constants with a per-planet UBO. Since the atmosphere shading is used in many other shaders and systems, moving its data to a UBO frees other systems to use their own push consts",
+        "Pre-generate the smaller static atmosphere LUTs and regenerate them on atmosphere changes. Previously these were generated every frame in a shared texture. This fixes some shaders implicitly getting last frame's last-rendered planet's atmosphere data which was working but very brittle, and this allows generating larger LUTs in the future to speed up some aspects of the godray rendering. The main scattering LUTs which depend on the current viewpoint are still rendered once per frame.",
+        "Fix atmosphere godrays not rendering if clouds are disabled"
+      ]
+    },
+    {
+      "rev": 5101,
+      "date": "2026-07-31",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added CanRecover and Recovery method to Vehicle class.",
+        "Added ability to recover currently controlled vehicle to the escape menu. Recovery and Abandon are now mutually exclusive so you will see one or the other.",
+        "Changed the red cross (abandon/delete) button to a green tick button (recover) in the universe manifest depending on whether the vehicle is recoverable or not."
+      ]
+    },
+    {
+      "rev": 5102,
+      "date": "2026-07-31",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a serialized Kia (killed-in-action) flag and Kill function to Kittens.",
+        "Fixed issue where decouple/undock lost the HasLaunched flag on a vehicle messing with kitten stats.",
+        "Fixed setting the HasLaunched flag on the testing scenario vehicles.",
+        "Handle killing vs recovering in the input events processing.",
+        "Fixed issue where camera completely loses it's mind when all vehicles in the current game are destroyed or recovered and it has nothing to switch to. It will now switch to viewing the home planet.",
+        "Added a memorial tab to the kitten roster window. Which will display kittens that are no longer with us."
+      ]
+    },
+    {
+      "rev": 5103,
+      "date": "2026-07-31",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added function to create 5 fresh kittens when our roster runs out of available kittens automatically. (Eventually this will be a sandbox only option I suspect).",
+        "Fixed ensure no code path can assign a KIA kitten to a vehicle."
+      ]
+    },
+    {
+      "rev": 5104,
+      "date": "2026-07-31",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added travelled distance to kittens stats."
+      ]
+    },
+    {
+      "rev": 5105,
+      "date": "2026-07-31",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added fastest speed to kitten stats."
+      ]
+    },
+    {
+      "rev": 5106,
+      "date": "2026-07-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Only display closest approaches from the final trajectory (including any planned burns) to cut down on the clutter."
+      ]
+    },
+    {
+      "rev": 5107,
+      "date": "2026-07-31",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed crew assignment window hanging around after exiting the vehicle editor."
+      ]
+    },
+    {
+      "rev": 5108,
+      "date": "2026-07-31",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a data race in SequencePerformance on TotalDeltaV. Also accumulate this into a local variable and publish once so we don't see flickering in the UI."
+      ]
+    },
+    {
+      "rev": 5109,
+      "date": "2026-07-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed danger arc markers sometimes being drawn in the wrong place.",
+        "Fixed some impossible-to-reach markers from being drawn.",
+        "Suppress CCF danger arcs for intermediate burn plans."
+      ]
+    },
+    {
+      "rev": 5110,
+      "date": "2026-07-31",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed excessive closest-approach entries when your orbit is long and the target's is short."
+      ]
+    },
+    {
+      "rev": 5111,
+      "date": "2026-07-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Allow double-click-to-focus on planets even when the outline box is not drawn.",
+        "Notify the player that right-click is required to create a departure burn.",
+        "Visually diminish the hover icons on orbits that can't create burns (like random other planets) and don't show them as yellow when hovered."
+      ]
+    },
+    {
+      "rev": 5112,
+      "date": "2026-07-31",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added caching for Part.MatrixAsmb2VehicleAsmb, the calculation of which was a significant cost at high time warp."
+      ]
+    },
+    {
+      "rev": 5113,
+      "date": "2026-07-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Show orbit marker quantites (apoapsis, periapsis, relative inclination) whenever the vehicle is under thrust or in the atmosphere to reduce the amount of mouse-hovering required.",
+        "Tint danger segments of planned burns differently from your current trajectory to make them easier to tell apart.",
+        "Open the burn window to the left of the burn gizmo to the right, as this is usually the trailing orbit direction.",
+        "Fixed a cross-thread interaction with danger arcs.",
+        "Fixed several errors with how danger arc entry/exit markers were being displayed."
+      ]
+    },
+    {
+      "rev": 5114,
+      "date": "2026-07-31",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Made the flight computer aware when engines run out of propellant and stop taking credit for the thrust they produce in burn planning.",
+        "Made the engine control gauge dV and TWR ratings reflect the engines that are actually capable of producing thrust. TWR also takes atmospheric pressure into account."
+      ]
+    },
+    {
+      "rev": 5115,
+      "date": "2026-07-30",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added the ability for vehicles to be destroyed if they exceed a structural g-limit or dynamic pressure limit. This means that vehicles can be destroyed on impact with the terrain, ocean, or each other. They can also be ripped apart by aerodynamic forces during atmospheric entry or hydrodynamic forces if entering the water too fast.",
+        "No destruction effects yet. Vehicles can only be destroyed as a whole - either the entire vehicle is OK, or the whole thing is destroyed."
+      ]
+    },
+    {
+      "rev": 5116,
+      "date": "2026-07-31",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Prevented all rockets from recomputing all properties on every physics update when literally nothing was happening (all rockets off). This was a huge drag on time warp performance.",
+        "Fixed several other instances of module systems creating state copies just to do nothing with them."
+      ]
+    }
+  ]
+}
