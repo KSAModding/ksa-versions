@@ -1,0 +1,778 @@
+{
+  "build": "2026.8.22.5348",
+  "date": "2026-08-23",
+  "fromRevision": 5261,
+  "toRevision": 5348,
+  "commits": [
+    {
+      "rev": 5262,
+      "date": "2026-08-11",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Migrate a few bits of physics code in preparation for deeper changes to physics bubble management."
+      ]
+    },
+    {
+      "rev": 5263,
+      "date": "2026-08-11",
+      "author": "Linx-RW",
+      "lines": [
+        "Added ground clutter collisions. Currently clutter is batched into one big static compound per vehicle which was easiest but not the most ideal - should really be per-cell which gets shared by vehicles but that'll come later.",
+        "Temporarily removed the 3 smallest shrub types since they don't have colliders yet.",
+        "Fixed ground clutter generating up to half a cell's width outside their cells in each direction (should have been up to half a sub-cell's width).",
+        "Improved the distance/in-range cell check for collideable ground clutter."
+      ]
+    },
+    {
+      "rev": 5264,
+      "date": "2026-08-11",
+      "author": "Linx-RW",
+      "lines": [
+        "Added a new setting \"[Experimenta] Enable Collisions\" in the Settings menu's Simulation tab under a new Ground Clutter section. This is a temporary setting while ground clutter collisions are WIP, and defaults Off."
+      ]
+    },
+    {
+      "rev": 5265,
+      "date": "2026-08-11",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed transfer planner trajectory markers not being drawn if the transfer planner had been popped out into a separate window.",
+        "Made a general audit of the codebase and consolidated places where main window overlays were being drawn to explicitly pass in the main viewport background draw list using new helpers.",
+        "Made all ImGuiHelper functions require a draw list so that the caller has to consciously choose where to draw."
+      ]
+    },
+    {
+      "rev": 5266,
+      "date": "2026-08-11",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed target gauge showing the closest approach on your burn plan - now it only ever shows the next closest approach time on your current trajectory."
+      ]
+    },
+    {
+      "rev": 5267,
+      "date": "2026-08-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Some code cleanup"
+      ]
+    },
+    {
+      "rev": 5268,
+      "date": "2026-08-12",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Kitten Seated Idle and fidgit anims.",
+        "Fixed kitten positioning/pose in IVA."
+      ]
+    },
+    {
+      "rev": 5269,
+      "date": "2026-08-12",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added MMU fold away anim. When Rcs is disabled for kittens the MMU arms will fold back."
+      ]
+    },
+    {
+      "rev": 5270,
+      "date": "2026-08-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a FOV slider to the crew portrait gauge.",
+        "Fixed the EVA portrait face-cam reading as almost unlit in deep space.",
+        "Lowered the EVA face-cam height and brightened its fill light so the portrait frames the kitten's face instead of the top of the helmet."
+      ]
+    },
+    {
+      "rev": 5271,
+      "date": "2026-08-12",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added missing animation file."
+      ]
+    },
+    {
+      "rev": 5272,
+      "date": "2026-08-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed orbit lines (and axes/burn-plan/transfer planner lines) rendering inside the crew portrait facecam windows."
+      ]
+    },
+    {
+      "rev": 5273,
+      "date": "2026-08-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added bone tracked positioning for the crew portrait cameras.",
+        "Added a Head/Neck/Chest bone select combo pand Default offset for the Portrait cameras.",
+        "Made the crew portrait FOV slider and bone-target dropdown per-kitten instead of shared across the panel."
+      ]
+    },
+    {
+      "rev": 5274,
+      "date": "2026-08-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Moved ground clutter collider data ownership from vehicle state to the physics bubble.",
+        "Changed how ground clutter collision data arrives at physics - is now pulled from the ecotype physical data per-cell, so cells are no longer duplicated per vehicle.",
+        "Treated ground clutter instances as individual statics rather than flattening their primitives into one big compound for all clutter in the scene. This should be more performant and flexible.",
+        "Changed ground clutter collider debug draw to draw what's actually in the physics bubble, not what arrived from the generator."
+      ]
+    },
+    {
+      "rev": 5275,
+      "date": "2026-08-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Added 0.25km mesh detail to the terrain meshes used by the Moon and Mars. Earth already had this. Tessellation/displacement quality should be improved.",
+        "Reduced tessellation range from 220m to 50m. The old range was tuned for terrain detail back when the terrain textures were tiled and terrain subdivided much less. This improves performance with tessellation enabled.",
+        "Adjusted how terrain displacement falls off. Increased falloff range from 0.1 -> 0.95 to 0.75 -> 0.975."
+      ]
+    },
+    {
+      "rev": 5276,
+      "date": "2026-08-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Game Setting in Interface General to toggle crew portraits on or off."
+      ]
+    },
+    {
+      "rev": 5277,
+      "date": "2026-08-13",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Removed Font Size setting.",
+        "Added Interface Scale Setting.",
+        "Fixed ConsoleStyyle Imgui windows now scale correctly based on the Interface Scale Setting."
+      ]
+    },
+    {
+      "rev": 5278,
+      "date": "2026-08-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed seated crew and EVA crew animation updating once per visible viewport instead of once per frame. Base pose sampling and full skeleton propagation now run once per frame. Only the camera relative eye lookat pass and skinning matrix write per viewport."
+      ]
+    },
+    {
+      "rev": 5279,
+      "date": "2026-08-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Reduced crew portrait face camera occlusion checks."
+      ]
+    },
+    {
+      "rev": 5280,
+      "date": "2026-08-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed PackedTransformExtensions.UpdateChildInfo hardcoding a bone's first child index to 0 instead of its actual position which would throw on any real hierarchy.",
+        "Refactored Celestial coordinate frame quaternion composition (CCF/CCI/CCE) into a new CelestialFrameMath helper setup to facilitate unit testing."
+      ]
+    },
+    {
+      "rev": 5281,
+      "date": "2026-08-13",
+      "author": "Chris",
+      "lines": [
+        "Expand Profiler with a tab for GPU profiling, using Vulkan TimestampQueries"
+      ]
+    },
+    {
+      "rev": 5282,
+      "date": "2026-08-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added unit tests covering orbital mechanics, transform hierarchy math, resource/staging performance, and coordinate-frame math",
+        "Added FakeParentBody/FakeOrbiter/TestOrbits test doubles so Orbit/PatchedConic logic can be unit tested without rendering.",
+        "Added VehicleTestFixture, a hand-built tank+engine Part/PartTree, to cover ResourceManager and SequencePerformance unit tests.",
+        "Added Tests/TEST_INVENTORY.md documenting every test, its run duration, and the known unit test coverage gaps.  Time to get serious about unit testing."
+      ]
+    },
+    {
+      "rev": 5283,
+      "date": "2026-08-13",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Added culling logic to UI: most expensive shaders are skipped when behind opaque UI elements"
+      ]
+    },
+    {
+      "rev": 5284,
+      "date": "2026-08-13",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Low Gravity Kitten walk-run animations. As planet gravity is reduced animation will get bouncier."
+      ]
+    },
+    {
+      "rev": 5285,
+      "date": "2026-08-13",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed issue with mesh buckets generating per frame allocations.",
+        "Changed CascadeShadowSystem debug names to use SpanBuilder."
+      ]
+    },
+    {
+      "rev": 5286,
+      "date": "2026-08-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Increased the distance of the terrain shader's first texture scale level. This should push it out just past the tessellation range and avoid the 'morphing' effect as the texture scale changes."
+      ]
+    },
+    {
+      "rev": 5287,
+      "date": "2026-08-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Added ground clutter exclusion mask. Does nothing yet, but will be used to track instances that need to be hidden from the renderer and their generation skipped."
+      ]
+    },
+    {
+      "rev": 5288,
+      "date": "2026-08-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Changed the ground clutter render path to fetch the scaleId and then the scale to match the collision path and also free up two more slots for data, one of which is now used to store the sub-cell index. This sets up being able to sample the exclusion mask at render time to avoid forcing a cell regeneration."
+      ]
+    },
+    {
+      "rev": 5289,
+      "date": "2026-08-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Added the functions for excluding a ground clutter instance from both the renderer and the collision generator (currently unused). Incoming exclusions are cached, then uploaded before generation runs so they're picked up by both generation for new cells and culling for existing cells. The cache doesn't downsize at the moment because we might not need it for a while since the data is small. Exclusions are not saved to disk so for now they are not persistent between sessions."
+      ]
+    },
+    {
+      "rev": 5290,
+      "date": "2026-08-14",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Bugfixes related to Windows fullscreen exclusive mode"
+      ]
+    },
+    {
+      "rev": 5291,
+      "date": "2026-08-14",
+      "author": "Chris",
+      "lines": [
+        "Profiler tweaks",
+        "Frame averaging off by default",
+        "Less flickery graphs",
+        "More regions defined and shows text for smaller categories"
+      ]
+    },
+    {
+      "rev": 5292,
+      "date": "2026-08-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Removed rendering of stars in the kitten cams as this is quite expensive."
+      ]
+    },
+    {
+      "rev": 5293,
+      "date": "2026-08-14",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Hud Scale setting. This Applies a global scalar to all hud ui elements, this scalar is applied after any player applied scale changes and Hudlayouts."
+      ]
+    },
+    {
+      "rev": 5294,
+      "date": "2026-08-14",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Fixed bug that triggered a crash when settings applied repeatedly"
+      ]
+    },
+    {
+      "rev": 5295,
+      "date": "2026-08-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed do not draw the crew portrait / don't call the rendering pipeline if it is not visible / hidden."
+      ]
+    },
+    {
+      "rev": 5296,
+      "date": "2026-08-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added -force-x11 launch option. Forces GLFW to init its X11 backend via XWayland instead of native Wayland. This gives linux users the x11 option or the existing -fixed-viewport option. It's up to the user which one they want to use. There are pros and cons to both of these options.",
+        "Added launch settings for KSA devs on linux will force the X11/Xwayland option by default."
+      ]
+    },
+    {
+      "rev": 5297,
+      "date": "2026-08-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ability for user to resize the kitten cam gauge if they so desire. It will not add any more viewports than two regardless of the size. That will come later when we finish the viewport re-work."
+      ]
+    },
+    {
+      "rev": 5298,
+      "date": "2026-08-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Improved Crew portraits performance. Replaced the per-part triangle mesh raycast with a bounding-box test (crew portrait rendering now approx 13x faster)."
+      ]
+    },
+    {
+      "rev": 5299,
+      "date": "2026-08-14",
+      "author": "lghassen",
+      "lines": [
+        "Change atmosphere and planet transparency culling to work based on screen pixel size rather than distance"
+      ]
+    },
+    {
+      "rev": 5300,
+      "date": "2026-08-14",
+      "author": "lghassen",
+      "lines": [
+        "Migrate GPU debug labels from Utils.BeginGpuDebugLabel/EndGpuDebugLabel to command buffer TagRegion scopes with Profiler.GpuTag tags"
+      ]
+    },
+    {
+      "rev": 5301,
+      "date": "2026-08-14",
+      "author": "GitHub",
+      "lines": [
+        "Reduced clustered lighting VRAM from 25.9MB to 1.08MB when at 4k window resolution by dropping Z unit from the light bitfields, sizing the bitfield stride to the live light count, and changing the light irradiance texture formats.",
+        "Removed the candidate staging arrays from the raster passes, fixing light truncation and the flickering it caused.",
+        "Moved light packing and Z bin range generation to a two pass CPU sort.",
+        "Reduced max lights per cluster to 128.",
+        "Added PartModelShadowCull to reduce part draw commands per light. Tests at 25 shadow casting lights near rocket show a significant improvement of frame time cost.",
+        "Added ViewportLightModes (None, Forward, Clustered) so each viewport picks its own light path.",
+        "Adapted the kitten portrait light lists into general forward light lists driven by the light system.",
+        "Setup forward lights for terrain and ground clutter.",
+        "Replaced the per sample vogel disk calculations with a hard coded array to help with register counts.",
+        "Added a debug readout for clustered light evaluation counts and completed the VRAM cost table."
+      ]
+    },
+    {
+      "rev": 5302,
+      "date": "2026-08-14",
+      "author": "lghassen",
+      "lines": [
+        "Trigger a full update of cloud shadows on large movements to make cloud lighting more seamless on vessel switching"
+      ]
+    },
+    {
+      "rev": 5303,
+      "date": "2026-08-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Added ground clutter destruction when hit by another object. Currently any contact deletes a ground clutter instance, including kittens, but this sets up the initial logic for collision detection and communication with the ground clutter renderer."
+      ]
+    },
+    {
+      "rev": 5304,
+      "date": "2026-08-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Added ground clutter game data, similar to how parts define assets and game data separately.",
+        "Added ground clutter materials/substance file for common material types found in the solar system. This is a step towards computing the mass of a ground clutter object, since substances define the density."
+      ]
+    },
+    {
+      "rev": 5305,
+      "date": "2026-08-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Added support for multiple substances per ground clutter object.",
+        "Added volume definition for each substance on a ground clutter object.",
+        "Populated volumes for each existing ground clutter object. Object types are unique so a planet cannot reuse one but define a different substance, so at the moment Mars rocks use the Anorthosite substance which is not correct.",
+        "Added GetMass() function for ground clutter objects which sums the masses of each substance (computed from substance density and object volume)."
+      ]
+    },
+    {
+      "rev": 5306,
+      "date": "2026-08-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Lowered the grass render/generation distance from 170m to 80m as it was needlessly too high."
+      ]
+    },
+    {
+      "rev": 5307,
+      "date": "2026-08-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Considered impact kinetic energy when deciding whether to destroy a ground clutter instance or not. Currently the threshold for destruction is set low at 25 joules per kilogram. This threshold can be configured in the terrain debug under 'ground clutter'. For multiple contacts on a ground clutter instance the peak energy is used when determining whether to destroy it or not.",
+        "Added a warning if a ground clutter object is collideable but has no mass."
+      ]
+    },
+    {
+      "rev": 5308,
+      "date": "2026-08-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed multi viewports adding parts to the main viewports raytracing environment. This was resulting in a duplicate of the IVA rendering offset when raytracing is enabled. As raytracing is currently only supported for the main viewport, this fix ensures that part models are only added to the raytraced environment if they are used for the main viewport."
+      ]
+    },
+    {
+      "rev": 5309,
+      "date": "2026-08-17",
+      "author": "Morrow-RW",
+      "lines": [
+        "Fixed PartModelShadowCull DeviceVector borrows/creations outside safe shared memory area."
+      ]
+    },
+    {
+      "rev": 5310,
+      "date": "2026-08-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a deterministic launch to orbit trace fixture (LaunchTraceFixture) for A/Btesting Brutal.Numerics."
+      ]
+    },
+    {
+      "rev": 5311,
+      "date": "2026-08-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed LaunchTraceGoldenTests failing on CI with a false positive."
+      ]
+    },
+    {
+      "rev": 5312,
+      "date": "2026-08-17",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added initial raytracing implementation to kittens in IVA. Kittens still do not contribute to the raytraced scene, however they are able to recieve reflections and lighting data."
+      ]
+    },
+    {
+      "rev": 5313,
+      "date": "2026-08-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash when calculating a transfer while on a hyperbolic / escape orbit around the Sun."
+      ]
+    },
+    {
+      "rev": 5314,
+      "date": "2026-08-18",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Kitten Swimming animations.",
+        "Added Swimming control state in KittenLocomotion, Kittens that are in a bouyant state will now swim."
+      ]
+    },
+    {
+      "rev": 5315,
+      "date": "2026-08-19",
+      "author": "Morrow",
+      "lines": [
+        "Upped our Vulkan version from 1.3 to 1.4. Please update graphics drivers if you run into issues. The vast majority of GPU vendors have supported 1.4 for almost 2 years now."
+      ]
+    },
+    {
+      "rev": 5316,
+      "date": "2026-08-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed vehicle destruction was not actually killing the crew members. Now it does."
+      ]
+    },
+    {
+      "rev": 5317,
+      "date": "2026-08-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a typo in row x col vector multiplication that was causing TVC gains to be wrong in many cases.",
+        "Retuned TVC gains now that the vector math is fixed. This should result in tighter tracking and eliminate the \"wiggles\" that would happen when pointing should have been steady-state.",
+        "Fixed a case where burn computer throttle limiting based on TVC authority could be quite over-aggressive, resulting in burn times that were way too long.",
+        "Fixed being always kicked out of auto burn mode when loading a save game."
+      ]
+    },
+    {
+      "rev": 5318,
+      "date": "2026-08-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed assigning a part to sequence 0 in the editor silently zeroing the vehicle's delta-v and TWR."
+      ]
+    },
+    {
+      "rev": 5319,
+      "date": "2026-08-17",
+      "author": "Linx-RW",
+      "lines": [
+        "Significantly improved up close terrain mesh precision. Introduced anchor points in CCF and cubemap space with low/high/delta components representing the CCF position on the planet closest to the camera, then sampled all cubemap textures and modifiers relative to the anchor position. Previously terrain was sampled/built from the pure direction which contained meter scale imprecision for Earth scales.",
+        "Fixed tiling detail modifier using hardware bilinear sampling which was degrading precision on some mountains."
+      ]
+    },
+    {
+      "rev": 5320,
+      "date": "2026-08-17",
+      "author": "Linx-RW",
+      "lines": [
+        "Create the renderable mesh data buffers once sized for the largest mesh collection rather than creating them for each mesh collection. This saves around 100MB of VRAM on the existing solar system config.",
+        "Fixed terrain occasionally flickering when changing LODs or snapping due to the renderable mesh data buffers not sized for the number of frames in flight."
+      ]
+    },
+    {
+      "rev": 5321,
+      "date": "2026-08-18",
+      "author": "Linx-RW",
+      "lines": [
+        "Improved the precision of modifiers using simplex noise, voronoi noise or modifiers that project the sampling direction onto a different direction.",
+        "Added some precision helpers to MathCommon.glsl (TwoSum, TwoProduct, DotSplit).",
+        "Added AnchoredNoise helper which includes simplex domain reduction functions and wrappers to use them."
+      ]
+    },
+    {
+      "rev": 5322,
+      "date": "2026-08-19",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed dunes modifier misinterpreting the sign causing the dunes to be mirrored when crossing certain latitudes/longitudes."
+      ]
+    },
+    {
+      "rev": 5323,
+      "date": "2026-08-19",
+      "author": "Linx-RW",
+      "lines": [
+        "Applied terrain precision fix to ground clutter. Now both terrain and ground clutter use a split double approach for storing the anchor positions and store offsets relative to the anchor rather than positions/directions on the planet itself.",
+        "Fixed terrain discontinuities at cubemap seams.",
+        "Fixed terrain flickering with the planet debug GUI open.",
+        "Updated ground clutter collision path to interpret the improved precision."
+      ]
+    },
+    {
+      "rev": 5324,
+      "date": "2026-08-19",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed deriving the terrain mesh anchor from the float matrix which caused a +-0.4m mesh shift up/down on Earth. Is now derived from the double matrix before it gets packed, and is now in the order of micrometers."
+      ]
+    },
+    {
+      "rev": 5325,
+      "date": "2026-08-19",
+      "author": "Linx-RW",
+      "lines": [
+        "Added PrecisionFuncs.glsl.",
+        "Moved precision related terrain functions off terrain/ground clutter implementations and into PrecisionFuncs.glsl which removes some duplicate functions and keeps everything in one place."
+      ]
+    },
+    {
+      "rev": 5326,
+      "date": "2026-08-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Reworked vehicle power to run off electrical circuits instead of a per-consumer resource graph. The craft is now partitioned once into groups of parts joined by connections that carry Electricity and every power consumer draws from the batteries of the circuit it sits on, rather than each consumer walking and storing its own copy of the graph.",
+        "Added ElectricalCircuits which builds those circuits on demand and is invalidated whenever the part tree's derived data or resource managers are rebuilt.",
+        "Massively reduced power rebuild cost on power-heavy craft. A vehicle with ~4500 power consumers took 3.3 seconds to rebuild and now takes around a third of a millisecond, and a craft large enough that the old path exhausted memory outright now rebuilds in ~2ms.",
+        "Battery draw and production now start from a rotating point on the circuit and stop as soon as the request is met instead of splitting the request evenly across every battery. A small draw now costs one battery rather than a pass over all of them, while wear still spreads around the circuit over successive calls.",
+        "The power resource graph is now only built when \"Draw Graph\" is ticked in the part window, since the overlay is the last thing that needs it.",
+        "Added tests covering circuit membership, batteries on a consumer's own part, rotation and early-out behaviour of draws, overdraw and capacity clamping, plus a power rebuild performance report across small/medium/large/huge loadouts."
+      ]
+    },
+    {
+      "rev": 5327,
+      "date": "2026-08-20",
+      "author": "Dan Southon",
+      "lines": [
+        "Updated vram cost preview for texture sizes to factor in layer counts for texture arrays i.e. cascaded shadows."
+      ]
+    },
+    {
+      "rev": 5328,
+      "date": "2026-08-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added static objects and static object rendering pipeline.",
+        "Added first real launchpad object model.",
+        "Removed placeholder launchpad object and rendering from the project.",
+        "Added export of static objects to the glb to xml export tool."
+      ]
+    },
+    {
+      "rev": 5329,
+      "date": "2026-08-10",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added a launch escape tower and parachute bay for the Gemini nose.",
+        "Changed editor scaling from triaxial to uniform and limited it to 0.5x -> 2x.",
+        "Added the new IRescale interface to many modules which now respond physically to being scaled.",
+        "Sequencing has moved from parts down to modules, as parts may have many individually-sequencable modules. These can also be sequenced independently. Parts can name their primary sequence module if there's more than one to choose from.",
+        "Module interfaces were reworked to support sequencing, with ISequenced being split out of IActivate and IPartParent split out of Module.",
+        "Moved inert mass contributions from a global push to a self-nominated IInertMass interface on modules.",
+        "Added warnings for modules with duplicate IDs."
+      ]
+    },
+    {
+      "rev": 5330,
+      "date": "2026-08-20",
+      "author": "Dan Southon",
+      "lines": [
+        "Static objects now take the same clustered lighting and screen space ambient occlusion as vehicle parts.",
+        "Static objects now use the terrain's cloud shadows and atmosphere ambient, so they match the ground they sit on."
+      ]
+    },
+    {
+      "rev": 5331,
+      "date": "2026-08-19",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Significantly improved the logic for physics bubble merging. It is now much less naive and conservative which sould result in many fewer false merges and consequent slowdowns at high time warp. Many more improvements are still on the way.",
+        "Moved bubble merge checks into the vehicle solver and multithreaded them, this gets them out of the render thread and out of the critical section between frames. Splitting the tasks amongst workers should also be a huge improvement.",
+        "Cleaned up some body types in PatchedConics that eliminated a bunch of legacy casts that were not necessary any more."
+      ]
+    },
+    {
+      "rev": 5332,
+      "date": "2026-08-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Hide the game save/load menu entry and refuse to save/load the game while the vehicle editor is open. Hopefully this should prevent most cases of people accidentally saving or loading a _game_ when they meant to save or load a _vehicle_."
+      ]
+    },
+    {
+      "rev": 5333,
+      "date": "2026-08-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed an error where deactivating an engine mid-burn would leave it stuck on forever."
+      ]
+    },
+    {
+      "rev": 5334,
+      "date": "2026-08-20",
+      "author": "Dan Southon",
+      "lines": [
+        "Added alpha map support to static objects. Gravel trim now blends as intended on the launch pad.",
+        "Added missing CoreLaunchPadB alpha texture.",
+        "Updated GlbToXmlUtility to handle the missing Alpha map."
+      ]
+    },
+    {
+      "rev": 5335,
+      "date": "2026-08-20",
+      "author": "Linx-RW",
+      "lines": [
+        "Added a decal to the VSFB-LC-4 launch site to flatten the terrain around it."
+      ]
+    },
+    {
+      "rev": 5336,
+      "date": "2026-08-20",
+      "author": "Linx-RW",
+      "lines": [
+        "Added terrain sampling support to static objects. Ignores the slope/cliff textures because right now we only use them for launch sites.",
+        "Improved the terrain blending on launch sites.",
+        "Added decals to each existing launch site to flatten the terrain and avoid needing to use a 'mound' for each static.",
+        "Removed the excessive mound from the launch pad assets (from Daishi).",
+        "Updated the launch site texture atlases (from Daishi).",
+        "Added 'no curvature' toggle for decals which prevents them from bending due to the planet's curvature, making them completely flat.",
+        "Added 'terrain' handling to the static object asset bundler. Glb nodes can now be marked as \"_Terrain\" and will have the terrain material applied to them.",
+        "Moved StaticObjectRenderer build after the PlanetRenderer builds so that terrain descriptor sets are ready."
+      ]
+    },
+    {
+      "rev": 5337,
+      "date": "2026-08-20",
+      "author": "Linx-RW",
+      "lines": [
+        "Improved the performance of the Decal modifier slightly on both CPU and GPU."
+      ]
+    },
+    {
+      "rev": 5338,
+      "date": "2026-08-21",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed secondary viewports adding their glints to the main viewport."
+      ]
+    },
+    {
+      "rev": 5339,
+      "date": "2026-08-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Updated the split half of bubble merge/split logic. This removed the persistent merge/split thrashing that plagued thed previous naive action sphere implementation.",
+        "Associate orphaned vehicles with physics bubbles on the thread worker now instead of the main thread.",
+        "Moved physics bubble ownership entirely into VehicleUpdateTask."
+      ]
+    },
+    {
+      "rev": 5340,
+      "date": "2026-08-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Deleted the parallel universe of code that computes part characteristics from XML templates. Instead, we now instantiate an actual Part and inspect its game data to do that, so it can never diverge from reality.",
+        "Greate one instance of every possible part during game load to fire any latent warnings.",
+        "Show total engine thrust and specific impulse as a vector sum of all engines.",
+        "Show thruster data for the single thruster with the highest thrust value rather than doing any summing.",
+        "Actually show data for solid motors when available.",
+        "Reorganized part tooltips somewhat to handle potentially more-complex cases in the future."
+      ]
+    },
+    {
+      "rev": 5341,
+      "date": "2026-08-21",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Imported new versions of the A5 engine and LES towers which fix most or all of the unintended thrust asymmetry.",
+        "Reduced the intentional LES nozzle thrust asymmetry by 4x so that the tower + capsule complete about 90 degrees of pitch at burnout rather than starting to head back towards the ground.",
+        "Reduced one of the capsule placeholder collider diameters slightly to help avoid binding. The parachute bay still binds at the base, will need follow-up."
+      ]
+    },
+    {
+      "rev": 5342,
+      "date": "2026-08-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Unified how alpha-to-coverage is enabled/disabled for ground clutter passes. It's now inferred from the attachment, not just from the game settings' sample count."
+      ]
+    },
+    {
+      "rev": 5343,
+      "date": "2026-08-21",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Imported a new version of the nose bay which permits clean separation of the abort tower."
+      ]
+    },
+    {
+      "rev": 5344,
+      "date": "2026-08-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed grass colour changing on spherical billboard snap."
+      ]
+    },
+    {
+      "rev": 5345,
+      "date": "2026-08-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed ground clutter 'clumping' or placing in grid-like patterns at small enough object separations. This only minorly affected Earth's grass but became significant for anything more dense. This was caused by hardware tan having an absolute uncertainty - ground clutter generation now falls back to the expansion for small angles.",
+        "Increased the grass ecotype's object separation from 1.3 to 1.45 meters now that it's better distributed by the above fix.",
+        "Fixed the last ground clutter object type in an ecotype being exceedingly rare due to an off-by-one error.",
+        "Fixed the last ground clutter scale in an ecotype being exceedingly rare due to an off-by-one error."
+      ]
+    },
+    {
+      "rev": 5346,
+      "date": "2026-08-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Added a new graphics setting to toggle ground clutter shadow casting."
+      ]
+    }
+  ]
+}
