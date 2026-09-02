@@ -1,0 +1,16 @@
+{
+  "build": "2026.9.7.5402",
+  "date": "2026-09-02",
+  "fromRevision": 5400,
+  "toRevision": 5402,
+  "commits": [
+    {
+      "rev": 5401,
+      "date": "2026-09-02",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed crash for incorrect data stride for thumbnail rendering."
+      ]
+    }
+  ]
+}
