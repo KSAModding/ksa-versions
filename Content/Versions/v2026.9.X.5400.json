@@ -1,0 +1,536 @@
+{
+  "build": "2026.9.4.5400",
+  "date": "2026-09-02",
+  "fromRevision": 5348,
+  "toRevision": 5400,
+  "commits": [
+    {
+      "rev": 5349,
+      "date": "2026-08-23",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed ground clutter 'Draw Colliders' crashing the game.",
+        "Commented out ground clutter collision draw from Universe.cs as instances were cleared after being written and moving the clear before this renders gizmo instances a frame behind.",
+        "Bumped max gizmo instances by 5x (10mb)."
+      ]
+    },
+    {
+      "rev": 5350,
+      "date": "2026-08-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a NaN in Orbit.GetNearestPoint (map mode) for zero eccentricity and near-parabolic orbits. Both now hit test against the cached orbit line rather than the elliptical solver."
+      ]
+    },
+    {
+      "rev": 5351,
+      "date": "2026-08-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Universe.DestroyVehicle now takes a CrewDisposition (EndMission or Kill) rather than each caller remembering to call KillCrew() first."
+      ]
+    },
+    {
+      "rev": 5352,
+      "date": "2026-08-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Part destruction phase 1: Added CrashTolerance (pascals, a default value of NaN causes tghe code to derive the tolerance from the part density) on PartTemplate plus PartStructuralLimits holding the pure load maths. Derived tolerance, box-projected contact area, depth-share distribution, per-part aggregation, weight stripping, filter and failure predicate.",
+        "Added unit tests for above.",
+        "Nothing calls this code yet in Phase 1."
+      ]
+    },
+    {
+      "rev": 5353,
+      "date": "2026-08-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Part destruction phase 2: Added ContactImpulseRig, a Bepu drop-test harness matching ConstraintSim's solver config.",
+        "Added 7 unit tests pinning what it measured.",
+        "Fixed the contact pressure divisor - GetAccumulatedImpulseMagnitude reports a per-frame impulse, not per-substep, so dividing by the substep dt was 8x wrong.",
+        "Also recorded that impulse-over-dt is not frame-rate invariant at all while the total arresting impulse is, and confirmed single-child compounds fire the child-level callback."
+      ]
+    },
+    {
+      "rev": 5354,
+      "date": "2026-08-25",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added first pass on parachute system. The parachute component is currently attached to the ParachuteBayA part until we get the actual parachute part assets in. Parachutes move through several phases.",
+        "Armed: Parachute will deploy as soon at the altitude condition is reached.",
+        "Deploy: Chute is released reefed and will begin slowing the vehicle.",
+        "Dis-Reef: Chute expands to its full diameter.",
+        "Cut: Chute is removed.",
+        "Added Players can modify the size and behaviour of parachutes; including Diameter, Line Length, ReefRatio, ReefDuration, Max G Loading during dis-reef.",
+        "Added First pass on Parachute Cloth sim, still needs more fidelity and optimisation work. The cloth sim is visual only (it reads the physics drag sim values) and runs at lower time warps, it will fall back to static poses when time warp is greater than 30x.",
+        "Added support for SuperMeshRenderSystem to render two-sided meshes.",
+        "Fixed an issue with the Kitten eye renderer where draw was being resubmitted through a stale handle causing bad data to be written to the depth buffer."
+      ]
+    },
+    {
+      "rev": 5355,
+      "date": "2026-08-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Part destruction phase 3: Added per-part contact load now accumulates every frame and can be read in game. Nothing breaks a part yet, that is phase 4.",
+        "Added PartContactLoad which records each child manifold in the narrow phase and reads the solver's penetration impulses in a deferred pass after Timestep.",
+        "Neither half works alone: the narrow phase knows which part was hit but its impulse is a frame stale and misses the first frame of a contact entirely, while the solver knows the impulse but only per collidable pair.",
+        "Added a dense contact-part index space to BepuHandles so the accumulator is keyed per part, not per collider child. ColliderParts is many-to-one, so a part authored as three boxes would otherwise get three accumulators.",
+        "Added PartContactLoadDebug (access via the Debug > Show Part Contact Load dropdown menu item).",
+        "Changed the contact impulse is now bounded by the speed the craft actually lost.",
+        "Fixed the weight strip being applied per collidable pair rather than once per vehicle, which removed the craft's weight once for every surface it was touching.",
+        "Fixed Vehicle.CreateColliderCompound assigning NumColliderParts only inside the buffer-grow branch, so a vehicle that lost colliders kept a stale count and destroyed Parts stayed reachable through ColliderParts.",
+        "Added a bunch of unit tests for all of the above."
+      ]
+    },
+    {
+      "rev": 5356,
+      "date": "2026-08-26",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Part destruction phase 4: Parts can now actually break. PartFailure runs at the end of the physics frame, tests each part's accumulated contact pressure against its crash tolerance, and queues a PartFailureEvent for the main thread.",
+        "Added PartFailureEvent applied from PhysicsBubble.ApplyRenderEventsToVehicles skipped when the whole vehicle is being destroyed anyway.",
+        "Added PartFailure.IsolateAndDestroy. There is no bespoke part destruction path: a failed part is split out of its vehicle at every connection it has until it is a single-part vehicle, then destroyed through Universe.DestroyVehicle like anything else.",
+        "Added Part.RemoveFromSymmetryGroups, called before isolation so a failing part does not cascade through Part.Disconnect into its symmetry twins.",
+        "Added a fragment guard: once half a craft's parts fail on the same tick (minimum two) the whole vehicle is destroyed instead of fragmenting, so a belly-flop does not spawn N vehicles in a single frame. The fraction is a first guess and needs play-test tuning.",
+        "Added Part.CrashTolerancePascals, Part.InertMassKg and Part.BoundingBoxVolumeCubicMetres so the resolved rating (provided via part XML value or derived from structural density) is readable off a Part.",
+        "Changed the tolerance derivation constants.",
+        "Added an authored CrashTolerance of 30bar to the five CorePropulsionA engines.",
+        "Changed the Part Contact Load debug window to show each part's rated kPa and the structural density it was derived from, and to color the peak red once it is over the rating.",
+        "Changed that Part Contact Load debug window to list the controlled vehicle and its parts before anything has been hit.",
+        "Added unit tests for above."
+      ]
+    },
+    {
+      "rev": 5357,
+      "date": "2026-08-26",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed InvalidOp Exception iterating symmetry groups when removing parts about to be destroyed from them.",
+        "Fixed a radially attached part being impossible to shed.",
+        "Fixed a part that failed but could not be shed being re-detected every single frame for the rest of the flight."
+      ]
+    },
+    {
+      "rev": 5358,
+      "date": "2026-08-26",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the camera being left following a vehicle that had just been disposed.",
+        "Fixed a breakup being able to run away into thirty-odd vehicles and take the frame rate with it.",
+        "Added a debris budget. Before isolating, PartFailure.EvictDebris frees room by destroying the lightest debris in the bubble first. IsEvictableDebris excludes the host, KittenEvas, anything IsControllable, the controlled vehicle, anything with a crewed seat, and any camera's target on either the base or map camera."
+      ]
+    },
+    {
+      "rev": 5359,
+      "date": "2026-08-26",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Parachute Canopy Cloth simulation to use small local Bepu instances for each cloth sim. This greatly improves fidelity as well as reducing cpu overhead per chute by an order of magnitude. The new system can comfortably support around 100 chutes actively simulating at warp speeds of up 30x."
+      ]
+    },
+    {
+      "rev": 5360,
+      "date": "2026-08-26",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the whole-vehicle g-force catch pre-empting part failure on every impact.",
+        "Changed the g-limit to stand down for one frame when the per-part contact model has already reported a failure and the vehicle is actually in contact with terrain, ocean or another craft."
+      ]
+    },
+    {
+      "rev": 5361,
+      "date": "2026-08-26",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the craft that gets hit never being load-tested, so anything rammed was indestructible.",
+        "Changed PartContactLoad to bound the impact by the step's non-gravitational velocity change instead.",
+        "Added PartContactLoad.ClosingSpeedArms, consulted by the new IsArmed when the self-speed latch has not fired.",
+        "ArmingSpeed tests velocity relative to the bubble origin, so a station holding its orbit sits at zero forever and never armed.",
+        "Changed the Part Contact Load debug window to report a pair-armed craft as armed, rather than printing \"not armed\" for the one craft being tested without ever having moved.",
+        "Changed Tests to cater for above.",
+        "Added unit tests for above."
+      ]
+    },
+    {
+      "rev": 5362,
+      "date": "2026-08-26",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed an IndexOutOfRangeException taking the render frame down while a part was breaking up.",
+        "Added PowerConsumer.IsSwitchedOn, which reads the state from the module's own tree instead of the caller and bounds-checks the index.",
+        "Added Part.IsLightSwitchedOff holding the whole predicate. A switch that broke off no longer drives this part and reads as unswitched, the same as a part that never had a switch.",
+        "A switch still in this tree but absent from its state list reads as off, since no state is no power.",
+        "Changed PartModelModule, PartModelDynamicModule and LightModule.IsActive to call that one predicate.",
+        "Changed Part.ResetModuleProperties to clear LightSwitch before rescanning.",
+        "Changed Vehicle.ToggleLights to guard on ownership so one craft can no longer toggle a switch that broke off",
+        "Added unit tests for above."
+      ]
+    },
+    {
+      "rev": 5363,
+      "date": "2026-08-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed player-typed save names being used verbatim as folder names, so a name containing a path separator created real nested folders and a name of \".\" or \"..\" or containing special characters crashed the game."
+      ]
+    },
+    {
+      "rev": 5364,
+      "date": "2026-08-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a kitten vanishing when it boarded a vehicle after an EVA which showed he roster as the kitten dying on boarding.",
+        "Changed Vehicle.SetSeatCrew, AddCrew and AddCrewToFirstAvailableSeat to return whether the kitten was actually seated, so boarding fails and leaves it outside the door.",
+        "Fixed the kitten roster surviving a game load, so a kitten killed in one playthrough was still dead after loading the save it was alive in.",
+        "Changed UncompressedSave.Load to re-read UniverseData from disk before deserializing.",
+        "Added unit tests for above."
+      ]
+    },
+    {
+      "rev": 5365,
+      "date": "2026-08-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a vehicle spawned on a launch pad from the game start screen falling through the terrain.",
+        "Changed GetTerrainHeightFromDirCcf to use MeanRadius, which is the same number, so CPU-side terrain sampling no longer depends on render data existing yet.",
+        "Added a fallback in Vehicle.GetInitialKinematicStateForLocation that logs and places at the mean radius if terrain height ever samples as infinite rather than building a NaN orbit."
+      ]
+    },
+    {
+      "rev": 5366,
+      "date": "2026-08-27",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Parachute Tuning in editor now has Riser Length as a tunable value.",
+        "Changed Tunable values for parachutes to be rounded as appropriate and start pinned to the default value authored on the part xml declaration.",
+        "Change Default Parachute values to ensure safe return of capsule under a single chute.",
+        "Code clean up in ClothSim files of multi-declarator lines."
+      ]
+    },
+    {
+      "rev": 5367,
+      "date": "2026-08-27",
+      "author": "lghassen",
+      "lines": [
+        "Bend volumetric exhaust plumes going against the airflow, use physical formulas from jet-in-crossflow literature. Fade/Shorten the supersonic core when it bends as its structure is dissolved",
+        "Fold exhaust plumes up in an umbrella shape when in retropropulsion, with an offset hinge and angle at oblique angles",
+        "Improve exhaust bounds to account for the bending and folding",
+        "Add a per-vertex color for the plume trails, define color in plume template for now",
+        "Add a per-plume density multiplier, lower density plumes use larger step sizes automatically",
+        "Add a per-vertex lifetime for the plume trails, allow different plumes to dissolve at different speeds",
+        "Tweak default volumetric exhaust color used for liquid fuel engines"
+      ]
+    },
+    {
+      "rev": 5368,
+      "date": "2026-08-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added debris shedding so a craft coming apart leaves wreckage instead of vanishing.",
+        "Whole-vehicle destruction sheds up to MaximumDebrisPieces subtrees as well.",
+        "Added Vehicle.SpawnSubPartDebris, spawning up to two of a destroyed part's SubParts as vehicles.",
+        "Added Vehicle.IsDebris, a grey map marker and a Debris filter in the Universe Manifest.",
+        "Changed DetectStructuralFailure to exempt debris from the g-limit, which a small light piece would otherwise clear on its first bounce and delete itself.",
+        "Changed the camera on destruction to follow the heaviest shed piece where there is one.",
+        "Changed MaximumVehiclesPerBubble from 16 to 30 to make room for wreckage, and shedding to only fill the slots the bubble actually has. This will likely be removed once we sort out performance in the bubble.",
+        "Added unit tests for above."
+      ]
+    },
+    {
+      "rev": 5369,
+      "date": "2026-08-28",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Improved How parachutes render their deploy and reefed phases, the poses are now pulled from an artist authored animation which is then fed into the cloth solver."
+      ]
+    },
+    {
+      "rev": 5370,
+      "date": "2026-08-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the command pod always leaving two windows floating beside the wreck when it was destroyed. The IVA was not being destroyed with it.",
+        "Changed PartFailure.IsolateAndDestroy to leave the connection holding an attached IVA intact so the IVA rides into the doomed fragment and dies with its host part.",
+        "Changed PartFailure.CollectDebrisRoots and Detect to skip attached internals, so one can neither be shed as debris nor fail as a part in its own right.",
+        "Changed ConstraintSim.RebuildContactPartMap to map colliders through StructuralPart, so a collider on an interior is charged to the host rather than to the interior.",
+        "Changed PartContactLoadDebug to use Part.IsAttachedInternal instead of its own copy.",
+        "Added unit tests for above."
+      ]
+    },
+    {
+      "rev": 5371,
+      "date": "2026-08-28",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Numerous Optimisations for Parachute Canopy, line Rendering and cloth sim preparation at the CPU side. In the 64Chute Stress Test Parachutes MainThread overhead reduced to 0.35ms from 2ms. Threaded Cloth simulation calculations remain at a steady state of around 4ms spread over 4 concurrent worker threads.",
+        "Added ProfilerCapture Tool for writing profiler data to CSV.",
+        "Added analyse_capture.py script to tools for parsing the profiler capture csv.",
+        "Fixed Allocation in CharacterRenderer.Draw() due to NativeList.Contains Calling LINQ.",
+        "Fixed a boxing Allocation in QuaternionEx.NormalizeOrIdentity().",
+        "Added SkinningPoseIsViewportInvariant option for SkinnedMeshRenders whose pose is the same across all viewports.",
+        "Added a batch add method for SplineRenderer.",
+        "Removed Parachute rendering from Crew Portraits"
+      ]
+    },
+    {
+      "rev": 5372,
+      "date": "2026-08-28",
+      "author": "lghassen",
+      "lines": [
+        "Split VolumetricExhaustRenderer into multiple files for readability. Extract pure static classes for the gas dynamics and the plume bending/folding"
+      ]
+    },
+    {
+      "rev": 5373,
+      "date": "2026-08-31",
+      "author": "lghassen",
+      "lines": [
+        "Restore the exhaust debug UI's test grid, update it to use physical data"
+      ]
+    },
+    {
+      "rev": 5374,
+      "date": "2026-09-01",
+      "author": "GitHub",
+      "lines": [
+        "Added ViewportRegistry, a single owner and lookup for every viewport, with presets driving each viewport's option flags.",
+        "Changed viewports to the IViewport/IGameViewport interfaces, now rendering systems no longer take the concrete Viewport class.",
+        "Fixed input being routed only to the main viewport. Now keys, clicks and scroll can reach a secondary viewport if hovered.",
+        "Fixed mouse drags being handed to a different viewport when the cursor crossed into it mid-drag.",
+        "Fixed secondary cameras taking control of the player's vehicle.",
+        "Fixed losing control of your craft when a vehicle that another camera was following was destroyed.",
+        "Fixed camera, cursor and selection state leaking between viewports.",
+        "Fixed hovering a part in a secondary camera highlighting it in the main view.",
+        "Fixed the maneuver node gizmo and orbit point picking responding to the cursor in secondary viewports.",
+        "Fixed the docking camera guidance readout appearing in other camera windows, and lingering after the docking camera was closed.",
+        "Fixed the map grid drawing on the main view when a secondary view entered map mode, and never drawing on the secondary itself.",
+        "Fixed secondary viewports flickering when focused on the same object as main near a celestial.",
+        "Fixed part thumbnails not updating their shader data, and the thumbnail camera lookup.",
+        "Fixed per-viewport celestial effects and vehicle editor shutdown order.",
+        "Fixed crashes when shrinking a camera window to its minimum size, resizing the game window, or changing MSAA, vsync, resolution or present mode."
+      ]
+    },
+    {
+      "rev": 5375,
+      "date": "2026-09-01",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Updated ProfilerCapture to also capture Gpu data.",
+        "Added Radial Parachute Parts.",
+        "Added Parachute subparts to ParachuteBay. (drogue and 3xmains)",
+        "Fixed Some instances of Parts using their Id instead of DisplayName in Tooltips."
+      ]
+    },
+    {
+      "rev": 5376,
+      "date": "2026-09-01",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Multi-Action Parts like the Launch Escape tower, now generate one sequence Icon per decrete action. (this applies to any part that could have multiple action items triggered in the sequence window)."
+      ]
+    },
+    {
+      "rev": 5377,
+      "date": "2026-09-01",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Parachute bays can now configure the number of drogues (up to 3) and the number of Mains (up to 4). Default behaviour is 2 drogues that will fire as soon as armed and g-loading safe and Mains that will fire once armed and craft is below an altitude of 800m.",
+        "Imported Updated ParachuteBay part. Saves with the old parachute bay part will fail to load."
+      ]
+    },
+    {
+      "rev": 5378,
+      "date": "2026-09-01",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Updated ParachuteCanopy Mesh. It now looks better over a range of inflation values.",
+        "Fixed Parachutes wouldn't fully inflate when falling at terminal velocity."
+      ]
+    },
+    {
+      "rev": 5379,
+      "date": "2026-09-01",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed Chute Cluster solve did not take into account reefing, and was artificially forcing reefed chutes further apart."
+      ]
+    },
+    {
+      "rev": 5380,
+      "date": "2026-09-01",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed the first secondary camera window not being able to be dragged out into its own window."
+      ]
+    },
+    {
+      "rev": 5381,
+      "date": "2026-09-01",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Optimised debris breakup: peak frame 131ms -> 85ms, stutter 835ms -> 163ms.",
+        "Changed ConstraintSim.UpdateStaticObjectCollider to resolve launch-pad poses once per pass instead of per vehicle per micro-step. 1985us -> 162us.",
+        "Changed RunVehiclePostWorkInner to skip flight-plan work for debris.",
+        "Fixed ProfilerCapture crashing on Linux: user32.dll P/Invoke was called unconditionally."
+      ]
+    },
+    {
+      "rev": 5382,
+      "date": "2026-09-01",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the IVA camera looking out through the inside of its own occupant's head."
+      ]
+    },
+    {
+      "rev": 5383,
+      "date": "2026-09-01",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Cloth Collider nodes to scale with chute diameter, this gives consistant chute-chute cloth interaction at all scales."
+      ]
+    },
+    {
+      "rev": 5384,
+      "date": "2026-09-01",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed Vehicles with deployed parachutes  that land under high timewarps now pose their parachutes correctly."
+      ]
+    },
+    {
+      "rev": 5385,
+      "date": "2026-09-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the vehicle save window staying open when launching from the editor, which let you save empty vehicles from flight.",
+        "Fixed the vehicle save window's New saving a blank vehicle outside the editor.",
+        "Fixed the savevehicle terminal command writing an empty save when no vehicle matches the given name.",
+        "Fixed Overwrite on a vehicle save deleting the existing save before it knew it had anything to write, leaving a blank save in its place.",
+        "Changed the vehicle save window to refuse to open outside the editor, mirroring the game save window's refusal to open inside it."
+      ]
+    },
+    {
+      "rev": 5386,
+      "date": "2026-09-02",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Tweaked Cloth node radius."
+      ]
+    },
+    {
+      "rev": 5387,
+      "date": "2026-09-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed engines mirrored onto side boosters through an engine plate never connecting so only one engine per booster fired and thrust was off-centre.",
+        "Symmetry mirrors were bound to the connector index that was clicked rather than the plate connector they actually sit on, and the failed connection was silent.",
+        "Fixed HandleSiblingConnectors leaking its pooled connector array when the mount connector had no symmetry siblings."
+      ]
+    },
+    {
+      "rev": 5388,
+      "date": "2026-09-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the Transfer Planning and Flight Computer debug windows being inert on a 1080p display. Both of these screens opened taller than the screen, and a window that does not fit inside the main window is promoted to its own OS platform viewport which on Linux draws one stale frame and accepts no input.",
+        "Fixed console windows placed low on the screen such as the editor's part and sub-part windows hanging off the bottom edge for the same reason.",
+        "Window size is now clamped before the window opens rather than a frame later and position is clamped so a full-height window cannot sit part way down the screen."
+      ]
+    },
+    {
+      "rev": 5389,
+      "date": "2026-09-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed all remaining debug and tool windows opening larger than the screen on small displays."
+      ]
+    },
+    {
+      "rev": 5390,
+      "date": "2026-09-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash when setting an orbit from the Set Orbit debug window with an absolute height of 0 and safety checks disabled."
+      ]
+    },
+    {
+      "rev": 5391,
+      "date": "2026-09-02",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed ParachuteBay doors now open when chutes are armed."
+      ]
+    },
+    {
+      "rev": 5392,
+      "date": "2026-09-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed orbits drifting for craft with deployed sun tracking solar panels. Panel tracking reported itself as animating, which took the vehicle off rails for the whole sunlit part of every orbit."
+      ]
+    },
+    {
+      "rev": 5393,
+      "date": "2026-09-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed every kitten on EVA rendering the same animation for whichever one last updated last. So walking one made them all walk on the spot.",
+        "Each renderable now clones its own pose off the asset's rig and shares only the immutable bind pose, default pose and bone names."
+      ]
+    },
+    {
+      "rev": 5394,
+      "date": "2026-09-02",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed Sequence Window heap allocating around 2KB worth of data.",
+        "Fixed CrewPortraitPanel heap allocating string conversions for the BoneTarget enum.",
+        "Fixed ResourcePanel constantly updating the label even if it was the same size."
+      ]
+    },
+    {
+      "rev": 5395,
+      "date": "2026-09-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash when the map view's nearest orbit point hit test ran over an orbit it could not resolve.",
+        "This most often happens just after loading a save made following an SOI change."
+      ]
+    },
+    {
+      "rev": 5396,
+      "date": "2026-09-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed grammar in game update available UI window."
+      ]
+    },
+    {
+      "rev": 5397,
+      "date": "2026-09-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a GPU page fault on AMD/RADV. The static object normal pre-pass shader declared one fewer field than the per-draw data the renderer writes so every draw after the first read the buffer at the wrong stride and passed a garbage index to the bindless texture array. Launch pads hit it because they submit a draw per sub-object.",
+        "Fixed the same mismatch in the part thumbnail shader which reads the part model's per-draw buffer with a struct one field short."
+      ]
+    },
+    {
+      "rev": 5398,
+      "date": "2026-09-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash when entering a kitten while controlling another one."
+      ]
+    },
+    {
+      "rev": 5399,
+      "date": "2026-09-02",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Further Optimised Parachute Line Renderer In test save with multiple craft under parachutes reduced main thread cost from 0.8ms to 0.2ms. This improvment comes from optimising the spline curve math, and moving some of the remaining work parachute line positioning work onto the ClothWorker Thread."
+      ]
+    }
+  ]
+}
