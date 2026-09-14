@@ -1,0 +1,382 @@
+{
+  "build": "2026.9.10.5438",
+  "date": "2026-09-15",
+  "fromRevision": 5402,
+  "toRevision": 5438,
+  "commits": [
+    {
+      "rev": 5403,
+      "date": "2026-09-03",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the Milky Way sitting in the wrong place on the sky. It should overlap Cygnus and Cassiopeia and pass between Orion and Gemini.",
+        "Fixed the Milky Way shader applying the transpose of the galactic plane rotation which rolled the band within its plane on top of the above.",
+        "Added a 'sky' terminal command that prints the equatorial and galactic coordinates the camera is looking at, along with the camera mode and the vertical field of view.",
+        "Added a 'skygrid' terminal command that overlays the galactic equator, the latitudes the Milky Way band fades out at, longitude labels every 30 degrees and markers on the galactic centre and poles."
+      ]
+    },
+    {
+      "rev": 5404,
+      "date": "2026-09-03",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added intial implementation of mesh deformation to vessels. This can be triggered by spawning a random dent through the MeshDeformationEditor, or by crashing the ship. Impact dents are currently not created for every part, this will be coming soon.",
+        "Added graphics settings for mesh deformation. This limits the total number of dents that a part can sample.",
+        "Dents are applied across multiple parts, rather than per part. This means dents applied to the bounds of a part apply to nearby parts rather than creating a harsh seam.",
+        "Meshes now store an AABB bounds center and radius. This gets used by the MeshDeformation system to determine what dents should be considered for deformation.",
+        "Fixed a typo from MeshReference's MaxPositionOffset, where the MaxPositionOffset.Z was partly calculated using an X value instead of a Z."
+      ]
+    },
+    {
+      "rev": 5405,
+      "date": "2026-09-04",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fullscreen mode no longer forces display to the primary monitor. There is now a drop down in the display settings to choose which monitor / screen to display the game onto."
+      ]
+    },
+    {
+      "rev": 5406,
+      "date": "2026-09-04",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Mesh deformation impacts are now applied to all parts. Previously the impact position for dents was getting calculated incorrectly resulting on some parts not getting dented properly."
+      ]
+    },
+    {
+      "rev": 5407,
+      "date": "2026-09-04",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added First pass on Explosions VFX. ExplosionsSystem.cs recieves and collates destruction events to create explosion effects that best describe what got destroyed and how.",
+        "Added Explosion Presets: Conflagration, SmallFire, PopSmallExplosion and MetalBurst.",
+        "Added ExplosionEditor tool for creating explosion effects.",
+        "Updated Particles to have a Density Value and Drag value, Particle movement is now effected by atmospheric density.",
+        "Removed ScreenSpaceParticles setting, as these particles are now required for explosions and now always on.",
+        "Added Shrapnel Meshes for Explosion Particle Effects."
+      ]
+    },
+    {
+      "rev": 5408,
+      "date": "2026-09-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Refactored bloom so that it renders after translucency. Previously translucency meshes would render after the bloom pass. Additionally overlays such as the underwater effect, weren't ordered correctly for a similar reason resulting in highlight selection previously getting tinted by the underwater effect."
+      ]
+    },
+    {
+      "rev": 5409,
+      "date": "2026-09-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Part crash tolerance is now derived from collider volume rather than the bounding box, so a flat wide part is rated by its build instead of its envelope. * A part reporting no mass is now rated as a median part rather than the weakest in the model. Recalibrated the structural constants to match."
+      ]
+    },
+    {
+      "rev": 5410,
+      "date": "2026-09-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "The touchdown impulse budget is now tracked per part and measured at that part's own contact point, rather than once per vehicle at its centre of mass. A craft toppling about its base barely translates while its nose sweeps down fast so one vehicle-wide budget sized on the first touchdown charged every later impact almost nothing. * A part's budget starts fresh when that part comes back into contact, and the solver's push out/fallback cycle still cancels because the running sum is a vector."
+      ]
+    },
+    {
+      "rev": 5411,
+      "date": "2026-09-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added mass and mass geometry to 12 parts that have colliders but carried no authored mass. The two inline battery banks, the two radial batteries, the three small lights, the two solar panels, the small bay fuel cell, the medium landing leg and the large radial decoupler.",
+        "A part's crash tolerance is derived from its density so a part that reported no mass could fail under loads it should shrug off. The landing leg and the radial decoupler are each built from several primitives so their mass sits where the part actually is."
+      ]
+    },
+    {
+      "rev": 5412,
+      "date": "2026-09-07",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Moved Profiler Backend code into Planet.Render.Core\\Profiler.",
+        "Added Vram and Ram Tab to profiler.",
+        "Changed VmaAllocator now registers vram alloc and de-alloc with the Vram Profiler.",
+        "Changed KeyHash moved to Planet.Render.Core."
+      ]
+    },
+    {
+      "rev": 5413,
+      "date": "2026-09-07",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Updated ProfilerCapture.cs to also capture vram and heap usage."
+      ]
+    },
+    {
+      "rev": 5414,
+      "date": "2026-09-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed apocalyptically bad performance when a vehicle has many solid motors present. This turned out to be entirely due to calculations in the sequence performance UI, which has now been fixed.",
+        "Fixed solid motors reporting their available dV inaccurately. This was due to the wrong grain geometry and inert masses being used.",
+        "Consolidated the solid motor burn profile code so that there aren't multiple interpretations of it.",
+        "Made the InertMass of a Part a hidden field to stop accidentaly misuse/confusion and provided higher-level methods to correctly perform the operations that people actually wanted."
+      ]
+    },
+    {
+      "rev": 5415,
+      "date": "2026-09-09",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Sounds to Explosions.",
+        "Removed some extraneous logging.",
+        "Fixed Random playback of sounds was never playing the last sound in the array."
+      ]
+    },
+    {
+      "rev": 5416,
+      "date": "2026-09-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Orbit-line point buffers are now returned to the array pool when a flight plan is retired. A vehicle under physics stages a new plan every step and each patch's buffer is 192kb over the LOH threshold. With this change",
+        "allocations drop approx from 3-6 mb/s to 0.38 the stops being driven and gen2 collections in flight go away.",
+        "Changed Flight plans and patches to no longer be sized for their worst case. A patch copy drops from 1.6kb to 600-650 bytes and a plan from 2kb to 800-900bytes.",
+        "Changed flight plans now own the orbits in its patches so two plans can no longer share one orbit-line buffer. This fixes a save load recolouring the vehicle's orbit line to its parent body's colour.",
+        "Added unit tests for changes above."
+      ]
+    },
+    {
+      "rev": 5417,
+      "date": "2026-09-09",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Reduced the drag on Explosion fireball volumetric particle so it doesn't lag too far behind a moving vehicle."
+      ]
+    },
+    {
+      "rev": 5418,
+      "date": "2026-09-09",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Parachute Color variants.",
+        "Updated parachute canopy mesh."
+      ]
+    },
+    {
+      "rev": 5419,
+      "date": "2026-09-09",
+      "author": "Chris",
+      "lines": [
+        "Update to latest Brutal packages"
+      ]
+    },
+    {
+      "rev": 5420,
+      "date": "2026-09-08",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Allow physics bubbles to merge and split in the middle of a frame if appropriate rather than only at the start or end of a frame."
+      ]
+    },
+    {
+      "rev": 5421,
+      "date": "2026-09-09",
+      "author": "lghassen",
+      "lines": [
+        "Add volumetric exhaust merging. Nearby exhausts now combine into a",
+        "larger one. Use a graph to allow exhausts to merge progressively into",
+        "clusters, and allow clusters to merge with each other. Use a virtual",
+        "combined nozzle for every cluster to compute its length, shape and",
+        "other properties, blend artistic properties of the individual nozzles",
+        "weighted by massflow. Individual plumes still render separately near",
+        "the nozzle and fade into a combined plume where their envelopes touch.",
+        "The combined plume's shape adapts to the layout of the individual",
+        "nozzles. Reduce sample count on the individual nozzles when they",
+        "shrink.",
+        "Perform distance and frustum culling for volumetric exhausts earlier",
+        "to avoid running the merge graph unnecessarily",
+        "Add a ring layout mode to the exhaust debug test grid",
+        "Add CPU profiler regions for the exhaust merging graph",
+        "Merge the EngineAVernier and EngineATurbine volumetric exhaust",
+        "templates which are identical",
+        "Rename some exhaust related classes to be more explicit",
+        "Remove dead VolumetricExhaustTemplate data that never reaches",
+        "the shader, including the vestigial ThrottleModifiers and",
+        "PressureModifiers, and the associated throttle curve"
+      ]
+    },
+    {
+      "rev": 5422,
+      "date": "2026-09-10",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reimported the texture for the MMU text, as previously it was 1023x1023 instead of 1024x1024."
+      ]
+    },
+    {
+      "rev": 5423,
+      "date": "2026-09-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed Recovering a vehicle now also destroys any debris sharing its physics bubble."
+      ]
+    },
+    {
+      "rev": 5424,
+      "date": "2026-09-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed debris flag not being serialized a save/load.",
+        "Fixed a piece separating from debris becoming an ordinary vehicle.",
+        "Added tests covering the VehicleData round trip for IsDebris and HasLaunched and that a vehicle which is not debris writes no attribute at all."
+      ]
+    },
+    {
+      "rev": 5425,
+      "date": "2026-09-10",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Refactored explosion volumetrics so that they share the plume trails pipeline instead of the pooled particle pipeline. This is for several reasons such as ensuring we can maintain the visual quality while also keeping high quality visuals.",
+        "Volumetrics now store motion vectors. Previously an explosion would be spawned in position, without taking into account the velocity of what its relative to. This means that if spawning an explosion at a high speed there was a noticable offset between particles which did take the vehicles velocity into consideration at launch and the explosion.",
+        "Added volumetric shockwave to the explosion VFX.",
+        "Changed explosion debris to use a PBR renderer without culling. It is now no longer just a flat color and is visible on both sides.",
+        "Volumetric trails now support Emissives."
+      ]
+    },
+    {
+      "rev": 5426,
+      "date": "2026-09-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the closest approach solver never converging correctly.",
+        "With accelleration and jerk zero the third derivative vanishes and the second collapses to v.v so the step reduces algebraically to dt = -(r.v)/(v.v).",
+        "Changed PatchedConic.GetRelativeStateAt to use the new overload. StateVectors' relative constructor already differences accel and jerk, so nothing else needed to change.",
+        "This is also a CPU win in flight planning. Roughly 95 fewer iterations per refinement each of which does two Kepler propagations.",
+        "Added 10 tests covering the acceleration and jerk against central finite differences.",
+        "Changed the pre-existing convergence test."
+      ]
+    },
+    {
+      "rev": 5427,
+      "date": "2026-09-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Split PatchedConic.GetRelativeStateAt into two overloads.",
+        "Changed FindSoiBoundary to take the derivative-free overload. It reads only position, velocity and the returned first derivative.",
+        "Changed the shared tail of both overloads into CombineRelativeState so the two cannot drift apart.",
+        "Added a test that the plain overload leaves acceleration and jerk at exactly zero while still agreeing with the derivative overload on position, velocity and the first derivative."
+      ]
+    },
+    {
+      "rev": 5428,
+      "date": "2026-09-10",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed fictitious forces not being applied to a vehicle above the physics radius but in a CCF-based bubble led by another vehicle inside the radius."
+      ]
+    },
+    {
+      "rev": 5429,
+      "date": "2026-09-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the game dying in fullscreen on Linux. Every abandoned frame leaked a signalled compute-pool semaphore. Self-sustaining, because a wedged queue produces more failed presents.",
+        "Changed the bail out to precede BeginFrame and the ocean read-back, so an abandoned frame submits nothing at all.",
+        "Changed shadow regeneration to sit below the bail-out, so a skipped regeneration simply happens on the next frame.",
+        "Added a log line naming the game code that requested a renderer rebuild."
+      ]
+    },
+    {
+      "rev": 5430,
+      "date": "2026-09-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the renderer rebuilding the swapchain forever on Linux. SUBOPTIMAL is not an error, the frame was presented and CreateSwapchain always builds at the extent the surface reports. So rebuilding on it reproduced the same swapchain and the same result on the next frame. XWayland does this indefinitely with ImmediateKHR because a composited window cannot be page-flipped.",
+        "Added SuboptimalNeedsRebuild so only a genuinely changed extent triggers a rebuild. OUT_OF_DATE remains mandatory.",
+        "Changed PresentFrame to report Success when it declines a rebuild because SuboptimalKHR reaches the NeedsResize mapping in TrySubmitFrame and has Program rebuild it anyway.",
+        "Changed a suboptimal acquire to render the frame instead of discarding it. The image was acquired and the semaphore signalled so the frame is usable.",
+        "Added Renderer.LogRebuildTrigger, naming which call site asked for a swapchain rebuild and with what result.",
+        "Changed the swapchain creation log to carry the extents. A swapchain the surface disagrees with presents SUBOPTIMAL forever and the image count alone cannot tell that apart from a healthy recreation.",
+        "Fixed multi-second hitches on every swapchain rebuild.",
+        "Added Renderer.QueryFramebufferSize, reading the size from GLFW directly. GlfwWindow.FramebufferSize is a field refreshed only by the resize callback and the swapchain paths run outside the main loop. So during the initial build it still held the pre-fullscreen size."
+      ]
+    },
+    {
+      "rev": 5431,
+      "date": "2026-09-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed fullscreen opening on the wrong monitor. Selection was a position in Glfw.GetMonitors which lists the primary output first on X11 and Windows but has no defined order on Wayland. So an index saved under one session type selected a different physical monitor under another.",
+        "Added display.screenName as the source of truth with screenIndex kept as the fallback."
+      ]
+    },
+    {
+      "rev": 5432,
+      "date": "2026-09-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the flight delta-v readout reading zero for the rest of the flight after staging.",
+        "Changed an already-fired sequence to register no engines in flight. In flight the total now reads as remaining delta-v rather than counting spent stages twice.",
+        "Changed the test fixture to share one nozzle builder.",
+        "Added a two-engine staged fixture test and a guard test."
+      ]
+    },
+    {
+      "rev": 5433,
+      "date": "2026-09-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed an engine reporting dry and cutting out while all of its reactants were still reachable at different distances.",
+        "Fixed the delta-v planner reading zero and flight burning at half rate when a drain level holds a tank emptied of one reactant.",
+        "Fixed an engine not drawing from a tank on its own part.",
+        "Fixed a level's demand being divided by every tank in it so a fuel-only tank halved the share asked of the oxidiser-only tank beside it.",
+        "Fixed whether a tank was drained depending on part placement. A level stopped at the first tank lacking the reactant.",
+        "Fixed propellant-use disabled tanks being skipped mid-level rather than excluded from the share which under-drew every other tank in that level.",
+        "Fixed a manager disposed twice releasing its pooled graph twice handing one graph to two managers.",
+        "Changed flight and the delta-v planner to share one drain path instead of two implementations that disagreed over the same orders.",
+        "Changed the four per-consumer order arrays into one level-major buffer read through a FlowOrder view and the switch (FlowRule) blocks into one loop each.",
+        "Changed the flow graph to dense node indices with shared edge buffers.",
+        "Changed drain orders to classify each entry once straight into the flat buffers instead of materialising a list per level.",
+        "Changed Consume and Produce to stop walking levels once the request is satisfied in ResourceManager and PowerManager. Per call on a full tank stack with 20 levels 1148ns down to 293 ns.",
+        "Changed resource rebuilds to pool the flow graph and take it only when something walks it. Allocation per rebuild on a 565 part test craft drops from 321.5 KB to 27.3 KB.",
+        "Changed decoupler own-branch chains to derive once per craft instead of once per engine. 779ns down to 333ns per engine on a 565-part craft.",
+        "Added a Unit test TestVehicle02 flow fixture - an 85-part, 8-stage, 13-engine saved craft for unit tests.",
+        "Added flow-rule unit test coverage across a multi-level tank stack, via BuildTankStack and BuildTwoTankEngine.",
+        "Removed BiDirectionalGraph.AddEntry and GetNodeEdges."
+      ]
+    },
+    {
+      "rev": 5434,
+      "date": "2026-09-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a rescaled part reverting to its unscaled mass, volume, and attachment node position after a vehicle or game save is reloaded. Only the root part's scale was ever reapplied on load.",
+        "Added a unit test round-tripping a scaled part through save/load and asserting its tank mass/volume survive."
+      ]
+    },
+    {
+      "rev": 5435,
+      "date": "2026-09-14",
+      "author": "lghassen",
+      "lines": [
+        "Fix explosion noise scale affecting plume trail noise scale when an explosion overlaps a plume trail causing the trail to get a dotted appearance",
+        "Fix smearing on terrain/vessel/tree edges when inside clouds introduced by recent horizon discontinuity fix on the clouds upscaling"
+      ]
+    },
+    {
+      "rev": 5436,
+      "date": "2026-09-14",
+      "author": "lghassen",
+      "lines": [
+        "Move the visual exhaust plume math out of the physics thread and into the renderer. Run only for plumes currently in view. Perform the most expensive plume computations and the merge graph edge collection in parallel on a new render worker pool"
+      ]
+    },
+    {
+      "rev": 5437,
+      "date": "2026-09-14",
+      "author": "Linx-RW",
+      "lines": [
+        "Reduced CPU terrain sampling time by ~70%:",
+        "Added FastMath helper for sin/cos/exp polynomial expansions valid within a few ULP. Replaces sin/cos/exp used in the erosion modifier.",
+        "Added early-outs for tiling detail and decal modifiers that have 0 weight contribution to the final height.",
+        "Inlined most hashing functions used by terrain modifiers."
+      ]
+    }
+  ]
+}
