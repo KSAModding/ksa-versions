@@ -1,0 +1,440 @@
+{
+  "build": "2026.9.22.5482",
+  "date": "2026-09-24",
+  "fromRevision": 5438,
+  "toRevision": 5482,
+  "commits": [
+    {
+      "rev": 5439,
+      "date": "2026-09-15",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the Universe Manifest showing apoapsis and periapsis as distances from the parent body's centre instead of altitudes above it.",
+        "Fixed the Universe Manifest printing a large negative apoapsis for a vehicle on an escape trajectory.",
+        "Changed the five apsis minus parent radius expressions across the orbit markers, celestial window and flight gauges to share Orbit.PeriapsisAltitude and Orbit.ApoapsisAltitude.",
+        "Added unit tests covering the apsis altitudes, a periapsis below the parent surface, and the negative apoapsis."
+      ]
+    },
+    {
+      "rev": 5440,
+      "date": "2026-09-15",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the engine core and nozzle readouts in the editor's part inspector all reading zero.",
+        "Fixed the part inspector's engine throttle reading \"0.0 %%\".",
+        "Changed the editor's part inspector to draw the engine core and nozzle design points instead of actual values."
+      ]
+    },
+    {
+      "rev": 5441,
+      "date": "2026-09-15",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the game saves list deserialising every save's universe.xml whenever the list was rebuilt so writing one save no longer re-reads every save on disk.",
+        "Fixed the saved-vehicle list deserialising every craft's vehicle.xml whenever the list was rebuilt it is now read on first use.",
+        "Fixed one unreadable saved craft aborting the vehicle list at startup. The failure now surfaces when that craft is loaded.",
+        "Changed saving a game to rely on the registration the write already performs instead of rescanning the whole save folder.",
+        "Changed loading a game save to report an unreadable universe file instead of throwing.",
+        "Changed both save lists to skip a folder that is missing its universe or vehicle file.",
+        "Added unit tests covering save and vehicle listing, the deferred vehicle read and folders missing their save file."
+      ]
+    },
+    {
+      "rev": 5442,
+      "date": "2026-09-15",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a Clear Debris button to the Universe Manifest that deletes every piece of debris in the current system after a confirmation."
+      ]
+    },
+    {
+      "rev": 5443,
+      "date": "2026-09-15",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added settings for the frame queue limit. Currently KSA is rendered with using FIFO to render and display images with VSync, this results in frames smoothly being passed to the screen however if the GPU renders faster than the CPU an input latency can build up between whats displayed on screen and the inputs from the user. This can be resolved by delaying when a frame begins to render to only start once a previous frame has been presented to the monitor. This drastically reduces input latency. This is on by default but the previous naive implementation can still be toggled under the display settings.",
+        "Added support for VK_KHR_PRESENT_WAIT and VK_KHR_PRESENT_ID.",
+        "Added Frames Queued Ahead display setting, with 'One Frame' set as the default with the previous implementation of unlimited added as an option.",
+        "Added console command 'framequeue' to get currently the current frame delay for rendering."
+      ]
+    },
+    {
+      "rev": 5444,
+      "date": "2026-09-15",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reverted some changes from the previous commit that had gotten mixed up during the rebase."
+      ]
+    },
+    {
+      "rev": 5445,
+      "date": "2026-09-15",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a saved craft or game save that fails to parse leaving its file open, which stopped the save folder being deleted on Windows."
+      ]
+    },
+    {
+      "rev": 5446,
+      "date": "2026-09-15",
+      "author": "lghassen",
+      "lines": [
+        "Fix clouds jittering in orbit whenever a plume trail or explosion are live nearby",
+        "Make the cloud upscaling aware of the trails and explosions, fix atmosphere edge cutting them off due to old early exit conditions in the upscaling and motion vectors postprocessing",
+        "Make the most aggressive cloud upscaling accumulation that accumulates history through vessels in orbit aware of the explosions",
+        "Allow explosions and trails to render with atmsopheres and clouds disabled or on airless bodies, previously these were linked because of reusing the clouds upscaling",
+        "Add separate game settings to disable explosions"
+      ]
+    },
+    {
+      "rev": 5447,
+      "date": "2026-09-17",
+      "author": "GitHub",
+      "lines": [
+        "Ground Clutter Displacement",
+        "Added the ability to displace ground clutter objects (rocks) from the terrain surface.",
+        "Added dynamic ground clutter object promotion when a vessel exceeds the displacement energy/kg. Objects are promoted on contact then settle once they come to rest. They do not yet create their own terrain so they fall through the ground when far enough away from the craft, which has the added side effect of falling forever through the planet and forcing full physics (which lags time warp). Will be resolved in a later commit.",
+        "Extended the ground clutter render buffers to include a small tail containing 2048 max possible displaced objects. Once the objects are copied over they reuse the existing ground clutter pipeline for free.",
+        "Added unit inertia helper function for dynamic ground clutter objects. Currently an approximation and not about the center of mass so displaced objects will have incorrect angular momentum.",
+        "Added dynamic object storage so they're persistent throughout a session (but also persists through save states). This sets up serializing them in saves since clutter is still per-cell, meaning only dynamic objects near the craft would be loaded.",
+        "Moved ground clutter terrain surface colour function to a shared glsl.",
+        "Fixed ground clutter Bepu compound origin not being the center of mass.",
+        "Cached unit inertia per clutter physical instance rather than computing it each time an object is displaced.",
+        "Fixed volume not being computed for convex hull colliders, resulting in incorrect inertia/COM for compounds built from them. This fixes ground clutter experiencing phantom angular velocity.",
+        "Fixed convex hull volume computation failing for objects laid out in an atlas. Objects are now recentered (center of their AABB moved to origin) before computing the volume. This fixes inertia for ground clutter objects that use convex hulls.",
+        "Fixed ground clutter collision hulls not being exported with Smooth shading enabled, leading to multiple vertices in place of one vertex and causing Bepu to build the shape wrong.",
+        "Fixed some rocks causing the Bepu simulation to crash due to the above.",
+        "Added validation to convex hull colliders at asset bundle time. The bundler will now warn of overlapping vertices within a hull and vertices which are too close together (within millimeters). Only ground clutter uses convex hulls at the moment so parts and statics should be unaffected.",
+        "Removed asset bundler warning about custom properties that the bundler doesn't recognise because it was spammy and doesn't serve a real purpose.",
+        "Fixed displaced ground clutter not applying an impulse back to whatever hit it in the step the object was promoted from static to dynamic.",
+        "Fixed displaced ground clutter texture scrolling with terrain blending enabled.",
+        "Fixed displaced ground clutter normals with terrain blending enabled.",
+        "Fixed ground clutter occasionally applying a ridiculous impulse to the craft when promoted from static to dynamic.",
+        "Added terrain sampling support for displaced ground clutter. This uses a cache system so clutter doesn't have a terrain patch per object leading to duplicate work in the same area. Sleeping objects are excluded so that patches can return to the pool and be reused for new objects.",
+        "Added clutter terrain debug drawing, matching the terrain patch debug drawing. Patches about to be retired turn orange.",
+        "Fixed Bepu worker dispatcher racing and causing the simulation to crash when displacing many trees.",
+        "Added colliders for the start of tree roots that sometimes sit above the terrain.",
+        "Added temporary angular damping to ground clutter objects to approximate drag from tree leaves so that trees don't roll forever on the ground and actually settle.",
+        "Reduced terrain block size from 8 quads to 4 (more appropriate for the average clutter size), and increased the pool size from 1024 to 4096 to counteract the reduction in terrain patch area.",
+        "Cleaned up BubbleTerrainBlocks.",
+        "Added serialization/deserialization for ground clutter. Currently saved in XML, but should probably migrate to its own binary file in the future. Destroyed and displaced ground clutter is now stored per save making cleared rock fields or forests persistent. Clutter currently being simulated are also saved, but their velocity is not yet conserved so instances will fall down when loaded."
+      ]
+    },
+    {
+      "rev": 5448,
+      "date": "2026-09-17",
+      "author": "Linx-RW",
+      "lines": [
+        "Reduced sources of runtime allocation relating to ground clutter displacement.",
+        "Initialized lists involved with ground clutter displacement with an appropriate initial capacity."
+      ]
+    },
+    {
+      "rev": 5449,
+      "date": "2026-09-18",
+      "author": "Rocket",
+      "lines": [
+        "Added mouse button assignment support including a refactor of class handling for control bindings, leaving room for more rich support of custom peripherals, HOTAS, etc... in future. Mouse button assignments can also be mixed with keyboard modifiers as well."
+      ]
+    },
+    {
+      "rev": 5450,
+      "date": "2026-09-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed the analytic asymmetic rotation solver from encountering singularities and throwing an exception when rotation was almost purely about the major or minor principal axes of inertia."
+      ]
+    },
+    {
+      "rev": 5451,
+      "date": "2026-09-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a rare edge case where it was theoretically possible for a vehicle to receive environmental values like gravitation and atmospheric info from the wrong body."
+      ]
+    },
+    {
+      "rev": 5452,
+      "date": "2026-09-09",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Separate physics bubbles into islands prior to solving. The bubbles inside the islands can only interact with each other over the coming physics update, so they can be solved independently and in parallel."
+      ]
+    },
+    {
+      "rev": 5453,
+      "date": "2026-09-18",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash when saving a game, craft or HUD layout over one that already exists.",
+        "Save folder deletion now retries briefly and reports a failure as a log error and an on-screen alert rather than an unhandled exception.",
+        "Overwriting a save no longer deletes the old one up front, so a save that cannot be written leaves the existing one intact on disk.",
+        "A vehicle whose save failed now keeps its unsaved-changes flag, stays on the editor's unsaved-vehicles list on exit.",
+        "Save folder deletion refuses any path that is not inside the relevant saves folder."
+      ]
+    },
+    {
+      "rev": 5454,
+      "date": "2026-09-18",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Adjusted explosions so that their emissive strength is high enough to be picked up by bloom.",
+        "Explosions now have sharper edges. Previously their edges were too soft so there weren't any well definied outlines to the explosion. This also makes the explosion appear denser.",
+        "Increased duration of the fireball element of the explosion.",
+        "Increased maximum explosion count up to 2048 from 64. The volumetric trail system that the explosions are built off already allocate a large number of segments for trails so this number could be increased quite a bit if needed."
+      ]
+    },
+    {
+      "rev": 5455,
+      "date": "2026-09-17",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed the desired BUB frame potentially comparing against the wrong body.",
+        "Deduplicated one desired frame check.",
+        "Permit vehicles above the physics radius but in a CCF-led bubble to go on rails."
+      ]
+    },
+    {
+      "rev": 5456,
+      "date": "2026-09-18",
+      "author": "GitHub",
+      "lines": [
+        "Improved performance for render data on vehicles with high part counts.",
+        "Hovering or selecting a part no longer rewrites the render data for every part in a vehicle.",
+        "Fixed battery status lights and wetness causing state rewrites across every part in a vehicle.",
+        "Reduced the cost of drawing vehicles carrying dents.",
+        "Reduced the cost of culling shadow casters on vehicles with many parts.",
+        "Reduced the memory allocated per part while building a vehicle.",
+        "Changed the staging list to clear only the sequence highlights it set instead of every part in the vehicle.",
+        "Added profiler tags across the vehicle render data scope.",
+        "Added an optional profiler dump that writes a capture whenever a frame exceeds a set duration.",
+        "Added unit tests covering the part render data dirty paths, batch pooling, steady-state allocation, lazy tree creation and the staging hover highlight."
+      ]
+    },
+    {
+      "rev": 5457,
+      "date": "2026-09-18",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed distant sphere planets not receiving heightmap displacement."
+      ]
+    },
+    {
+      "rev": 5458,
+      "date": "2026-09-18",
+      "author": "lghassen",
+      "lines": [
+        "Composite the volumetric exhausts correctly with the clouds, trails and explosions: Implement deep compositing based on the Pixar paper. This allows volumetric exhausts to correctly occlude and be occluded by clouds and trails, while also allowing them to interpenetrate and interact correctly as volumetrics. The result is still approximate due to the separate raymarching passes necessitated by different upscaling methods and the limited representative information being saved. However, it works well in most cases and fixes exhausts always being visible through thick clouds and trails.",
+        "Fix the exhaust pre-pass and early exit writing undefined data to the depth OIT"
+      ]
+    },
+    {
+      "rev": 5459,
+      "date": "2026-09-18",
+      "author": "Linx-RW",
+      "lines": [
+        "Added linear and angular velocity to displaced ground clutter serialization data."
+      ]
+    },
+    {
+      "rev": 5460,
+      "date": "2026-09-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Avoid expensive terrain sampling in several scenarios where it doesn't matter."
+      ]
+    },
+    {
+      "rev": 5461,
+      "date": "2026-09-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Prevent physics bubbles from eagerly merging based on the analytic conjunction test."
+      ]
+    },
+    {
+      "rev": 5462,
+      "date": "2026-09-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Improved tiebreaking when hovering orbit points. We should now prioritize trajectories that have an earlier start time and trajectories we will actually reach (so ones that won't be bypassed by an earlier burn)."
+      ]
+    },
+    {
+      "rev": 5463,
+      "date": "2026-09-20",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Non-vehicle targets (like planets) now survive save/load."
+      ]
+    },
+    {
+      "rev": 5464,
+      "date": "2026-09-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed PartTree derived data to recompute lazily.",
+        "Changed the resource and power flow managers to rebuild on the same principle. Each manager walks the part graph, so the rebuild is deferred to one per tree per frame and taken on first read of a manager.",
+        "Changed PartTree.Split, Merge and TransferPartSubtreeTo to take recomputeDerivedData so a caller making a batch of structural changes can defer the recompute to the end.",
+        "Changed RocketControllerData.ComputeFromCores to take no centre of mass since none of the values it returns is a moment and added an overload computing two ambient pressures in one pass so the derived pass shares one core-conditions solve between vacuum and sea level.",
+        "Changed SequenceList.ProcessTree to walk the tree's module list once instead of each part's subtree modules.",
+        "Added unit tests covering the derived-data flush and part compaction across a split."
+      ]
+    },
+    {
+      "rev": 5465,
+      "date": "2026-09-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the per-microstep terrain update to skip a sleeping body. Its patch and nearest pad cannot have changed and the anchor lookup that re-derives them costs a terrain height evaluation per call, so debris resting on the pad paid that for every vehicle on every microstep."
+      ]
+    },
+    {
+      "rev": 5466,
+      "date": "2026-09-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed every runtime created distant glint leaking for the rest of the session. A vehicle registered one for itself and nothing removed it, so each piece of debris left an entry behind in the glint library.",
+        "Changed the glint irregularity curve to be rewritten in place when the point count is unchanged rather than rebuilt.",
+        "Added SerializedCollection.Deregister for runtime-registered entries. Asset loaded entries must stay for the life of the library so a vehicle's glint is only released when it is flagged runtime-generated and keyed by the vehicle's own hash.",
+        "Added unit tests covering deregistration, a repeated deregister, and re-registering afterwards."
+      ]
+    },
+    {
+      "rev": 5467,
+      "date": "2026-09-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed vehicle teardown to return the three contact-map buffers to a pool instead of freeing them. Returning ContactPartsBuffer allocated the size of the array itself per destroyed vehicle which a breakup paid for every piece it evicted and debris is created and destroyed constantly so the next vehicle wants the same buffers back. \\",
+        "Changed the contact-map grow path to rent from the same pool rather than dispose and reallocate.",
+        "Added unit tests covering buffer reuse, the caller's handles being emptied, retained parts being cleared so a destroyed craft is not pinned, the capacity floor, and concurrent renting."
+      ]
+    },
+    {
+      "rev": 5468,
+      "date": "2026-09-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed a breakup to scope the whole shed loop as one bulk change."
+      ]
+    },
+    {
+      "rev": 5469,
+      "date": "2026-09-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the Milky Way still sitting in the wrong place on the sky. The galactic plane basis was built from right ascension and declination in an equatorial frame but the scene frame is the ecliptic the star catalogue is authored in so the band was drawn 49 degrees off the galactic equator and mirrored.",
+        "Fixed the 'sky' command reading right ascension and declination straight off the ecliptic view direction.",
+        "Added a unit test asserting the eleven brightest stars of the shipped catalogue land on their published galactic coordinates."
+      ]
+    },
+    {
+      "rev": 5470,
+      "date": "2026-09-21",
+      "author": "lghassen",
+      "lines": [
+        "Add volumetric ring shadows on atmospheres"
+      ]
+    },
+    {
+      "rev": 5471,
+      "date": "2026-09-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a vehicle resting on another hanging frozen in mid-air once the craft underneath it was recovered or destroyed.",
+        "Added PhysicsBubble.WakeVehiclesSupportedBy, taking any on-rails vehicle within bounding-sphere reach and above the departing vehicle back off rails as it leaves.",
+        "Added unit tests covering the Bepu island behaviour the check cannot rely on (a resting pair shares an island, removal wakes the upper body, it then falls, and bodies slept when added share no island at all) and the wake itself.",
+        "Fixed recovering a vehicle throwing the camera to an unrelated craft on the far side of the system while something was sitting right beside it. The hand off walked the system list which is ordered by nothing the camera cares about, so it now takes the heaviest other vehicle in the recovered craft's own physics bubble when there is one and only seeks the list when the bubble is empty."
+      ]
+    },
+    {
+      "rev": 5472,
+      "date": "2026-09-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed brdf being sampled with the inverse roughness. This fixes the odd looking 'sheen' around terrain and incorrect fresnel on parts. May require some asset rebalancing, as they'll have been authored and compared to the wrong roughness."
+      ]
+    },
+    {
+      "rev": 5473,
+      "date": "2026-09-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Significantly improved tree lighting, making trees look more rounded. These trees are pine variants, so their normals now approximate a teardrop shape.",
+        "Added new ground clutter shader variation \"keep backface normals\", which prevents the normal flip for double-sided geometry.",
+        "Increased the roughness of Earth's grass materials which reduces the specular lighting intensity when looking towards the sun.",
+        "Fixed some tree assets not using the distance fade dither (would previously pop in)."
+      ]
+    },
+    {
+      "rev": 5474,
+      "date": "2026-09-23",
+      "author": "Dan Southon",
+      "lines": [
+        "Changed the super mesh render system buckets to use render pass and view handles, replacing the separate bucket systems.",
+        "Cascaded shadows and light shadow atlas now have separate draw lists.",
+        "Fixed shadow registrations leaking when a renderable was disposed."
+      ]
+    },
+    {
+      "rev": 5475,
+      "date": "2026-09-22",
+      "author": "gravhoek-rw",
+      "lines": [
+        "THIS BREAKS VEHICLES USING CERTAIN ADAPTER INTERSTAGE PARTS. Changed several nosecone and diameter-adapter parts from \"coupling\" or \"structural\" parts to fuel tanks because they have modeled fuel tanks and internal colliders. Use of these parts as assumed-hollow decouplers frequently resulted in disaster because the newly-separated stages would have interpenetrating colliders and fail to separate. This also awards them usable propellant volume which previously was purely visual."
+      ]
+    },
+    {
+      "rev": 5476,
+      "date": "2026-09-22",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Handle vehicle eviction from a bubble due to a change in closest parent body in the thread worker rather than the main thread."
+      ]
+    },
+    {
+      "rev": 5477,
+      "date": "2026-09-23",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed baked ambient occlusion not applying to terrain and clutter."
+      ]
+    },
+    {
+      "rev": 5478,
+      "date": "2026-09-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed engines reading no propellant after the refill console command or the editor's refill button. Rocket cores only re-check propellants when the tank contents are flagged as changed and refilling or emptying tanks in place did not set any flag. So an engine that had run dry stayed dry. RefillAllTanks and DepleteAllTanks now raise the flag and mark delta-v for recalculation.",
+        "Added unit tests asserting refilling and depleting both flag the tank contents as changed."
+      ]
+    },
+    {
+      "rev": 5479,
+      "date": "2026-09-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed warping to a burn far out from a star grinding the game to about 3 fps.",
+        "The rule is there for two vehicles jittering against each other at that range. So it now only applies when the physics bubble holds more than one vehicle and a lone vehicle goes back on rails."
+      ]
+    },
+    {
+      "rev": 5480,
+      "date": "2026-09-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed an ObjectDisposedException when hovering a flight plan patch. The nearest-orbit-point job was never waited on so it could still be reading a flight plan while the next frame disposed it.",
+        "Renamed the ConcurrentWorkers job scheduler to NearestOrbitAndPerformanceWorker since it runs both the flight nearest-orbit-point job and the editor delta-v/TWR job.",
+        "Added profiler tags for each solver wait and apply in PrepareFrame."
+      ]
+    },
+    {
+      "rev": 5481,
+      "date": "2026-09-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed gauge digit rollers to hold 64-bit values so readouts can show more than 9 digits."
+      ]
+    }
+  ]
+}
