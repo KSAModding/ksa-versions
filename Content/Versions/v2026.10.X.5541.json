@@ -1,0 +1,556 @@
+{
+  "build": "2026.10.7.5541",
+  "date": "2026-10-02",
+  "fromRevision": 5482,
+  "toRevision": 5541,
+  "commits": [
+    {
+      "rev": 5483,
+      "date": "2026-09-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the clock's years readout to 7 digits and the sim speed readout to 13 digits.",
+        "Changed the burn gauge's Time To Mark and Start Burn In readouts and the burn editor's game time and time-to readouts to 7 digits plus a unit so burns years away still fit.",
+        "Changed the burn gauge's DeltaV readout to show one decimal place and a unit, and blank it when there is no burn. It no longer caps at 99,999 m/s."
+      ]
+    },
+    {
+      "rev": 5484,
+      "date": "2026-09-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed burns on an escape or hyperbolic patch that starts after periapsis being timed late. The patch's start time from periapsis was always added rather than subtracted."
+      ]
+    },
+    {
+      "rev": 5485,
+      "date": "2026-09-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the map camera juddering around a vessel far from the origin. It is now placed as an offset from what it follows rather than at an absolute position."
+      ]
+    },
+    {
+      "rev": 5486,
+      "date": "2026-09-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed crew portraits showing the inside of a kitten's head far from the origin. Portrait cameras are now placed as an offset from the vessel or kitten they film.",
+        "Fixed a crew portrait camera keeping debris from being cleaned up and taking part in camera hand-off when its vessel is destroyed."
+      ]
+    },
+    {
+      "rev": 5487,
+      "date": "2026-09-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed tank-fed rocket cores to share a PlumbedCore base class, so cores other than combustors can draw propellant from tanks. No change to in-game behaviour. Yet...."
+      ]
+    },
+    {
+      "rev": 5488,
+      "date": "2026-09-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added the ThermalCore rocket core, which heats an inert working fluid to an authored core temperature instead of burning it.",
+        "Added the FusionH2 fully ionised hydrogen plasma table.",
+        "Added the FPD-1 Torch fusion drive (49,237 s, 38.61 MN) using Placeholder Model!",
+        "Added thermal reactions to the engine designer with a core temperature slider and ThermalCore export."
+      ]
+    },
+    {
+      "rev": 5489,
+      "date": "2026-09-24",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a flat duplicate sun disc drifting away from the sun when viewed up close and off-centre. The sunbloom enlarged its disc about the screen centre rather than the sun's position."
+      ]
+    },
+    {
+      "rev": 5490,
+      "date": "2026-09-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed Hapke lighting model receiving wrong Phi term when g > 90 degrees.",
+        "Improved Hapke lighting precision when Phi approaches Pi.",
+        "Fixed possible NaN in the Hapke lighting model at the terminator."
+      ]
+    },
+    {
+      "rev": 5491,
+      "date": "2026-09-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Improved ground clutter shadow LOD selection - Now selects LODs based on the texel size of each object in the shadow map. This should lead to a small performance improvement since it reduces shadow map sub-texel overdraw.",
+        "Reorganized synchronization areas in the ground clutter renderer. Instead of synchronizing after each ecotype's render pass (prepare, cull, reorder, command gen) then running the next ecotype, all ecotypes run the same pass together, barriers are inserted, then all ecotypes move onto the next pass.",
+        "Disabled anisotropic filtering on the ground clutter shadow pass, improving shadow pass performance slightly."
+      ]
+    },
+    {
+      "rev": 5492,
+      "date": "2026-09-24",
+      "author": "Linx-RW",
+      "lines": [
+        "Reduced the number of interpolators between vert and frag stages for ground clutter shaders. Slightly improves forest performance."
+      ]
+    },
+    {
+      "rev": 5493,
+      "date": "2026-09-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added support for more than one star in a system. Each star owns the space nearer to it than to any other star and a vessel changes star when it crosses that boundary.",
+        "Changed lighting, sunlight colour, flare colour and the sun's size to follow the star nearest the camera instead of always using the first star.",
+        "Changed solar panels, solar trackers and sun-tracking animations to point at the star nearest the vessel.",
+        "Fixed the Ground Track sun mask and Target Tracking sun direction assuming the star is at the origin.",
+        "Changed the camera's minimum distance, map scope and surface clamp to use the size of the star being followed.",
+        "Added a dot for each star other than the one lighting the scene and made distant bodies lit sides face the lighting star rather than the origin.",
+        "Changed the Move Camera To, Orbit Lines and Celestial Info menus and the Universe Manifest to list every star, not only the first."
+      ]
+    },
+    {
+      "rev": 5494,
+      "date": "2026-09-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added star crossings to the flight plan. A trajectory leaving one star now continues into the next star's space where it becomes the nearer one up to one crossing per flight plan.",
+        "Fixed clicking a trajectory choosing a point past the end of a patch which handed clicks on the arrival leg of a crossing back to the departure leg.",
+        "Fixed a burn placed exactly where one patch hands over to the next being attached to the patch that was ending.",
+        "Fixed a flight plan with a later burn stopping one patch early and leaving that patch unsolved.",
+        "Fixed the patch info panels in the flight plan window sharing ImGui IDs so opening one patch's orbit details opened every patch around the same body."
+      ]
+    },
+    {
+      "rev": 5495,
+      "date": "2026-09-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added an Interstellar plan type to the Transfer Planner. Choose a destination star and a departure speed, and it plans the escape burn with the trajectory aimed at that star.",
+        "Fixed the Transfer Planner's circularize plans throwing when no source vessel was selected.",
+        "Fixed the Transfer Planner's destination list throwing for a vessel with no parent body."
+      ]
+    },
+    {
+      "rev": 5496,
+      "date": "2026-09-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added interstellar time warp, from 1 to 30,000 years per second. It is offered only while coasting around a star on a flight plan that crosses to another or while in another star's space and it steps down automatically before arrival.",
+        "Changed the Speed menu to grey out warp speeds that are not currently allowed."
+      ]
+    },
+    {
+      "rev": 5497,
+      "date": "2026-09-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed manual throttle to respect the vehicle's g-force limit as auto burns already did. A HUD message shows when the throttle is being held back."
+      ]
+    },
+    {
+      "rev": 5498,
+      "date": "2026-09-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed map view to label only the star, not every body in its system, when viewing it from another star's space."
+      ]
+    },
+    {
+      "rev": 5499,
+      "date": "2026-09-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added the SolSystemInterstellar and EarthOnlyInterstellar systems, which add Alpha Centauri (4.344 ly), Barnard's Star (5.963 ly) and Tau Ceti (11.912 ly) at their real positions, with their known planets. Yes you can now travel the stars in KSA."
+      ]
+    },
+    {
+      "rev": 5500,
+      "date": "2026-09-24",
+      "author": "gravhoek-rw",
+      "lines": [
+        "When tracking physics bubble interactions, account for actions taken by the flight computer. This includes dV that may result from attitude control and planned burns that will ignite during the next physics step. This reduces the number of cases where a real interaction could be missed."
+      ]
+    },
+    {
+      "rev": 5501,
+      "date": "2026-09-25",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed interstellar time warp to switch RCS off while it runs and back on afterwards, if it was on before."
+      ]
+    },
+    {
+      "rev": 5502,
+      "date": "2026-09-25",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed the game crashing when shadows were enabled, or the light shadow slot count raised above the value the game started with.",
+        "Changed the mesh renderer's instance buffer to only reserve data for passes that each view actually draws.",
+        "Added culling for kitten and parachute meshes that are drawn into the shadow cascades. Before they would be registered into every cascade even if the view could not see the mesh."
+      ]
+    },
+    {
+      "rev": 5503,
+      "date": "2026-09-25",
+      "author": "Linx-RW",
+      "lines": [
+        "Skipped generating ground clutter if it's out of range. The range is per ecotype and defined as the planet's max terrain height plus the ecotype's render distance. Previously clutter would be generated no matter how far the camera was from the planet. Expect a small performance improvement."
+      ]
+    },
+    {
+      "rev": 5504,
+      "date": "2026-09-25",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed terrain height stepping due to the biome control map being sampled with hardware bilinear filtering."
+      ]
+    },
+    {
+      "rev": 5505,
+      "date": "2026-09-23",
+      "author": "lghassen",
+      "lines": [
+        "Build a small, sparse volume cache for the densest plume trail areas where multiple segments or multiple explosions overlap, use it to speed up raymarching of dense areas associated with crashes or big launches that would previously tank the framerate. This provides a big performance improvement in scenes where very dense trails would previously tank the framerate to single digits. The existing method is still used for areas with low segment counts where it's faster and more accurate. A limited VRAM budget is assigned to the cache, so the busiest front-most cells are prioritized",
+        "Tweak plume raymarching step sizes and some early exit conditions for better performance",
+        "Increase the trail segment limit on the CPU, GPU limit is kept the same as its often below the CPU count due to the trail LOD system",
+        "Build the plume trail LOD hierarchy within its own frame on the render worker pool instead of one frame behind, this simplifies the code and makes it simpler to include segments created or manipulated this frame"
+      ]
+    },
+    {
+      "rev": 5506,
+      "date": "2026-09-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed an auto burn staying engaged after its engines ran out of propellant. It now disengages and an alert tells you it stopped for lack of propellant."
+      ]
+    },
+    {
+      "rev": 5507,
+      "date": "2026-09-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the Transfer Planner's Interstellar plan to aim for a chosen periapsis at the destination star rather than straight at it.",
+        "Added an approach correction to the Interstellar plan. Once a vessel is on its way the planner offers a burn that brings its closest approach to the destination star to the target periapsis."
+      ]
+    },
+    {
+      "rev": 5508,
+      "date": "2026-09-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed orbit and flight plan lines being drawn away from where they actually are. Up to 150,000 km out far from a star and cutting thousands of kilometres inside wide orbits such as one circularised 100 AU out from the star.",
+        "Near the camera lines now follow the orbit itself. Also fixed the trajectory after arriving at another star being drawn back through the star it came from and trajectories between stars are drawn with more points along their outer reaches."
+      ]
+    },
+    {
+      "rev": 5509,
+      "date": "2026-09-28",
+      "author": "lghassen",
+      "lines": [
+        "Give plume trails an initial exhaust speed allowing them to move away from the emitter and fixing the weird look where emitted trails follow a rotating emitter in a straight line. Use a plausible entrainment formula to make trails lose speed, this currently can look different from the exhaust's bend and they will need to be synced",
+        "Change plume trails expansion to not expand based on time alone and adjust the group plume handover to reflect this",
+        "Substep plume trail emission within a frame to avoid kinks when the emitters are moving very fast, tone this down when approaching segment cap as spinning boosters can generate lots of segments very quickly",
+        "Allow for more detailed trail segments at creation and merge them more agressively when they expand",
+        "Add an emission glow/visual to the plume trails, reuse what we currently have from explosions",
+        "Cull plume trail lod selection against frustum",
+        "Add a debug mode for the trail volume cache samples and more detailed CPU profiler tags for the trails",
+        "Increase the max active segment cap",
+        "Scale the trail segment maintenance budget with the active segment count"
+      ]
+    },
+    {
+      "rev": 5510,
+      "date": "2026-09-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the flight plan not showing encounters on trajectories that escape a star. A trajectory leaving the Sun or arriving at another star never predicted a flyby of any planet or companion star along the way, such as Jupiter on the way out of the solar system or Alpha Centauri B on the way in.",
+        "Encounter prediction on these trajectories now looks only at the stretch where each body can be reached, so it stays cheap even around a star with an unlimited sphere of influence."
+      ]
+    },
+    {
+      "rev": 5511,
+      "date": "2026-09-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a vessel orbiting Alpha Centauri A being captured by Alpha Centauri B the moment it burned, which threw it onto a path around B instead. B now has a 3 AU sphere of influence.",
+        "Corrected Proxima Centauri's orbit around Alpha Centauri to its measured size of 8,600 AU."
+      ]
+    },
+    {
+      "rev": 5512,
+      "date": "2026-09-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed Alpha Centauri B and Proxima Centauri orbiting far too slowly. Their orbits only counted Alpha Centauri A's mass, so B took 110 years to go round instead of 80 and Proxima 1.4 million years instead of 550,000. Both now move at their measured speeds.",
+        "Added TwoBody and CentralMass options to celestial orbits. TwoBody moves a body under its parent's mass plus its own for a companion star like Alpha Centauri B. CentralMass sets the mass outright for a body like Proxima whose orbit is set by more than its parent and itself."
+      ]
+    },
+    {
+      "rev": 5513,
+      "date": "2026-09-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the Transfer Planner's correction burn missing the target planet. It worked out where to aim from the Sun's gravity instead of the planet's and from a trajectory that was out of step with the burn.",
+        "A correction to Mars that previously aimed millions of kilometres wide now arrives within a few kilometres of the requested periapsis at the planned time.",
+        "Fixed the Transfer Planner's correction periapsis being measured from the planet's centre. It is now an altitude above the surface, so the default of 100 km no longer aims inside the planet."
+      ]
+    },
+    {
+      "rev": 5514,
+      "date": "2026-09-29",
+      "author": "JoshRW",
+      "lines": [
+        "Remove named function arguments in previous glint code as it doesn't fit the company coding standard."
+      ]
+    },
+    {
+      "rev": 5515,
+      "date": "2026-09-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed Alpha Centauri A and B to orbit their shared centre of mass instead of B orbiting A. A now moves around the system like B does, and both take the pair's measured 80 year period.",
+        "Changed Alpha Centauri B and Proxima Centauri to be real stars. They draw as stars rather than planets and whichever one you are near lights the scene.",
+        "Changed the space between star systems to be divided between whole systems instead of individual stars so a vessel inside Alpha Centauri moves between A, B and Proxima by their spheres of influence instead of jumping to whichever star is nearest.",
+        "Changed the Alpha Centauri system's mass and its stars' orbits to be worked out from the stars' own masses, so changing a star's mass keeps the system consistent.",
+        "Changed the Transfer Planner's interstellar plan to aim at the destination system and the planet-to-planet planner to offer the other stars of the system when orbiting one of Alpha Centauri's stars.",
+        "Changed interstellar time warp to also be available around a star of a multiple system, slowing before the vessel leaves that star's sphere of influence.",
+        "Fixed an orbit defined with no inclination losing its argument of periapsis, which put it facing the wrong way.",
+        "Fixed the game sometimes crashing on exit when it closed while the vessel simulation was still running.",
+        "Fixed a vessel on a long orbit through a system of fast-moving bodies rechecking its whole flight plan every frame which dropped the frame rate to single figures."
+      ]
+    },
+    {
+      "rev": 5516,
+      "date": "2026-09-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Removed interstellar time warp. The fastest warp is 7,776,000x everywhere again.",
+        "Changed the Speed menu to offer every warp speed again rather than greying some out.",
+        "Removed the FPD-1 Torch engine and its hydrogen plasma propellant.  Keep watching, I now have a better idea on how we are going to do this interstellar travel."
+      ]
+    },
+    {
+      "rev": 5517,
+      "date": "2026-09-29",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed validation errors when switching to IVA when Raytracing is enabled. This was due to a mismatching descriptor layout for translucent parts."
+      ]
+    },
+    {
+      "rev": 5518,
+      "date": "2026-09-29",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed the IVA Camera controller drifting from it's anchor when the vehicle is positioned at interstellar ranges."
+      ]
+    },
+    {
+      "rev": 5519,
+      "date": "2026-09-28",
+      "author": "lghassen",
+      "lines": [
+        "Lower the plume trail minimum raymarching step size",
+        "Group plume trail emitters only when they point in a similar direction"
+      ]
+    },
+    {
+      "rev": 5520,
+      "date": "2026-09-29",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed issue with shadow cascades flickering at interstellar distances."
+      ]
+    },
+    {
+      "rev": 5521,
+      "date": "2026-09-29",
+      "author": "lghassen",
+      "lines": [
+        "Performance improvements to plume trail raymarching",
+        "More compact plume trail volume cache formats",
+        "Tweak the cloud/trails upscaling to reduce artifacts in front of depth discontinuities",
+        "Small cloud upscaling performance improvements by improving how data is loaded",
+        "Sample noise mips when raymarching trails"
+      ]
+    },
+    {
+      "rev": 5522,
+      "date": "2026-09-29",
+      "author": "lghassen",
+      "lines": [
+        "Fix a crash when a breakup sheds debris off a vehicle with a solid motor"
+      ]
+    },
+    {
+      "rev": 5523,
+      "date": "2026-09-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added the MRS-1 Magnetic Scoop, a placeholder part that collects interstellar hydrogen into the vessel's hydrogen tanks while it flies between the planets or the stars.",
+        "Added the RAIR-1 Antimatter Ramjet, a placeholder engine that annihilates antimatter to push out hydrogen using gas from a magnetic scoop before its own.",
+        "Added antihydrogen and the MTT-1 Magnetic Trap Tank, the only tank that can hold it. - Currently requires no Electricity. YET.",
+        "Added an Interstellar part category holding the placeholder interstellar parts.",
+        "Added Interstellar gas with hydrogen atom mass initially for scooping.",
+        "Added Antimatter H2 gas volatile.",
+        "Added Antimatter ram core part module.",
+        "Added Magnetic scoop part module.  - Currently requires no Electricity. YET."
+      ]
+    },
+    {
+      "rev": 5524,
+      "date": "2026-09-30",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added the FPD-1 Torch engine and its hydrogen plasma propellant back, now in the Interstellar part category."
+      ]
+    },
+    {
+      "rev": 5525,
+      "date": "2026-09-30",
+      "author": "JoshRW",
+      "lines": [
+        "Fix embedded GLB textures not being named properly, which caused an exception to be thrown due to them having no name. This caused a crash. The PBR spheres GLB was a case where this crash would occur."
+      ]
+    },
+    {
+      "rev": 5526,
+      "date": "2026-09-30",
+      "author": "JoshRW",
+      "lines": [
+        "Fix PBR spheres not showing due to being queued in the render loop before the mesh bucket clear."
+      ]
+    },
+    {
+      "rev": 5527,
+      "date": "2026-09-30",
+      "author": "JoshRW",
+      "lines": [
+        "Add viewport and scissor dynamic states to PBR spheres to ensure currect behaviour when resizing the window."
+      ]
+    },
+    {
+      "rev": 5528,
+      "date": "2026-09-30",
+      "author": "JoshRW",
+      "lines": [
+        "Change redundant DepthStencilReadOnlyOptimal image layouts in the shadow system to DepthReadOnlyOptimal"
+      ]
+    },
+    {
+      "rev": 5529,
+      "date": "2026-09-30",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed rotation gizmo rings disappearing on the wrong axis in the editor.",
+        "Added a Hide Edge-On Rotation Rings toggle in the Interface settings (on by default). It controls whether a rotation gizmo ring disappears when viewed edge-on, where it would appear as a thin line."
+      ]
+    },
+    {
+      "rev": 5530,
+      "date": "2026-10-01",
+      "author": "GitHub",
+      "lines": [
+        "Atmosphere multi viewport support (#107)",
+        "Atmosphere now supported in secondary viewports",
+        "Added a centralised spot for pipeline caching (Whether it is used or not defined in one place instead of 100). Mostly done now since we're touching so many pipeline files already with this commit",
+        "Reserved slot across shader bindings for texture library (required for lighting code, future proofed for upcoming passes)",
+        "Constants in global shader bindings split out from dynamic ubo"
+      ]
+    },
+    {
+      "rev": 5531,
+      "date": "2026-10-01",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed vessels coasting on rails into a star's or moon's sphere of influence staying attached to the body they left."
+      ]
+    },
+    {
+      "rev": 5532,
+      "date": "2026-10-01",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed saved flight computers reloading an empty burn and saved burn plans always reporting as valid."
+      ]
+    },
+    {
+      "rev": 5533,
+      "date": "2026-10-01",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added IIndependentRoot.RootOf for finding the star system a body belongs to."
+      ]
+    },
+    {
+      "rev": 5534,
+      "date": "2026-10-01",
+      "author": "Linx-RW",
+      "lines": [
+        "Added terrain rendering into secondary viewports. Shadows not yet properly supported, so the main viewport's shadow maps are reused which looks odd on the surface. Ground clutter is not included yet.",
+        "Split planet renderer's viewport-dependent mesh ubo params into a separate ubo.",
+        "Moved planet renderer viewport-dependent data into PlanetViewportData, including billboarding logic.",
+        "Added a 'render terrain' flag to secondary viewports."
+      ]
+    },
+    {
+      "rev": 5535,
+      "date": "2026-10-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Screen alerts now use sentence case and their text comes from the language file."
+      ]
+    },
+    {
+      "rev": 5536,
+      "date": "2026-10-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed warping to the next burn stopping at its node or with no margin, instead of 3 seconds before ignition."
+      ]
+    },
+    {
+      "rev": 5537,
+      "date": "2026-10-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the antimatter ram drive never using up its propellant."
+      ]
+    },
+    {
+      "rev": 5538,
+      "date": "2026-10-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added 1, 5, 10, 50 and 100 years per second time warp."
+      ]
+    },
+    {
+      "rev": 5539,
+      "date": "2026-10-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added eighth-order Dormand-Prince Runge-Kutta method (DOP853).",
+        "Long time warp steps are integrated with the eighth-order Runge-Kutta method instead of being held to 2 seconds. This significantly improves performance at higher timewarp speeds.",
+        "The physics debug window shows what is limiting the physics timestep."
+      ]
+    },
+    {
+      "rev": 5540,
+      "date": "2026-10-02",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "The Transfer Planner plans interstellar trips as a speed up burn and a slow down burn, set by max speed, antimatter for each burn and final speed, and shows the fuel each burn uses.",
+        "Interstellar burns light at their marker and burn for a planned time and the preview shows the path after both burns.",
+        "The Transfer Planner shows the propellant each burn needs against what is onboard.",
+        "When an auto burn finishes or runs out of propellant time warp stops and the next burn loads.",
+        "Fixed the flight computer still flying a burn that had been removed from the burn plan.",
+        "Long auto burns only wake the flight computer to correct their pointing so they run faster under time warp.",
+        "A slow down burn is automatically re-planned when the speed up burn runs out of propellant.",
+        "A slow down burn stops once the vessel is down to its final speed, instead of burning past it and heading back the way it came.",
+        "The flight computer debug window shows long burn pointing and wake requests.",
+        "Auto warping to the next burn via the flight computer burn gauge is no longer held to the fastest time warp so long interstellar warps take under a minute."
+      ]
+    }
+  ]
+}
