@@ -1,0 +1,116 @@
+{
+  "build": "2026.10.10.5554",
+  "date": "2026-10-07",
+  "fromRevision": 5541,
+  "toRevision": 5554,
+  "commits": [
+    {
+      "rev": 5542,
+      "date": "2026-10-01",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added convex hull collider support to the GLB importer utility.",
+        "Imported new versions of CoreCommandA, CoreStructuralA, CoreFairingA."
+      ]
+    },
+    {
+      "rev": 5543,
+      "date": "2026-10-02",
+      "author": "JoshRW",
+      "lines": [
+        "Improve error logging for unnamed / invalid TextureAssets when creating a SimpleVkTexture."
+      ]
+    },
+    {
+      "rev": 5544,
+      "date": "2026-10-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed the thruster cache not recomputing when propellant tanks had their usage flags toggled off/on. This presented as thrusters not working even once new propellant was released for their use."
+      ]
+    },
+    {
+      "rev": 5545,
+      "date": "2026-10-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed incorrect RSS for gimbal commands that are constrained to a circle (no part actually uses this currently)."
+      ]
+    },
+    {
+      "rev": 5546,
+      "date": "2026-10-05",
+      "author": "lghassen",
+      "lines": [
+        "Fix crash on startup on AMD GPUs, the bindless texture library clamps the array size to the device update-after-bind limit. On AMD this is uint.MaxValue but the binding is declared as int, which reads back as -1",
+        "Reduce the planet frustum culling push constant size to be 128 bytes by reusing an unused float, matching the min vulkan spec guarantee",
+        "Fix volumetric particles showing white artifacts on AMD GPUs, use the same reimplemented tanh function already used in the ocean shader"
+      ]
+    },
+    {
+      "rev": 5547,
+      "date": "2026-10-06",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added Jobs tab to Profiler. Individual Job Runners can now be viewed in the profiler, you can use Begin/End Calls to profile specific portions of code for runtime and allocations.",
+        "Updated KSA to latest Brutal.Concurrency package."
+      ]
+    },
+    {
+      "rev": 5548,
+      "date": "2026-10-06",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added baseline tests for burn planning and timing ahead of finite burns.",
+        "Moved the flight computer ignition timing into FlightComputer.TimeBurn so tests can check it."
+      ]
+    },
+    {
+      "rev": 5549,
+      "date": "2026-10-04",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Changed the TVC controller from LQR to LQI. This introduces an integral term which can remove steady-state error that the LQR (effectively a PD controller) cannot.",
+        "Added required methods to double3x3 due to the increased dimensionality of the plant model and controller.",
+        "Added integral values to the flight computer debug menu."
+      ]
+    },
+    {
+      "rev": 5550,
+      "date": "2026-10-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Removed the 10 Hz limit on TVC attitude control. Instead, we geometrically increase the allowable timestep based on the current attitude errors and re-solve TVC gains for that new timestep. This allows continuous stable control of attitude even at extreme interstellar levels of time compression and over burns lasting months.",
+        "Removed attitude control timestep diagnostics and associated fields."
+      ]
+    },
+    {
+      "rev": 5551,
+      "date": "2026-10-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Control the growth of the TVC controller quantity authority * dt^2 rather than dt itself."
+      ]
+    },
+    {
+      "rev": 5552,
+      "date": "2026-10-05",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Generate feedforward gains for the same control rate as the feedback gains."
+      ]
+    },
+    {
+      "rev": 5553,
+      "date": "2026-10-06",
+      "author": "lghassen",
+      "lines": [
+        "Tweak plume trail self shadowing to improve detail",
+        "Fix issue with plume trail emission being inaccurate and",
+        "jumping/stretching back and forth when emitter is moving in a perfect",
+        "straight line",
+        "Increase wind effect on plume trails to accentuate older sections"
+      ]
+    }
+  ]
+}
