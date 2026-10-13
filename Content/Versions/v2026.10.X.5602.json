@@ -1,0 +1,458 @@
+{
+  "build": "2026.10.13.5602",
+  "date": "2026-10-13",
+  "fromRevision": 5554,
+  "toRevision": 5602,
+  "commits": [
+    {
+      "rev": 5555,
+      "date": "2026-10-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed symmetry groups surviving a decouple or undock so deploying a part on one separated vessel deployed its old mirrors on the others too.",
+        "Fixed deploy/retract copying to mirrored parts without checking the mirror's own state first.",
+        "Added unit tests for symmetry groups splitting across vessels."
+      ]
+    },
+    {
+      "rev": 5556,
+      "date": "2026-10-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a long burn being deleted when the vessel changed SOI part way through it.",
+        "Fixed the flight computer continuing to fly a burn after it had been removed from the burn plan.",
+        "Added unit tests for keeping a burn that is still being flown after its node has passed."
+      ]
+    },
+    {
+      "rev": 5557,
+      "date": "2026-10-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed sun tracking solar panels slowing time warp to a crawl during long burns. A tracking panel now only moves its parts once the sun angle has actually changed.",
+        "Added unit tests for solar panel tracking updates."
+      ]
+    },
+    {
+      "rev": 5558,
+      "date": "2026-10-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed particles drifting away across the ground after the vehicle that spawned them was destroyed. A destroyed vehicle's emitters are now handed over to the body it was orbiting.",
+        "Added unit tests for handing particle emitters over when a vehicle is destroyed."
+      ]
+    },
+    {
+      "rev": 5559,
+      "date": "2026-10-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed EVA kittens surviving a fall from high altitude when time warp was on. Kittens now die if they hit the ground or water faster than 20 m/s.",
+        "Added unit tests for kitten impact speed."
+      ]
+    },
+    {
+      "rev": 5560,
+      "date": "2026-10-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Refactored and improved the explosion implementation, which now follows the same structure as the plume trails.",
+        "Added quality settings for the explosions.",
+        "Added a maximum explosion instances quality setting.",
+        "Explosions now have a color spectrum rather than being a uniform color, burning hottest in the core and cooling down faster at the edge of the explosion.",
+        "Explosions are now made up of a core explosion and several lobes that move around the edge of the core explosion. This breaks up the silhouette of the explosion as well as helping with the movement of the explosion.",
+        "The fireball and its smoke are now a single volume, so that the smoke maintains the same shape as the explosion.",
+        "Explosions now light up their own smoke and nearby plume trails, and cast a point light onto their surroundings.",
+        "Explosions that spawn inside an existing fireball merge into it rather than stacking up. This may need to be tweaked goign forwards.",
+        "Added global explosion look settings (brightness, contrast, saturation).",
+        "Removed the volumetric shockwave from the explosions."
+      ]
+    },
+    {
+      "rev": 5561,
+      "date": "2026-10-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed Vaccum specific explosion. Previously there were 2 explosion assets, one for within the atmosphere and one for outside the atmosphere. There is now only a single explosion asset that changes its parameters based on where it is spawned rather than requiring 2 explosions to be adjusted and maintained together."
+      ]
+    },
+    {
+      "rev": 5562,
+      "date": "2026-10-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed explosions in space not having correct velocity relative to the vehicle it spawned off."
+      ]
+    },
+    {
+      "rev": 5563,
+      "date": "2026-10-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reduced explosions vaccum expansion rate from 3 down to 1. Previously explosions were expanding larger in space. This will need to be reviewed however for now a keeping the same expansion size as when in atmosphere is fine."
+      ]
+    },
+    {
+      "rev": 5564,
+      "date": "2026-10-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Removed verbose comments in ExplosionAssets.xml."
+      ]
+    },
+    {
+      "rev": 5565,
+      "date": "2026-10-07",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Unified explosion lobes with the core explosion, previously there were individual noise controls for the explosion lobes independent of the core explosion volume. Now they run using the same values so that explosion lobes merge into the explosion much better."
+      ]
+    },
+    {
+      "rev": 5566,
+      "date": "2026-10-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a finite burn predictor that flies a planned burn over time from ignition to cutoff including engine staging, the path at any moment of the burn, sphere of influence crossings and stopping at a set speed.",
+        "Added unit tests for the finite burn predictor."
+      ]
+    },
+    {
+      "rev": 5567,
+      "date": "2026-10-07",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added burns flown over time to flight plans. The path from ignition to cutoff is drawn in its own colour with Ignition and Cutoff markers and the orbit after it starts at cutoff.",
+        "Added a Burn Path Color setting to the interface settings.",
+        "Changed burns to carry on across sphere of influence boundaries part way through and to end the flight plan if the burn hits the ground.",
+        "Fixed orbit hover readouts, target closest approaches and escape, encounter and impact markers using the orbit after a burn while the burn was still going.",
+        "Added unit tests for burns flown over time in the flight plan, their positions during the burn, sphere of influence crossings and impacts during a burn."
+      ]
+    },
+    {
+      "rev": 5568,
+      "date": "2026-10-08",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "The vehicles interior now renders in the kitten cams when the kittens are inside a vehicle.",
+        "Viewports now have a flag to determine if they should try to render the inside of vehicles or not."
+      ]
+    },
+    {
+      "rev": 5569,
+      "date": "2026-10-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the flight computer to light a burn where the flight plan shows it lighting, timed for the throttle it will fly the burn at.",
+        "Changed a manual burn with no planned throttle to be timed at full throttle instead of at the current throttle setting.",
+        "Fixed a burn reloaded part way through lighting late, or being stopped until its original start came round again.",
+        "Added unit tests for the flight computer flying a burn as planned and keeping its planned start across a save and reload."
+      ]
+    },
+    {
+      "rev": 5570,
+      "date": "2026-10-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added burns that carry on with the next stage when one runs dry. The flight plan flies a burn across every stage it needs and marks each staging along the burn path.",
+        "Added burns planned before any engine is lit using the next stage to fire.",
+        "Changed an auto burn whose stage runs dry to stop time warp and stay loaded with a screen warning for the player to stage and turn Auto back on, instead of being deleted when another burn followed it.",
+        "Added unit tests for staged burns, the stages read from the sequence list, and a burn kept loaded when its stage runs dry."
+      ]
+    },
+    {
+      "rev": 5571,
+      "date": "2026-10-08",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Improved how explosions blend when they intersect. Previously the intersection had streaks and banding artifacts.",
+        "Fixed banding visible on explosions due to the raymarch step trying to increase when behind a visible surface of an explosion. This may need to be reviewed in the future.",
+        "Fixed explosions popping out of existence when spawned next to another explosion.",
+        "Fixed explosions rendering inside of one another, previously some assumptions were made when multiple explosions overlapped, however this would result in an internal explosion appearing very smooth when inside a seperate fading explosion."
+      ]
+    },
+    {
+      "rev": 5572,
+      "date": "2026-10-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Circularize, Match Target Plane and transfer planner burns being adjusted so the burn flown over time reaches the orbit, plane or arrival the planner aimed for.",
+        "Changed Match Target Plane to move the burn slightly when needed so it ends on the target plane.",
+        "Added the transfer planner's preview show the selected transfer as it will be flown, with the burn's path and its Ignition, Staging and Cutoff markers. Create makes exactly the burn previewed.",
+        "Fixed Create on a circularize plan aiming its burn at a point part way through the burn.",
+        "Added unit tests for refining burns to a circular orbit, a target plane, an exit speed and an arrival."
+      ]
+    },
+    {
+      "rev": 5573,
+      "date": "2026-10-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed interstellar burns being predicted on the stage fuel numbers which ignore the scoops, so the speed-up burn ran dry a third of the way through and the path missed the destination.",
+        "Fixed the slow-down burn's predicted path running for its whole planned time and turning the ship round. It now stops at its final speed, as the flight computer does.",
+        "Changed the interstellar transfer preview to show the speed-up and slow-down burns as they will be flown, instead of half the burn on the current orbit followed by an instant turn.",
+        "Added unit tests for flying interstellar burns on the antimatter drive and stopping the slow-down burn at its final speed."
+      ]
+    },
+    {
+      "rev": 5574,
+      "date": "2026-10-08",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the burn path integrator allocating memory on every step. Its coefficient tables were span literals, now they are arrays."
+      ]
+    },
+    {
+      "rev": 5575,
+      "date": "2026-10-07",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Proactively update engine/thruster info when the control point changes."
+      ]
+    },
+    {
+      "rev": 5576,
+      "date": "2026-10-08",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed floating ground clutter when the starting situation begins on a planet, caused by the height map not finishing streaming in by the time clutter is generated."
+      ]
+    },
+    {
+      "rev": 5577,
+      "date": "2026-10-09",
+      "author": "Hanan Finnerty",
+      "lines": [
+        "Fixed and updated GT7 tonemapper"
+      ]
+    },
+    {
+      "rev": 5578,
+      "date": "2026-10-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the path into another star after the speed-up burn being drawn as a whole hyperbola back out through the star it left. A path cut short by a burn now ends at the burn.",
+        "Fixed the stretch before the next burn being coloured using the wrong patch's angles when that burn falls on a later patch of the plan."
+      ]
+    },
+    {
+      "rev": 5579,
+      "date": "2026-10-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a slow-down burn to a low final speed overshooting it and turning the ship round. The burn passed through the final speed between two checks, so it now reads the speed along the way the ship was going, which only drops."
+      ]
+    },
+    {
+      "rev": 5580,
+      "date": "2026-10-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the interstellar slow-down burn stopping far short of the destination's periapsis. It was lit one burn's worth of coasting before periapsis but a ship slowing down covers less ground than that, so it now lights its braking distance before periapsis."
+      ]
+    },
+    {
+      "rev": 5581,
+      "date": "2026-10-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the interstellar slow-down burn being timed for the instant speed-up burn's arrival. The speed-up burn flown over time arrives later so the slow-down burn is now timed on the flown path, and CREATE and the slow-down readouts use that timing.",
+        "Fixed the interstellar slow-down burn raising a low final speed to the circular speed at periapsis. The final speed you set is now kept and is only raised if the orbit after the burn would fall into the star.",
+        "Fixed CIRCULAR SPEED AT PERIAPSIS in the Transfer Planner showing the speed for the 1 AU the planner aims for, not the periapsis the selected plan actually reaches.",
+        "Fixed interstellar arrivals missing the target periapsis by several AU. The speed-up burn lights well before its midpoint, when the orbit has the ship heading slightly differently, so the burn is now aimed on its own flight, and CREATE makes the burn the preview shows.\\"
+      ]
+    },
+    {
+      "rev": 5582,
+      "date": "2026-10-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the interstellar slow-down burn ending well before periapsis and still heading in towards the star, e.g. 0.29 AU short and 16° inbound at Barnard's Sar, which left an eccentric orbit instead of the one planned. The burn flown over time covers a little more or less ground than estimated, so it is now timed on its own flight and ends level with periapsis.",
+        "Fixed hydrogen scooped while coasting being counted again each time a burn was planned, which made the planned burn stronger than the one actually flown.",
+        "Fixed the slow-down burn re-planned after a speed-up burn runs out of propellant not ending at periapsis. It is now timed on its own flight the same way."
+      ]
+    },
+    {
+      "rev": 5583,
+      "date": "2026-10-09",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Added specular anti-aliasing. Unlike most anti-aliasing techniques specular AA is applied inside of the fragment shader to try to reduce aliasing before it happens. The core of the effect is reducing specularity around the edge of meshes to combat against mipped textures decreasing the roughness at certain viewing angles."
+      ]
+    },
+    {
+      "rev": 5584,
+      "date": "2026-10-09",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed binding BVH resources at descriptor set 2 instead of descriptor set 3. This fixes ground clutter on hardware that doesn't support ray queries.",
+        "Fixed updating descriptor sets for ground clutter outside the pinned acceleration structure handle.",
+        "Removed unused sampler created when setting up ground clutter.",
+        "Fixed missing ground clutter buffer names.",
+        "Reduced the size of the ground clutter descriptor pool as it was oversized."
+      ]
+    },
+    {
+      "rev": 5585,
+      "date": "2026-10-09",
+      "author": "lghassen",
+      "lines": [
+        "Add long distance shadow cascades to the plume trails. This is implemented using moment shadowmaps which can encode the volumetric shape of the shadows in a compact representation, the shadows themselves are rendered using an analytic approximation rather than full raymarching for performance. Cascade updates are staggered for performance, and a blend is used to hide updates, the nearest cascade is always rendered every frame. Performance is good currently but some minor issues remain when the plume is diffusing to disappear. This feature can be disabled from the graphics settings.",
+        "Apply plume trail shadows on clouds, atmospheric godrays and terrain/objects",
+        "Pass extra image create flags to render image. The plume shadow cascades require MutableFormatBit for their half precision float views",
+        "Allow plume trails to expand futher for more prominent shadows and anticrepuscular rays on the atmosphere, matching what can be seen in some real launches"
+      ]
+    },
+    {
+      "rev": 5586,
+      "date": "2026-10-09",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Upgraded TVC control to proactively point thrust through the center of mass rather than using feedback control to correct for it. This should greatly improve control when engines are out of balance.",
+        "Upgraded guidance to fly the vehicle's net thrust vector rather than the body forward direction in powered flight. This should greatly improve burn accuracy when engines are out of balance.",
+        "The control frame (CTRL) is now a metaframe that is either the new HELM frame (either the same as BODY, or wherever the player has chosen \"control from here\") or the new TNM frame (Thrust Null-Moment, the neutral thrust frame) depending on context."
+      ]
+    },
+    {
+      "rev": 5587,
+      "date": "2026-10-12",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Merged Profiler UI behaviours into static class libraries.",
+        "Changed each profiler UI was copying frame data into ito its own buffers every frame, we now consume the data directly from the IProfilerSource and use stack allocated spans for any data analysis (averaging etc).",
+        "Changed JobRunnerProfiler to be an IProfilerSource, it had some un-necessarily duplicate behaviour."
+      ]
+    },
+    {
+      "rev": 5588,
+      "date": "2026-10-12",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Various Vulkan compatability checks and Validation fixes"
+      ]
+    },
+    {
+      "rev": 5589,
+      "date": "2026-10-12",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Removed accidental file commit."
+      ]
+    },
+    {
+      "rev": 5590,
+      "date": "2026-10-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed loading a save made during an auto burn dropping the burn and loading the next one in its place, e.g. an interstellar speed-up burn under way was deleted on load and the slow-down burn decades later was loaded instead, with the engine off and the flight computer back in manual.",
+        "The engines have not been updated yet when the flight computer first runs after a load so they all read as out of propellant and the burn was ended. That check now waits until the engines have been updated.",
+        "Fixed the game freezing when time warp was raised during a burn, e.g. at the highest warp during an interstellar burn a single frame never finished.",
+        "The simulation speed only slowed down after a frame had already run slow, so the first frame at the new warp tried to simulate years in one go.",
+        "How far one frame can simulate now grows at most twofold a frame and is limited to what the last frame showed fits in the frame time."
+      ]
+    },
+    {
+      "rev": 5591,
+      "date": "2026-10-12",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed locations of interest were being drawn in an opaque ui box. They are now plain text."
+      ]
+    },
+    {
+      "rev": 5592,
+      "date": "2026-10-08",
+      "author": "JoshRW",
+      "lines": [
+        "Disabled stretched black cloud shadows on the planet terrain in secondary viewports. The cloud shadows' world to cloud transform is only written for the main camera, so secondary viewports sampled the cloud coverage at an offset. Secondary viewport terrain now has no cloud shadows, along with the cascaded and sun shadows, while PlanetRenderer.ViewportShadows is off.",
+        "Fixed the stars showing through the terrain locations that are normally covered by ocean in secondary viewports. The ocean early exit in the terrain culling is now skipped in secondary viewports, since the ocean isn't drawn there.",
+        "Temp fix for black square appearing on Earth in viewports. This was coming from the terrain in secondary viewports using the main camera's shadow cascades and sun shadow map. Secondary viewport terrain is now unshadowed.",
+        "Added an unshadowed sun shadow map descriptor set, which makes the shaders skip the shadow map and treat everything as lit.",
+        "Added temporary PlanetRenderer.ViewportOceanCull and PlanetRenderer.ViewportShadows flags to turn these features back on in secondary viewports. These will be removed once the ocean, shadows, and clouds have been properly ported to multi-viewports."
+      ]
+    },
+    {
+      "rev": 5593,
+      "date": "2026-10-11",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Updated the navball crosshair to be more of a traditional attitude indicator piper with a bowl and dot.",
+        "The bowl and dot follow the thrust axis while the crosshair follows the control axis, serving as a visual indicator of any off-center thrust."
+      ]
+    },
+    {
+      "rev": 5594,
+      "date": "2026-10-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the fuel port's placeholder model to the FuelLineSocket and FuelLineConnector meshes.",
+        "Changed fuel ports to sit part-way into the tank they are attached to via a new surface-mount connector.",
+        "Added a swivelling fuel line connector that turns to follow the hose, limited to 15 degrees to limit clipping into the socket.",
+        "Changed fuel lines to plug into the connector's nozzle and follow it as it swivels, rather than starting at the port's centre.",
+        "Changed fuel lines to leave the nozzle straight for 0.15 m before bending (ConnectorLeadOut).",
+        "Changed the fuel line hose to use the FuelLineHose texture, swept as one continuous tube so bends no longer show gaps.",
+        "Added a texture-atlas patch option to spline tubes, so a tube can wear one mesh's region of a shared material.",
+        "Fixed clicking a fuel line to add a bend node putting the node in the wrong position once the hose has lead-out points.",
+        "Reduced the maximum bend nodes per fuel line from 62 to 60 to make room for the connector lead-out points."
+      ]
+    },
+    {
+      "rev": 5595,
+      "date": "2026-10-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed particles from a vehicle destroyed while orbiting a star or barycenter to be removed instead of handed over. Particles from a vehicle orbiting a planet or moon are still handed over to that body."
+      ]
+    },
+    {
+      "rev": 5596,
+      "date": "2026-10-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Moved the fuel line connector out from the fuel port socket so its ball sits on the socket rim and is visible.",
+        "Increased the fuel line connector's swivel limit from 15 to 60 degrees."
+      ]
+    },
+    {
+      "rev": 5597,
+      "date": "2026-10-13",
+      "author": "Rocket",
+      "lines": [
+        "Added a distance column to star binary import. The manifest's new [distance] table names the column and whether it holds a parallax in milliarcseconds or a distance in parsecs. Stars with zero, negative, or non-numeric values are kept as unknown distance.",
+        "Changed the star binary format. The header now carries the manifest's brightness.magnitudeScale after the star count, and each star record ends with its inverse distance in parsecs, 0 meaning unknown. Old binaries will not load and must be regenerated.",
+        "Fixed star directions being generated in an equatorial frame with the Y and Z axes swapped, which put the celestial pole in the ecliptic plane. The generator now writes ecliptic J2000 directions, matching the world frame and the Milky Way band.",
+        "Changed the star instance to hold a unit direction and inverse distance instead of a baked sky position. The vertex shader applies the sky radius.",
+        "Added parallax to the star sky. The Camera uniform block carries the observer's offset from Sol in parsecs, taken from the camera's ecliptic position each frame, and the star shader shifts each star by observer times inverse distance. Stars with unknown distance never move.",
+        "Added distance-dependent star brightness. The shader rescales each sprite by its new distance over its Sol distance, raised to minus five times the import magnitude scale, clamped to the existing maximum. A star the observer has arrived at is dropped so it does not draw over the real stellar body.",
+        "Added a 'starobserver' console command that overrides the observer offset in parsecs for testing, cleared by calling it with no arguments.",
+        "Regenerated hip_main.bin from the Hipparcos catalogue with the new format and the sample manifest updated to match. This replaces Brian's good one for now, so it's a little boring. Will update this with a better one when ready."
+      ]
+    },
+    {
+      "rev": 5598,
+      "date": "2026-10-13",
+      "author": "Rocket",
+      "lines": [
+        "Added sky star masking. After a system loads, every catalogue star inside a sphere around each of its stellar bodies is dropped from the star instance buffer, so no sprite draws beside a real StellarBody as parallax moves it. The loaded binaries are kept in a master array and the drawn set is rebuilt from it on each system load, so switching systems restores masked stars.",
+        "Changed the mask radius to default to 2% of the star's distance from Sol rather than its orbital extent. Catalogue parallax error is roughly a fifth of a percent of distance and dwarfs any planetary system, so an orbital-extent sphere misses the catalogue entry (Alpha Centauri's sits 1.2% off). A new optional <StarMaskRadius> on the stellar body template overrides the default per star.",
+        "Added a 'starmask' console command that lists the catalogue stars hidden by each star of the loaded system with their angular separation and distance ratio, for checking how well the XML positions line up with the catalogue.",
+        "Changed the star binary loader to fill the technique's master array instead of the viewport instances directly.",
+        "Added unit tests, after a series of 'incidents', for the mask filter: inside, just outside, unknown distance, overlapping masks and the empty set.",
+        "Repurposed the Dense system as 'Interstellar (Dense)', a scale-check system holding every star within Tau Ceti's distance that the sky catalogue draws, so sprite masking and interstellar scale can be checked against the full asteroid and comet population. It now loads Alpha Centauri, Barnard's Star and Tau Ceti as well, and carries the interstellar gas setting. I've left the other Interstellar systems unchanged for now.",
+        "Added Lalande 21185, Sirius, Epsilon Eridani, Lacaille 9352, 61 Cygni, Procyon and Epsilon Indi to the interstellar library at their Gaia DR3 or Hipparcos-2 positions, with published masses, radii and colors. Sirius, Procyon and 61 Cygni are barycenter pairs on their measured relative orbits, including the Sirius and Procyon white dwarfs. I am not an astronomer so this will need to be checked with an adult.",
+        "Added placeholder planets for those systems from published data: Lalande 21185 b, c and candidate d, Epsilon Eridani b, Lacaille 9352 b, c, d and e, and Epsilon Indi Ab. Masses are minimum masses, radii are estimated from them, inclinations and nodes are zeroed like the existing interstellar planets, and the gas giants are untextured MinorBodies. Epsilon Indi's brown dwarf pair is left out because I could find no orbit solution about A and I don't think for us a barycenter can orbit a star but I will check with jamie."
+      ]
+    },
+    {
+      "rev": 5599,
+      "date": "2026-10-13",
+      "author": "Rocket",
+      "lines": [
+        "Added a hardcoded sprite scale cap to the star binary loader. Any star asking for a scale byte above 128 is clamped on load, and a warning per binary says how many were. The cap sits just above Sirius in the Hipparcos import (121), so hip_main.bin is unaffected and only overcooked imports lose their largest sprites. This is added because the shader isn't constructed to handle sprites that are this large.",
+        "Added stars_20byte.bin, a community-made star binary built by Briar Thrain from in our community who provided us an excellent binary before. They have provided a lot of advice and help about how to approach these binaries, as well as making many excellent mods. I believe they used the AT-HYG catalogue (Tycho-2, Gaia DR3 and HYG) which provides an excellent result. It carries Gaia-quality distances for parallax and picks up neighbours Hipparcos lacked, such as Groombridge 34. Together with this I switched the Core mod to it in place of hip_main.bin.",
+        "Recooked the binary's header magnitude scale from 1.0 to 0.15. The header value drives the parallax brightness exponent and has to match how the sprite sizes fall off with magnitude, which a fit over 29 named stars put at 0.15. At 1.0 a star approached to half its Sol distance drew 32 times larger; it now draws about 1.7 times larger, in line with the Hipparcos import.",
+        "Clamped the binary's six sprites above scale 128 (Sirius was 239) so the file is clean regardless of the loader cap."
+      ]
+    }
+  ]
+}
