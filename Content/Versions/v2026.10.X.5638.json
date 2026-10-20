@@ -1,0 +1,346 @@
+{
+  "build": "2026.10.19.5638",
+  "date": "2026-10-20",
+  "fromRevision": 5602,
+  "toRevision": 5638,
+  "commits": [
+    {
+      "rev": 5603,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed kitten distance travelled and fastest speed being measured relative to the sun. They are now relative to the body the vehicle is orbiting, or to the ground while landed."
+      ]
+    },
+    {
+      "rev": 5604,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the staging window and HUD delta-v pointing at the next sequence after loading a save.",
+        "Added a unit test that restores the active sequence before any sequences are found, which reproduces the bug."
+      ]
+    },
+    {
+      "rev": 5605,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the Manifest window's distance and speed columns measuring from the camera in map view. They are now relative to the controlled vehicle, falling back to whatever the camera follows when nothing is controlled."
+      ]
+    },
+    {
+      "rev": 5606,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Improved time warp speed with many vehicles in orbit. Checking whether two physics bubbles should merge looked up each bubble's on-rails orbit again for every pair, repeating a walk over its engines and flight computer tens of thousands of times a tick."
+      ]
+    },
+    {
+      "rev": 5607,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash when a kitten boards a vehicle that has the kitten as its target."
+      ]
+    },
+    {
+      "rev": 5608,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the galactic plane tests failing after the Core mod's star binary was swapped to stars_20byte.bin. The tests now read the binary named in the Core mod's manifest instead of a hardcoded file, and read the current format with its magnitude scale header and per-star inverse distance."
+      ]
+    },
+    {
+      "rev": 5609,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the ground track not matching the map view or the vehicle's actual path. It walked the orbit's cached line points as one full ellipse from periapsis.",
+        "It only drew the current orbit, ignoring planned burns. The ground track is now sampled in time along the same flight plans the map draws, following each planned burn's plan from its ignition and the burn's predicted path while the engine runs.",
+        "Added an ignition marker to the ground track at each planned burn, with a countdown, so the coast before the burn and the trajectory after it can be told apart."
+      ]
+    },
+    {
+      "rev": 5610,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a craft carrying a kitten in a cargo bay exploding under thrust. With the kitten in contact the craft is stepped by the contact solver, which measures g-load against the velocities at the start of each step.",
+        "When thrust carried the craft more than 2 km from the bubble origin, the origin was re-centred mid-step, shifting every body's velocity, and that shift was read as thousands of g.",
+        "The step's starting velocities now move with the origin, so re-centring is no longer measured as a load."
+      ]
+    },
+    {
+      "rev": 5611,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a vehicle's orbit slowly rising with no thrust. A sun-tracking solar panel's angle kept growing with every orbit it tracked and once retracted it unwound to the nearest whole turn but waited for an angle of exactly zero, so it never finished retracting.",
+        "The panel kept the craft off rails indefinitely where its orbit drifted and time warp slowed. The tracking angle is now kept within one turn and panels from existing saves finish retracting."
+      ]
+    },
+    {
+      "rev": 5612,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed \"Applying surface motion to a single vehicle in a non-CCF frame\" errors flooding the screen with debris on the surface. A physics bubble that split off another or was created for a vehicle on load, kept the frame it started with and a lone landed or floating vehicle was never moved to the planet-fixed frame, so it logged errors every step indefinitely. The bubble now switches to the planet-fixed frame before moving a vehicle along the surface."
+      ]
+    },
+    {
+      "rev": 5613,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the skygrid overlay drawing over the console and other windows. It drew on the layer above every window, and now draws on the same layer as orbits so windows cover it."
+      ]
+    },
+    {
+      "rev": 5614,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash opening Crew Assignment in the editor or launch window. A seat whose kitten was recorded against a different vehicle name left that kitten out of the seat's own list and the dropdown's fallback to its first entry never applied to struct options so it read an empty option and crashed.",
+        "The fallback now works for every option type, and a seat always lists the kitten sitting in it."
+      ]
+    },
+    {
+      "rev": 5615,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash when a planned burn's +1 orbit button was pressed while the burn sat on an escape or hyperbolic path. That path has no orbital period so stepping the burn time by one orbit produced NaN. The period buttons are now disabled when there is no period.",
+        "Fixed dragging a HUD panel pressing the buttons the cursor crossed. A button held under the cursor counted as pressed even when the press began elsewhere so a drag over a repeating button fired it and a drag ending over a button activated it. Buttons now act only when pressed on themselves."
+      ]
+    },
+    {
+      "rev": 5616,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash in the vehicle editor when attaching a part that has symmetry copies onto a symmetric part. Each copy's parent was looked up in the target's symmetry group and a copy mounted outside that group (or not mounted at all) produced a negative index. Such copies are now skipped."
+      ]
+    },
+    {
+      "rev": 5617,
+      "date": "2026-10-14",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Bending a fuel hose in the editor now bends its symmetry copies to match. Adding, moving or deleting a bend node on a hose placed under symmetry applies the same change to every copy, rotated to match it."
+      ]
+    },
+    {
+      "rev": 5618,
+      "date": "2026-10-15",
+      "author": "Chris",
+      "lines": [
+        "Update to latest Brutal packages"
+      ]
+    },
+    {
+      "rev": 5619,
+      "date": "2026-10-15",
+      "author": "CHRocketwerkz",
+      "lines": [
+        "Minor tweaks, warning fixes, profiler tweaks"
+      ]
+    },
+    {
+      "rev": 5620,
+      "date": "2026-10-15",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the Transfer Planner's Interstellar plan to let you set a target periapsis at the destination star again. The speed-up burn is aimed so that it arrives at that periapsis, and the slow-down burn ends there.",
+        "Changed the Transfer Planner's Interstellar destinations to list each star rather than a multiple system's barycenter, so Alpha Centauri A, B and Proxima can each be chosen. A star of a multiple system is aimed at where it will be on arrival, and the target periapsis is limited to half the star's sphere of influence.",
+        "Fixed Interstellar plans to Alpha Centauri A or B failing at 0.05 c and faster. The unaimed path passed several AU wide of the star's small sphere of influence, so there was nothing to correct the aim from. The aim is now corrected from how closely the path passes the star until it enters that sphere of influence."
+      ]
+    },
+    {
+      "rev": 5621,
+      "date": "2026-10-15",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed Neptune to load from the shared body library in every Sol system, rather than each system keeping its own copy."
+      ]
+    },
+    {
+      "rev": 5622,
+      "date": "2026-10-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed KSA on Linux to start on X11 by default, using XWayland on a Wayland desktop, so detached windows work without any launch option.",
+        "If X11 can't start, such as on a Wayland desktop without XWayland, it falls back to the platform GLFW would have chosen.",
+        "Added the -wayland launch option to run on native Wayland instead. Detached windows are still turned off there, because Wayland can't position windows. -force-x11 is still accepted but no longer needed.",
+        "Changed the KSA launch profile for devs to no longer pass -force-x11, and added a \"KSA (Wayland)\" profile that passes -wayland."
+      ]
+    },
+    {
+      "rev": 5623,
+      "date": "2026-10-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added radiation. A vehicle's dose rate now comes from the radiation belts of magnetised planets, from its star's particle wind, and from cosmic rays.",
+        "A new Radiation gauge shows the current dose in mSv/h and the average over the current orbit.",
+        "Added magnetospheres to Mercury, Earth, Jupiter, Saturn, Uranus and Neptune. Each one has its magnetic pole position, field strength and belts.",
+        "The solar wind pushes the field in on the day side so how far it reaches depends on the star's wind and the planet's distance. Belt strengths are approximate placeholders.",
+        "Added space weather to stars: a quiet particle dose and a wind pressure at 1 AU, both weakening with distance. The Sun uses roughly real values, and the other stars have placeholder guesses. Eventually we want to implement solar weather here so that it fluctuates with solar events."
+      ]
+    },
+    {
+      "rev": 5624,
+      "date": "2026-10-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a Magnetospheres option to the Map View window, turned off by default. It draws each magnetised planet's radiation belts as a shaded volume with dose contours along with its closed field lines, tail, magnetopause and bow shock. All of these are shaped by the star's wind."
+      ]
+    },
+    {
+      "rev": 5625,
+      "date": "2026-10-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added aurora to Earth. Glowing ovals around each magnetic pole, between 90 and 400 km, visible from the ground and from orbit including over the cloud tops. They can be turned off with a new Aurora settings option under Graphics - Volumetrics."
+      ]
+    },
+    {
+      "rev": 5626,
+      "date": "2026-10-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the Map View window to the new console style. This somehow got missed."
+      ]
+    },
+    {
+      "rev": 5627,
+      "date": "2026-10-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "● ~* Changed aurora to show in debug builds only, along with its Aurora option under Graphics - Volumetrics, until its shaders have been reworked.",
+        "Fixed speckled noise in the aurora when viewed from inside the aurora layer or from a distance."
+      ]
+    },
+    {
+      "rev": 5628,
+      "date": "2026-10-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed aurora to look more like reference data. arcs fold into curls and ribbons with bright patches that come and go. Rays are narrower and carry the green higher with red tops and the red now fades out by 600 km instead of ending at a hard edge at 400 km.",
+        "Added airglow. A thin green and orange line along the night-side horizon at about 90-100 km seen from orbit with the aurora rising out of it.",
+        "Fixed aurora being cut off below the horizon when viewed from orbit the height of its colour bands changing as the camera passed 250 km and distant aurora being lower quality than close up."
+      ]
+    },
+    {
+      "rev": 5629,
+      "date": "2026-10-16",
+      "author": "GitHub",
+      "lines": [
+        "Ground Clutter in Multiple Viewports",
+        "Added initial ground clutter rendering into multiple viewports. Currently culling and LOD fading is shared with the main camera for the initial implementation.",
+        "Changed PrepareInstances from outputting pure ego positions to ego rotation/scale and a translation relative to the clutter cell anchor. This means multiple viewports can share the same instance data.",
+        "Fixed LOD fade data shared between viewports. Each viewport gets its own block now.",
+        "Fixed ground clutter culling data shared between viewports.",
+        "Moved mesh geometry buffers into their own descriptor sets and built the sets once when the planet renderer starts up.",
+        "Avoided rebinding the mesh geometry descriptor write at runtime in favour of just binding the relevant set for the cubemesh LOD we want to render.",
+        "Added initial ground clutter generation to multiple viewports. Secondary viewports can now request ground clutter generation. The desired chunks of clutter are filtered before generation to prevent a viewport from re-generating a chunk that already exists. Ecotypes that don't have collisions (snap-to-mesh) don't use shared residency because they depend on the spherical billboarded mesh which is different per-viewport.",
+        "Sized ground clutter buffers for the max number of viewports, bringing the VRAM for trees up from ~130 to 1200Mb. This needs to be reduced.",
+        "Added additional profiler markers around ground clutter preparation.",
+        "Reorganized ground clutter generation when multiple viewports are open, so the terrain mesh doesn't need building twice (once for terrain, once for ground clutter) per viewport. Terrain is now built once per viewport again.",
+        "Decoupled ground clutter generation checks from the main viewport's celestial.",
+        "Reduced iteration count when checking if ground clutter ecotypes are valid for processing.",
+        "Split ground clutter matrices updates into a per-viewport update and a per-planet update, so the ground clutter main update no longer depends on viewport.",
+        "Issued fewer FillBuffer calls for ground clutter instead of one per cell when unloading.",
+        "Skipped ground clutter unloading if buffer IDs were recycled, since the GPU overwrites the instance count for a cell.",
+        "Readded skipping ground clutter work when a viewport is outside an ecotype's render distance or there are no loaded cells.",
+        "Replaced expensive GetEffectiveNearbyCelestial calls in the ground clutter renderer with the cached celestial per viewport.",
+        "Significantly optimized ground clutter VRAM usage. For 8 viewports, Earth's clutter VRAM usage has dropped from 1800Mb to 300Mb. Before these changes, Earth used 240Mb for a single viewport, meaning supporting 8 viewports all generating and rendering ground clutter only costs 60Mb more!",
+        "Removed directions and height-and-gradients buffers from the ecotype and onto the ground clutter renderer as scratch buffers. Previously these were sized for the entire ecotype's kernel when they're just used as intermediates.",
+        "Split ground clutter generation up into batches of 256 chunks at one time. All chunks are still submitted in a frame, but this means the scratch buffers can be sized for a batch rather than the entire kernel.",
+        "Compacted ground clutter object data size from 64 bytes per instance to 32 bytes per instance.",
+        "Removed redundant PrepareInstances pass for static clutter. It existed to transform the CCF instance data to EGO and build the final transforms, but it turns out doing this in the vertex shader and avoiding the EGO buffer intermediate is just as fast - Some of the new arithmetic is probably hidden by other memory fetches.",
+        "Fixed LOD fade buffer being sized for all viewports, for each viewport (scaling with number of viewports squared). It's now sized for 1 viewport's kernel.",
+        "Renamed MaterialIdsBuffer to GroundClutterMaterialBuffer.",
+        "Fixed secondary viewports not releasing their ground clutter cells when closed.",
+        "Fixed secondary viewports' ground clutter range check not working because their altitude above terrain is always 0."
+      ]
+    },
+    {
+      "rev": 5630,
+      "date": "2026-10-18",
+      "author": "Rocket",
+      "lines": [
+        "Changed the release build to compile with full compiler optimisations. Every build shipped until now ran without them, so the game was doing more CPU work than it needed to everywhere. Expect higher and steadier frame rates, fewer stutters in busy scenes, and shorter loading times. The gain is largest where the CPU was the limit, such as big vessels, dense maps and timewarp, and smallest where the GPU already was."
+      ]
+    },
+    {
+      "rev": 5631,
+      "date": "2026-10-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed launching a saved vessel from the Launch window leaving its automatically assigned tanks empty.",
+        "Vessels saved with empty auto tanks now launch with them filled for their engines, as the editor already did, and the Launch window's preview shows that fuel.",
+        "Fixed loading a saved vessel into the editor emptying its automatically assigned tanks.",
+        "Added unit tests for assigning tanks on a freshly loaded vessel."
+      ]
+    },
+    {
+      "rev": 5632,
+      "date": "2026-10-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the game crashing when loading a saved vehicle that uses parts which have since been removed or changed. The vehicle is now refused with a message naming the missing parts.",
+        "Added unit tests for finding removed parts in a saved vehicle."
+      ]
+    },
+    {
+      "rev": 5633,
+      "date": "2026-10-19",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the game crashing when loading a save containing a vehicle that uses parts which have since been removed or changed. The vehicle is left out with a message naming the missing parts, its crew are returned to the roster, and the camera moves to another vehicle."
+      ]
+    },
+    {
+      "rev": 5634,
+      "date": "2026-10-19",
+      "author": "Linx-RW",
+      "lines": [
+        "Disabled ground clutter shadow sampling in secondary viewports, since shadowmaps don't update for them."
+      ]
+    },
+    {
+      "rev": 5635,
+      "date": "2026-10-20",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed aurora borealis pixelation around the edge of a planet.",
+        "Added aurora quality settings. This currently changes the resolution that the aurora renders at.",
+        "The aurora now follows the sim speed, previously it moved at a constant speed seperate from the simulation.",
+        "Changed the aurora to skip the parts of the sky it can't reach and do less work per step, so it costs less GPU time, most of all when seen from orbit.",
+        "Aurora is now dithered and only renders every second pixel. This is an implementation similar to how the atmospheres godrays are implemented to help improve performance.",
+        "Reduced intensity of the auroras airglow. Previously this appeared as a strong fresnel on the planet at night. This is will likely need to be looked at properly in the future.",
+        "Celestials now render behind the aurora.",
+        "Added aurora renderer. Previously all aurora rendering code was coupled into the atmosphere rendering code. It has now been pulled into its own unique renderer.",
+        "Cleaned up aurora code."
+      ]
+    },
+    {
+      "rev": 5636,
+      "date": "2026-10-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed aurorae to show in all builds, not just debug builds. The Aurora and Aurora Quality options under Graphics - Volumetrics are now available too."
+      ]
+    },
+    {
+      "rev": 5637,
+      "date": "2026-10-20",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the kitten portraits to hide the camera field of view slider and camera position dropdown by default. They can be shown with View - Debug - Show Portrait Camera Controls."
+      ]
+    }
+  ]
+}
