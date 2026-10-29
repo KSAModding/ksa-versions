@@ -1,0 +1,619 @@
+{
+  "build": "2026.10.25.5707",
+  "date": "2026-10-29",
+  "fromRevision": 5638,
+  "toRevision": 5707,
+  "commits": [
+    {
+      "rev": 5639,
+      "date": "2026-10-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed radiation dose rates in the astronomical XML to unit elements instead of fixed-unit attributes.",
+        "Added dose and dose rate reference types, which also format values to the nearest unit for display.",
+        "Added a unit test that loads every star's and belt's dose rate from the content files."
+      ]
+    },
+    {
+      "rev": 5640,
+      "date": "2026-10-21",
+      "author": "Rian Drake",
+      "lines": [
+        "Fixed KSA crashing on devices with a low maximum number of descriptor sets per pipeline, so the static object pipelines (10 sets) and the volumetric cloud raymarch pipeline (9 sets) fail to build and were then bound as null pipelines. They are now skipped with an error in the log naming the pipeline, so on low-end machines static objects such as the launchpad and volumetric clouds are not drawn until those pipelines are brought down to 8 sets."
+      ]
+    },
+    {
+      "rev": 5641,
+      "date": "2026-10-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added aurora to Jupiter, Saturn, Uranus and Neptune, with ovals, heights, colours and brightness taken from published observations.",
+        "Added AltitudeScale and Airglow settings to an aurora, so the curtain can be taller than Earth's and Earth's airglow can be left out.",
+        "Changed Earth's aurora green to be less cyan, closer to the colour of oxygen's 557.7 nm line.",
+        "Fixed Neptune's magnetic field being offset straight south. It now uses the Voyager measurement which puts its magnetic poles near 48N and 35S, and moves its radiation belts with it.",
+        "Changed Saturn's magnetic field offset to the measured 2820 km north.",
+        "Added unit tests that check each planet's aurora loads valid over an atmosphere at the published latitudes."
+      ]
+    },
+    {
+      "rev": 5642,
+      "date": "2026-10-21",
+      "author": "Rian Drake",
+      "lines": [
+        "Fixed KSA crashing when pasting into a text field while the clipboard holds something that isn't text, such as an image. The paste now does nothing."
+      ]
+    },
+    {
+      "rev": 5643,
+      "date": "2026-10-21",
+      "author": "GitHub",
+      "lines": [
+        "Reduced frame stutter when dragging a part between snap points under symmetry. Symmetry copies will now be shown as ghosted previews.",
+        "Reduced the time the editor freezes when dropping or detaching a large group of parts.",
+        "Stopped the editor reprocessing the staging, delta-V and fuel flow when a grabbed part snaps to a new point. They now update when you commit to the grabbed parts placement instead.",
+        "Changed parts to use less memory, particularly trusses and other parts with many sub-parts.",
+        "Fixed a part with both a surface and a stack connector rebuilding its attachment points every frame while hovering.",
+        "Fixed connector rings being drawn on symmetry previews and on the grabbed parts.",
+        "Fixed part context windows staying open after their part was detached, deleted or discarded as a symmetry copy.",
+        "Fixed a grabbed part disappearing from the editor if attaching it failed when released.",
+        "Fixed grabbing a vehicle's root part showing symmetry previews and snapping onto loose parts it could never attach to.",
+        "Fixed saving a vehicle while holding a part pulled off it writing out-of-date stages.",
+        "Fixed a crash when dropping under symmetry or duplicating a part that had sub-parts added in the editor. Copies now keep those sub-parts.",
+        "Fixed sub-part gizmo edits and rotation resets not updating the part's bounds."
+      ]
+    },
+    {
+      "rev": 5644,
+      "date": "2026-10-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a magnetic field a thin oxygen atmosphere and a faint red oxygen aurora to Ganymede, using values from Galileo, Hubble, Juno and Keck.",
+        "Added the option for a moon's magnetic field to face its planet's rotating plasma instead of the solar wind which Ganymede's now does.",
+        "Fixed craft orbiting a moon inside its planet's radiation belts, such as Io, Europa and Ganymede, taking none of the planet's radiation. Ganymede's own field now shields craft from Jupiter's belts, most strongly in low equatorial orbits.",
+        "Fixed an atmosphere thinner than the flight cutoff getting a boundary below the ground. It now behaves as vacuum for flight.",
+        "Moved Ganymede into the shared astronomicals library. The Sol and interstellar systems load it from there. The dense system keeps its own asteroid-mesh Ganymede, which has no atmosphere, field or aurora.",
+        "Added unit tests for Ganymede's magnetopause and atmosphere, and for how a planet's belts and a moon's field combine."
+      ]
+    },
+    {
+      "rev": 5645,
+      "date": "2026-10-21",
+      "author": "Chris",
+      "lines": [
+        "HDR Support (Experimental!). Uses the \"Peak Brightness\" and \"Paper White\" options approach for the first pass",
+        "Adds a button to enable HDR in the Display settings if your Monitor",
+        "supports it",
+        "Support on Linux too"
+      ]
+    },
+    {
+      "rev": 5646,
+      "date": "2026-10-21",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed some vehicles falling and exploding on launch. They were placed by their model instead of their colliders, so a part with no collider would leave the vehicle hovering.",
+        "Added colliders to the StrutA, StrutB and StrutC trusses."
+      ]
+    },
+    {
+      "rev": 5647,
+      "date": "2026-10-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added Io's aurora, an orange and red glow over the sides facing toward and away from Jupiter, lit by Jupiter's plasma rather than a magnetic field of its own.",
+        "Added the option for an aurora on a body without a magnetic field, with its own axis.",
+        "Moved Io into the shared astronomicals library. The Sol and interstellar systems load it from there. The dense system keeps its own asteroid-mesh Io, which has no aurora.",
+        "Added a unit test case for Io's aurora."
+      ]
+    },
+    {
+      "rev": 5648,
+      "date": "2026-10-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added nitrogen atmospheres to Triton and Pluto, with the thin hazes that show as a blue ring when they are back-lit.",
+        "Moved Triton and Pluto into the shared astronomicals library. The Sol and interstellar systems load both from there and the dense system loads Pluto. The dense system keeps its own asteroid-mesh Triton, which has no atmosphere.",
+        "Added unit tests for Triton's and Pluto's atmosphere heights."
+      ]
+    },
+    {
+      "rev": 5649,
+      "date": "2026-10-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed Pluto not rotating. It now turns once per orbit of Charon with the same face toward it and is tilted 113 degrees like the real Pluto. So Charon and its other moons orbit in its true equator.",
+        "Added the option to lock a body's rotation to one of its moons with LockedTo on its Rotation, the way Pluto is locked to Charon."
+      ]
+    },
+    {
+      "rev": 5650,
+      "date": "2026-10-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed kittens being credited with the planet's spin as speed and distance. Travel is now measured against the ground while inside the atmosphere."
+      ]
+    },
+    {
+      "rev": 5651,
+      "date": "2026-10-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed a tank's Contents list in the vehicle editor to also offer what arrives through fuel lines feeding into it. A tank with no engine of its own now fills with the propellant its fuel line brings."
+      ]
+    },
+    {
+      "rev": 5652,
+      "date": "2026-10-21",
+      "author": "Chris",
+      "lines": [
+        "Update to latest Brutal packages"
+      ]
+    },
+    {
+      "rev": 5653,
+      "date": "2026-10-21",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a Show Magnetosphere toggle to the View > Debug menu that shows or hides magnetospheres in the map view in addition to the Map View UI (which only shows when controlling a vehicle and the camera is in map mode)."
+      ]
+    },
+    {
+      "rev": 5654,
+      "date": "2026-10-19",
+      "author": "Linx-RW",
+      "lines": [
+        "Added initial compute based tessellation pass. Currently very basic, each edge is treated the same and there are no smooth transitions. Will look into implementing what the hardware does in the future if compute based tessellation is worthwhile performance-wise.",
+        "Set up the planet frustum culling to prepare data for the tessellation step, since it runs after triangle culling."
+      ]
+    },
+    {
+      "rev": 5655,
+      "date": "2026-10-19",
+      "author": "Linx-RW",
+      "lines": [
+        "Applied planet material displacement in the compute tessellation pass.",
+        "Added a tessellation toggle in the terrain gui for debugging/comparisons."
+      ]
+    },
+    {
+      "rev": 5656,
+      "date": "2026-10-19",
+      "author": "Linx-RW",
+      "lines": [
+        "Added a toggle between compute and hardware tessellation in the planet renderer GUI."
+      ]
+    },
+    {
+      "rev": 5657,
+      "date": "2026-10-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Split compute tessellation into two stages: prepare patches and tessellate, which improves tessellation occupancy.",
+        "Added terrain rendering into the pre pass, which improves planet rendering performance slightly.",
+        "Added profiler marker for the planet pre-pass."
+      ]
+    },
+    {
+      "rev": 5658,
+      "date": "2026-10-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed some displacement blending inconsistencies in the planet shaders.",
+        "Fixed biome blend strength not being applied in some planet shaders.",
+        "Fixed planet pre-pass being considered part of the vessel pre-pass by the profiler."
+      ]
+    },
+    {
+      "rev": 5659,
+      "date": "2026-10-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed atmosphere lighting applying to vessels on vacuum bodies when moving from an atmospheric to a vacuum celestial."
+      ]
+    },
+    {
+      "rev": 5660,
+      "date": "2026-10-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed ground clutter validation error caused by missing viewport and scissor dynamic states."
+      ]
+    },
+    {
+      "rev": 5661,
+      "date": "2026-10-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed Jupiter's radiation belts dropping to below Europa's dose between 2 and 3 Jupiter radii. They now rise steadily towards the planet reaching about 5.6 Sv/h at Thebe against the published 7.5 Sv/h. Io, Europa, Ganymede and Callisto stay on their published doses.",
+        "Changed the radiation belt glow in the map view to fade out where the dose drops to the cosmic-ray background. Earth's belts now reach 6.7 Earth radii instead of 6.2, and Jupiter's 23 Jupiter radii instead of 10, past Ganymede instead of stopping at Europa.",
+        "Changed the belt glow colours to run from blue at the cosmic-ray level to red at each planet's strongest belt. The contour lines now sit at the same doses on every planet so planets can be compared by counting lines."
+      ]
+    },
+    {
+      "rev": 5662,
+      "date": "2026-10-22",
+      "author": "Christopher Howlett",
+      "lines": [
+        "Add extra Fmod package that was missing"
+      ]
+    },
+    {
+      "rev": 5663,
+      "date": "2026-10-22",
+      "author": "JoshRW",
+      "lines": [
+        "Add clouds to multi-viewports. Cloud code was refactored to allow the necessary rendering resources to be duplicated per viewport, as well as having viewports share many rendering resources with the main viewport. Noise scroll and flow map phases are shared between the main viewport and multi-viewports. Where possible, textures and pipelines are reused. Because the secondary viewports render in sequence after the main viewport, many rendering resources can be shared and overwritten by the secondary viewports in sequence. Cloud related features that still need to be added to multi-viewports are cloud self-shadowing, cloud shadows on Earth, plumes, explosions, exhuasts. Multi-viewport performance isn't great but can be addressed later."
+      ]
+    },
+    {
+      "rev": 5664,
+      "date": "2026-10-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the dose gauge to switch from millisieverts to sieverts per hour once the dose passes 999.999 mSv/h. A unit drum shows MSV or SV and the tooltip follows it."
+      ]
+    },
+    {
+      "rev": 5665,
+      "date": "2026-10-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the cosmic ray dose near a planet to allow for the planet blocking part of the sky. Half at the surface and about a third in low orbit."
+      ]
+    },
+    {
+      "rev": 5666,
+      "date": "2026-10-22",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added radiation shielding to crewed parts. The existing capsule has a 5 g/cm² hull and a 500 kg polyethylene cabin liner, bringing it to 10 g/cm², like an ISS module wall.",
+        "Added shield materials. A shield counts what it is made of so hydrogen-rich materials stop more radiation per kilogram. Water about 1.2x aluminium against cosmic rays, polyethylene 1.26x and liquid hydrogen 1.76x.",
+        "Added hydrogen content to water, water ice, hydrogen, methane, kerosene, ethanol, hydrazine, MMH, ammonia and HTP, and added high-density polyethylene as a material.",
+        "Added tanks as radiation shielding. A tank shields the crew from the part of the sky it fills based on its current contents.",
+        "Added radiation shielding tank cover and the dose behind them to the part info of crewed parts.",
+        "Changed belt radiation to be carried by protons or electrons. Jupiter's belts and Earth's outer belt are electrons, which a hull stops far sooner.",
+        "Changed Saturn's radiation belt to protons matching Cassini's finding that it comes from cosmic rays striking the rings and atmosphere.",
+        "Changed radiation dose readouts to always show millisieverts to three decimals like the dose gauge."
+      ]
+    },
+    {
+      "rev": 5667,
+      "date": "2026-10-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed Watts and Joules Equals(object) always returning false."
+      ]
+    },
+    {
+      "rev": 5668,
+      "date": "2026-10-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed radiation doses and dose rates to use new Sieverts and SievertsPerSecond types instead of plain doubles."
+      ]
+    },
+    {
+      "rev": 5669,
+      "date": "2026-10-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added radiation doses to kittens. Acute dose heals with a 30 day half-life in flight and 7 days resting at home. Lifetime dose never heals.",
+        "Added radiation sickness at 1 Sv acute, which creates a screen warning, drops warp to 1x and grounds the kitten fropm subsequence missions until it heals below 1 Sv.",
+        "Added radiation death at 4 Sv acute. Warp stops on the threshold instead of jumping past it.",
+        "Added retirement at the 0.6 Sv lifetime limit. A kitten past it finishes its current flight and retires when it comes home.",
+        "Added Acute Dose, Lifetime Dose and Recovery columns to the Kitten Roster, a RETIRED tab, and a Kitten Roster menu item to the vehcile editor.",
+        "Added acute and lifetime dose lines with tooltips under the crew portraits.",
+        "Changed Crew Assignment to list sick kittens greyed out with the time until they're fit to fly and to leave out retired kittens."
+      ]
+    },
+    {
+      "rev": 5670,
+      "date": "2026-10-23",
+      "author": "Jane Kim",
+      "lines": [
+        "Fixed IVA ray tracing crashing AMD GPUs on load. Acceleration structure scratch buffers are now aligned to the device's minAccelerationStructureScratchOffsetAlignment (256 on AMD) instead of relying on the allocator.",
+        "Fixed IVA ray tracing referencing invalid acceleration structures on AMD. TLAS instances now use the address from vkGetAccelerationStructureDeviceAddressKHR instead of the buffer address, which only matches on NVIDIA.",
+        "Fixed the ray tracing shader binding tables not being aligned to shaderGroupBaseAlignment and being sized smaller than the regions they describe.",
+        "Fixed shader group handles being read at the aligned stride instead of the packed handle size when building the shader binding tables.",
+        "Fixed the ray tracing any-hit shader reading instance data without the per-frame instance offset."
+      ]
+    },
+    {
+      "rev": 5671,
+      "date": "2026-10-23",
+      "author": "snietfeld-rw",
+      "lines": [
+        "Fixed kitten legs reacting in wrong direction under left/right MMU translational thrust."
+      ]
+    },
+    {
+      "rev": 5672,
+      "date": "2026-10-23",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed Alpha Centauri A and B, Tau Ceti, 61 Cygni A and B, Procyon A and B and Epsilon Indi to have their own placeholder quiet particle dose and wind pressure instead of the Sun's."
+      ]
+    },
+    {
+      "rev": 5673,
+      "date": "2026-10-26",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added an Orbit Dose line to the map readout when hovering your own trajectory,showing the average radiation dose rate over that orbit, including planned orbits after a burn.",
+        "Added a DOSE row to the burn editor showing the average radiation dose rate over the orbit after the burn."
+      ]
+    },
+    {
+      "rev": 5674,
+      "date": "2026-10-26",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed solar panels to draw power from the star lighting them scaled by that star's luminosity, instead of treating every star as the Sun. Panels and trackers now turn toward the brightest star rather than the nearest.",
+        "Added published luminosities to all 16 stars currently defined."
+      ]
+    },
+    {
+      "rev": 5675,
+      "date": "2026-10-26",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added space weather data to every star: wind speed, rotation, activity cycle, active region latitudes and CME rates, taken from published values. Nothing uses it yet."
+      ]
+    },
+    {
+      "rev": 5676,
+      "date": "2026-10-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Removed the dummy a2c target from the clutter pre-pass.",
+        "Moved to gl_CoverageMask for a2c in preparation for ground clutter rendering into the depth-normal pre-pass."
+      ]
+    },
+    {
+      "rev": 5677,
+      "date": "2026-10-21",
+      "author": "Linx-RW",
+      "lines": [
+        "Added a new depth-normal pre-pass pipeline creation to the clutter ecotype render data in preparation for rendering clutter in the depth-normal pre-pass."
+      ]
+    },
+    {
+      "rev": 5678,
+      "date": "2026-10-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Rendered ground clutter into the depth-normal pre-pass for the main viewport. Secondary viewports don't run it, so clutter falls back to the old depth pre-pass for now.",
+        "Added ambient occlusion receiving to terrain and ground clutter now that both render into the pre-pass."
+      ]
+    },
+    {
+      "rev": 5679,
+      "date": "2026-10-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed grass LODs 2-4 using the wrong face orientation."
+      ]
+    },
+    {
+      "rev": 5680,
+      "date": "2026-10-22",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed tessellation game setting not working."
+      ]
+    },
+    {
+      "rev": 5681,
+      "date": "2026-10-26",
+      "author": "Linx-RW",
+      "lines": [
+        "Improved procedural erosion where mountains meet valleys.",
+        "Fixed procedural erosion creating lumps or ridges in valleys because the amplitude was not falling off with curvature and carving out the edges of valleys. This needs the terrain relief which we can only cheaply derive from the base height which makes the modifier slightly more expensive.",
+        "Fixed cases where the terrain gradient could become NaN.",
+        "Fixed some procedural modifiers not receiving the correct tangent basis since the refactor.",
+        "Added a persistence/gain field to the erosion modifier.",
+        "Improved the gradient estimation in the erosion modifier.",
+        "Adjusted erosion for Earth, the Moon, Mars and Pan.",
+        "Adjusted the VSFB launch site decal to match the adjusted terrain."
+      ]
+    },
+    {
+      "rev": 5682,
+      "date": "2026-10-26",
+      "author": "Linx-RW",
+      "lines": [
+        "Limited the erosion falloff only to convex terrain. Concave terrain like mountaintops are eroded."
+      ]
+    },
+    {
+      "rev": 5683,
+      "date": "2026-10-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added the radiation shield's mass and the unshielded radiation dose rate to the part info window."
+      ]
+    },
+    {
+      "rev": 5684,
+      "date": "2026-10-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added an activity cycle to each star (11 years for the Sun). Cosmic ray dose is highest when the star is quiet and drops to under half (0.44x) when it is most active, and solar wind pressure peaks about two years after the most active point. A new game starts at average activity, rising.",
+        "Cosmic ray dose past a star's heliopause no longer follows that star's activity cycle.",
+        "Added a celestial info window for stars, showing the heliopause, solar wind, quiet dose, rotation, activity cycle phase, cosmic ray factor and CME rate."
+      ]
+    },
+    {
+      "rev": 5685,
+      "date": "2026-10-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed orbit info for stars orbiting a barycenter in the celestial info UI."
+      ]
+    },
+    {
+      "rev": 5686,
+      "date": "2026-10-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added active regions and eruptions to each star worked out from its seed and the time. Nothing uses them yet."
+      ]
+    },
+    {
+      "rev": 5687,
+      "date": "2026-10-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added each Coronal Mass Ejection's (CME) flight out from its star. It coasts to 20 star radii then solar wind drag pulls it toward the wind speed with arrival time and speed at any distance. Nothing uses it yet."
+      ]
+    },
+    {
+      "rev": 5688,
+      "date": "2026-10-27",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a dose profile. A steady radiation dose rate plus storm terms that each start at a set time and fade exponentially (a negative term makes a storm build up first). A kitten's shield cuts only the storm terms.",
+        "Changed kitten radiation dose is now worked out exactly over a warp step of any length so a storm gives the same dose in hourly frames as in one long warp step.",
+        "Changed thje time until a kitten's dose reaches radiation sickness or death which limits warp, is now found by search so it still works once storms change the rate. It skips the search when the dose can't reach the threshold.",
+        "Changed kitten dose crediting now goes through the dose profile. No storm terms are added yet so there is no change in game."
+      ]
+    },
+    {
+      "rev": 5689,
+      "date": "2026-10-27",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed ambient occlusion applying too much to foliage using custom normals.",
+        "Added an extra flag 'usesCustomNormals' to the asset bundler.",
+        "Added a fallback to inferred geometry normals using screen space derivatives if a ground clutter material has 'usesCustomNormals'."
+      ]
+    },
+    {
+      "rev": 5690,
+      "date": "2026-10-27",
+      "author": "Linx-RW",
+      "lines": [
+        "Reduced planet tessellation max tessellated vertices.",
+        "Added VRAM usage logging for the planet tessellation buffers."
+      ]
+    },
+    {
+      "rev": 5691,
+      "date": "2026-10-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed a star's peak event dose to mean the dose from an event at the highest proton flux the model allows, with each event's dose scaling with its peak flux. Sol's is set from August 1972's measured peak flux, so that event still gives 24.3 cSv inside the stock capsule. Nothing uses it yet."
+      ]
+    },
+    {
+      "rev": 5692,
+      "date": "2026-10-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added solar particle events to kitten radiation dose. Each eruption reaches a body as early protons along the magnetic field line and as a storm peak when its shock arrives. The dose follows how well the body is connected to the eruption site or how squarely the shock hits. It falls with distance and is cut by planetary fields atmosphere and shielding like other star dose.",
+        "Added particle events to the HUD dose gauge and its orbit average while an event is under way.",
+        "Changed a star's peak event dose to mean the dose from an event at the highest proton flux the model allows with each event's dose scaling with its peak flux. Sol's is set from August 1972's measured peak flux so that event still gives 24.3 cSv inside the stock capsule.",
+        "Changed stars with eruptions to have no steady particle dose. Their particle dose now arrives only as events.",
+        "Fixed the fastest CMEs all being given exactly the top speed which stacked them on the strongest possible particle event."
+      ]
+    },
+    {
+      "rev": 5693,
+      "date": "2026-10-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the Radiation gauge to be smaller."
+      ]
+    },
+    {
+      "rev": 5694,
+      "date": "2026-10-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added the pressure spike when a CME's shock reaches a body. The wind pressure jumps by up to about 100 times for the fastest CMEs and fades over half a day, pushing the magnetopause in.",
+        "Changed time warp to take shorter steps through big pressure spikes when crew are inside a magnetic field, so their dose follows the spike.",
+        "Changed time warp to stop for radiation sickness from a particle event even when the eruption happens during a long warp step.",
+        "Changed CME arrival times to be worked out faster."
+      ]
+    },
+    {
+      "rev": 5695,
+      "date": "2026-10-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a magnetic polarity to each body's magnetosphere. Jupiter, Saturn, Uranus and Neptune have the reverse of Earth's.",
+        "Added geomagnetic storms. Each CME's sheath and magnetic cloud drive a ring current at bodies with a magnetic field when the cloud's field opposes the body's. Storms erode the magnetopause, lower the radiation cutoff toward the equator, and move the aurora oval toward the equator and brighten it. Big storms reach Earth a few times per cycle.",
+        "Changed time warp to take shorter steps through intense storms when crew are inside a magnetic field."
+      ]
+    },
+    {
+      "rev": 5696,
+      "date": "2026-10-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added outer radiation belt dropouts. A storm empties the outermost belt within hours then it refills over a day or so, ending higher about half the time, lower about a fifth of the time and returns to normal over the following weeks.",
+        "Changed the rendered outer radiation belt to fade during a storm dropout and brighten after a raised recovery, matching its dose."
+      ]
+    },
+    {
+      "rev": 5697,
+      "date": "2026-10-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added space weather alerts for crews. Big flare's flash warnings of a coming radiation storm and of a CME on its way with a forecast arrival time and big events drop time warp back to 1x. Alerts also mark when the particles and the CME shock arrive.",
+        "Added a Space Weather window via the Universe menubar showing space weather at every body with vehicles in its sphere of influence plus any star or body picked from dropdown lists. Planets and moons show their geomagnetic storm level any radiation storm and incoming CMEs with arrival forecasts that narrow as each CME flies. Stars show their activity, cycle, CME rate, active regions and recent fast CMEs."
+      ]
+    },
+    {
+      "rev": 5698,
+      "date": "2026-10-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a Space Weather map overlay on the map UI panel and the View menu switched off by default. It shows each star's active regions, the magnetic field line (magenta) from the star to what you are viewing with a ring at its footpoint, and CMEs in flight with their front drawn between the forecast's earliest and latest arrival."
+      ]
+    },
+    {
+      "rev": 5699,
+      "date": "2026-10-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added the solar wind (speed, pressure, and the field's direction while a CME passes) to the Space Weather window and to the part info of crew parts.",
+        "Fixed the part info radiation rates leaving out particle events under way."
+      ]
+    },
+    {
+      "rev": 5700,
+      "date": "2026-10-28",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed space weather to no longer shorten time warp steps. Crew radiation dose under warp now uses the solar wind averaged over each step, so pressure spikes, storms and outer belt dropouts give the same dose at any warp."
+      ]
+    },
+    {
+      "rev": 5701,
+      "date": "2026-10-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added gas storage to tanks. A tank's rated pressure comes from its wall material's strength and thickness and a gas fills a tank on its own."
+      ]
+    },
+    {
+      "rev": 5702,
+      "date": "2026-10-28",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed GLFW 'Failed to query monitor DPI' errors filling the log every frame after the primary monitor was turned off and on again with more than one monitor connected. On Windows the ImGui monitor list now comes straight from Windows instead of GLFW, which keeps a dead handle for one of the other monitors after the primary one reconnects.",
+        "Changed the ImGui monitor list on Windows to refresh only when a display, work area or DPI changes instead of every frame."
+      ]
+    },
+    {
+      "rev": 5703,
+      "date": "2026-10-29",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed Titanium Alloy 6-4 using aluminium's strength and stiffness. It now uses MIL-HDBK-5J values for annealed Ti-6Al-4V, so titanium tanks are rated for about twice the pressure.",
+        "Moved the magnetic scoop tests into the serial resource manager test collection which stops them failing intermittently when other tests build resource managers at the same time."
+      ]
+    }
+  ]
+}
