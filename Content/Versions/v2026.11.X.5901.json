@@ -1,0 +1,1005 @@
+{
+  "build": "2026.11.16.5901",
+  "date": "2026-11-17",
+  "fromRevision": 5801,
+  "toRevision": 5901,
+  "commits": [
+    {
+      "rev": 5802,
+      "date": "2026-11-09",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed Reimported a number of art assets to fix collider authoring. These include: Tanks, Rcs, engines, Docking, Nosecones.",
+        "Changed connector sizing of cargo bay parts to 0.25m."
+      ]
+    },
+    {
+      "rev": 5803,
+      "date": "2026-11-09",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed an edge case for incorrect variant grouping in GLB import tool."
+      ]
+    },
+    {
+      "rev": 5804,
+      "date": "2026-11-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed EVA suits to always fill with oxygen and a CO₂ cartridge. In breathable air the suit doesn't use them so a kitten that leaves near the ground and then finds themselves somewhere where the atmosphere is no longer left with a death sentence.",
+        "The EVA suit tooltip on the crew portrait shows the oxygen and cartridge time held in reserve while breathing outside air.",
+        "Fixed EVA kittens staying controllable after becoming incapacitated. An incapacitated kitten can't walk, use its jetpack, grab, let go of a ladder or carry supplies, and any held keys are released.",
+        "It can still board with B when it is in range of a hatch, whether or not it is on a ladder.",
+        "Added unit tests for the EVA suit filling in breathable air."
+      ]
+    },
+    {
+      "rev": 5805,
+      "date": "2026-11-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash when decoupling a vessel holding habitats or supply lockers such as a capsule from a service bay with supply lockers.",
+        "Added a unit test for habitat zones after a split."
+      ]
+    },
+    {
+      "rev": 5806,
+      "date": "2026-11-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash when a vessel's orbit has an eccentricity just below 1 such as during a slow capture burn or when using Set Orbit with an eccentricity of 0.9999995.",
+        "Added a unit test for orbits just below an eccentricity of 1."
+      ]
+    },
+    {
+      "rev": 5807,
+      "date": "2026-11-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a vessel's flight computer raising its attitude deadband after a decoupler split docking or undocking, which made attitude hold sloppy until the profile was reselected. The deadband now comes from the vessel's own thrusters.",
+        "Added a unit test for the thruster cache after a split."
+      ]
+    },
+    {
+      "rev": 5808,
+      "date": "2026-11-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed menu highlighting being offset from the mouse in windowed mode on some Linux desktops. Long menus now stay inside the game window and scroll."
+      ]
+    },
+    {
+      "rev": 5809,
+      "date": "2026-11-09",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed an intermittent unit test failure in the editor snapshot allocation tests."
+      ]
+    },
+    {
+      "rev": 5810,
+      "date": "2026-11-09",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Fixed Animation jank in the jump anim that was especially visible in lower gravities. This was due to the jump start and end anims being incorectly played as looping animations, the controller now transitions between states cleanly."
+      ]
+    },
+    {
+      "rev": 5811,
+      "date": "2026-11-10",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed All nose cone variants now have room for fuel.",
+        "Removed Decouplers from fuel tank interstage parts and fixed the end caps not showing on them."
+      ]
+    },
+    {
+      "rev": 5812,
+      "date": "2026-11-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added the Resources gauge to the vehicle editor. LEt's you see resources in the vehicle but specifically when the vessel has crew it gives you how many days the vehicle's air, water, food and CO₂ scrubber supplies last.",
+        "This is in addition to the warnings at the bottom of the dV readout UI."
+      ]
+    },
+    {
+      "rev": 5813,
+      "date": "2026-11-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added power use to probe cores with an on/off switch in their part window. A probe core only controls the vessel while it is switched on and has power, and its part window shows how long its power will last.",
+        "Time warp stops with a warning once, 5 minutes before an uncrewed vessel's probe cores run out of power and again when it loses control.",
+        "Added unit tests for probe core power."
+      ]
+    },
+    {
+      "rev": 5814,
+      "date": "2026-11-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a status light to probe cores: green when powered, yellow when under 5 minutes of power remains, red when out of power, and dark when switched off."
+      ]
+    },
+    {
+      "rev": 5815,
+      "date": "2026-11-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added an Auto mode to the probe core power switch, now the default. An Auto probe core stands by without using power while a crewed pod or another probe core flies the vessel, takes over when nothing else can, and shows a blue light on standby."
+      ]
+    },
+    {
+      "rev": 5816,
+      "date": "2026-11-09",
+      "author": "Daniel Story",
+      "lines": [
+        "Convert all remaining legacy render pass/framebuffer usage to dynamic rendering.",
+        "Avoid depth clear when redundant.",
+        "Parameterize additional shader color formats."
+      ]
+    },
+    {
+      "rev": 5817,
+      "date": "2026-11-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed a crash when opening a probe core's part window.",
+        "Added a unit test for the probe core power switch options."
+      ]
+    },
+    {
+      "rev": 5818,
+      "date": "2026-11-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added radiation wear to probe cores as a new Avionics part module. Their electronics collect radiation dose which is shown in the part window.",
+        "Dose is counted in grays of silicon converted from the sieverts a kitten would take.",
+        "The weighting that makes sieverts measure harm to living tissue is taken back out (trapped and solar protons count half, cosmic rays 0.4, trapped electrons in full)",
+        "then scaled by 0.8 because silicon absorbs a little less energy than tissue.",
+        "They will fail for good at their tolerance limit (also shown in the part window). When switched off or on standby they collect half as much.",
+        "Eventually I invisage spare parts and EVA engineer kittens will be able to repair failed electronics. But until then, they die, they die.",
+        "You can turn off radiation rules if you really need to in the meantime and they will come back to life.",
+        "Added unit tests for probe core radiation."
+      ]
+    },
+    {
+      "rev": 5819,
+      "date": "2026-11-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added radiation upsets to probe cores. A running core reboots at random more often in radiation belts and solar storms and gives no control for 30 seconds while it does. A backup core on Auto can take over while one is rebooting.",
+        "Added a Standby In Storms setting to probe cores. The core stands by, safe from upsets and taking half the dose while a radiation storm is under way at the vessel's location, and goes back on when it passes.",
+        "Added unit tests for probe core upsets and storm standby.",
+        "Added the probe core power switch and Standby In Storms setting to the vehicle editor's part settings, so a core can be set before launch."
+      ]
+    },
+    {
+      "rev": 5820,
+      "date": "2026-11-10",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Reimported Fairing instage assets for updated collision geometry.",
+        "Added InterstageBridgeHollow1WHalfWA."
+      ]
+    },
+    {
+      "rev": 5821,
+      "date": "2026-11-10",
+      "author": "Dan Southon",
+      "lines": [
+        "Fixed the IVA cabin light ignoring the capsule's light switch. The cabin light should now react when the switch is toggled or when the power is depleted instead of always being active."
+      ]
+    },
+    {
+      "rev": 5822,
+      "date": "2026-11-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a collapse button to the Resources panel in flight and in the vehicle editor that rolls it up to just its header."
+      ]
+    },
+    {
+      "rev": 5823,
+      "date": "2026-11-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed vessels that lose control (crew incapacitated or gone, or a probe core out of power, failed, rebooting, on storm standby or switched off) to drop attitude hold and cancel any auto burn. A manual throttle is held where it was."
+      ]
+    },
+    {
+      "rev": 5824,
+      "date": "2026-11-10",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Updated CoreStructuralB Texture atlas."
+      ]
+    },
+    {
+      "rev": 5825,
+      "date": "2026-11-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Changed the part highlight (habitat zones, fuel flow and others) to tint parts and glow at their edges instead of painting over them. So part details stay visible while highlighted."
+      ]
+    },
+    {
+      "rev": 5826,
+      "date": "2026-11-10",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Tidied life support wording. one name per supply (Air, Water, Food, CO₂ Scrubber), times in the same one short format. no internal id names on habitat, seat and boarding labels. Food and scrubber descriptions that match the game. With the Life Support rule off, its banner, gauges and supply panels are now hidden."
+      ]
+    },
+    {
+      "rev": 5827,
+      "date": "2026-11-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Made the life support summaries lead to the details. Clicking the \"Life support low\" banner, the Resources panel's LIFE SUPPORT block or the new Life Support button in a habitat's part window opens the Habitat Zones window for that vessel.",
+        "Changed the life support banner to name the vessel, the supply running short and how long it lasts. e.g. \"Life support low: Lander 2 · Air 23 h\".",
+        "It says \"Life support out\" once a supply is gone, names the kitten's suit on EVA and adds the zone when more than one zone has crew.",
+        "Changed the Resources panel's LIFE SUPPORT header to name the zone its times come from when more than one zone has crew. On EVA its warning colours now use the suit's warning times.",
+        "Cut the part window's life support block to one line, e.g. \"Zone 1 · Lasts 3.0 d · Air\", in its warning colour, with a Life Support button. The button opens the Habitat Zones window.",
+        "The Habitat header now shows its own stores, e.g. \"Habitat: 18 meals · 4 canisters\".",
+        "Removed the life support row under TOTAL dV in the vehicle editor and the flight staging panel.",
+        "In the editor the crew count it showed is now the first line of Habitat Zones (\"3 kittens assigned\", or \"Assuming 3 kittens (every seat)\" when nobody is assigned). In flight that line names the vessel.",
+        "Renamed the crew portrait SEAT button to MOVE, matching Habitat Zones."
+      ]
+    },
+    {
+      "rev": 5828,
+      "date": "2026-11-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Renamed the Habitat Zones window to Life Support in the menus and in the tooltips of the low life support banner, the Resources panel's LIFE SUPPORT block and the part window's Life Support button.",
+        "Rebuilt the Life Support window around one zone at a time. A tab per zone shows how long that zone lasts, or \"no crew\" and the window opens on the worst zone. Docked vessels' zones are named after their vessel, e.g. \"Zone 2 · Lander\".",
+        "With the Life Support rule off, tabs show each zone's crew count instead.",
+        "The Life Support window's header names the vessel and its worst zone, e.g. \"Lasts 4.2 d · Air · Zone 1\".  In the vehicle editor it shows the kittens assigned, or \"Assuming x kittens (every seat)\" when nobody is assigned.",
+        "Each zone's card names the zone, its kittens and how long it will last. Then its habitable volume, volume per kitten and storage on one line. It replaces the separate Habitable, Storage, Stored, Crew and Lasts rows we had before. The card scrolls on its own so the header and zone tabs stay in view.",
+        "Added supply bars to the Life Support window - Air, Water, Food and CO₂ Scrubber on one time axis so the shortest bar shows what runs out first and by how much. Bars turn amber when low and red when critical using suit warning times on EVA. In breathable air, Air and CO₂ Scrubber read \"Breathing outside air\".",
+        "The Life Support window lists supplies per habitat under Habitats and kittens under Crew with their seat and condition. e.g. \"Hungry: 4 h\" in the warning colour.",
+        "Added a Transfer panel to each habitat in the Life Support window replacing the Move button and the To dropdown. It lists every other supply storage on the vessel. Storage in the same zone can be picked to move meals and CO₂ canisters into. Storage behind a closed docking hatch has an Open hatch button beside it, otherwise it is marked as can move via EVA only.",
+        "Transfer shows whenever the vessel has more than one supply storage not only more than one in the same zone.",
+        "The Life Support window lists what each zone connects to. Open docking hatches come first, named after the vessels on either side with a Close hatch button. Then the vessel's other zones each either behind a closed hatch, with an Open hatch button, or EVA only.",
+        "Hovering over a zone's tab or card in the Life Support window highlights its parts, hovering a habitat highlights that part, and hovering a hatch or its button highlights both docking ports.",
+        "Removed the Highlight all zones and per-zone Highlight checkboxes.",
+        "The Life Support window switches to the newly controlled vessel when you change vessels, opening on its worst zone. Entering the vehicle editor closes it.",
+        "Added EVA Supplies to the View menu while on EVA alongside the existing key.",
+        "Temporarily named the medium capsule \"Mk1 Command Pod\", the small lander \"Mk1 Lander\" and the service modules \"Mk1 Cargo Bay\" (Single, Double, Triple, Quad), so their internal ids no longer show in the Life Support window, seat picker, part window and EVA supplies list."
+      ]
+    },
+    {
+      "rev": 5829,
+      "date": "2026-11-11",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Fixed vulkan validation error caused by the underwater post process writing to the wrong color format."
+      ]
+    },
+    {
+      "rev": 5830,
+      "date": "2026-11-11",
+      "author": "JoshRW",
+      "lines": [
+        "Fix shader reloader crash when reloading the file Lighting.glsl. Associated Vulkan pipelines now request the latest shader instead of an old one. Pipelines in the ClusteredLightSystem are only rebuilt on renderer Rebuild() when shader reloading is turned on so that the Rebuild() isn't slowed down in the normal scenario without shader reloading. There are still a few gaps where shader reloading doesn't work or crashes, but feel free to fix those yourself or ask me to fix them when/if they are needed."
+      ]
+    },
+    {
+      "rev": 5831,
+      "date": "2026-11-11",
+      "author": "JoshRW",
+      "lines": [
+        "Moved the Vessel Ambient Lighting setting from game settings to the Debug menu under View -> Debug -> Lighting -> Vessel Ambient Lighting. This setting is on by default and doesn't need to be in the settings menu."
+      ]
+    },
+    {
+      "rev": 5832,
+      "date": "2026-11-11",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added 1m Structural node piece",
+        "Changed Radial tanks now use bepu colliders.",
+        "Updated CoreStructuralA_Prefab_StrutCubeNodeHalfWHalfHD.glb and CoreStructuralA_Prefab_StrutCubeNodeHalfWHalfHC.glb."
+      ]
+    },
+    {
+      "rev": 5833,
+      "date": "2026-11-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added mission plans to vehicle. A plan holds the destination (none, low orbit or a body), whether it flies by orbits or lands, a return trip or one way, how long it stays, and an optional custom length.",
+        "It is saved in the vehicle save file and in each launched vehicle's save. A launched vehicle keeps its own copy so editing the craft later never changes a vessel already flying.",
+        "Added mission timing. Each leg is a Hohmann transfer around the common parent of the home planet and the destination plus the legs from a low orbit just above the atmosphere out to a moon's orbit.",
+        "Trips to another planet wait for the next return window. A short stay becomes the wait for the first window and a longer one rounds up to a later window.  A flyby with a return trip to another planet is refused, as there is no free return.",
+        "The Transfer Planner and the mission timing now share one Hohmann transfer time, one synodic period and one low orbit height."
+      ]
+    },
+    {
+      "rev": 5834,
+      "date": "2026-11-11",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a Mission band to the Life Support window in the vehicle editor. Players can pick a destination, a plan and how long to stay.",
+        "The life support window then calculates and shows how long the trip will be (we will wire in the life support requirements for the trip later).",
+        "A flyby that returns from another planet asks for Orbit, Land or One way instead.",
+        "Added a Custom entry to the Mission band for trips the picker can't describe. It starts from the picker's total and takes a length in days.",
+        "Mission changes can be undone and redone in the vehicle editor."
+      ]
+    },
+    {
+      "rev": 5835,
+      "date": "2026-11-11",
+      "author": "Dan Southon",
+      "lines": [
+        "Part module lists now use plain arrays that are only allocated when first needed, reducing memory use when placing large symmetry groups in the vehicle editor."
+      ]
+    },
+    {
+      "rev": 5836,
+      "date": "2026-11-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed the test run sometimes aborting with \"Test host process crashed\". The two Vulkan tests (SimpleShaderStagesOwnershipTests and RenderTechniqueOwnershipTests) were in different xUnit collections so they ran in parallel and creating Vulkan devices on two threads at once crashed the driver.",
+        "Both are now in a shared \"Vulkan\" collection so they run one at a time. Any new test that creates a Vulkan device should join it."
+      ]
+    },
+    {
+      "rev": 5837,
+      "date": "2026-11-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a Crew Plan to the Mission band in the vehicle editor's Life Support window.",
+        "A zone with no crew plan uses its seated kittens on every leg, or every seat when nobody is assigned. Setting a leg back to the seated count clears the plan, so it follows the seats again.",
+        "The crew plan is saved with the vehicle on each zone's lead habitat part.",
+        "With a mission picked the Life Support window checks each zone's supplies against its crew plan. The supply bars are drawn on the mission's timeline, with lines where each leg starts and a dashed \"last leg ends\" line. Kittens per leg are shown under the axis. A bar is green if it lasts past the zone's last leg and amber if it runs out first. Each supply that runs short gets a line of text.",
+        "Air and water are counted from the vessel's tanks against every kitten aboard on each leg. Food and CO₂ canisters are counted from the zone's own habitats against that zone's kittens. A zone's supplies start draining on its first crewed leg.",
+        "In mission mode the window header reads \"Enough for the mission\" or \"Air short by 4.8 d · Zone 1\". Each zone tab reads \"enough\", \"short x d\" or \"not used\" and the window opens on the zone that is shortest.",
+        "In mission mode a zone's card counts kittens from the crew plan. The per-kitten habitable volume uses the busiest leg.",
+        "Added tooltips across the Life Support window",
+        "Aded ConsoleWidgets.ItemTooltip and WrappedTooltip.",
+        "Added unit tests for the crew plan."
+      ]
+    },
+    {
+      "rev": 5838,
+      "date": "2026-11-10",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Added a second-order position filter and maximum rate limit to all engine gimbals. Engines will no longer instantly change direction in response to commands - they will have inertia and require time to readjust. This adds meaningful delays to TVC control, so using RATE mode is now generally recommended over MANUAL where possible.",
+        "Upgraded the flight computer TVC controller to handle the new dynamics introduced by finite-rate gimbals."
+      ]
+    },
+    {
+      "rev": 5839,
+      "date": "2026-11-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Life Support tooltips with numbers in them now format into their own 1,024-character buffer instead of a shared 128 or 256-character one."
+      ]
+    },
+    {
+      "rev": 5840,
+      "date": "2026-11-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a Stock for mission button to each zone in the vehicle editors Life Support window once a mission is picked.",
+        "It sets the zone's meals and CO₂ canisters to cover its crew plan plus a margin, as far as the zone's storage allows.",
+        "Habitats are filled in order and any locker the zone doesn't need is emptied so stocking also takes off unneeded supplies and their mass.",
+        "Added a Stock all button to the Mission band that stocks every crewed zone at once.",
+        "Stocking can be undone in the vehicle editor.",
+        "When a zone's storage can't hold what the mission needs its card's text says how much more storage it needs.",
+        "The Mission band displays when the vessel's air or water tanks fall short of the mission plus the margin.",
+        "Air and water aren't stocked by the button because they come from tanks. The air line is hidden in breathable air.",
+        "Added a Stock for Mission Margin player setting under Settings > Simulation > Life Support, from 0 to 100%, default is 20%.",
+        "Added unit tests  for above."
+      ]
+    },
+    {
+      "rev": 5841,
+      "date": "2026-11-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a supplies check when launching a vehicle with a mission from the vehicle editor or the launch menu.",
+        "With the Life Support rule on, if any zone's supplies run out before its last mission leg ends, a \"Not enough supplies\" prompt names the zone furthest short, the supply that runs out first, how long it lasts and when the zone's last leg ends.",
+        "Launch anyway?\" With no mission set or the life support rule off, launching works as it did before.",
+        "The \"No crew assigned\" prompt still comes first and the supplies check follows it.",
+        "Both launch buttons now share one launch check replacing two copies of the no-crew prompt.",
+        "Added unit tests for the launch check."
+      ]
+    },
+    {
+      "rev": 5842,
+      "date": "2026-11-12",
+      "author": "woodshop",
+      "lines": [
+        "Added initial kFS core library and tests"
+      ]
+    },
+    {
+      "rev": 5843,
+      "date": "2026-11-12",
+      "author": "woodshop",
+      "lines": [
+        "Removed kFS 1s compile test time limit, works locally but was failing on busy CI runner"
+      ]
+    },
+    {
+      "rev": 5844,
+      "date": "2026-11-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added mission tracking in flight. With a mission set and the Life Support rule on the Life Support window now checks each zone's supplies against what's left of the mission.",
+        "Added a \"Mission timing\" switch to the Life Support window in flight. As planned (the default) times the mission's legs as planned in the editor, counted from launch.",
+        "**** This is a primitive clock counter for now but later we will add actual mission destination logs and tracking.",
+        "From flight plan takes the arrival from when the flight plan reaches the mission's destination then adds the planned stay and the trip home.",
+        "From flight plan is greyed out when the mission has no destination body or the flight plan doesn't reach it.",
+        "A label beside the switch shows how much of the mission is left after which the window goes back to its normal forecast.",
+        "A vessel now records when it reaches and leaves its mission's destination and From flight plan uses those real times. A stay that runs over keeps the whole trip home until the vessel leaves.",
+        "A vessel split off by decoupling or undocking keeps a copy of the mission so a lander's zone still shows its mission timeline.",
+        "In flight the supply warnings read \"runs out in\" rather than \"runs out at\", and the Stock for mission buttons only appears in the vehicle editor.",
+        "The Transfer Planner Window when opened now opens with the vessel's mission destination automatically set.",
+        "The Transfer Planner's life support line checks the whole rest of the mission with the selected transfer's arrival.",
+        "After the vessel has arrived, a transfer back to the home planet is checked as the trip home.",
+        "When the selected transfer goes to a different body than the mission, the Transfer Planner shows both destinations with an Update Mission button that makes this transfer's body the mission's destination.",
+        "When a transfer reaches the mission's destination a day or more later than planned the Transfer Planner shows the same comparison without the button.",
+        "Added tooltips for the Mission timing switch and the new Transfer Planner lines.",
+        "Added unit tests for all of the above."
+      ]
+    },
+    {
+      "rev": 5845,
+      "date": "2026-11-12",
+      "author": "Dan Southon",
+      "lines": [
+        "Reduced the frame stall when dropping, detaching or duplicating large groups of parts in the vehicle editor.",
+        "Solid rocket motor thrust curves are no longer recalculated twice after each change in the vehicle editor.",
+        "Recording undo steps in the vehicle editor is faster on vehicles with many parts.",
+        "Duplicating large groups of parts no longer calculates their bounding boxes twice."
+      ]
+    },
+    {
+      "rev": 5846,
+      "date": "2026-11-12",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added two placeholder habitat modules under the Life Support editor tag. They use the fuel tank meshes until they get their own art.",
+        "HM-2 Habitat Module is 2 m wide and 4 m long, with 12.47 m³ inside: 6.23 m³ habitable and 6.23 m³ storage.",
+        "HM-3 Habitat Module is 3 m wide and 6 m long, with 42.19 m³ inside: 21.09 m³ habitable and 21.09 m³ storage.",
+        "Neither module has seatsthes, so kittens move in from a crewed part in the same zone.",
+        "Added a storm shelter to the HM-2 and HM-3 Habitat Modules: a 20 g/cm² polyethylene liner around the seats. Over the bare wall it cuts a solar storm from 85% to 1.2% getting through, belt protons from 91% to 7.5% and cosmic rays from 96% to 62%.",
+        "The shelter adds 2,036 kg to the HM-2 and 3,619 kg to the HM-3.",
+        "Added 2 seats to the HM-2 and 4 seats to the HM-3. A kitten is shielded only while seated in a module, so move the crew in when a solar storm hits.",
+        "Added a placeholder texture: sand coloured with faint stripes. It marks parts that borrow another part's meshes. The fuel tank's normal and roughness maps keep the panel detail.",
+        "The SL-M1 and SL-M2 Supply Lockers now use the placeholder texture on their bay tank, truss, support and piping meshes, so they no longer look like fuel tanks."
+      ]
+    },
+    {
+      "rev": 5847,
+      "date": "2026-11-05",
+      "author": "Linx-RW",
+      "lines": [
+        "Added TilingColor modifier. It follows the TilingDetail height modifier. I might merge this into one modifier in the future so they always match if it's worth keeping around."
+      ]
+    },
+    {
+      "rev": 5848,
+      "date": "2026-11-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Added procedural modifier profiler tags."
+      ]
+    },
+    {
+      "rev": 5849,
+      "date": "2026-11-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Added detail colour variation to Earth's grasslands and desert mountains."
+      ]
+    },
+    {
+      "rev": 5850,
+      "date": "2026-11-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Added ground and slope colouration to the simple craters and ejecta craters modifiers.",
+        "Added colouration to the Moon's craters."
+      ]
+    },
+    {
+      "rev": 5851,
+      "date": "2026-11-10",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed sand dunes becoming unstable when approaching the shear threshold.",
+        "Prevented setting sand dune shear outside [0, 1]."
+      ]
+    },
+    {
+      "rev": 5852,
+      "date": "2026-11-11",
+      "author": "Linx-RW",
+      "lines": [
+        "Added detail colouration to Mars. Sand dunes are slightly darker and used some basic simplex noise to add minor colour variation to the surface in all biomes.",
+        "Fixed terrain modifier colour blending not being done in premultiplied space.",
+        "Fixed erosion modifier colour params being mislabeled.",
+        "Added a colour persistence param to the erosion modifier."
+      ]
+    },
+    {
+      "rev": 5853,
+      "date": "2026-11-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Moved simplex noise permutation tables to a hash, which improves simplex performance by around 7x on NVIDIA. Won't affect AMD performance (does not have the performance penalty that comes from storing the perm table in constant memory). I considered shared memory but it was just as fast and limited the noise library to compute shaders.",
+        "Removed unused 4D simplex noises.",
+        "Fixed complex crater noises mismatching between value and gradient versions."
+      ]
+    },
+    {
+      "rev": 5854,
+      "date": "2026-11-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed simplex noise stacking on itself when lacunarity = 2 (which is what most modifiers used) by applying an offset to the cell hash.",
+        "Revised launch site decal altitude offsets.",
+        "Improved erosion performance by around 20% using a cheaper hash.",
+        "Removed some unused simplex functions."
+      ]
+    },
+    {
+      "rev": 5855,
+      "date": "2026-11-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Optimized CPU and GPU erosion reducing the cost by around 50% by using 4 simplex corners instead of 8."
+      ]
+    },
+    {
+      "rev": 5856,
+      "date": "2026-11-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Improved Mars' biome distribution.",
+        "Fixed Mars' debris diffuse texture being extremely dark and creating a sudden transition between biomes.",
+        "Fixed biome map exporter not accounting for equirectangular distortion when generating the biome ID and control maps."
+      ]
+    },
+    {
+      "rev": 5857,
+      "date": "2026-11-12",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed some launch sites being too low."
+      ]
+    },
+    {
+      "rev": 5858,
+      "date": "2026-11-13",
+      "author": "woodshop",
+      "lines": [
+        "Removing the stock GNC subblocks from kFS until interfaces are established"
+      ]
+    },
+    {
+      "rev": 5859,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Parts can now be radially attached to the HM-2 and HM-3 Habitat Modules."
+      ]
+    },
+    {
+      "rev": 5860,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a Mission section to the Launch menu for craft with a saved mission. It shows the mission, whether the supplies last, and the zone that runs shortest and which supply runs out first.",
+        "Added a Stock All button to the Launch menu. It fills meals, CO₂ canisters and the air and water tanks for this launch only and doesn't change the saved craft.",
+        "Added an Open in Editor button to the Launch menu when supplies are short. It opens the saved craft in the vehicle editor. Crew and stocking picked in the Launch menu are not carried into the Vehicle Editor.",
+        "The \"Not enough supplies\" launch prompt now has Stock for Mission, Open in Editor, Launch Anyway and Cancel.",
+        "Stock for Mission in the launch prompt only appears when stocking can fix the shortfall. It stocks the launch, checks again and launches if there's now enough.",
+        "Added air and water lines to the mission band in the editor's Life Support window. Each shows what the tanks hold now, what they hold when full and what the mission plus the life support margin needs.",
+        "When even full tanks can't cover the mission the air or water line says how much more is needed and to add a tank with its Role Affinity set to that supply.",
+        "Hovering an air or water line highlights the tanks it counts.",
+        "Added a Fill Air and Water button to the mission band. It tops the tanks up to the mission requirement plus the margin, or to full when that isn't enough. Tanks are never emptied.",
+        "Stock All now fills the air and water tanks as well as meals and canisters.",
+        "The pre-launch supplies check now counts air and water in the tanks.",
+        "Added tooltips for the new Launch menu and mission band buttons and lines.",
+        "Added unit tests for all of the above."
+      ]
+    },
+    {
+      "rev": 5861,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a new lookup table to the kitten roster which speeds up finding a kitten in the roster which every crewed vessel does for each seat every frame.",
+        "Added unit tests for the roster lookup."
+      ]
+    },
+    {
+      "rev": 5862,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Life support, mission and power times are now stored as UniverseTime instead of doubles.",
+        "A kitten's time without each supply and a mission's stay, length, arrival and departure are now saved as UniverseTimeReference elements.",
+        "Added unit tests."
+      ]
+    },
+    {
+      "rev": 5863,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a Crew Clock under the game time gauge. It shows the next thing that happens to a kitten if nothing changes. It covers every crewed vessel and kitten on EVA not just the one you control.",
+        "Within a day of each other the worst event comes first: dying before incapacitated before degraded. Further out the soonest shows first.",
+        "Events are amber when a kitten will be degraded and red when it will be incapacitated or die.",
+        "Added a +/− button to the Crew Clock. It switches between showing only the most urgent event and showing the next event for every vessel. The full list scrolls after 8 vessels.",
+        "Clicking an event in the Crew Clock takes control of that vessel. If it's the vessel you already control it opens the Life Support window.",
+        "Added a \"Back to\" button to the Crew Clock and the Life Support window. It returns control to the vessel you were controlling before you switched.",
+        "Added Crew Clock to the View menu with the Ctrl+F6 key binding so you can turn it on or off. Whether it's shown and whether it's collapsed are saved in your settings.",
+        "The Life Support window in flight now lists the next event for every vessel at the top. Clicking one works the same as in the Crew Clock and hovering one highlights the zone.",
+        "The Life Support window in flight now has a tab for each crewed vessel. Each tab shows how long that vessel's worst zone lasts coloured by its supply level. Selecting a tab shows that vessel without taking control of it.",
+        "Added a Switch To button next to the vessel name in the Life Support window when the vessel shown isn't the one you control.",
+        "Added tooltips for the Crew Clock, its buttons, the vessel tabs and the Switch To button.",
+        "Added unit tests for all of the above and added a benchmark for the cost per frame with 100, 300 and 1000 vessels."
+      ]
+    },
+    {
+      "rev": 5864,
+      "date": "2026-11-13",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Changed updated CoreCommandB Textures, Coupling and FuelTank Textures."
+      ]
+    },
+    {
+      "rev": 5865,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "The Crew Clock and the Life Support window now show when a kitten will get radiation sickness or die from its radiation dose.",
+        "The Crew Clock is now available when either the Life Support or the Radiation rule is on.",
+        "Added unit tests for the radiation events and their text."
+      ]
+    },
+    {
+      "rev": 5866,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed vessels in older saves being left out when loading if one of their parts has changed since. The vessel now loads with its parts where they were saved and a warning asks you to check how they're attached.",
+        "Fixed tanks in the Mk1 Cargo Bay (Double) breaking saves made before its connectors changed."
+      ]
+    },
+    {
+      "rev": 5867,
+      "date": "2026-11-13",
+      "author": "Daniel Story",
+      "lines": [
+        "Update Vulkan abstractions to v2026.11.1.",
+        "Enable shader debug info in all non-production build types."
+      ]
+    },
+    {
+      "rev": 5868,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "The Life Support window in the editor now lets you set each habitat's meals and canisters and pick the kitten for each seat, the same as the part window."
+      ]
+    },
+    {
+      "rev": 5869,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Hovering a zone in the Life Support window while planning a mission now highlights it yellow when its supplies fall short of the mission, green when they are enough, and plain purple when the mission doesn't use it."
+      ]
+    },
+    {
+      "rev": 5870,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "The Crew Clock now also shows when a kitten's supply runs low, goes critical and runs out, the three moments that already stop time warp, before it counts down to the kitten being degraded."
+      ]
+    },
+    {
+      "rev": 5871,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed time warp only stopping for a vessel's worst habitat zone. Every crewed zone now warns and stops time warp when its supplies run low, go critical or run out."
+      ]
+    },
+    {
+      "rev": 5872,
+      "date": "2026-11-13",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "A kitten that has gone without a supply for a while is now called \"Impaired\" instead of \"Degraded\" everywhere in the UI.",
+        "Once a supply has less than a day left the Crew Clock now counts down to the kitten becoming impaired instead of showing \"critical\" and \"runs out\". Time warp still stops at 1 hour left and when the supply runs out."
+      ]
+    },
+    {
+      "rev": 5873,
+      "date": "2026-11-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Improved the performance of the voronoi noise by ~40%."
+      ]
+    },
+    {
+      "rev": 5874,
+      "date": "2026-11-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Ported terrain precision funcs that the GPU modifiers use to the CPU implementation.",
+        "Fixed some centimeter differences in physical vs visual terrain. For most modifiers the difference is now sub-millimeter."
+      ]
+    },
+    {
+      "rev": 5875,
+      "date": "2026-11-13",
+      "author": "Linx-RW",
+      "lines": [
+        "Reduced ground clutter VRAM usage by around 33% by not allocating for viewports that will never produce clutter (8 viewports -> 5). Earth trees VRAM usage from 200 to 134mb."
+      ]
+    },
+    {
+      "rev": 5876,
+      "date": "2026-11-13",
+      "author": "lghassen",
+      "lines": [
+        "Add ambient light from clouds to opaque objects, render a coarse lighting volume similar to the existing cloud shadow and cloud ambient occlusion volumes and encode cloud radiance into spherical harmonics. An overcast sky now tints objects under it instead of keeping a blue ambient tint",
+        "Fix an issue with the ambient occlusion that made it apply at a very small scale near the camera, vessels and surfaces now look better as the ambient occlusion better interacts with the new ambient lighting",
+        "Apply ambient occlusion to the planet shine vessels receive",
+        "Fix opaque objects sampling cloud shadow volume one frame early when the volume rebases",
+        "Fix issue where the cloud shadows can appear on terrain sitting slightly above the actual clouds, add a height fraction lookup to the shadow lut",
+        "Small performance improvement in the cloud ambient occlusion volume, deduplicating identical upwards ray in the hemisphere sampling"
+      ]
+    },
+    {
+      "rev": 5877,
+      "date": "2026-11-13",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed an error where a vehicle could go into the landed state while near orbital velocity because it was only considering frame-relative velocity, but the frame itself was moving at multiple km/s relative to the planet surface.",
+        "Put all physics bubbles into CCF if any of the member vehicles want to be in CCF so that we can't miss terrain collisions.",
+        "The chute physics timestep calculation now uses airspeed rather than inertial speed.",
+        "Particle drag is now relative to airspeed rather than inertial speed.",
+        "Tank frost thawing is now driven by dynamic pressure and frost buildup is scaled by atmospheric density."
+      ]
+    },
+    {
+      "rev": 5878,
+      "date": "2026-11-13",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed a potential deadlock with the vehicle workers where a job-posting thread awaiting a batch could pick up a job from another batch entirely, which could then await again and never make progress. We now restrict awaiting threads to only ever take jobs from the batch they are awaiting on."
+      ]
+    },
+    {
+      "rev": 5879,
+      "date": "2026-11-13",
+      "author": "lghassen",
+      "lines": [
+        "Render the cloud shadows off-screen, this separates the cloud shadow rendering from multiple opaque shaders like the terrain and allows rendering them at lower resolution, giving a performance improvement",
+        "Use the more accurate but lower resolution 3d cloud shadow volume near the camera and fade to the 2d cloud shadows in the distance, this allows the cloud shadows to better match nearby clouds",
+        "Better match the 2d cloud shadows to the cloud heights",
+        "Soften the 2d cloud shadows appearance",
+        "Filter the cloud shadow luts to avoid aliasing and shimmering, especially now that the cloud shadows are rendered at low resolution",
+        "Fade the cascaded shadowmaps out smoothly instead of cutting off abruptly"
+      ]
+    },
+    {
+      "rev": 5880,
+      "date": "2026-11-16",
+      "author": "Daniel Story",
+      "lines": [
+        "Continue to optimize color target texture formats to improve GPU performance and reduce VRAM usage.",
+        "Enable debug range markers in all non-production build types."
+      ]
+    },
+    {
+      "rev": 5881,
+      "date": "2026-11-07",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Replaced the old cylindrical aerodynamic model with supersonic-only aerodynamics. We feed the newly-generated aero meshes through a supersonic panel method to resolve drag, lift, and rotational moments. Panels behind the wake of other panels are resolved correctly.",
+        "At the moment we use the supersonic model even when vehicles are subsonic - this will be replaced with a subsonic panel method in the future.",
+        "Added a new thermo toolkit generator for an ideal gas local inclination lookup table.",
+        "Added dynamic viscosity data to atmospheres, which drives a laminar -> turbulent boundary layer model of skin friction.",
+        "Added a visualization of aerodynamic pressure to the aerodynamics debug view.",
+        "Fixed cases where quads could be triangulated in ways that made their two normals deviate significantly from the ideal quad normal."
+      ]
+    },
+    {
+      "rev": 5882,
+      "date": "2026-11-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed key prompts in popups showing the old key after rebinding it, and stopped the EVA Grab, Board and Supplies prompts creating garbage every frame."
+      ]
+    },
+    {
+      "rev": 5883,
+      "date": "2026-11-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added a placeholder interior to the HM-2 and HM-3 Habitat Modules. From an IVA seat or a crew portrait you now see the inside of the hull instead of looking out through it.",
+        "Mesh atlases can now load meshes inside out. Setting Inverted=\"true\" on a MeshAtlas with a <Meshes> list loads just those meshes with their faces reversed, as <name>_Inverted.",
+        "Added unit tests for the above."
+      ]
+    },
+    {
+      "rev": 5884,
+      "date": "2026-11-16",
+      "author": "Maxwell Johnson",
+      "lines": [
+        "Reduced the number of particle emitters allocated for pooling, from 1024 down to 128. The current number of particles used in the game was not utilizing the number of emitters allocated, meaning that VRAM was getting wasted preallocating particle buffers that were never used."
+      ]
+    },
+    {
+      "rev": 5885,
+      "date": "2026-11-16",
+      "author": "Daniel Story",
+      "lines": [
+        "Move asynchronously/rarely read ground clutter generation buffers from device memory to host memory. Saves ~1.2GB of VRAM on GPUs supporting ray tracing (even when the IVH ray tracing setting is off)."
+      ]
+    },
+    {
+      "rev": 5886,
+      "date": "2026-11-16",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added ability to pick where supplies go by clicking a habitat on the vessel while transferring. Habitats you can move supplies to light up green, hovering one shows the arrow, and Esc or right-click stops picking.",
+        "Changed the life support Transfer popup to a Transfer Supplies window so clicking a habitat on the vessel no longer closes it.",
+        "Added a reusable part picker for any feature that lets you click parts on a vessel. It handles the highlighting, hover tooltips, clicking to pick and cancelling.",
+        "Added unit tests for the part picker."
+      ]
+    },
+    {
+      "rev": 5887,
+      "date": "2026-11-16",
+      "author": "woodshop",
+      "lines": [
+        "kFS editor, UI and performance work (kFS code only, not yet hooked into the game)",
+        "Added the kFS editor window, reference windows and file/project dialog.",
+        "The editor's Code tab highlights the lines the VM is running in fading green scanlines (o-scope persistence, 1 s to 60 s or infinite), on by default and has a toggle and fade slider.",
+        "The kFS VM runs no tick while a requested stage() is pending, so a tick can't run between the request and the host processing the stage.",
+        "Host leaf handles are now resolved by a dictionary lookup on a cached layout when the image loads, instead of rebuilding the vehicle message layout for each handle on the first tick.",
+        "Message layouts can be built without per-element leaves. Generated vehicle headers are made once per layout instead of on every compile.",
+        "Editor allocations pass: text is formatted into reused buffers, views are rebuilt only when their input changes, scope trace buffers are pooled and the file tree is relisted only on file system changes. Added per-tab allocation meters to the Perf tab.",
+        "Upload loads the editor's current build when it still matches the saved text and otherwise builds once in the background.",
+        "The VM asks once for the program's settings to be cleared when kFS gives up control (used by the pilot handback in the next commit).",
+        "Core library UI pass. Unsaved file edits are now kept in memory. Examples are reworked and organized. Added summary fields to the opcode and service tables for the in-game reference.",
+        "Added tests for the above, including ExecTraceTests, LiveLinesTests, MessageLayoutTests, HostLeafMapTests, StageHoldTests and UploadTests."
+      ]
+    },
+    {
+      "rev": 5888,
+      "date": "2026-11-16",
+      "author": "woodshop",
+      "lines": [
+        "kFS in-game hooks: integration layer and hooks into the physics bubble, vehicle and program",
+        "Added the kFS game integration layer: vehicle hosts, services, host messages and the `kfs` console command (KfsVehicleHost, KfsServices, KfsHostSampler, KfsControllerSet, KfsEngineModel, KfsWriteBack, KfsIntegration, KfsConsoleCommands).",
+        "PhysicsBubble: The flight computer's three call sites go through RunFlightComputer, which lets a vehicle's kFS computer answer first (KfsDispatch) and otherwise runs the stock FlightComputer. A kFS computer's next tick is tracked apart from the stock wake requests and is held to neither the stock tick grid nor the MaxFlightComputerRate floor. FlightComputerInputsFor is now internal for pilot mode.",
+        "PhysicsStepDiagnostics: Added the KfsTick step limit (\"kFS Tick\").",
+        "Vehicle: Added the KfsHost slot.",
+        "Program: Registers the kfs command, the editor window and the frame hook (non-production builds). Applies the computers' main-thread requests before input events.",
+        "KfsDispatch: The hook PhysicsBubble calls. A host exception is contained and falls back to the stock flight computer.",
+        "kFS hands vehicle control back to the pilot in a safe state on every exit path (kfs stop, kill, off, a host fault, a new load, or the program ending). Burn mode goes back to Manual, attitude to a zero-rate inertial hold with roll decoupled, and the attitude profile back to Balanced. The engine switch is turned off and unfinished program burns are cancelled. Planned burns and the pilot's own settings changes are kept.",
+        "Fixed a physics worker stall on VM start: the host sampler and leaf map are built when an image loads, not on the first tick.",
+        "Added tests: BurnEndTests, CopiedGameLogicTests, HandbackTests, ConsoleCommandTests, Ms11bConsoleTests and Ms11cConsoleTests."
+      ]
+    },
+    {
+      "rev": 5889,
+      "date": "2026-11-15",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Moved some state and command settings from RocketCore to Rocket in anticipation of some additional complexity for certain engines.",
+        "Split solid rockets into a dedicated SolidRocket class to avoid having solid-specific code in Rocket itself."
+      ]
+    },
+    {
+      "rev": 5890,
+      "date": "2026-11-16",
+      "author": "gravhoek-rw",
+      "lines": [
+        "Fixed badly wrong MMH density derived from a bad database constant. Added a sanity check to catch future implausible values."
+      ]
+    },
+    {
+      "rev": 5891,
+      "date": "2026-11-16",
+      "author": "Dan Southon",
+      "lines": [
+        "Reduced the frame stall when placing symmetry, radial or mounted copies of large part groups in the vehicle editor.",
+        "Copied parts now add their modules to the vehicle while each copy is built, which makes this step about 4x faster on large symmetry drops.",
+        "Detaching a large part group in the vehicle editor no longer builds module lookup tables that it does not need, and allocates less memory.",
+        "Added tests that check the modules of a vehicle after parts are split off, merged back or copied."
+      ]
+    },
+    {
+      "rev": 5892,
+      "date": "2026-11-16",
+      "author": "Linx-RW",
+      "lines": [
+        "Fixed crash when starting the game with ground clutter disabled."
+      ]
+    },
+    {
+      "rev": 5893,
+      "date": "2026-11-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Added other star systems to the life support Mission destinations. Pick a star or one of its planets and set a Cruise speed as a fraction of light speed. The trip is timed as a straight line between the stars."
+      ]
+    },
+    {
+      "rev": 5894,
+      "date": "2026-11-17",
+      "author": "Daniel Story",
+      "lines": [
+        "Add internal debug option to disable pipeline cache."
+      ]
+    },
+    {
+      "rev": 5895,
+      "date": "2026-11-17",
+      "author": "MattCaradusRW",
+      "lines": [
+        "Added hand authored ToSurface connector for radial fuel tank parts so the models frame clips nicely into the mounted on part rather than floating over the surface."
+      ]
+    },
+    {
+      "rev": 5896,
+      "date": "2026-11-17",
+      "author": "woodshop",
+      "lines": [
+        "Added kFS debug window with a tick flame graph, sanity limits for player programs, and 1 MHz clocks on every part",
+        "Added a kFS debug window (Show kFS Debug) with a flame graph of a computer's tick.",
+        "Tick dispatch records profiler zones per vehicle, only while a view is asking and only for dispatches that run a tick.",
+        "CpuProfiler: Added a constructor that shares an existing root tag.",
+        "Added per-computer limits: 256 service requests per tick, 20 console events per second, 64 trace channels, 8 live plans, a 4 ms frame budget and a 4 MiB source cap.",
+        "Player commands are clamped to their valid ranges, and an exception in a computer's dispatch stops that computer instead of the game.",
+        "Every part now runs a 1 MHz clock: 20,000 cycles per tick at 50 Hz, 100,000 at 10 Hz.",
+        "Reference programs and tests that no longer fit a 50 Hz tick now run at 5 Hz."
+      ]
+    },
+    {
+      "rev": 5897,
+      "date": "2026-11-17",
+      "author": "JPLRepoRocketWerkz",
+      "lines": [
+        "Fixed gauge panel text not scaling with the game resolution. Text inside the Crew, Resources, Sequence and Burn panels now keeps the same share of its panel at any window size instead of staying a fixed pixel size while the panel shrank or grew.",
+        "Fixed the crew portrait panel's portraits shrinking and leaving empty space at lower resolutions. The panel's auto-size no longer makes its own text bigger each time it resizes and the panel keeps the same shape at every resolution. Its text now follows the panel's width so dragging it wider still enlarges the text.",
+        "Fixed Resources bar labels running past the end of their bars. All labels now share one font size, the one that fits the longest label and the bars shorten to match.",
+        "Fixed the Resources panel's last bar poking out past its rounded bottom edge. The panel now sizes itself from the same row heights it draws with a little more room under the last bar.",
+        "Fixed \"Isp\" and \"TWR\" overlapping on the staging panel's stat line. Isp stays centred when there's room and moves left to clear TWR when there isn't."
+      ]
+    },
+    {
+      "rev": 5898,
+      "date": "2026-11-17",
+      "author": "Dan Southon",
+      "lines": [
+        "Reduced memory use when building sub-parts in the vehicle editor: a sub-part's own module list now uses a compact form until it needs more."
+      ]
+    },
+    {
+      "rev": 5899,
+      "date": "2026-11-17",
+      "author": "woodshop",
+      "lines": [
+        "kFS can now be enabled through the debug menu",
+        "Formatting pass on kFS code examples"
+      ]
+    }
+  ]
+}
